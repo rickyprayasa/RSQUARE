@@ -80,15 +80,4 @@ body {
     transform: translateY(-3px);
 }
 
-.flex-gap-2-justify-center {
-  width: 500px;
-  height: 400px;
-  
-}
-
-.flex-gap-2-justify-center img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
