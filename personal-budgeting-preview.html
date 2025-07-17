@@ -150,7 +150,48 @@
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
-    
+    <script>
+const images = [
+    'images/personal-budgeting-detail-1.jpg',
+    'images/personal-budgeting-detail-2.jpg',
+    'images/personal-budgeting-detail-3.jpg',
+    'images/personal-budgeting-detail-4.jpg'
+];
+
+let currentIndex = 0;
+let interval = setInterval(showNextImage, 3000);
+
+const mainImage = document.getElementById('mainImage');
+const thumbs = document.querySelectorAll('.thumb');
+
+function showNextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage();
+}
+
+function updateImage() {
+    mainImage.src = images[currentIndex];
+    thumbs.forEach((thumb, idx) => {
+        if (idx === currentIndex) {
+            thumb.classList.add('border-orange-500');
+            thumb.classList.remove('opacity-70');
+        } else {
+            thumb.classList.remove('border-orange-500');
+            thumb.classList.add('opacity-70');
+        }
+    });
+}
+
+// Thumbnail click event
+thumbs.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+        clearInterval(interval); // stop auto
+        currentIndex = index;
+        updateImage();
+    });
+});
+</script>
+
     <script src="app.js"></script>
 </body>
 </html>
