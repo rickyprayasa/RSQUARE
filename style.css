@@ -81,9 +81,9 @@ body {
 }
 
 .flex-gap-2-justify-center {
-  width: 300px;
-  height: 300px;
-  overflow: hidden;
+  width: 500px;
+  height: 400px;
+  
 }
 
 .flex-gap-2-justify-center img {
