@@ -8,191 +8,81 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="sticky top-0 z-50">
 
-    <nav class="px-6 py-4 bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="images/logo.png" alt="RSQUARE Logo" class="h-10">
-                <span class="text-3xl font-bold gradient-text">RSQUARE</span>
-            </a>
+    <nav class="px-6 py-4 bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+         <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3"><img src="images/logo.png" alt="RSQUARE Logo" class="h-10"></a>
             <div class="hidden md:flex space-x-8">
                 <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium transition">Beranda</a>
                 <a href="templates.html" class="text-orange-600 font-semibold border-b-2 border-orange-500">Templates</a>
                 <a href="kontak.html" class="text-gray-600 hover:text-orange-600 font-medium transition">Kontak</a>
             </div>
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
+            <div class="md:hidden"><button id="menu-toggle" class="text-gray-700 focus:outline-none"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button></div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden mt-4">
-             <a href="index.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded">Beranda</a>
-            <a href="templates.html" class="block py-2 px-4 text-sm text-orange-700 bg-orange-100 rounded">Templates</a>
-            <a href="kontak.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded">Kontak</a>
-        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-4"><a href="index.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded">Beranda</a><a href="templates.html" class="block py-2 px-4 text-sm text-orange-700 bg-orange-100 rounded">Templates</a><a href="kontak.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded">Kontak</a></div>
     </nav>
 
-    <div id="announcement-bar" class="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-3 px-6 text-center text-sm font-medium shadow-lg">
-        <p>
-            🔥 Kode Voucher Bulan Ini: <span class="font-bold tracking-wider">JULYESS</span> untuk diskon 20%! setiap transaksi di Lynk.ID
-        </p>
-    </div>
-
-<header class="py-20 px-6 text-center animated-section">
-    <div class="container mx-auto">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text">Preview Detail: Personal Budgeting</h1>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template ini.</p>
-
-        <p class="text-3xl font-bold text-gray-900 mt-6">Rp 35.000</p>
-
-    </div>
-</header>
-
-    <main class="px-6 animated-section pb-20">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <div class="card rounded-xl overflow-hidden flex flex-col">
-                <img src="images/personal-budgeting-dashboard.jpg" alt="Dasbor Utama" class="w-full h-64 object-cover object-top">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold mb-3">Sheet 1: Dasbor Utama</h3>
-                    <p class="text-gray-600">Dapatkan ringkasan visual dari seluruh kondisi keuangan Anda, termasuk saldo, pengeluaran terbesar, dan progres menabung dalam satu halaman yang informatif.</p>
-                </div>
-            </div>
-
-            <div class="card rounded-xl overflow-hidden flex flex-col">
-                <img src="images/personal-budgeting-transaksi.jpg" alt="Pelacak Transaksi" class="w-full h-64 object-cover object-top">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold mb-3">Sheet 2: Pelacak Transaksi</h3>
-                    <p class="text-gray-600">Catat semua pemasukan dan pengeluaran harian Anda dengan mudah. Kategori yang bisa disesuaikan membantu Anda memahami ke mana uang Anda pergi.</p>
-                </div>
-            </div>
-
-            <div class="card rounded-xl overflow-hidden flex flex-col">
-                <img src="images/personal-budgeting-laporan.jpg" alt="Laporan Bulanan" class="w-full h-64 object-cover object-top">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold mb-3">Sheet 3: Laporan Bulanan</h3>
-                    <p class="text-gray-600">Analisis performa keuangan Anda setiap bulan secara otomatis. Bandingkan pengeluaran dengan anggaran dan lihat tren dari waktu ke waktu.</p>
-                </div>
-            </div>
-            
-            <div class="card rounded-xl overflow-hidden flex flex-col">
-                <img src="images/personal-budgeting-tabungan.jpg" alt="Target & Tabungan" class="w-full h-64 object-cover object-top">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold mb-3">Sheet 4: Target & Tabungan</h3>
-                    <p class="text-gray-600">Tetapkan tujuan finansial Anda, baik itu untuk dana darurat, liburan, atau membeli barang impian, dan lacak progresnya secara otomatis.</p>
-                </div>
-            </div>
-
+    <header class="py-20 px-6 text-center animated-section">
+        <div class="container mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text">Preview Detail: Personal Budgeting</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template ini.</p>
+            <p class="text-3xl font-bold text-gray-900 mt-6">Rp 75.000</p>
         </div>
-        <section class="container mx-auto mt-20 text-center animated-section">
-    <h2 class="text-3xl font-bold text-gray-800">Siap Meningkatkan Produktivitas?</h2>
-    <p class="text-lg text-gray-600 mt-2 mb-8">Pilih platform favorit Anda untuk mendapatkan template ini sekarang.</p>
+    </header>
 
-    <div class="max-w-md mx-auto space-y-4">
-        <a href="https://lynk.id/rsquareidea/8jq7zeq8m1kl" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">
-            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
-            Akses di Lynk.ID
-        </a>
+    <main class="px-6 animated-section pb-20 space-y-24">
+        
+        <section class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="card rounded-xl p-4">
+                <img src="images/personal-budgeting-dashboard.jpg" alt="Dasbor Utama" class="rounded-lg w-full shadow-lg">
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Sheet 1: Dasbor Utama</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Ini adalah pusat kendali keuangan Anda. Dapatkan ringkasan visual dari seluruh kondisi finansial, termasuk saldo terkini, grafik pengeluaran per kategori, dan progres menabung Anda. Semua data diperbarui secara otomatis saat Anda mencatat transaksi, memberikan gambaran besar dalam sekejap.
+                </p>
+            </div>
+        </section>
 
-        <a href="https://karyakarsa.com/rsquare/template-personal-budget" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">
-             <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
-            Akses di KaryaKarsa
-        </a>
-    </div>
-    </section>
-        <div class="text-center mt-16">
-            <a href="personal-budgeting.html" class="btn-secondary px-8 py-3 rounded-lg font-semibold">&larr; Kembali ke Halaman Produk</a>
-        </div>
+        <section class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="md:order-2 card rounded-xl p-4">
+                <img src="images/personal-budgeting-transaksi.jpg" alt="Pelacak Transaksi" class="rounded-lg w-full shadow-lg">
+            </div>
+            <div class="md:order-1">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Sheet 2: Pelacak Transaksi</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Catat semua pemasukan dan pengeluaran harian Anda dengan sangat mudah. Pilih kategori dari daftar dropdown yang bisa Anda sesuaikan sendiri. Fitur ini dirancang untuk kecepatan dan kemudahan agar Anda tidak malas mencatat setiap transaksi, sekecil apapun itu.
+                </p>
+            </div>
+        </section>
+
+        <section class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="card rounded-xl p-4">
+                <img src="images/personal-budgeting-laporan.jpg" alt="Laporan Bulanan" class="rounded-lg w-full shadow-lg">
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Sheet 3: Laporan Bulanan</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Analisis performa keuangan Anda setiap bulan secara otomatis. Bandingkan total pengeluaran dengan anggaran yang sudah ditetapkan dan lihat tren dari waktu ke waktu untuk membuat keputusan finansial yang lebih baik di masa depan.
+                </p>
+            </div>
+        </section>
+
+        <section class="container mx-auto mt-12 text-center">
+            <h2 class="text-3xl font-bold text-gray-800">Siap Meningkatkan Produktivitas?</h2>
+            <p class="text-lg text-gray-600 mt-2 mb-8">Pilih platform favorit Anda untuk mendapatkan template ini sekarang.</p>
+            <div class="max-w-md mx-auto space-y-4">
+                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di Lynk.ID</a>
+                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di KaryaKarsa</a>
+            </div>
+            <a href="personal-budgeting.html" class="inline-block mt-8 text-gray-500 hover:text-orange-600 transition">&larr; Kembali ke Ringkasan Produk</a>
+        </section>
+        
     </main>
 
-<footer class="py-12 px-6 bg-gray-100 border-t border-gray-200">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-        <div>
-            <a href="index.html" class="inline-block mb-4">
-                <img src="images/logo.png" alt="RSQUARE Logo" class="h-12 mx-auto md:mx-0">
-            </a>
-            <p class="text-gray-500 text-sm mb-4">
-                Template Google Sheets premium untuk produktivitas Anda.
-            </p>
-            <div class="flex space-x-5 justify-center md:justify-start">
-                <a href="https://www.youtube.com/@RSQUAREIDEA" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-600 transition">
-                    <span class="sr-only">YouTube</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.908 1.768 1.768C21.998 8.78 22 12 22 12s0 3.22-.418 4.814a2.506 2.506 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.254 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.22 2 12 2 12s0-3.22.418-4.814a2.507 2.507 0 0 1 1.768-1.768C5.746 5 12 5 12 5s6.254 0 7.812.418zM9.996 15.002l5.207-3.002-5.207-3.002v6.004z" clip-rule="evenodd" /></svg>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61576967790844" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-600 transition">
-                    <span class="sr-only">Facebook</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
-                </a>
-                <a href="https://www.tiktok.com/@rsquareidea?_t=ZS-8wWydvIjmGG&_r=1" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-600 transition">
-                    <span class="sr-only">TikTok</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.04-5.36-.01-4.03-.01-8.05.02-12.07z" /></svg>
-                </a>
-            </div>
-        </div>
-        <div>
-            <h3 class="font-semibold text-gray-800 mb-4">Tautan Cepat</h3>
-            <ul class="space-y-2">
-                <li><a href="index.html" class="text-gray-600 hover:text-orange-600 transition">Beranda</a></li>
-                <li><a href="templates.html" class="text-gray-600 hover:text-orange-600 transition">Templates</a></li>
-                <li><a href="kontak.html" class="text-gray-600 hover:text-orange-600 transition">Kontak</a></li>
-            </ul>
-        </div>
-         <div>
-            <h3 class="font-semibold text-gray-800 mb-4">Legal</h3>
-            <ul class="space-y-2">
-                <li><a href="kebijakan-privasi.html" class="text-gray-600 hover:text-orange-600 transition">Kebijakan Privasi</a></li>
-                <li><a href="syarat-ketentuan.html" class="text-gray-600 hover:text-orange-600 transition">Syarat & Ketentuan</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="container mx-auto text-center text-gray-500 mt-12 pt-8 border-t border-gray-200">
-        <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
-    </div>
-</footer>
-    <script>
-const images = [
-    'images/personal-budgeting-detail-1.jpg',
-    'images/personal-budgeting-detail-2.jpg',
-    'images/personal-budgeting-detail-3.jpg',
-    'images/personal-budgeting-detail-4.jpg'
-];
-
-let currentIndex = 0;
-let interval = setInterval(showNextImage, 3000);
-
-const mainImage = document.getElementById('mainImage');
-const thumbs = document.querySelectorAll('.thumb');
-
-function showNextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-}
-
-function updateImage() {
-    mainImage.src = images[currentIndex];
-    thumbs.forEach((thumb, idx) => {
-        if (idx === currentIndex) {
-            thumb.classList.add('border-orange-500');
-            thumb.classList.remove('opacity-70');
-        } else {
-            thumb.classList.remove('border-orange-500');
-            thumb.classList.add('opacity-70');
-        }
-    });
-}
-
-// Thumbnail click event
-thumbs.forEach((thumb, index) => {
-    thumb.addEventListener('click', () => {
-        clearInterval(interval); // stop auto
-        currentIndex = index;
-        updateImage();
-    });
-});
-</script>
-
+    <footer class="py-12 px-6 mt-16 bg-gray-100 border-t border-gray-200">
+        </footer>
+    
     <script src="app.js"></script>
 </body>
 </html>
