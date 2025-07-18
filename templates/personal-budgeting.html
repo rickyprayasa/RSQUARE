@@ -47,13 +47,14 @@
     <main class="py-20 px-6 animated-section">
         <div class="container mx-auto">
 
-            <div class="w-full group perspective-container">
+           <div class="w-full group perspective-container">
     <div id="image-container" class="card rounded-2xl p-2 md:p-4 relative transition-transform duration-500 ease-in-out group-hover:rotate-y-3 group-hover:-rotate-x-2 group-hover:scale-105">
         <a href="photos/personal-budgeting/Dashboard.png" class="cursor-zoom-in">
             <img id="product-image" src="photos/personal-budgeting/Dashboard.png" alt="Tampilan Utama Personal Budgeting - Klik untuk memperbesar" class="rounded-lg w-full shadow-lg">
         </a>
     </div>
 </div>
+
 
 
 
@@ -135,24 +136,23 @@
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
-    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
 
-// ===== KODE UNTUK FITUR ZOOM GAMBAR (LIGHTBOX) =====
-const imageContainer = document.getElementById('image-container');
-if (imageContainer) {
-    imageContainer.addEventListener('click', function(e) {
-        // Hanya jalankan jika yang diklik adalah link di dalam container
-        if (e.target.closest('a')) {
-            e.preventDefault(); // Mencegah link membuka gambar di tab baru
-            const imageUrl = e.target.closest('a').href;
-            basicLightbox.create(`
-                <img src="${imageUrl}" alt="">
-            `).show();
-        }
-    });
-}
-
+<script>
+    const imageContainer = document.getElementById('image-container');
+    if (imageContainer) {
+        imageContainer.addEventListener('click', function(e) {
+            if (e.target.closest('a')) {
+                e.preventDefault();
+                const imageUrl = e.target.closest('a').href;
+                basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
+            }
+        });
+    }
 </script>
+
+<script src="app.js"></script>
+
 
     <script src="../app.js"></script>
 </body>
