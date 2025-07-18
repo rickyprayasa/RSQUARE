@@ -62,22 +62,58 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
 }
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+/* Tombol Utama - DENGAN EFEK BARU */
+.btn-primary {
+    position: relative; /* Diperlukan untuk efek cahaya */
+    overflow: hidden;   /* Agar efek tidak keluar dari tombol */
+    background: linear-gradient(to right, #F97316, #EA580C);
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
 }
 
-/* Tombol Sekunder - Warna Oranye/Emas dari Logo */
+/* Tombol Sekunder - DENGAN EFEK BARU */
 .btn-secondary {
+    position: relative;
+    overflow: hidden;
     background-color: transparent;
     border: 2px solid #F97316;
     color: #F97316;
     transition: all 0.3s ease;
 }
-.btn-secondary:hover {
-    background-color: #F97316;
-    color: #FFFFFF; /* PERUBAHAN: Warna teks menjadi putih saat hover */
-    transform: translateY(-3px);
+
+/* EFEK CAHAYA (Berlaku untuk kedua tombol) */
+.btn-primary::before, .btn-secondary::before {
+    content: '';
+    position: absolute;
+    /* Ambil posisi dari JavaScript, default di luar layar */
+    left: var(--mouse-x, -100px);
+    top: var(--mouse-y, -100px);
+    
+    width: 200px; /* Lebar lingkaran cahaya */
+    height: 200px; /* Tinggi lingkaran cahaya */
+    
+    /* Gradasi radial untuk efek cahaya */
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%);
+    
+    transform: translate(-50%, -50%); /* Pusatkan lingkaran pada kursor */
+    opacity: 0; /* Sembunyikan secara default */
+    transition: opacity 0.3s ease;
 }
 
+/* Tampilkan efek saat kursor di atas tombol */
+.btn-primary:hover::before, .btn-secondary:hover::before {
+    opacity: 1;
+}
 
+/* Efek hover standar (agar tidak tertutup efek cahaya) */
+.btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-3px);
+}
+.btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+}
+.btn-secondary:hover {
+    background-color: #F97316;
+    color: #FFFFFF;
+}
