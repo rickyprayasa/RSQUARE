@@ -49,34 +49,26 @@
                <section id="youtube" class="py-20 px-6 bg-gray-50 animated-section">
                     <div class="container mx-auto">
                         <div class="flex flex-col md:flex-row items-center gap-12">
-                            
                             <div class="w-full md:w-1/2">
                                 <div class="card rounded-2xl p-2 md:p-4 relative">
                                     <div class="swiper rounded-lg overflow-hidden">
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
-                                                <div class="relative" style="padding-top: 56.25%;">
-                                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/OWwID0f8vSE?si=4diOU71vfVylYIiy?enablejsapi=1" title="Template Goal Planner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                </div>
+                                                <img src="../assets/folder-images1/images1/gambar1.jpg" alt="Gambar 1" class="w-full h-auto rounded-lg">
                                             </div>
                                             <div class="swiper-slide">
-                                                <div class="relative" style="padding-top: 56.25%;">
-                                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/uk8scHNKWz4?si=KTWwh-7mVGEFw7Ml?enablejsapi=1" title="Template Perencanaan Anggaran Acara" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                </div>
+                                                <img src="../assets/folder-images1/images1/gambar2.jpg" alt="Gambar 2" class="w-full h-auto rounded-lg">
                                             </div>
                                             <div class="swiper-slide">
-                                                <div class="relative" style="padding-top: 56.25%;">
-                                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/XD8ImBgaamc?si=WPiNlqfXCchiqvDN?enablejsapi=1" title="Template Tracking Lamaran Kerja" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                </div>
+                                                <img src="../assets/folder-images1/images1/gambar3.jpg" alt="Gambar 3" class="w-full h-auto rounded-lg">
                                             </div>
                                             <div class="swiper-slide">
-                                                <div class="relative" style="padding-top: 56.25%;">
-                                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/2nptWANixos?si=XhDdEjvfPpLXjHcd?enablejsapi=1" title="Template Invoice Maker" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                </div>
-                                            </div>                            
+                                                <img src="../assets/folder-images1/images1/gambar4.jpg" alt="Gambar 4" class="w-full h-auto rounded-lg">
+                                            </div>
                                         </div>
-                                        <div class="swiper-pagination"></div>
                 
+                                        <!-- Optional: Pagination & Navigation -->
+                                        <div class="swiper-pagination"></div>
                                         <div class="swiper-button-prev"></div>
                                         <div class="swiper-button-next"></div>
                                     </div>
@@ -85,6 +77,7 @@
                         </div>
                     </div>
                 </section>
+
 
                 <div>
                     <h1 class="text-4xl font-bold mb-4 gradient-text">Template Goal Planner</h1>
@@ -165,15 +158,10 @@
     </div>
 </footer>
      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
+<!-- Script Swiper -->
 <script>
-    let swiper;
-    const players = {};
-
-    // 1. Fungsi ini akan dipanggil oleh API YouTube saat siap
-    function onYouTubeIframeAPIReady() {
-        // Inisialisasi Swiper
-        swiper = new Swiper('.swiper', {
+    document.addEventListener('DOMContentLoaded', () => {
+        const swiper = new Swiper('.swiper', {
             loop: true,
             pagination: {
                 el: '.swiper-pagination',
@@ -183,30 +171,10 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            // Tambahkan event listener untuk slider
-            on: {
-                // Saat slide berubah
-                slideChange: function () {
-                    // Cari video di slide SEBELUMNYA dan pause
-                    const previousSlide = this.slides[this.previousIndex];
-                    const iframe = previousSlide.querySelector('iframe');
-                    if (iframe && players[iframe.id]) {
-                        players[iframe.id].pauseVideo();
-                    }
-                }
-            }
         });
+    });
+</script>
 
-        // 2. Buat ID unik untuk setiap iframe dan inisialisasi player
-        const iframes = document.querySelectorAll('.swiper-slide iframe');
-        iframes.forEach((iframe, index) => {
-            const playerId = `player-${index}`;
-            iframe.id = playerId;
-            players[playerId] = new YT.Player(playerId);
-        });
-    }
-</script>
-</script>
     <script src="../app.js"></script>
 </body>
 </html>
