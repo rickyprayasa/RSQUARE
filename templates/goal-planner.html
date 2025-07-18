@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Goal Planner - RSQUARE</title>
+    <title>Template Tracking Lamaran Kerja - RSQUARE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../style.css">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
 <div class="sticky top-0 z-50">
@@ -46,41 +45,21 @@
     <main class="py-20 px-6 animated-section">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-               <section id="youtube" class="py-20 px-6 bg-gray-50 animated-section">
-                    <div class="container mx-auto">
-                        <div class="flex flex-col md:flex-row items-center gap-12">
-                            <div class="w-full md:w-1/2">
-                                <div class="card rounded-2xl p-2 md:p-4 relative">
-                                    <div class="swiper rounded-lg overflow-hidden">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <img src="../photos/goal-planer/Dashboard Goal Planner.png" alt="Gambar 1" class="w-full h-auto rounded-lg">
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <img src="../photos/goal-planer/kalender" alt="Gambar 2" class="w-full h-auto rounded-lg">
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <img src="../photos/goal-planer/list" alt="Gambar 3" class="w-full h-auto rounded-lg">
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <img src="../photos/goal-planer/list" alt="Gambar 4" class="w-full h-auto rounded-lg">
-                                            </div>
-                                        </div>
-                
-                                        <!-- Optional: Pagination & Navigation -->
-                                        <div class="swiper-pagination"></div>
-                                        <div class="swiper-button-prev"></div>
-                                        <div class="swiper-button-next"></div>
-                                    </div>
-                                </div>
-                            </div>                           
-                        </div>
-                    </div>
-                </section>
+               <div class="flex flex-col items-center gap-2">
+                  <!-- Wrapper Frame -->
+                  <div class="inline-block p-3 border-4 border-gray-300 rounded-xl shadow-lg bg-white">
+                    <!-- Gambar Utama -->
+                    <img id="mainImage"
+                         src="../photos/tracking-lamaran/dashboard"
+                         alt="Detail Tracking Lamaran"
+                         class="rounded-lg object-contain transition duration-500 bg-white max-w-full h-auto">
+                  </div>
+                </div>
+
 
 
                 <div>
-                    <h1 class="text-4xl font-bold mb-4 gradient-text">Template Goal Planner</h1>
+                    <h1 class="text-4xl font-bold mb-4 gradient-text">Template Tracking Lamaran Kerja</h1>
                     <p class="text-3xl font-bold text-gray-900 mb-6">Rp 35.000</p>
                     <p class="text-gray-600 mb-8 leading-relaxed">
                         Kendalikan sepenuhnya kondisi finansial Anda. Template ini dirancang untuk melacak setiap pemasukan, pengeluaran, investasi, dan tagihan Anda dalam satu dasbor yang mudah dipahami dan interaktif.
@@ -101,7 +80,7 @@
 
         <hr class="border-gray-700">
 
-        <a href="preview/goal-planner.html" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
+        <a href="preview/tracking-lamaran.html" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
             <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
             Lihat Preview Detail
         </a>
@@ -157,24 +136,7 @@
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
-     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<!-- Script Swiper -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const swiper = new Swiper('.swiper', {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    });
-</script>
-
+    
     <script src="../app.js"></script>
 </body>
 </html>
