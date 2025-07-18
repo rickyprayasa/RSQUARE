@@ -200,55 +200,60 @@
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@@11/swiper-bundle.min.js"></script>
 <script>
-    // Variabel untuk menampung semua player dan slider
-    let swiperInstance;
-    const players = {};
+    // Inisialisasi Swiper terlebih dahulu
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        // PENTING: nonaktifkan autoplay video saat tidak terlihat
+        watchSlidesProgress: true, 
+    });
 
-    // Fungsi ini akan dipanggil oleh YouTube API saat siap
-    function onYouTubeIframeAPIReady() {
-        // Temukan semua iframe di dalam slider
-        const iframes = document.querySelectorAll('.swiper-slide iframe');
-        
-        // Buat ID unik untuk setiap iframe dan inisialisasi YT.Player
-        iframes.forEach((iframe, index) => {
-            const playerId = `yt-player-${index}`;
-            iframe.id = playerId;
-            players[playerId] = new YT.Player(playerId);
-        });
+    // Fungsi untuk mengontrol video YouTube
+    function handleYouTubeVideos() {
+        const players = {};
 
-        // Inisialisasi Swiper setelah semua player siap
-        swiperInstance = new Swiper('.swiper', {
-            loop: true, // Loop sekarang akan berfungsi dengan benar
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            // Tambahkan event listener untuk slider
-            on: {
-                // Saat transisi slide selesai
-                slideChangeTransitionEnd: function () {
-                    // Dapatkan iframe yang sedang aktif
-                    const activeSlide = this.slides[this.activeIndex];
-                    const activeIframe = activeSlide.querySelector('iframe');
-                    
-                    // Loop melalui semua player
-                    for (const playerId in players) {
-                        // Jika player tidak berada di slide yang aktif, hentikan videonya
-                        if (players[playerId].getIframe().id !== activeIframe.id) {
-                            players[playerId].pauseVideo();
-                        }
-                    }
+        // Fungsi untuk menghentikan semua video
+        function pauseAllVideos() {
+            for (const playerId in players) {
+                if (players[playerId] && typeof players[playerId].pauseVideo === 'function') {
+                    players[playerId].pauseVideo();
                 }
             }
+        }
+
+        // Muat YouTube IFrame API
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Fungsi ini akan dipanggil setelah API dimuat
+        window.onYouTubeIframeAPIReady = function() {
+            const iframes = document.querySelectorAll('.swiper-slide iframe');
+            iframes.forEach((iframe, index) => {
+                const playerId = `yt-player-${index}`;
+                iframe.id = playerId;
+                players[playerId] = new YT.Player(playerId);
+            });
+        };
+
+        // Tambahkan event listener ke slider untuk menghentikan video saat slide berubah
+        swiper.on('slideChange', function () {
+            pauseAllVideos();
         });
     }
+
+    // Jalankan fungsi setelah halaman dimuat
+    document.addEventListener('DOMContentLoaded', handleYouTubeVideos);
 </script>
 
 <script src="app.js"></script>
