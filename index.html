@@ -201,54 +201,43 @@
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
+<script src="http://googleusercontent.com/youtube/v3/iframe_api"></script>
 <script>
-    // Variabel untuk menampung semua player dan slider
-    let swiperInstance;
+    // 1. Variabel untuk menampung semua player YouTube
     const players = {};
 
-    // Fungsi ini akan dipanggil oleh YouTube API saat siap
+    // 2. Inisialisasi Swiper Slider
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    // 3. Fungsi ini akan dipanggil otomatis oleh script YouTube API setelah siap
     function onYouTubeIframeAPIReady() {
-        // Temukan semua iframe di dalam slider
         const iframes = document.querySelectorAll('.swiper-slide iframe');
-        
-        // Buat ID unik untuk setiap iframe dan inisialisasi YT.Player
         iframes.forEach((iframe, index) => {
             const playerId = `yt-player-${index}`;
             iframe.id = playerId;
             players[playerId] = new YT.Player(playerId);
         });
-
-        // Inisialisasi Swiper setelah semua player siap
-        swiperInstance = new Swiper('.swiper', {
-            loop: true, // Loop sekarang akan berfungsi dengan benar
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            // Tambahkan event listener untuk slider
-            on: {
-                // Saat transisi slide selesai
-                slideChangeTransitionEnd: function () {
-                    // Dapatkan iframe yang sedang aktif
-                    const activeSlide = this.slides[this.activeIndex];
-                    const activeIframe = activeSlide.querySelector('iframe');
-                    
-                    // Loop melalui semua player
-                    for (const playerId in players) {
-                        // Jika player tidak berada di slide yang aktif, hentikan videonya
-                        if (players[playerId].getIframe().id !== activeIframe.id) {
-                            players[playerId].pauseVideo();
-                        }
-                    }
-                }
-            }
-        });
     }
+
+    // 4. Tambahkan 'event listener' ke slider untuk mematikan video
+    swiper.on('slideChange', function () {
+        // Loop melalui semua player yang ada dan hentikan videonya
+        for (const playerId in players) {
+            if (players[playerId] && typeof players[playerId].pauseVideo === 'function') {
+                players[playerId].pauseVideo();
+            }
+        }
+    });
 </script>
 
 <script src="app.js"></script>
