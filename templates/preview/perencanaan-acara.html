@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Detail Perencanaan Anggaran Acara - RSQUARE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sticky top-0 z-50">
+
+    <nav class="px-6 py-4 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="photos/RSQUARE-LOGO.png" alt="RSQUARE Logo" class="h-10">
+                <span class="text-3xl font-bold gradient-text">RSQUARE</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium transition">Beranda</a>
+                <a href="templates.html" class="text-orange-600 font-semibold border-b-2 border-orange-500">Templates</a>
+                <a href="kontak.html" class="text-gray-600 hover:text-orange-600 font-medium transition">Kontak</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-4">
+             <a href="index.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded">Beranda</a>
+            <a href="templates.html" class="block py-2 px-4 text-sm text-orange-700 bg-orange-100 rounded">Templates</a>
+            <a href="kontak.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded">Kontak</a>
+        </div>
+    </nav>
+
+    <div id="announcement-bar" class="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-3 px-6 text-center text-sm font-medium shadow-lg">
+        <p>
+            🔥 Kode Voucher Bulan Ini: <span class="font-bold tracking-wider">JULYESS</span> untuk mendapatkan Diskon semua Templates
+        </p>
+    </div>
+</div>
+
+    <header class="py-20 px-6 text-center animated-section">
+        <div class="container mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text">Preview Detail: Personal Budgeting</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template ini.</p>
+            <p class="text-3xl font-bold text-gray-900 mt-6">Rp 35.000</p>
+        </div>
+    </header>
+
+    <main class="px-6 animated-section pb-20 space-y-24">
+        
+        <section class="container mx-auto flex flex-col items-center gap-8 space-y-24 py-12">
+              <!-- Preview 1 -->
+              <div class="flex flex-col items-center gap-6">
+                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
+                  <img src="photos/personal-budgeting/Dashboard.png" alt="Dasbor Utama" class="rounded-lg w-full shadow-lg">
+                </div>
+                <div class="text-center md:text-left max-w-2xl">
+                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📊 Laporan (Dashboard Utama)</h2>
+                  <p class="text-gray-600 leading-relaxed">
+                    Ini adalah pusat komando keuangan Anda, tempat semua data transaksi diolah menjadi laporan visual yang cerdas dan mudah dipahami. Cukup pilih bulan dan tahun, maka seluruh halaman akan ter-update secara otomatis untuk menjawab pertanyaan terpenting.
+                 </p>
+                </div>
+              </div>
+            
+              <!-- Preview 2 -->
+              <div class="flex flex-col items-center gap-6">
+                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
+                  <img src="photos/personal-budgeting/Screenshot at 2025-07-15 13-40-05.png" alt="Transaksi" class="rounded-lg w-full shadow-lg">
+                </div>
+                <div class="text-center md:text-left max-w-2xl">
+                  <h2 class="text-3xl font-bold text-gray-800 mb-4">💰 Budgeting</h2>
+                  <p class="text-gray-600 leading-relaxed">
+                    Ini adalah pusat perencanaan strategis keuangan Anda. Di sini, Anda bisa mengatur anggaran pengeluaran untuk setiap kategori selama satu tahun penuh dalam satu halaman yang rapi. Rencanakan budget yang fleksibel—lebih besar untuk bulan liburan atau lebih kecil saat berhemat—dan biarkan dashboard utama secara otomatis menggunakan angka yang tepat sebagai tolok ukur. Dengan sheet ini, Anda tidak lagi hanya mencatat, tetapi proaktif merancang masa depan finansial Anda.
+                 </p>
+                </div>
+              </div>
+            
+              <!-- Preview 3 -->
+              <div class="flex flex-col items-center gap-6">
+                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
+                  <img src="photos/personal-budgeting/Screenshot at 2025-07-15 13-26-38.png" alt="Pemasukan" class="rounded-lg w-full shadow-lg">
+                </div>
+                <div class="text-center md:text-left max-w-2xl">
+                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📝 Catatan Transaksi</h2>
+                  <p class="text-gray-600 leading-relaxed">
+                    Ini adalah jantung dari seluruh sistem dan akan menjadi kebiasaan harian Anda. Cukup luangkan waktu 30 detik untuk mencatat setiap pemasukan, pengeluaran, atau transfer antar bank di sini. Semakin rajin dan akurat Anda mencatat, semakin cerdas dan akurat pula laporan otomatis yang akan Anda dapatkan di Dashboard Utama.
+                  </p>
+                </div>
+              </div>
+            
+              <!-- Preview 4 -->
+              <div class="flex flex-col items-center gap-6">
+                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
+                  <img src="photos/personal-budgeting/Screenshot at 2025-07-15 08-51-10.png" alt="Pengeluaran" class="rounded-lg w-full shadow-lg">
+                </div>
+                <div class="text-center md:text-left max-w-2xl">
+                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📊 Progress Hutang</h2>
+                  <p class="text-gray-600 leading-relaxed">
+                    Jangan biarkan beban hutang yang tersebar membuat Anda cemas. Sheet ini adalah pusat komando untuk semua kewajiban finansial Anda, mulai dari KPR, cicilan kendaraan, hingga PayLater. Daftarkan semua hutang Anda, catat setiap pembayaran cicilan di tempat yang sama, dan saksikan progress bar bergerak maju secara visual. Pantau total sisa utang secara real-time dan dapatkan motivasi yang Anda butuhkan untuk mencapai kebebasan finansial.
+                  </p>
+                </div>
+              </div>
+            
+              <!-- Preview 5 -->
+              <div class="flex flex-col items-center gap-6">
+                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
+                  <img src="photos/personal-budgeting/Screenshot at 2025-07-15 13-36-27.png" alt="Komparasi Bulanan" class="rounded-lg w-full shadow-lg">
+                </div>
+                <div class="text-center md:text-left max-w-2xl">
+                  <h2 class="text-3xl font-bold text-gray-800 mb-4">🎯 Tujuan Tabungan</h2>
+                  <p class="text-gray-600 leading-relaxed">
+                    Ubah impian finansial Anda menjadi rencana yang nyata. Di sheet ini, Anda bisa mencatat semua tujuan besar Anda—mulai dari dana darurat, DP rumah, hingga liburan impian—lengkap dengan target dana yang dibutuhkan. Sistem alokasi dana yang cerdas akan menunjukkan progress setiap tujuan secara visual melalui progress bar, membantu Anda tetap fokus dan termotivasi untuk mewujudkan setiap impian satu per satu.
+                  </p>
+                </div>
+              </div>
+            
+              <!-- Preview 6 -->
+              <div class="flex flex-col items-center gap-6">
+                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
+                  <img src="photos/personal-budgeting/Screenshot at 2025-07-15 08-51-33.png" alt="Komparasi Bulanan" class="rounded-lg w-full shadow-lg">
+                </div>
+                <div class="text-center md:text-left max-w-2xl">
+                  <h2 class="text-3xl font-bold text-gray-800 mb-4">⚙️ Pusat Kontrol</h2>
+                  <p class="text-gray-600 leading-relaxed">
+                        Anggap sheet ini sebagai “ruang mesin” dari template Anda—Anda hanya perlu mengaturnya sekali saja di awal. Di sinilah Anda mempersonalisasi sistem keuangan dengan mendaftarkan semua Kategori Pemasukan & Pengeluaran, Akun Bank beserta Saldo Awalnya, dan Profil Hutang. Semua yang Anda atur di sini akan secara otomatis menjadi pilihan di seluruh template, memastikan pencatatan harian Anda cepat, mudah, dan akurat.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+        
+        <section class="container mx-auto mt-12 text-center">
+            <h2 class="text-3xl font-bold text-gray-800">Siap Meningkatkan Produktivitas?</h2>
+            <p class="text-lg text-gray-600 mt-2 mb-8">Pilih platform favorit Anda untuk mendapatkan template ini sekarang.</p>
+            <div class="max-w-md mx-auto space-y-4">
+                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di Lynk.ID</a>
+                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di KaryaKarsa</a>
+            </div>
+            <a href="personal-budgeting.html" class="inline-block mt-8 text-gray-500 hover:text-orange-600 transition">&larr; Kembali ke Ringkasan Produk</a>
+        </section>
+        
+    </main>
+
+<footer class="py-12 px-6 bg-gray-100 border-t border-gray-200">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+        <div>
+            <a href="index.html" class="inline-block mb-4">
+                <img src="photos/RSQUARE-LOGO.png" alt="RSQUARE Logo" class="h-12 mx-auto md:mx-0">
+            </a>
+            <p class="text-gray-500 text-sm mb-4">
+                Template Google Sheets premium untuk produktivitas Anda.
+            </p>
+            <div class="flex space-x-5 justify-center md:justify-start">
+                <a href="https://www.youtube.com/@RSQUAREIDEA" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-600 transition">
+                    <span class="sr-only">YouTube</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.908 1.768 1.768C21.998 8.78 22 12 22 12s0 3.22-.418 4.814a2.506 2.506 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.254 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.22 2 12 2 12s0-3.22.418-4.814a2.507 2.507 0 0 1 1.768-1.768C5.746 5 12 5 12 5s6.254 0 7.812.418zM9.996 15.002l5.207-3.002-5.207-3.002v6.004z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61576967790844" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-600 transition">
+                    <span class="sr-only">Facebook</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="https://www.tiktok.com/@rsquareidea?_t=ZS-8wWydvIjmGG&_r=1" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-600 transition">
+                    <span class="sr-only">TikTok</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.04-5.36-.01-4.03-.01-8.05.02-12.07z" /></svg>
+                </a>
+            </div>
+        </div>
+        <div>
+            <h3 class="font-semibold text-gray-800 mb-4">Tautan Cepat</h3>
+            <ul class="space-y-2">
+                <li><a href="index.html" class="text-gray-600 hover:text-orange-600 transition">Beranda</a></li>
+                <li><a href="templates.html" class="text-gray-600 hover:text-orange-600 transition">Templates</a></li>
+                <li><a href="kontak.html" class="text-gray-600 hover:text-orange-600 transition">Kontak</a></li>
+            </ul>
+        </div>
+         <div>
+            <h3 class="font-semibold text-gray-800 mb-4">Legal</h3>
+            <ul class="space-y-2">
+                <li><a href="kebijakan-privasi.html" class="text-gray-600 hover:text-orange-600 transition">Kebijakan Privasi</a></li>
+                <li><a href="syarat-ketentuan.html" class="text-gray-600 hover:text-orange-600 transition">Syarat & Ketentuan</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container mx-auto text-center text-gray-500 mt-12 pt-8 border-t border-gray-200">
+        <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
+    </div>
+</footer>
+
+       <script src="app.js"></script>
+
+</body>
+</html>
