@@ -91,22 +91,22 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="relative" style="padding-top: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/OWwID0f8vSE?si=4diOU71vfVylYIiy" title="Template Goal Planner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/OWwID0f8vSE?si=4diOU71vfVylYIiy?enablejsapi=1" title="Template Goal Planner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="relative" style="padding-top: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/uk8scHNKWz4?si=KTWwh-7mVGEFw7Ml" title="Template Perencanaan Anggaran Acara" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/uk8scHNKWz4?si=KTWwh-7mVGEFw7Ml?enablejsapi=1" title="Template Perencanaan Anggaran Acara" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="relative" style="padding-top: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/XD8ImBgaamc?si=WPiNlqfXCchiqvDN" title="Template Tracking Lamaran Kerja" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/XD8ImBgaamc?si=WPiNlqfXCchiqvDN?enablejsapi=1" title="Template Tracking Lamaran Kerja" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="relative" style="padding-top: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/2nptWANixos?si=XhDdEjvfPpLXjHcd" title="Template Invoice Maker" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/2nptWANixos?si=XhDdEjvfPpLXjHcd?enablejsapi=1" title="Template Invoice Maker" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                 </div>
                             </div>                            
                         </div>
@@ -200,26 +200,49 @@
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-  // Inisialisasi Swiper.js
-  const swiper = new Swiper('.swiper', {
-    // Opsi tambahan
-    loop: true, // Agar slider bisa berputar terus
-    
-    // Mengaktifkan titik-titik navigasi (pagination)
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    let swiper;
+    const players = {};
 
-    // Mengaktifkan tombol panah kanan-kiri
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
+    // 1. Fungsi ini akan dipanggil oleh API YouTube saat siap
+    function onYouTubeIframeAPIReady() {
+        // Inisialisasi Swiper
+        swiper = new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Tambahkan event listener untuk slider
+            on: {
+                // Saat slide berubah
+                slideChange: function () {
+                    // Cari video di slide SEBELUMNYA dan pause
+                    const previousSlide = this.slides[this.previousIndex];
+                    const iframe = previousSlide.querySelector('iframe');
+                    if (iframe && players[iframe.id]) {
+                        players[iframe.id].pauseVideo();
+                    }
+                }
+            }
+        });
+
+        // 2. Buat ID unik untuk setiap iframe dan inisialisasi player
+        const iframes = document.querySelectorAll('.swiper-slide iframe');
+        iframes.forEach((iframe, index) => {
+            const playerId = `player-${index}`;
+            iframe.id = playerId;
+            players[playerId] = new YT.Player(playerId);
+        });
+    }
 </script>
-    <script src="app.js"></script>
+
+<script src="app.js"></script>
 </body>
 </html>
