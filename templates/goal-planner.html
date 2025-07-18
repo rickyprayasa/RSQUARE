@@ -6,6 +6,7 @@
     <title>Template Goal Planner - RSQUARE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../style.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
 <div class="sticky top-0 z-50">
@@ -48,55 +49,35 @@
                <section id="youtube" class="py-20 px-6 bg-gray-50 animated-section">
                     <div class="container mx-auto">
                         <div class="flex flex-col md:flex-row items-center gap-12">
-                            
                             <div class="w-full md:w-1/2">
                                 <div class="card rounded-2xl p-2 md:p-4 relative">
                                     <div class="swiper rounded-lg overflow-hidden">
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
-                                                <div class="relative" style="padding-top: 56.25%;">
-                                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/OWwID0f8vSE?si=4diOU71vfVylYIiy?enablejsapi=1" title="Template Goal Planner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                </div>
+                                                <img src="../photos/goal-planer/Dashboard Goal Planner.png" alt="Gambar 1" class="w-full h-auto rounded-lg">
                                             </div>
                                             <div class="swiper-slide">
-                                                <div class="relative" style="padding-top: 56.25%;">
-                                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/uk8scHNKWz4?si=KTWwh-7mVGEFw7Ml?enablejsapi=1" title="Template Perencanaan Anggaran Acara" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                </div>
+                                                <img src="../photos/goal-planer/kalender" alt="Gambar 2" class="w-full h-auto rounded-lg">
                                             </div>
                                             <div class="swiper-slide">
-                                                <div class="relative" style="padding-top: 56.25%;">
-                                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/XD8ImBgaamc?si=WPiNlqfXCchiqvDN?enablejsapi=1" title="Template Tracking Lamaran Kerja" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                </div>
+                                                <img src="../photos/goal-planer/list" alt="Gambar 3" class="w-full h-auto rounded-lg">
                                             </div>
                                             <div class="swiper-slide">
-                                                <div class="relative" style="padding-top: 56.25%;">
-                                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/2nptWANixos?si=XhDdEjvfPpLXjHcd?enablejsapi=1" title="Template Invoice Maker" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                </div>
-                                            </div>                            
+                                                <img src="../photos/goal-planer/list" alt="Gambar 4" class="w-full h-auto rounded-lg">
+                                            </div>
                                         </div>
-                                        <div class="swiper-pagination"></div>
                 
+                                        <!-- Optional: Pagination & Navigation -->
+                                        <div class="swiper-pagination"></div>
                                         <div class="swiper-button-prev"></div>
                                         <div class="swiper-button-next"></div>
                                     </div>
                                 </div>
-                            </div>
-                
-                            <div class="w-full md:w-1/2 text-center md:text-left">
-                                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                                    Lihat Aksi Template Kami
-                                </h2>
-                                <p class="text-lg text-gray-600 mb-8">
-                                    Geser video untuk melihat berbagai demo produk dan tutorial Google Sheets gratis yang ada di channel YouTube kami.
-                                </p>
-                                <a href="https://www.youtube.com/@RSQUAREIDEA" target="_blank" rel="noopener noreferrer" class="btn-primary inline-block px-8 py-4 rounded-lg font-semibold text-white text-lg">
-                                    Kunjungi Channel YouTube
-                                </a>
-                            </div>
-                            
+                            </div>                           
                         </div>
                     </div>
                 </section>
+
 
                 <div>
                     <h1 class="text-4xl font-bold mb-4 gradient-text">Template Goal Planner</h1>
@@ -176,49 +157,24 @@
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
-     <script>
-const images = [
-    '../photos/personal-budgeting/Dashboard.png',
-    '../photos/personal-budgeting/Screenshot at 2025-07-15 08-51-10.png',
-    '../photos/personal-budgeting/Screenshot at 2025-07-15 08-51-33.png',
-    '../photos/personal-budgeting/Screenshot at 2025-07-15 13-26-38.png',
-    '../photos/personal-budgeting/Screenshot at 2025-07-15 13-36-27.png',
-    '../photos/personal-budgeting/Screenshot at 2025-07-15 13-40-05.png'
-];
-
-let currentIndex = 0;
-let interval = setInterval(showNextImage, 3000);
-
-const mainImage = document.getElementById('mainImage');
-const thumbs = document.querySelectorAll('.thumb');
-
-function showNextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-}
-
-function updateImage() {
-    mainImage.src = images[currentIndex];
-    thumbs.forEach((thumb, idx) => {
-        if (idx === currentIndex) {
-            thumb.classList.add('border-orange-500');
-            thumb.classList.remove('opacity-70');
-        } else {
-            thumb.classList.remove('border-orange-500');
-            thumb.classList.add('opacity-70');
-        }
+     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Script Swiper -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
     });
-}
-
-// Thumbnail click event
-thumbs.forEach((thumb, index) => {
-    thumb.addEventListener('click', () => {
-        clearInterval(interval); // stop auto
-        currentIndex = index;
-        updateImage();
-    });
-});
 </script>
+
     <script src="../app.js"></script>
 </body>
 </html>
