@@ -1,119 +1,27 @@
-/* Import Font Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-/* Keyframes untuk Animasi Fade In Up */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Class untuk elemen yang akan dianimasikan */
-.animated-section {
-    opacity: 0;
-}
-
-/* Class yang ditambahkan oleh JavaScript saat elemen terlihat */
-.is-visible {
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-/* Pengaturan Dasar Body - **WARNA BARU TERANG** */
+/* Pengaturan Dasar Body - DENGAN LATAR BELAKANG ANIMASI BARU */
 html {
     scroll-behavior: smooth;
 }
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #F9FAFB, #FFFFFF); /* PERUBAHAN: Gradasi Abu-abu sangat terang ke putih */
-    min-height: 100vh;
-    color: #1F2937; /* PERUBAHAN: Warna teks utama menjadi abu-abu gelap agar mudah dibaca */
+    color: #1F2937;
     overflow-x: hidden;
-}
-
-/* Teks dengan Efek Gradasi - Warna Oranye/Emas dari Logo */
-.gradient-text {
-    background: linear-gradient(to right, #FBBF24, #F97316);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* Desain Kartu untuk Tema Terang - **GAYA BARU** */
-.card {
-    background: #FFFFFF; /* PERUBAHAN: Latar kartu menjadi putih solid */
-    border: 1px solid #E5E7EB; /* PERUBAHAN: Border abu-abu terang */
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* PERUBAHAN: Efek bayangan lembut */
-    transition: all 0.3s ease-out;
-}
-.card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* PERUBAHAN: Efek bayangan lebih kuat saat hover */
-}
-
-/* Tombol Utama - Warna Oranye/Emas dari Logo */
-.btn-primary {
-    background: linear-gradient(to right, #F97316, #EA580C);
-    color: #FFFFFF; /* PERUBAHAN: Warna teks tombol menjadi putih */
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-}
-/* Tombol Utama - DENGAN EFEK BARU */
-.btn-primary {
-    position: relative; /* Diperlukan untuk efek cahaya */
-    overflow: hidden;   /* Agar efek tidak keluar dari tombol */
-    background: linear-gradient(to right, #F97316, #EA580C);
-    color: #FFFFFF;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-}
-
-/* Tombol Sekunder - DENGAN EFEK BARU */
-.btn-secondary {
-    position: relative;
-    overflow: hidden;
-    background-color: transparent;
-    border: 2px solid #F97316;
-    color: #F97316;
-    transition: all 0.3s ease;
-}
-
-/* EFEK CAHAYA (Berlaku untuk kedua tombol) */
-.btn-primary::before, .btn-secondary::before {
-    content: '';
-    position: absolute;
-    /* Ambil posisi dari JavaScript, default di luar layar */
-    left: var(--mouse-x, -100px);
-    top: var(--mouse-y, -100px);
     
-    width: 200px; /* Lebar lingkaran cahaya */
-    height: 200px; /* Tinggi lingkaran cahaya */
-    
-    /* Gradasi radial untuk efek cahaya */
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%);
-    
-    transform: translate(-50%, -50%); /* Pusatkan lingkaran pada kursor */
-    opacity: 0; /* Sembunyikan secara default */
-    transition: opacity 0.3s ease;
+    /* Pengaturan Gradasi & Animasi */
+    background: linear-gradient(-45deg, #ffffff, #fff7f2, #f9fafb, #fff7f2);
+    background-size: 400% 400%;
+    animation: gradientAnimation 30s ease infinite;
 }
 
-/* Tampilkan efek saat kursor di atas tombol */
-.btn-primary:hover::before, .btn-secondary:hover::before {
-    opacity: 1;
-}
-
-/* Efek hover standar (agar tidak tertutup efek cahaya) */
-.btn-primary:hover, .btn-secondary:hover {
-    transform: translateY(-3px);
-}
-.btn-primary:hover {
-    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
-}
-.btn-secondary:hover {
-    background-color: #F97316;
-    color: #FFFFFF;
+/* Keyframes untuk Menggerakkan Gradasi */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
