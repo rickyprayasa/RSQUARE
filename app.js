@@ -65,3 +65,35 @@ if (zoomableImages.length > 0) {
         });
     });
 }
+
+// ===== KODE UNTUK FAQ ACCORDION =====
+document.addEventListener('DOMContentLoaded', () => {
+    const accordion = document.getElementById('faq-accordion');
+    if (accordion) {
+        const questions = accordion.querySelectorAll('.faq-question');
+
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('.faq-icon');
+
+                // Tutup semua jawaban lain
+                questions.forEach(q => {
+                    if (q !== question) {
+                        q.nextElementSibling.style.maxHeight = null;
+                        q.querySelector('.faq-icon').classList.remove('rotate-180');
+                    }
+                });
+                
+                // Buka atau tutup jawaban yang diklik
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.classList.remove('rotate-180');
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+    }
+});
