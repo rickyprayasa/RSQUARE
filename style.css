@@ -54,6 +54,11 @@ body {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+/* ========================================================================
+   GAYA TOMBOL (Versi Final)
+   ======================================================================== */
+
+/* Tombol Utama (Oranye Solid) */
 .btn-primary {
     position: relative;
     overflow: hidden;
@@ -63,6 +68,7 @@ body {
     box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
 }
 
+/* Tombol Sekunder (Outline Oranye) */
 .btn-secondary {
     position: relative;
     overflow: hidden;
@@ -72,6 +78,7 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Efek Hover Standar (Berlaku untuk kedua tombol) */
 .btn-primary:hover, .btn-secondary:hover {
     transform: translateY(-3px);
 }
@@ -83,6 +90,7 @@ body {
     color: #FFFFFF;
 }
 
+/* Efek Cahaya Interaktif (Berlaku untuk kedua tombol) */
 .btn-primary::before, .btn-secondary::before {
     content: '';
     position: absolute;
@@ -98,3 +106,4 @@ body {
 .btn-primary:hover::before, .btn-secondary:hover::before {
     opacity: 1;
 }
+
