@@ -6,6 +6,7 @@
     <title>Template Goal Planner - RSQUARE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css">
 </head>
 <body>
 <div class="sticky top-0 z-50">
@@ -136,7 +137,22 @@
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
-    
+    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+
+<script>
+    const imageContainer = document.getElementById('image-container');
+    if (imageContainer) {
+        imageContainer.addEventListener('click', function(e) {
+            if (e.target.closest('a')) {
+                e.preventDefault();
+                const imageUrl = e.target.closest('a').href;
+                basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
+            }
+        });
+    }
+</script>
+
+
     <script src="../app.js"></script>
 </body>
 </html>
