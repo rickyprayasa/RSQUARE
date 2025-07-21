@@ -1,6 +1,21 @@
 /* Import Font Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* Pengaturan Dasar Body - DENGAN LATAR BELAKANG ANIMASI */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #1F2937;
+    overflow-x: hidden;
+
+    /* Pengaturan Gradasi & Animasi */
+    background: linear-gradient(-45deg, #ffffff, #fff7f2, #f9fafb, #fff7f2);
+    background-size: 400% 400%;
+    animation: gradientAnimation 30s ease infinite;
+}
+
 /* Keyframes untuk Animasi Fade In Up */
 @keyframes fadeInUp {
     from {
@@ -23,20 +38,6 @@
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Pengaturan Dasar Body - DENGAN LATAR BELAKANG ANIMASI BARU */
-html {
-    scroll-behavior: smooth;
-}
-body {
-    font-family: 'Poppins', sans-serif;
-    color: #1F2937;
-    overflow-x: hidden;
-    
-    /* Pengaturan Gradasi & Animasi */
-    background: linear-gradient(-45deg, #ffffff, #fff7f2, #f9fafb, #fff7f2);
-    background-size: 400% 400%;
-    animation: gradientAnimation 30s ease infinite;
-}
 
 /* Keyframes untuk Menggerakkan Gradasi */
 @keyframes gradientAnimation {
