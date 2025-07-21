@@ -1,14 +1,15 @@
 /* Import Font Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Pengaturan Dasar Body - DENGAN GRADIASI STATIS HALUS */
-body { /* Ganti ini menjadi 'body' jika Anda tidak menggunakan id="app-body" di HTML */
+/* Pengaturan Dasar Body - Gradasi Statis Halus */
+body {
     font-family: 'Poppins', sans-serif;
     color: #1F2937;
     overflow-x: hidden;
     background-color: #F9FAFB; /* Warna dasar jika gradasi tidak didukung */
-    background-image: linear-gradient(to bottom right, #FFFFFF, #F9FAFB); /* Gradasi putih ke abu-abu sangat terang */
+    background-image: linear-gradient(to bottom right, #FFFFFF, #F9FAFB);
 }
+
  ==========================================================================
    KOMPONEN UTAMA
    ========================================================================== */
