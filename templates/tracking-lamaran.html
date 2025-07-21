@@ -6,6 +6,7 @@
     <title>Template Tracking Lamaran Kerja - RSQUARE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css">
 </head>
 <body>
 <div class="sticky top-0 z-50">
@@ -45,18 +46,14 @@
     <main class="py-20 px-6 animated-section">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-               <div class="flex flex-col items-center gap-2">
-                  <!-- Wrapper Frame -->
-                  <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                    <!-- Gambar Utama -->
-                    <img id="mainImage"
-                         src="../photos/tracking-lamaran/dashboard.jpeg"
-                         alt="Detail Tracking Lamaran"
-                         class="rounded-lg object-contain transition duration-500 bg-white max-w-full h-auto">
-                  </div>
+
+            <div class="w-full group perspective-container">
+                <div id="image-container" class="card rounded-2xl p-2 md:p-4 relative transition-transform duration-500 ease-in-out group-hover:rotate-y-3 group-hover:-rotate-x-2 group-hover:scale-105">
+                    <a href="/photos/tracking-lamaran/dashboard.jpeg" class="cursor-zoom-in">
+                        <img id="product-image" src="/photos/tracking-lamaran/dashboard.jpeg" alt="Tampilan Utama Tracking Lamaran - Klik untuk memperbesar" class="rounded-lg w-full shadow-lg">
+                    </a>
                 </div>
-
-
+            </div>
 
                 <div>
                     <h1 class="text-4xl font-bold mb-4 gradient-text">Template Tracking Lamaran Kerja</h1>
@@ -136,7 +133,21 @@
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
-    
-    <script src="../app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+
+<script>
+    const imageContainer = document.getElementById('image-container');
+    if (imageContainer) {
+        imageContainer.addEventListener('click', function(e) {
+            if (e.target.closest('a')) {
+                e.preventDefault();
+                const imageUrl = e.target.closest('a').href;
+                basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
+            }
+        });
+    }
+</script>
+
+<script src="app.js"></script>
 </body>
 </html>
