@@ -1,16 +1,39 @@
 /* Import Font Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Pengaturan Dasar Body - Gradasi Statis Halus */
+/* ==========================================================================
+   BODY & ANIMASI UTAMA
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+}
 body {
     font-family: 'Poppins', sans-serif;
     color: #1F2937;
     overflow-x: hidden;
-    background-color: #F9FAFB; /* Warna dasar jika gradasi tidak didukung */
-    background-image: linear-gradient(to bottom right, #FFFFFF, #F9FAFB);
+    background: linear-gradient(-45deg, #ffffff, #fff7f2, #f9fafb, #fff7f2);
+    background-size: 400% 400%;
+    animation: gradientAnimation 30s ease infinite;
 }
 
- ==========================================================================
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animated-section {
+    opacity: 0;
+}
+.is-visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* ==========================================================================
    KOMPONEN UTAMA
    ========================================================================== */
 .gradient-text {
