@@ -47,3 +47,21 @@ interactiveButtons.forEach(button => {
         e.target.style.setProperty('--mouse-y', `${y}px`);
     });
 });
+
+// ===== KODE UNTUK FITUR ZOOM GAMBAR (LIGHTBOX) DI BANYAK GAMBAR =====
+
+// Cari semua link yang punya kelas 'zoomable-image'
+const zoomableImages = document.querySelectorAll('.zoomable-image');
+
+// Jika ada, tambahkan event listener untuk setiap link tersebut
+if (zoomableImages.length > 0) {
+    zoomableImages.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Mencegah link membuka gambar di tab baru
+            const imageUrl = this.href;
+            basicLightbox.create(`
+                <img src="${imageUrl}" alt="">
+            `).show();
+        });
+    });
+}
