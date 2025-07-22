@@ -1,4 +1,3 @@
-// Menunggu seluruh halaman dimuat sebelum menjalankan script apa pun
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===== 1. FUNGSI UNTUK MENU MOBILE =====
@@ -11,26 +10,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ===== 2. FUNGSI UNTUK ANIMASI ON-SCROLL (FADE IN UP) =====
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Tambahkan delay animasi berdasarkan urutan elemen jika kelasnya .animated-timeline-item
-                if (entry.target.classList.contains('animated-timeline-item')) {
-                    const items = Array.from(document.querySelectorAll('.animated-timeline-item'));
-                    const index = items.indexOf(entry.target);
-                    entry.target.style.animationDelay = `${index * 0.2}s`;
-                }
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Hentikan observasi setelah animasi berjalan
-            }
-        });
-    }, { threshold: 0.1 });
-
-    // Terapkan ke semua elemen dengan kelas .animated-section atau .animated-timeline-item
     const animatedElements = document.querySelectorAll('.animated-section, .animated-timeline-item');
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
+    if ('IntersectionObserver' in window && animatedElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('animated-timeline-item')) {
+                        entry.target.style.animationDelay = `${index * 0.2}s`;
+                    }
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
     
     // ===== 3. FUNGSI UNTUK TOMBOL SCROLL TO TOP (STABIL) =====
     const scrollTopBtn = document.getElementById('scrollTopBtn');
@@ -56,8 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const answer = question.nextElementSibling;
                 const icon = question.querySelector('.faq-icon');
                 const isOpen = answer.style.maxHeight;
-
-                // Tutup semua jawaban lain
+                
                 questions.forEach(q => {
                     if (q !== question) {
                         q.nextElementSibling.style.maxHeight = null;
@@ -65,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                // Buka atau tutup jawaban yang diklik
                 if (isOpen) {
                     answer.style.maxHeight = null;
                     icon.classList.remove('rotate-180');
@@ -77,9 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== 5. FUNGSI UNTUK EFEK SOROTAN KURSOR (ILLUMINATED GLASS & TOMBOL) =====
-    // Targetkan semua elemen yang ingin punya efek ini
-    const interactiveElements = document.querySelectorAll('.btn-primary:not(.btn-shiny), .btn-secondary, .card-container');
+    // ===== 5. FUNGSI UNTUK EFEK SOROTAN KURSOR (ILLUMINATED GLASS) =====
+    const interactiveElements = document.querySelectorAll('.btn-primary, .btn-secondary, .card-container');
     interactiveElements.forEach(element => {
         element.addEventListener('mousemove', e => {
             const rect = element.getBoundingClientRect();
@@ -92,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== 6. FUNGSI UNTUK FITUR ZOOM GAMBAR (LIGHTBOX) =====
     const zoomableImages = document.querySelectorAll('.zoomable-image');
-    if (zoomableImages.length > 0) {
+    if (zoomableImages.length > 0 && typeof basicLightbox !== 'undefined') {
         zoomableImages.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
