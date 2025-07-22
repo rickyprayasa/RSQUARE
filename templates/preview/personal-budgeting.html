@@ -6,6 +6,7 @@
     <title>Preview Detail Personal Budgeting - RSQUARE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css">
 </head>
 <body>
 <div class="sticky top-0 z-50">
@@ -45,90 +46,87 @@
         <div class="container mx-auto">
             <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text">Preview Detail: Personal Budgeting</h1>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template ini.</p>
-            <p class="text-3xl font-bold text-gray-900 mt-6">Rp 35.000</p>
+            <div class="inline-block bg-orange-100 text-orange-800 font-bold text-2xl px-8 py-3 rounded-full mt-6 shadow-sm">
+                Rp 35.000
+            </div>
         </div>
     </header>
 
-    <main class="px-6 animated-section pb-20 space-y-24">
+    <main class="px-6 animated-section pb-20 space-y-24 pb-2">
         
-        <section class="container mx-auto flex flex-col items-center gap-8 space-y-24 py-12">
+        <section class="container mx-auto overflow-hidden flex flex-col items-center gap-8 space-y-24 py-12">
               <!-- Preview 1 -->
-              <div class="flex flex-col items-center gap-6">
+            <div class="flex flex-col items-center gap-6">
                 <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Dashboard.png" alt="Dasbor Utama" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📊 Laporan (Dashboard Utama)</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Ini adalah pusat komando keuangan Anda, tempat semua data transaksi diolah menjadi laporan visual yang cerdas dan mudah dipahami. Cukup pilih bulan dan tahun, maka seluruh halaman akan ter-update secara otomatis untuk menjawab pertanyaan terpenting.
-                 </p>
-                </div>
-              </div>
+                <a href="../../photos/personal-budgeting/Dasboard.png" class="zoomable-image cursor-zoom-in">
+                    <img src="../../photos/personal-budgeting/Dasboard.png" alt="Dasbor Utama" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                </a>
+                </div>    
+            <div class="text-center md:text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">🎉 Dashboard Acara</h2>
+                <p class="text-gray-600 leading-relaxed">Dashboard ini adalah pusat kendali acara Anda, tempat di mana Anda bisa memantau semua metrik penting dalam sekejap. Ini dirancang untuk memberikan gambaran menyeluruh sehingga Anda tidak perlu membuka banyak file, membantu Anda membuat keputusan yang lebih baik dan lebih cepat untuk kesuksesan acara Anda.
+                </p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">📊 Ringkasan Anggaran:</strong> Lihat gambaran besar keuangan acara Anda, mulai dari target anggaran, total estimasi, hingga biaya aktual yang sudah dikeluarkan.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">💰 Sisa Anggaran</strong> Ketahui sisa dana yang Anda miliki secara real-time untuk membuat keputusan finansial yang cerdas.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">⏳ Hitung Mundur:</strong> Rasakan semangat acara yang semakin dekat dengan fitur hitung mundur interaktif menuju hari-H.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">👍 Progres Cerdas:</strong> Dapatkan analisis singkat apakah progres anggaran Anda sudah di jalur yang benar atau memerlukan perhatian lebih.</p>
+            </div>
+            </div>       
             
               <!-- Preview 2 -->
-              <div class="flex flex-col items-center gap-6">
+               <div class="flex flex-col items-center gap-6">
                 <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Budgeting.png" alt="Transaksi" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">💰 Budgeting</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Ini adalah pusat perencanaan strategis keuangan Anda. Di sini, Anda bisa mengatur anggaran pengeluaran untuk setiap kategori selama satu tahun penuh dalam satu halaman yang rapi. Rencanakan budget yang fleksibel—lebih besar untuk bulan liburan atau lebih kecil saat berhemat—dan biarkan dashboard utama secara otomatis menggunakan angka yang tepat sebagai tolok ukur. Dengan sheet ini, Anda tidak lagi hanya mencatat, tetapi proaktif merancang masa depan finansial Anda.
-                 </p>
-                </div>
-              </div>
+                <a href="../../photos/anggaran-acara/anggaran.jpeg" class="zoomable-image cursor-zoom-in">
+                    <img src="../../photos/anggaran-acara/anggaran.jpeg" alt="Sheet anggaran detail" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                </a>
+                </div>    
+            <div class="text-center md:text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">💰 Anggaran Detail</h2>
+                <p class="text-gray-600 leading-relaxed">Saatnya merinci semua pengeluaran dengan cermat di dalam sheet ini. Tidak ada lagi biaya yang terlewat atau pengeluaran tak terduga, karena di sinilah Anda mencatat setiap item satu per satu untuk memastikan anggaran Anda tetap akurat dan sepenuhnya terkendali.
+                </p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">📝 Daftar Rinci:</strong> Catat semua jenis pengeluaran, mulai dari biaya sewa gedung, menu katering, hingga detail souvenir untuk tamu.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">⚖️ Estimasi vs Aktual:</strong> Bandingkan biaya yang Anda perkirakan dengan biaya yang sesungguhnya dibayarkan untuk melihat di mana Anda bisa berhemat.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">🚦 Status Pembayaran:</strong> Lacak status setiap tagihan dengan mudah, apakah sudah lunas, baru membayar uang muka, atau belum dibayar sama sekali.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">🗓️ Jatuh Tempo:</strong> Jangan sampai ada tagihan yang terlewat dengan pengingat tanggal jatuh tempo untuk setiap kewajiban pembayaran.</p>
+            </div>
+            </div>
             
               <!-- Preview 3 -->
-              <div class="flex flex-col items-center gap-6">
+               <div class="flex flex-col items-center gap-6">
                 <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Transaksi.png" alt="Pemasukan" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📝 Catatan Transaksi</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Ini adalah jantung dari seluruh sistem dan akan menjadi kebiasaan harian Anda. Cukup luangkan waktu 30 detik untuk mencatat setiap pemasukan, pengeluaran, atau transfer antar bank di sini. Semakin rajin dan akurat Anda mencatat, semakin cerdas dan akurat pula laporan otomatis yang akan Anda dapatkan di Dashboard Utama.
-                  </p>
-                </div>
-              </div>
+                <a href="../../photos/anggaran-acara/daftar.jpeg" class="zoomable-image cursor-zoom-in">
+                    <img src="../../photos/anggaran-acara/daftar.jpeg" alt="Sheet Vendor" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                </a>
+                </div>    
+            <div class="text-center md:text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">🤝 Vendor & Kontak</h2>
+                <p class="text-gray-600 leading-relaxed">Kelola semua kontak penting Anda di satu tempat yang rapi dan terorganisir. Ucapkan selamat tinggal pada tumpukan kartu nama yang berantakan, karena sheet ini berfungsi sebagai direktori digital Anda untuk memastikan komunikasi dengan semua vendor berjalan lancar dan efisien.
+                </p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">📇 Direktori Vendor:</strong> Simpan informasi lengkap setiap vendor, mulai dari nama perusahaan, kategori layanan, hingga kontak person yang bisa dihubungi.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">📞 Kontak Darurat:</strong> Dapatkan akses cepat ke nomor telepon dan alamat email vendor kapan pun Anda membutuhkannya dalam situasi mendesak.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">💳 Info Pembayaran:</strong> Catat detail rekening bank atau metode pembayaran lain untuk mempermudah dan mempercepat proses transaksi.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">✍️ Catatan Penting:</strong> Tambahkan catatan khusus untuk setiap vendor, misalnya "memberikan diskon khusus" atau "pelayanannya sangat memuaskan".</p>
+            </div>
+            </div>
+            
             
               <!-- Preview 4 -->
-              <div class="flex flex-col items-center gap-6">
+            <div class="flex flex-col items-center gap-6">
                 <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Progress-Hutang.png" alt="Pengeluaran" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📊 Progress Hutang</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Jangan biarkan beban hutang yang tersebar membuat Anda cemas. Sheet ini adalah pusat komando untuk semua kewajiban finansial Anda, mulai dari KPR, cicilan kendaraan, hingga PayLater. Daftarkan semua hutang Anda, catat setiap pembayaran cicilan di tempat yang sama, dan saksikan progress bar bergerak maju secara visual. Pantau total sisa utang secara real-time dan dapatkan motivasi yang Anda butuhkan untuk mencapai kebebasan finansial.
-                  </p>
-                </div>
-              </div>
-            
-              <!-- Preview 5 -->
-              <div class="flex flex-col items-center gap-6">
-                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Tujuan-Tabungan.png" alt="Komparasi Bulanan" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">🎯 Tujuan Tabungan</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Ubah impian finansial Anda menjadi rencana yang nyata. Di sheet ini, Anda bisa mencatat semua tujuan besar Anda—mulai dari dana darurat, DP rumah, hingga liburan impian—lengkap dengan target dana yang dibutuhkan. Sistem alokasi dana yang cerdas akan menunjukkan progress setiap tujuan secara visual melalui progress bar, membantu Anda tetap fokus dan termotivasi untuk mewujudkan setiap impian satu per satu.
-                  </p>
-                </div>
-              </div>
-            
-              <!-- Preview 6 -->
-              <div class="flex flex-col items-center gap-6">
-                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Pusat-Kontrol.png" alt="Komparasi Bulanan" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">⚙️ Pusat Kontrol</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                        Anggap sheet ini sebagai “ruang mesin” dari template Anda—Anda hanya perlu mengaturnya sekali saja di awal. Di sinilah Anda mempersonalisasi sistem keuangan dengan mendaftarkan semua Kategori Pemasukan & Pengeluaran, Akun Bank beserta Saldo Awalnya, dan Profil Hutang. Semua yang Anda atur di sini akan secara otomatis menjadi pilihan di seluruh template, memastikan pencatatan harian Anda cepat, mudah, dan akurat.
-                  </p>
-                </div>
-              </div>
+                <a href="../../photos/anggaran-acara/kategori.jpeg" class="zoomable-image cursor-zoom-in">
+                    <img src="../../photos/anggaran-acara/kategori.jpeg" alt="Sheet Pengaturan" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                </a>
+                </div>    
+            <div class="text-center md:text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">⚙️ Pengaturan & Kategori</h2>
+                <p class="text-gray-600 leading-relaxed">Di sinilah semua keajaiban perencanaan Anda dimulai dan fondasi acara Anda diletakkan. Dengan mengatur semua dasar-dasar di sini, Anda memastikan seluruh proses perencanaan berjalan dengan terstruktur dan konsisten dari awal hingga akhir.
+                </p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">🏷️ Kategori Anggaran:</strong> Sesuaikan kategori pengeluaran utama (misalnya Venue, Katering, Dekorasi) agar sesuai dengan kebutuhan unik acara Anda.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">🗓️ Info Acara:</strong> Tetapkan detail-detail penting seperti nama, jenis acara (misalnya pernikahan atau seminar), dan tanggal pelaksanaan.</p>
+                <p class="text-gray-600 leading-relaxed"> <strong class="font-bold text-gray-800">🎯 Target Anggaran:</strong> Masukkan target anggaran awal Anda yang akan menjadi kompas dan patokan untuk semua keputusan finansial.</p>
+            </div>
+            </div>                
+              
             </section>
 
         
@@ -136,10 +134,13 @@
             <h2 class="text-3xl font-bold text-gray-800">Siap Meningkatkan Produktivitas?</h2>
             <p class="text-lg text-gray-600 mt-2 mb-8">Pilih platform favorit Anda untuk mendapatkan template ini sekarang.</p>
             <div class="max-w-md mx-auto space-y-4">
-                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di Lynk.ID</a>
-                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di KaryaKarsa</a>
+                <a href="https://lynk.id/rsquareidea/kl0gk33q81zd" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di Lynk.ID</a>
+                <a href="https://karyakarsa.com/rsquare/template-perencanaan-anggaran-acara-v10" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di KaryaKarsa</a>
             </div>
-            <a href="/templates/personal-budgeting.html" class="inline-block mt-8 text-gray-500 hover:text-orange-600 transition">&larr; Kembali ke Ringkasan Produk</a>
+           <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
+            <a href="/templates/goal-planner.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">&larr; Kembali ke Ringkasan</a>
+            <a href="../../templates.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">Lihat Semua Template &rarr;</a>
+           </div>
         </section>
         
     </main>
@@ -174,6 +175,7 @@
                 <li><a href="../../index.html" class="text-gray-600 hover:text-orange-600 transition">Beranda</a></li>
                 <li><a href="../../templates.html" class="text-gray-600 hover:text-orange-600 transition">Templates</a></li>
                 <li><a href="../../kontak.html" class="text-gray-600 hover:text-orange-600 transition">Kontak</a></li>
+                <li><a href="../../feedback.html" class="text-gray-600 hover:text-orange-600 transition">Kirim Masukan</a></li>
             </ul>
         </div>
          <div>
@@ -190,6 +192,7 @@
 </footer>
 
        <script src="../../app.js"></script>
-
+       <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+    
 </body>
 </html>
