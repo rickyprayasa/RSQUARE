@@ -87,9 +87,13 @@
             
         </div>
         <div class="text-center mt-16">
-            <a href="templates.html" class="btn-primary px-10 py-4 rounded-lg font-semibold text-white text-lg">
+
+
+
+           <a href="templates.html" class="btn-primary px-10 py-4 rounded-lg font-semibold text-white text-lg">
                 Jelajahi Solusi Kami
             </a>
+
         </div>
     </div>
 </section>
@@ -315,8 +319,9 @@
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https.cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="http://googleusercontent.com/youtube/v3/iframe_api"></script>
+
 <script>
     // 1. Variabel untuk menampung semua player YouTube
     const players = {};
@@ -346,15 +351,16 @@
 
     // 4. Tambahkan 'event listener' ke slider untuk mematikan video
     swiper.on('slideChange', function () {
-        // Loop melalui semua player yang ada dan hentikan videonya
         for (const playerId in players) {
-            if (players[playerId] && typeof players[playerId].pauseVideo === 'function') {
-                players[playerId].pauseVideo();
+            const player = players[playerId];
+            if (player && typeof player.getPlayerState === 'function') {
+                if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+                    player.pauseVideo();
+                }
             }
         }
     });
 </script>
-
 <script src="app.js"></script>
 </body>
 </html>
