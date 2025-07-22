@@ -43,17 +43,45 @@ body {
     color: transparent;
 }
 
+/* Desain Kartu BARU dengan Efek "Illuminated Glass" */
 .card {
-    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.6); /* Lebih putih agar solid */
     border: 1px solid #E5E7EB;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
     transition: all 0.3s ease-out;
-}
-.card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    position: relative; /* Wajib untuk efek sorotan */
+    overflow: hidden;   /* Wajib untuk efek sorotan */
 }
 
+/* Efek Sorotan Gradasi (pseudo-element ::before) */
+.card::before {
+    content: '';
+    position: absolute;
+    width: 250px; /* Lebar lingkaran sorotan */
+    height: 250px; /* Tinggi lingkaran sorotan */
+    
+    /* Posisi diambil dari JavaScript, default di tengah */
+    left: var(--mouse-x, 50%); 
+    top: var(--mouse-y, 50%);
+    
+    /* Gradasi radial untuk efek cahaya oranye-emas */
+    background: radial-gradient(circle at center, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0) 60%);
+    
+    transform: translate(-50%, -50%); /* Pusatkan lingkaran pada kursor */
+    opacity: 0; /* Sembunyikan secara default */
+    transition: opacity 0.4s ease, left 0.2s ease, top 0.2s ease;
+}
+
+/* Tampilkan sorotan saat kursor masuk ke area kartu */
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Efek hover standar untuk mengangkat kartu */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
 /* ========================================================================
    GAYA TOMBOL (Versi Final Lengkap)
    ======================================================================== */
