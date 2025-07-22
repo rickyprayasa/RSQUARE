@@ -47,43 +47,14 @@ body {
    GAYA KARTU BARU - EFEK "ILLUMINATED GLASS" (Gaya n8n)
    ======================================================================== */
 
-/* Wadah untuk efek cahaya di belakang kartu (VERSI SOROTAN LEBIH BESAR & LEMBUT) */
-/* Desain Kartu BARU dengan Efek "Illuminated Glass" */
+/* Desain Kartu Final (Gaya Solid & Bersih) */
 .card {
-    background: rgba(255, 255, 255, 0.6); /* Lebih putih agar solid */
+    background: #FFFFFF;
     border: 1px solid #E5E7EB;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
     transition: all 0.3s ease-out;
-    position: relative; /* Wajib untuk efek sorotan */
-    overflow: hidden;   /* Wajib untuk efek sorotan */
 }
 
-/* Efek Sorotan Gradasi (pseudo-element ::before) */
-.card::before {
-    content: '';
-    position: absolute;
-    /* Ukuran sorotan diperbesar agar lebih fleksibel */
-    width: 500px;
-    height: 500px;
-    
-    /* Posisi tetap diambil dari JavaScript */
-    left: var(--mouse-x, 50%);
-    top: var(--mouse-y, 50%);
-    
-    /* Gradasi dibuat lebih lembut */
-    background: radial-gradient(circle at center, rgba(249, 115, 22, 0.20) 0%, rgba(249, 115, 22, 0) 50%);
-    
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.4s ease; /* Transisi hanya pada opacity agar gerakan lebih instan */
-}
-
-/* Tampilkan sorotan saat kursor masuk ke area kartu */
-.card:hover::before {
-    opacity: 1;
-}
-
-/* Efek hover standar untuk mengangkat kartu */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
