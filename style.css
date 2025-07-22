@@ -100,3 +100,59 @@ body {
         background-position: 0% 50%;
     }
 }
+
+/* ========================================================================
+   ANIMASI TOMBOL MELAYANG & GARIS ANGIN
+   ======================================================================== */
+
+/* Kelas utama untuk memicu animasi melayang */
+.btn-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pseudo-element untuk membuat "garis angin" */
+.btn-float::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -30px; /* Posisi awal garis di kiri tombol */
+    width: 20px;
+    height: 2px;
+    background-color: #f97316; /* Warna oranye */
+    opacity: 0;
+    box-shadow: 
+        -5px 5px 0 0 #fbbf24, /* Garis kedua */
+        -5px -5px 0 0 #f97316; /* Garis ketiga */
+    
+    /* Memicu animasi garis angin */
+    animation: wind-lines 1.5s ease-out infinite;
+    animation-delay: 0.5s; /* Jeda sebelum muncul */
+}
+
+/* Definisi animasi melayang (naik-turun) */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Definisi animasi garis angin (bergerak & menghilang) */
+@keyframes wind-lines {
+    0% {
+        transform: translateX(0px);
+        opacity: 0;
+    }
+    20%, 80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+}
