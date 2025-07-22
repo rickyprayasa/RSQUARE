@@ -119,3 +119,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Kode untuk animasi kursor custom Anda bisa tetap ada di bawah ini jika masih dipakai
     // ... kode .cursor-follower Anda ...
 });
+
+// ===== KODE UNTUK TOMBOL SCROLL TO TOP =====
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    if (scrollTopBtn) {
+        // Tampilkan tombol jika user scroll ke bawah
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollTopBtn.style.display = "block";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+
+        // Aksi saat tombol diklik
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    }
+});
