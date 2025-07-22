@@ -200,22 +200,31 @@ body {
     100% { opacity: 0; }
 }
 
-/*     // ===== KODE UNTUK TOMBOL SCROLL TO TOP =====
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    if (scrollTopBtn) {
-        window.onscroll = function() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                scrollTopBtn.style.display = "block";
-            } else {
-                scrollTopBtn.style.display = "none";
-            }
-        };
-        scrollTopBtn.addEventListener('click', function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
-    }
-
 /* ========================================================================
+   GAYA TOMBOL SCROLL TO TOP
+   ======================================================================== */
+#scrollTopBtn {
+    display: none; /* Sembunyi secara default */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #F97316; /* Warna oranye */
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%; /* Membuatnya bulat */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+
+#scrollTopBtn:hover {
+    background-color: #EA580C; /* Oranye lebih gelap saat hover */
+    transform: translateY(-3px); /* Efek sedikit terangkat saat hover */
+}
+ ========================================================================
    GAYA TIMELINE RESPONSIVE BARU
    ======================================================================== */
 
