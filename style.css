@@ -55,50 +55,69 @@ body {
 }
 
 /* ========================================================================
-   GAYA TOMBOL (Final dengan Animasi Gradasi Bernapas)
+   GAYA TOMBOL (Versi Final dengan Hierarki)
    ======================================================================== */
 
-/* Tombol Utama (dengan animasi) */
+/* Tombol Utama (Oranye Solid Standar) */
 .btn-primary {
+    background: linear-gradient(to right, #F97316, #EA580C);
     color: #FFFFFF;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-
-    /* Pengaturan untuk gradasi animasi */
-    background: linear-gradient(to right, #F97316, #FBBF24, #EA580C, #F97316);
-    background-size: 300% 100%;
-    animation: pulse-gradient 5s ease-in-out infinite;
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
 }
 
-/* Tombol Sekunder (tanpa animasi) */
+/* Tombol Sekunder (Outline Oranye) */
 .btn-secondary {
     background-color: transparent;
     border: 2px solid #F97316;
     color: #F97316;
     transition: all 0.3s ease;
 }
-
-/* Efek Hover Standar */
-.btn-primary:hover, .btn-secondary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
-}
 .btn-secondary:hover {
     background-color: #F97316;
     color: #FFFFFF;
+    transform: translateY(-3px);
 }
 
-/* Keyframes untuk animasi gradasi bernapas */
-@keyframes pulse-gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+/* GAYA BARU: Tombol Hitam (Dark) */
+.btn-dark {
+    background-color: #1F2937; /* Abu-abu sangat gelap */
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.btn-dark:hover {
+    background-color: #374151; /* Warna sedikit lebih terang saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* KELAS EKSKLUSIF: Efek Kilap Berulang */
+.btn-shiny {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn-shiny::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    transform: skewX(-25deg) translateX(-150%);
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    z-index: -1;
+    animation: shine 3s ease-in-out infinite;
+    animation-delay: 2s;
+}
+@keyframes shine {
+    0% { transform: skewX(-25deg) translateX(-150%); }
+    50% { transform: skewX(-25deg) translateX(250%); }
+    100% { transform: skewX(-25deg) translateX(250%); }
 }
 
 /* ========================================================================
