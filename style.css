@@ -122,17 +122,6 @@ body {
     opacity: 1;
 }
 
-/* EFEK 2: Melayang (untuk .btn-float) */
-.btn-float {
-    position: relative; /* position relative dibutuhkan untuk ::before */
-    overflow: hidden;  /* overflow hidden dibutuhkan untuk ::before */
-    animation: float 3s ease-in-out infinite;
-}
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0px); }
-}
 
 /* EFEK 3: Kilap Berulang (EKSKLUSIF untuk .btn-shiny) */
 .btn-shiny {
@@ -155,4 +144,50 @@ body {
 @keyframes shine {
     0% { left: -100%; }
     100% { left: 150%; }
+}
+
+/* ========================================================================
+   EFEK FINAL: Tombol Terbang dengan Garis Angin
+   ======================================================================== */
+
+/* Kelas utama untuk memicu kedua animasi */
+.btn-fly-animated {
+    position: relative; /* Wajib agar garis angin bisa diposisikan */
+    overflow: visible;  /* Diubah agar garis angin terlihat di luar tombol */
+    animation: fly-effect 4s ease-in-out infinite;
+}
+
+/* Pseudo-element untuk membuat "garis angin" */
+.btn-fly-animated::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 105%; /* Posisi awal garis di kiri tombol */
+    width: 25px;
+    height: 2px;
+    background-color: #f97316; /* Warna oranye */
+    opacity: 0;
+    box-shadow: 
+        5px 5px 0 0 #fbbf24,  /* Garis kedua (emas) */
+        5px -5px 0 0 #f97316; /* Garis ketiga (oranye) */
+    
+    /* Memicu animasi garis angin */
+    animation: wind-lines 4s ease-out infinite;
+}
+
+/* Definisi animasi melayang & maju-mundur (fly-effect) */
+@keyframes fly-effect {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(8px, -8px); }
+    50%  { transform: translate(0, 0); }
+    75%  { transform: translate(8px, 8px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Definisi animasi garis angin (muncul & menghilang) */
+@keyframes wind-lines {
+    0%   { transform: translateX(15px); opacity: 0; }
+    25%  { transform: translateX(0); opacity: 1; }
+    50%  { transform: translateX(-15px); opacity: 0; }
+    100% { opacity: 0; }
 }
