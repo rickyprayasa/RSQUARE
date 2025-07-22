@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Target semua elemen yang ingin punya efek sorotan/cahaya
     // Dalam kasus ini: tombol primer, sekunder, DAN semua kartu
-    const interactiveElements = document.querySelectorAll('.btn-primary, .btn-secondary, .card');
+    const interactiveElements = document.querySelectorAll('.btn-primary, .btn-secondary, .card-container');
 
     interactiveElements.forEach(element => {
         element.addEventListener('mousemove', e => {
