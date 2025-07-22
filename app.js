@@ -120,16 +120,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ... kode .cursor-follower Anda ...
 });
 
-       // ===== KODE UNTUK TOMBOL SCROLL TO TOP =====
+   // ===== KODE UNTUK TOMBOL SCROLL TO TOP (STABIL) =====
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     if (scrollTopBtn) {
-        window.onscroll = function() {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        // Tampilkan tombol saat scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) {
                 scrollTopBtn.style.display = "block";
             } else {
                 scrollTopBtn.style.display = "none";
             }
-        };
+        });
+        // Aksi saat tombol diklik
         scrollTopBtn.addEventListener('click', function() {
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
