@@ -134,3 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
     }
+
+// ===== KODE BARU UNTUK ANIMASI TIMELINE BERURUTAN =====
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineItems = document.querySelectorAll('.animated-timeline-item');
+
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Tambahkan delay animasi berdasarkan urutan elemen
+                entry.target.style.animationDelay = `${index * 0.2}s`;
+                entry.target.classList.add('is-visible');
+                timelineObserver.unobserve(entry.target); // Hentikan observasi setelah animasi berjalan
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    timelineItems.forEach(item => {
+        timelineObserver.observe(item);
+    });
+});
