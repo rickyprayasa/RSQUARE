@@ -1,81 +1,61 @@
-// Fungsi untuk menu mobile
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-
-if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-}
-
-
-// Fungsi untuk Animasi On-Scroll
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-        }
-    });
-}, {
-    threshold: 0.1 // Tampilkan saat 10% elemen terlihat
-});
-
-// Ambil semua elemen dengan class 'animated-section' dan amati
-const animatedSections = document.querySelectorAll('.animated-section');
-animatedSections.forEach(section => {
-    observer.observe(section);
-});
-
-// ===== KODE UNTUK EFEK TOMBOL INTERAKTIF =====
-
-// Pilih semua elemen yang memiliki kelas .btn-primary atau .btn-secondary
-const interactiveButtons = document.querySelectorAll('.btn-primary, .btn-secondary');
-
-// Jalankan fungsi untuk setiap tombol yang ditemukan
-interactiveButtons.forEach(button => {
-    // Tambahkan event listener untuk 'mousemove' (saat kursor bergerak di atas tombol)
-    button.addEventListener('mousemove', e => {
-        // Ambil posisi dan ukuran tombol
-        const rect = e.target.getBoundingClientRect();
-        
-        // Hitung posisi kursor di dalam tombol (x dan y)
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        // Set properti CSS (--mouse-x dan --mouse-y) dengan posisi kursor
-        e.target.style.setProperty('--mouse-x', `${x}px`);
-        e.target.style.setProperty('--mouse-y', `${y}px`);
-    });
-});
-
-// ===== KODE UNTUK FITUR ZOOM GAMBAR (LIGHTBOX) DI BANYAK GAMBAR =====
-
-// Cari semua link yang punya kelas 'zoomable-image'
-const zoomableImages = document.querySelectorAll('.zoomable-image');
-
-// Jika ada, tambahkan event listener untuk setiap link tersebut
-if (zoomableImages.length > 0) {
-    zoomableImages.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault(); // Mencegah link membuka gambar di tab baru
-            const imageUrl = this.href;
-            basicLightbox.create(`
-                <img src="${imageUrl}" alt="">
-            `).show();
-        });
-    });
-}
-
-// ===== KODE UNTUK FAQ ACCORDION =====
+// Menunggu seluruh halaman dimuat sebelum menjalankan script apa pun
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ===== 1. FUNGSI UNTUK MENU MOBILE =====
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // ===== 2. FUNGSI UNTUK ANIMASI ON-SCROLL (FADE IN UP) =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Tambahkan delay animasi berdasarkan urutan elemen jika kelasnya .animated-timeline-item
+                if (entry.target.classList.contains('animated-timeline-item')) {
+                    const items = Array.from(document.querySelectorAll('.animated-timeline-item'));
+                    const index = items.indexOf(entry.target);
+                    entry.target.style.animationDelay = `${index * 0.2}s`;
+                }
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Hentikan observasi setelah animasi berjalan
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Terapkan ke semua elemen dengan kelas .animated-section atau .animated-timeline-item
+    const animatedElements = document.querySelectorAll('.animated-section, .animated-timeline-item');
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+    
+    // ===== 3. FUNGSI UNTUK TOMBOL SCROLL TO TOP (STABIL) =====
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    if (scrollTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollTopBtn.style.display = "block";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    }
+    
+    // ===== 4. FUNGSI UNTUK FAQ ACCORDION =====
     const accordion = document.getElementById('faq-accordion');
     if (accordion) {
         const questions = accordion.querySelectorAll('.faq-question');
-
         questions.forEach(question => {
             question.addEventListener('click', () => {
                 const answer = question.nextElementSibling;
                 const icon = question.querySelector('.faq-icon');
+                const isOpen = answer.style.maxHeight;
 
                 // Tutup semua jawaban lain
                 questions.forEach(q => {
@@ -86,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 // Buka atau tutup jawaban yang diklik
-                if (answer.style.maxHeight) {
+                if (isOpen) {
                     answer.style.maxHeight = null;
                     icon.classList.remove('rotate-180');
                 } else {
@@ -96,63 +76,30 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-});
 
-// ===== KODE BARU UNTUK SEMUA EFEK INTERAKTIF KURSOR =====
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // Target semua elemen yang ingin punya efek sorotan/cahaya
-    // Dalam kasus ini: tombol primer, sekunder, DAN semua kartu
-    const interactiveElements = document.querySelectorAll('.btn-primary, .btn-secondary, .card');
-
+    // ===== 5. FUNGSI UNTUK EFEK SOROTAN KURSOR (ILLUMINATED GLASS & TOMBOL) =====
+    // Targetkan semua elemen yang ingin punya efek ini
+    const interactiveElements = document.querySelectorAll('.btn-primary:not(.btn-shiny), .btn-secondary, .card-container');
     interactiveElements.forEach(element => {
         element.addEventListener('mousemove', e => {
             const rect = element.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
             element.style.setProperty('--mouse-x', `${x}px`);
             element.style.setProperty('--mouse-y', `${y}px`);
         });
     });
 
-    // Kode untuk animasi kursor custom Anda bisa tetap ada di bawah ini jika masih dipakai
-    // ... kode .cursor-follower Anda ...
-});
-
-    // ===== KODE UNTUK TOMBOL SCROLL TO TOP (STABIL) =====
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    if (scrollTopBtn) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 200) {
-                scrollTopBtn.style.display = "block";
-            } else {
-                scrollTopBtn.style.display = "none";
-            }
-        });
-        scrollTopBtn.addEventListener('click', function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
+    // ===== 6. FUNGSI UNTUK FITUR ZOOM GAMBAR (LIGHTBOX) =====
+    const zoomableImages = document.querySelectorAll('.zoomable-image');
+    if (zoomableImages.length > 0) {
+        zoomableImages.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const imageUrl = this.href;
+                basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
+            });
         });
     }
 
-// ===== KODE BARU UNTUK ANIMASI TIMELINE BERURUTAN =====
-document.addEventListener('DOMContentLoaded', () => {
-    const timelineItems = document.querySelectorAll('.animated-timeline-item');
-
-    const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Tambahkan delay animasi berdasarkan urutan elemen
-                entry.target.style.animationDelay = `${index * 0.2}s`;
-                entry.target.classList.add('is-visible');
-                timelineObserver.unobserve(entry.target); // Hentikan observasi setelah animasi berjalan
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    timelineItems.forEach(item => {
-        timelineObserver.observe(item);
-    });
 });
