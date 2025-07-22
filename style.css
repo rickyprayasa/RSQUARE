@@ -224,12 +224,13 @@ body {
     background-color: #EA580C; /* Oranye lebih gelap saat hover */
     transform: translateY(-3px); /* Efek sedikit terangkat saat hover */
 }
- /* ========================================================================
-   GAYA TIMELINE RESPONSIVE FINAL
+ /* /* ========================================================================
+   GAYA TIMELINE RESPONSIVE (Versi Final Diperbaiki)
    ======================================================================== */
 
 .timeline-container {
     position: relative;
+    margin-top: 3rem;
 }
 
 .timeline-line {
@@ -244,18 +245,16 @@ body {
 .timeline-item {
     position: relative;
     padding-left: 3.5rem; /* Jarak dari garis di mobile */
-    margin-bottom: 3.5rem;
-    opacity: 0; /* Mulai transparan untuk animasi */
+    margin-bottom: 4rem;
 }
-
-.timeline-item.is-visible {
-    animation: fadeInUp 0.8s ease forwards;
+.timeline-item:last-child {
+    margin-bottom: 0;
 }
 
 .timeline-icon {
     position: absolute;
     left: 1.5rem;
-    top: 0;
+    top: 0.25rem; /* Menyesuaikan posisi vertikal */
     transform: translateX(-50%);
     z-index: 10;
     display: flex;
@@ -263,10 +262,14 @@ body {
     justify-content: center;
     width: 3rem;  /* 48px */
     height: 3rem; /* 48px */
-    background-color: #f97316; /* Latar oranye */
-    color: white; /* Warna ikon putih */
+    background-color: #f97316;
+    color: white;
     border-radius: 9999px;
-    border: 4px solid white;
+    border: 4px solid #ffffff;
+}
+
+.timeline-content {
+    animation-delay: 0.2s; /* Sedikit delay untuk konten */
 }
 
 /* --- Tampilan Desktop (Zig-Zag) --- */
@@ -276,7 +279,7 @@ body {
     }
     .timeline-item {
         width: 50%;
-        padding-left: 0; /* Reset padding mobile */
+        padding-left: 0;
     }
     .timeline-icon {
         left: 50%;
@@ -292,5 +295,17 @@ body {
         left: 50%;
         padding-left: 3.5rem;
         text-align: left;
+    }
+    
+    /* Pindahkan ikon ke sisi luar untuk item kiri */
+    .timeline-item-left .timeline-icon {
+        left: auto;
+        right: -1.5rem; /* Posisi di kanan (luar) item kiri */
+        transform: translateX(50%);
+    }
+     /* Pindahkan ikon ke sisi luar untuk item kanan */
+    .timeline-item-right .timeline-icon {
+        left: -1.5rem; /* Posisi di kiri (luar) item kanan */
+        transform: translateX(-50%);
     }
 }
