@@ -48,42 +48,43 @@ body {
    ======================================================================== */
 
 /* Wadah untuk efek cahaya di belakang kartu (VERSI SOROTAN LEBIH BESAR & LEMBUT) */
-.card-container::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    
-    /* UKURAN DIPERBESAR */
-    width: 700px;
-    height: 700px;
-    
-    left: var(--mouse-x, 50%); 
-    top: var(--mouse-y, 50%);
-    
-    /* GRADASI DIBUAT LEBIH LEMBUT & LEBAR */
-    background: radial-gradient(circle at center, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0) 60%);
-    
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-/* Tampilkan sorotan saat kursor masuk ke area wadah */
-.card-container:hover::before {
-    opacity: 1;
-}
-
-/* Kartu dibuat semi-transparan agar cahaya di belakang terlihat */
+/* Desain Kartu BARU dengan Efek "Illuminated Glass" */
 .card {
-    background: rgba(255, 255, 255, 0.7); /* Kaca semi-transparan */
-    backdrop-filter: blur(16px); /* Efek blur kaca */
+    background: rgba(255, 255, 255, 0.6); /* Lebih putih agar solid */
     border: 1px solid #E5E7EB;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
     transition: all 0.3s ease-out;
+    position: relative; /* Wajib untuk efek sorotan */
+    overflow: hidden;   /* Wajib untuk efek sorotan */
+}
+
+/* Efek Sorotan Gradasi (pseudo-element ::before) */
+.card::before {
+    content: '';
+    position: absolute;
+    /* Ukuran sorotan diperbesar agar lebih fleksibel */
+    width: 500px;
+    height: 500px;
+    
+    /* Posisi tetap diambil dari JavaScript */
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+    
+    /* Gradasi dibuat lebih lembut */
+    background: radial-gradient(circle at center, rgba(249, 115, 22, 0.20) 0%, rgba(249, 115, 22, 0) 50%);
+    
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease; /* Transisi hanya pada opacity agar gerakan lebih instan */
+}
+
+/* Tampilkan sorotan saat kursor masuk ke area kartu */
+.card:hover::before {
+    opacity: 1;
 }
 
 /* Efek hover standar untuk mengangkat kartu */
-.card-container:hover .card {
+.card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
