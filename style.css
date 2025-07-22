@@ -55,11 +55,15 @@ body {
 }
 
 /* ========================================================================
-   GAYA TOMBOL (Versi Final dengan Hierarki)
+   GAYA TOMBOL (Versi Final Lengkap)
    ======================================================================== */
 
-/* Tombol Utama (Oranye Solid Standar) */
+/* --- GAYA DASAR --- */
+
+/* Tombol Utama (Oranye Solid) */
 .btn-primary {
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(to right, #F97316, #EA580C);
     color: #FFFFFF;
     transition: all 0.3s ease;
@@ -72,6 +76,8 @@ body {
 
 /* Tombol Sekunder (Outline Oranye) */
 .btn-secondary {
+    position: relative;
+    overflow: hidden;
     background-color: transparent;
     border: 2px solid #F97316;
     color: #F97316;
@@ -83,20 +89,52 @@ body {
     transform: translateY(-3px);
 }
 
-/* GAYA BARU: Tombol Hitam (Dark) */
+/* Tombol Hitam (Dark) */
 .btn-dark {
-    background-color: #1F2937; /* Abu-abu sangat gelap */
+    background-color: #1F2937;
     color: #FFFFFF;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .btn-dark:hover {
-    background-color: #374151; /* Warna sedikit lebih terang saat hover */
+    background-color: #374151;
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* KELAS EKSKLUSIF: Efek Kilap Berulang */
+
+/* --- EFEK ANIMASI TAMBAHAN --- */
+
+/* EFEK 1: Gradasi Mengikuti Kursor (untuk .btn-primary & .btn-secondary) */
+.btn-primary::before, .btn-secondary::before {
+    content: '';
+    position: absolute;
+    left: var(--mouse-x, -100px);
+    top: var(--mouse-y, -100px);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.btn-primary:hover::before, .btn-secondary:hover::before {
+    opacity: 1;
+}
+
+/* EFEK 2: Melayang (untuk .btn-float) */
+.btn-float {
+    position: relative; /* position relative dibutuhkan untuk ::before */
+    overflow: hidden;  /* overflow hidden dibutuhkan untuk ::before */
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* EFEK 3: Kilap Berulang (EKSKLUSIF untuk .btn-shiny) */
 .btn-shiny {
     position: relative;
     overflow: hidden;
@@ -106,72 +144,15 @@ body {
     content: '';
     position: absolute;
     top: 0;
-    transform: skewX(-25deg) translateX(-150%);
     width: 50%;
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
-    z-index: -1;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
     animation: shine 3s ease-in-out infinite;
-    animation-delay: 2s;
+    animation-delay: 1s;
+    z-index: 0; /* Pastikan di bawah teks */
 }
 @keyframes shine {
-    0% { transform: skewX(-25deg) translateX(-150%); }
-    50% { transform: skewX(-25deg) translateX(250%); }
-    100% { transform: skewX(-25deg) translateX(250%); }
-}
-
-/* ========================================================================
-   ANIMASI TOMBOL MELAYANG & GARIS ANGIN
-   ======================================================================== */
-
-/* Kelas utama untuk memicu animasi melayang */
-.btn-float {
-    animation: float 3s ease-in-out infinite;
-}
-
-/* Pseudo-element untuk membuat "garis angin" */
-.btn-float::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -30px; /* Posisi awal garis di kiri tombol */
-    width: 20px;
-    height: 2px;
-    background-color: #f97316; /* Warna oranye */
-    opacity: 0;
-    box-shadow: 
-        -5px 5px 0 0 #fbbf24, /* Garis kedua */
-        -5px -5px 0 0 #f97316; /* Garis ketiga */
-    
-    /* Memicu animasi garis angin */
-    animation: wind-lines 1.5s ease-out infinite;
-    animation-delay: 0.5s; /* Jeda sebelum muncul */
-}
-
-/* Definisi animasi melayang (naik-turun) */
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-/* Definisi animasi garis angin (bergerak & menghilang) */
-@keyframes wind-lines {
-    0% {
-        transform: translateX(0px);
-        opacity: 0;
-    }
-    20%, 80% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-30px);
-        opacity: 0;
-    }
+    0% { left: -100%; }
+    100% { left: 150%; }
 }
