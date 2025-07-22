@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ... kode .cursor-follower Anda ...
 });
 
-    // ===== KODE UNTUK TOMBOL SCROLL TO TOP =====
+        // ===== KODE UNTUK TOMBOL SCROLL TO TOP =====
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     if (scrollTopBtn) {
         window.onscroll = function() {
