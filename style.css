@@ -47,20 +47,21 @@ body {
    GAYA KARTU BARU - EFEK "ILLUMINATED GLASS" (Gaya n8n)
    ======================================================================== */
 
-/* Wadah untuk efek cahaya di belakang kartu */
+/* Wadah untuk efek cahaya di belakang kartu (VERSI SOROTAN LEBIH BESAR & LEMBUT) */
 .card-container::before {
     content: '';
     position: absolute;
-    z-index: -1; /* Posisikan di belakang kartu */
-    width: 500px;
-    height: 500px;
+    z-index: -1;
     
-    /* Posisi diambil dari JavaScript */
+    /* UKURAN DIPERBESAR */
+    width: 700px;
+    height: 700px;
+    
     left: var(--mouse-x, 50%); 
     top: var(--mouse-y, 50%);
     
-    /* Gradasi cahaya oranye yang lebih besar dan lembut */
-    background: radial-gradient(circle at center, rgba(249, 115, 22, 0.20) 0%, rgba(249, 115, 22, 0) 40%);
+    /* GRADASI DIBUAT LEBIH LEMBUT & LEBAR */
+    background: radial-gradient(circle at center, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0) 60%);
     
     transform: translate(-50%, -50%);
     opacity: 0;
