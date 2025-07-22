@@ -224,15 +224,16 @@ body {
     background-color: #EA580C; /* Oranye lebih gelap saat hover */
     transform: translateY(-3px); /* Efek sedikit terangkat saat hover */
 }
- ========================================================================
-   GAYA TIMELINE RESPONSIVE BARU
+ ==================================================/* ========================================================================
+   GAYA TIMELINE RESPONSIVE FINAL
    ======================================================================== */
 
 .timeline-line {
     position: absolute;
-    width: 4px; /* Garis lebih tebal */
+    width: 4px;
     height: 100%;
-    background-color: #fdba74; /* Oranye muda */
+    background-color: #fdba74;
+    transform: translateX(-50%);
 }
 
 .timeline-item {
@@ -246,49 +247,47 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;  /* 48px */
-    height: 3rem; /* 48px */
-    background-color: white;
-    border-radius: 9999px; /* Bulat sempurna */
-    border: 3px solid #f97316; /* Border oranye tebal */
-    opacity: 0; /* Mulai transparan untuk animasi */
-    animation: fadeIn 1s ease-out forwards;
-    animation-delay: 0.3s;
+    width: 3.5rem; /* 56px */
+    height: 3.5rem; /* 56px */
+    background-color: #f97316; /* Latar oranye */
+    border-radius: 9999px;
+    border: 4px solid #fff7f2; /* Border putih-oranye */
+    box-shadow: 0 0 0 4px #f97316; /* Outer glow oranye */
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
 .timeline-content {
-    opacity: 0; /* Mulai transparan untuk animasi */
+    opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
-    animation-delay: 0.5s;
+    animation-delay: 0.4s;
 }
 
 /* --- Tampilan Mobile (Lurus di Tengah) --- */
 .timeline-line {
-    left: 1.5rem; /* Posisi garis di kiri */
-    transform: translateX(-50%);
+    left: 50%;
 }
 .timeline-icon {
-    left: 1.5rem;
+    left: 50%;
     transform: translateX(-50%);
+    top: -1.75rem; /* Posisi di atas konten */
 }
 .timeline-content {
-    padding-left: 4.5rem; /* Jarak dari garis */
+    padding-top: 3rem; /* Beri ruang untuk ikon di atas */
+    text-align: center;
 }
 
 /* --- Tampilan Desktop (Zig-Zag) --- */
 @media (min-width: 768px) {
-    .timeline-line {
-        left: 50%;
-    }
     .timeline-icon {
-        left: 50%;
+        top: 0; /* Kembalikan posisi ikon */
     }
     .timeline-content {
         width: calc(50% - 4rem);
-        padding-left: 0; /* Reset padding mobile */
+        padding-top: 0; /* Reset padding mobile */
     }
     
-    /* Atur posisi konten kiri dan kanan */
     .timeline-item-left .timeline-content {
         float: left;
         text-align: right;
@@ -298,7 +297,6 @@ body {
         text-align: left;
     }
     
-    /* Bersihkan float setelah setiap item */
     .timeline-item::after {
         content: "";
         display: table;
