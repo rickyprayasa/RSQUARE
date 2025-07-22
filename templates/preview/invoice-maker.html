@@ -6,6 +6,7 @@
     <title>Preview Detail Invoice Maker - RSQUARE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css">
 </head>
 <body>
 <div class="sticky top-0 z-50">
@@ -45,90 +46,50 @@
         <div class="container mx-auto">
             <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text">Preview Detail: Invoice Maker</h1>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template ini.</p>
-            <p class="text-3xl font-bold text-gray-900 mt-6">Rp 35.000</p>
+            <div class="inline-block bg-orange-100 text-orange-800 font-bold text-2xl px-8 py-3 rounded-full mt-6 shadow-sm">
+                Rp 35.000
+            </div>
         </div>
     </header>
 
     <main class="px-6 animated-section pb-20 space-y-24">
         
-        <section class="container mx-auto flex flex-col items-center gap-8 space-y-24 py-12">
+        <section class="container mx-auto overflow-hidden flex flex-col items-center gap-8 space-y-24 py-12">
               <!-- Preview 1 -->
-              <div class="flex flex-col items-center gap-6">
-                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Dashboard.png" alt="Dasbor Utama" class="rounded-lg w-full shadow-lg">
-                </div>
+                <div class="flex flex-col items-center gap-6">
+                    <div class="card rounded-xl p-4 w-full md:max-w-3xl">
+                    <a href="../../photos/Invoice-maker/Invoice-Input.png" class="zoomable-image cursor-zoom-in">
+                        <img src="../../photos/Invoice-maker/Invoice-Input.png" alt="Dasbor Utama" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                    </a>
+                    </div>    
                 <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📊 Laporan (Dashboard Utama)</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Ini adalah pusat komando keuangan Anda, tempat semua data transaksi diolah menjadi laporan visual yang cerdas dan mudah dipahami. Cukup pilih bulan dan tahun, maka seluruh halaman akan ter-update secara otomatis untuk menjawab pertanyaan terpenting.
-                 </p>
+                     <h2 class="text-3xl font-bold text-gray-800 mb-4">📝 INPUT</h2>
+                        <p>Di sinilah Anda memasukkan semua data yang diperlukan untuk membuat faktur secara otomatis.</p>
+                        <ul>
+                            <li><strong>Informasi Klien & Perusahaan</strong> 🏢: Masukkan detail klien (nama, alamat, kontak) dan informasi perusahaan Anda untuk ditampilkan di faktur.</li>
+                            <li><strong>Detail Item/Jasa</strong> 🛍️: Tuliskan semua item atau jasa yang dibeli oleh klien, lengkap dengan kuantitas dan harga satuannya.</li>
+                            <li><strong>Pengaturan Faktur</strong> ⚙️: Atur nomor faktur, tanggal, dan ketentuan pembayaran (misalnya, jatuh tempo).</li>
+                        </ul>
                 </div>
-              </div>
-            
-              <!-- Preview 2 -->
-              <div class="flex flex-col items-center gap-6">
-                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Screenshot at 2025-07-15 13-40-05.png" alt="Transaksi" class="rounded-lg w-full shadow-lg">
-                </div>
+                </div>       
+                
+                  <!-- Preview 2 -->
+                   <div class="flex flex-col items-center gap-6">
+                    <div class="card rounded-xl p-4 w-full md:max-w-3xl">
+                    <a href="../../photos/Invoice-maker/Invoice.png" class="zoomable-image cursor-zoom-in">
+                        <img src="../../photos/Invoice-maker/Invoice.png" alt="Dasbor Utama" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                    </a>
+                    </div>    
                 <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">💰 Budgeting</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Ini adalah pusat perencanaan strategis keuangan Anda. Di sini, Anda bisa mengatur anggaran pengeluaran untuk setiap kategori selama satu tahun penuh dalam satu halaman yang rapi. Rencanakan budget yang fleksibel—lebih besar untuk bulan liburan atau lebih kecil saat berhemat—dan biarkan dashboard utama secara otomatis menggunakan angka yang tepat sebagai tolok ukur. Dengan sheet ini, Anda tidak lagi hanya mencatat, tetapi proaktif merancang masa depan finansial Anda.
-                 </p>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">🧾 INVOICE</h2>
+                        <p>Sheet ini secara otomatis akan menghasilkan faktur yang rapi dan profesional berdasarkan data dari sheet "INPUT".</p>
+                        <ul>
+                            <li><strong>Tampilan Profesional</strong> ✨: Faktur yang siap cetak atau dikirim, lengkap dengan logo dan detail perusahaan Anda.</li>
+                            <li><strong>Rincian Otomatis</strong> 🤖: Semua detail pesanan, total biaya, PPN (jika ada), dan jumlah total akan terhitung secara otomatis. Tidak perlu menghitung manual!</li>
+                            <li><strong>Siap Kirim</strong> 📤: Cukup cetak ke PDF atau print langsung untuk diberikan kepada klien Anda.</li>
+                        </ul>
                 </div>
-              </div>
-            
-              <!-- Preview 3 -->
-              <div class="flex flex-col items-center gap-6">
-                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Screenshot at 2025-07-15 13-26-38.png" alt="Pemasukan" class="rounded-lg w-full shadow-lg">
                 </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📝 Catatan Transaksi</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Ini adalah jantung dari seluruh sistem dan akan menjadi kebiasaan harian Anda. Cukup luangkan waktu 30 detik untuk mencatat setiap pemasukan, pengeluaran, atau transfer antar bank di sini. Semakin rajin dan akurat Anda mencatat, semakin cerdas dan akurat pula laporan otomatis yang akan Anda dapatkan di Dashboard Utama.
-                  </p>
-                </div>
-              </div>
-            
-              <!-- Preview 4 -->
-              <div class="flex flex-col items-center gap-6">
-                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Screenshot at 2025-07-15 08-51-10.png" alt="Pengeluaran" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📊 Progress Hutang</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Jangan biarkan beban hutang yang tersebar membuat Anda cemas. Sheet ini adalah pusat komando untuk semua kewajiban finansial Anda, mulai dari KPR, cicilan kendaraan, hingga PayLater. Daftarkan semua hutang Anda, catat setiap pembayaran cicilan di tempat yang sama, dan saksikan progress bar bergerak maju secara visual. Pantau total sisa utang secara real-time dan dapatkan motivasi yang Anda butuhkan untuk mencapai kebebasan finansial.
-                  </p>
-                </div>
-              </div>
-            
-              <!-- Preview 5 -->
-              <div class="flex flex-col items-center gap-6">
-                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Screenshot at 2025-07-15 13-36-27.png" alt="Komparasi Bulanan" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">🎯 Tujuan Tabungan</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Ubah impian finansial Anda menjadi rencana yang nyata. Di sheet ini, Anda bisa mencatat semua tujuan besar Anda—mulai dari dana darurat, DP rumah, hingga liburan impian—lengkap dengan target dana yang dibutuhkan. Sistem alokasi dana yang cerdas akan menunjukkan progress setiap tujuan secara visual melalui progress bar, membantu Anda tetap fokus dan termotivasi untuk mewujudkan setiap impian satu per satu.
-                  </p>
-                </div>
-              </div>
-            
-              <!-- Preview 6 -->
-              <div class="flex flex-col items-center gap-6">
-                <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/personal-budgeting/Screenshot at 2025-07-15 08-51-33.png" alt="Komparasi Bulanan" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">⚙️ Pusat Kontrol</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                        Anggap sheet ini sebagai “ruang mesin” dari template Anda—Anda hanya perlu mengaturnya sekali saja di awal. Di sinilah Anda mempersonalisasi sistem keuangan dengan mendaftarkan semua Kategori Pemasukan & Pengeluaran, Akun Bank beserta Saldo Awalnya, dan Profil Hutang. Semua yang Anda atur di sini akan secara otomatis menjadi pilihan di seluruh template, memastikan pencatatan harian Anda cepat, mudah, dan akurat.
-                  </p>
-                </div>
-              </div>
             </section>
 
         
@@ -136,10 +97,13 @@
             <h2 class="text-3xl font-bold text-gray-800">Siap Meningkatkan Produktivitas?</h2>
             <p class="text-lg text-gray-600 mt-2 mb-8">Pilih platform favorit Anda untuk mendapatkan template ini sekarang.</p>
             <div class="max-w-md mx-auto space-y-4">
-                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di Lynk.ID</a>
-                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di KaryaKarsa</a>
+                <a href="https://lynk.id/rsquareidea/rqrl1zr2jqn0" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di Lynk.ID</a>
+                <a href="https://karyakarsa.com/rsquare/racikan-jamu-invoice" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di KaryaKarsa</a>
             </div>
-            <a href="personal-budgeting.html" class="inline-block mt-8 text-gray-500 hover:text-orange-600 transition">&larr; Kembali ke Ringkasan Produk</a>
+           <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
+            <a href="/templates/invoice-maker.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">&larr; Kembali ke Ringkasan</a>
+            <a href="../../templates.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">Lihat Semua Template &rarr;</a>
+           </div>
         </section>
         
     </main>
@@ -190,6 +154,7 @@
 </footer>
 
        <script src="../../app.js"></script>
-
+       <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+    
 </body>
 </html>

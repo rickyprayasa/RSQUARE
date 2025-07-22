@@ -6,6 +6,7 @@
     <title>Preview Detail Tracking Lamaran Kerja - RSQUARE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css">
 </head>
 <body>
 <div class="sticky top-0 z-50">
@@ -43,80 +44,90 @@
 
     <header class="py-20 px-6 text-center animated-section">
         <div class="container mx-auto">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text pb-2">Preview Detail: Tracking Lamaran Kerja</h1>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text">Preview Detail: Tracking Lamaran Kerja</h1>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template ini.</p>
-            <p class="text-3xl font-bold text-gray-900 mt-6">Rp 35.000</p>
+            <div class="inline-block bg-orange-100 text-orange-800 font-bold text-2xl px-8 py-3 rounded-full mt-6 shadow-sm">
+                Rp 20.000
+            </div>
         </div>
     </header>
 
     <main class="px-6 animated-section pb-20 space-y-24">
         
-        <section class="container mx-auto flex flex-col items-center gap-8 space-y-24 py-12">
+        <section class="container mx-auto overflow-hidden flex flex-col items-center gap-8 space-y-24 py-12">
               <!-- Preview 1 -->
-              <div class="flex flex-col items-center gap-6">
+            <div class="flex flex-col items-center gap-6">
                 <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/tracking-lamaran/data-base.jpeg" alt="Database" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">📂 Sheet Database Lowongan Kerja</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Semua informasi lowongan kerja yang kamu temukan bisa disimpan rapi di sheet ini. Setiap entri mencakup detail lengkap: nama perusahaan, posisi, lokasi, jenis pekerjaan, link sumber, dan deadline. Database ini menjadi referensi utama sebelum kamu mulai melamar, lengkap dengan fitur penyaringan otomatis.
-                 </p>
-                    <p class="text-gray-600 leading-relaxed">🔍 Terintegrasi dengan sheet lainnya untuk otomatisasi data</p> 
-                     <p class="text-gray-600 leading-relaxed">📌 Bisa ditandai dan difilter berdasarkan status, jenis kerja, atau lokasi</p>
-                    <p class="text-gray-600 leading-relaxed">🗓️ Terdapat indikator tanggal hari ini agar tidak melewatkan deadline</p>
-                </div>
-              </div>
+                <a href="../../photos/tracking-lamaran/dashboard.jpeg" class="zoomable-image cursor-zoom-in">
+                    <img src="../../photos/tracking-lamaran/Dashboard Tracking Lamaran Kerja.png" alt="Dasbor Utama" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                </a>
+                </div>    
+            <div class="text-center md:text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">📨 TRACKING LAMARAN</h2>
+                    <p>Pantau setiap langkah dari proses lamaran kerja Anda di sini.</p>
+                    <ul>
+                        <li><strong>Dasbor Progres</strong> 📊: Lihat ringkasan jumlah loker yang dilamar, panggilan interview, dan tes dalam satu dasbor.</li>
+                        <li><strong>Status Lamaran</strong> 📤: Lacak status setiap lamaran, apakah masih dalam proses, sudah sampai tahap interview, tes, atau ditolak.</li>
+                        <li><strong>Catatan Penting</strong> 📝: Tambahkan catatan pribadi untuk setiap lamaran untuk mengingat detail penting.</li>
+                    </ul>
+            </div>
+            </div>       
             
               <!-- Preview 2 -->
-              <div class="flex flex-col items-center gap-6">
+               <div class="flex flex-col items-center gap-6">
                 <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/tracking-lamaran/dashboard.jpeg" alt="Dashboard" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">🧾 Sheet Tracking Lamaran</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Bagian ini merupakan pusat kontrol utama untuk memantau seluruh progres lamaran kerja kamu. Dengan desain yang bersih dan modern, kamu bisa langsung melihat status setiap lamaran: mulai dari interview, test, hingga diterima atau ditolak. Progress ditampilkan dalam bentuk indikator berwarna yang mudah dipahami, membuat kamu selalu tahu sejauh mana perkembangan setiap aplikasi.
-                 </p>
-                    <p class="text-gray-600 leading-relaxed">🔹 Motivasi automatis untuk membuatmu pantang menyerah!</p>
-                    <p class="text-gray-600 leading-relaxed">🔹 Kolom catatan pribadi untuk motivasi atau info tambahan</p>
-                    <p class="text-gray-600 leading-relaxed">🔹 Statistik jumlah lamaran, progress, dan goal mingguan</p>
-                </div>
-              </div>
+                <a href="../../photos/tracking-lamaran/data-base.jpeg" class="zoomable-image cursor-zoom-in">
+                    <img src="../../photos/tracking-lamaran/data-base.jpeg" alt="Dasbor Utama" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                </a>
+                </div>    
+            <div class="text-center md:text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">📑 DATABASE LOWONGAN</h2>
+                    <p>Sheet ini adalah pusat data untuk semua lowongan pekerjaan yang Anda temukan.</p>
+                    <ul>
+                        <li><strong>Pusat Informasi</strong> 🗃️: Semua detail penting tentang lowongan kerja tersimpan di sini, mulai dari jabatan, perusahaan, lokasi, hingga gaji.</li>
+                        <li><strong>Filter Cepat</strong> ✅/❌: Anda bisa dengan mudah menandai apakah sebuah lowongan "Cocok" atau "Tidak Cocok" untuk Anda.</li>
+                        <li><strong>Tautan Langsung</strong> 🔗: Terdapat kolom untuk menyimpan tautan langsung ke halaman lowongan pekerjaan.</li>
+                    </ul>
+            </div>
+            </div>
             
               <!-- Preview 3 -->
-              <div class="flex flex-col items-center gap-6">
+               <div class="flex flex-col items-center gap-6">
                 <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/tracking-lamaran/kalender.jpeg" alt="kalender" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">🗓️ Sheet Schedule</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Membuat jadwal interview atau test kini jadi lebih mudah. Sheet ini membantu kamu mencatat dan melihat semua agenda penting dalam satu tampilan. Kamu tidak hanya tahu kapan harus hadir, tapi juga bisa mencatat apa yang perlu disiapkan sebelum interview.
-                  </p>
-                  <p class="text-gray-600 leading-relaxed">📅 Tersusun berdasarkan tanggal</p>
-                  <p class="text-gray-600 leading-relaxed">⏰ Bisa disesuaikan dengan zona waktu</p>
-                  <p class="text-gray-600 leading-relaxed">📌 Sangat berguna untuk memastikan kamu tidak melewatkan jadwal penting</p>
-                  <p class="text-gray-600 leading-relaxed">💪 Motivasi harian untuk membuatmu tetap semangat</p>
-                </div>
-              </div>
+                <a href="../../photos/tracking-lamaran/loker.jpeg" class="zoomable-image cursor-zoom-in">
+                    <img src="../../photos/tracking-lamaran/loker.jpeg" alt="Dasbor Utama" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                </a>
+                </div>    
+            <div class="text-center md:text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">🔎 SEARCH BOX</h2>
+                    <p>Gunakan sheet ini untuk mencari dan memfilter lowongan kerja yang ada di "DATABASE LOWONGAN" dengan cepat dan mudah.</p>
+                    <ul>
+                        <li><strong>Pencarian Cerdas</strong> 🕵️: Cari lowongan berdasarkan jabatan, perusahaan, lokasi, atau tipe pekerjaan.</li>
+                        <li><strong>Filter per Bulan & Tahun</strong> 🗓️: Saring lowongan berdasarkan bulan dan tahun untuk melihat peluang yang paling relevan.</li>
+                        <li><strong>Hasil Terperinci</strong> ✨: Hasil pencarian akan menampilkan semua informasi penting yang Anda butuhkan, termasuk tautan ke lowongan aslinya.</li>
+                    </ul>
+            </div>
+            </div>
+            
             
               <!-- Preview 4 -->
-              <div class="flex flex-col items-center gap-6">
+            <div class="flex flex-col items-center gap-6">
                 <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                  <img src="../../photos/tracking-lamaran/loker.jpeg" alt="Loker" class="rounded-lg w-full shadow-lg">
-                </div>
-                <div class="text-center md:text-left max-w-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4">🔎 Sheet Search Box</h2>
-                  <p class="text-gray-600 leading-relaxed">
-                    Cari lowongan kamu jadi lebih cepat lewat fitur pencarian ini. Cukup masukkan kata kunci, dan hasil yang sesuai akan langsung muncul. Fitur ini sangat membantu jika kamu punya banyak data lamaran dan ingin menemukan satu data spesifik dengan cepat.
-                  </p>
-                  <p class="text-gray-600 leading-relaxed">⚡ Super cepat dan responsif</p>
-                  <p class="text-gray-600 leading-relaxed">🎯 Cocok untuk mencari berdasarkan nama perusahaan, posisi, atau kata kunci lain</p>
-                  <p class="text-gray-600 leading-relaxed">🔗 Otomatis terhubung ke semua data yang tersimpan</p>
-                </div>
-              </div>            
-
+                <a href="../../photos/tracking-lamaran/kalender.jpeg" class="zoomable-image cursor-zoom-in">
+                    <img src="../../photos/tracking-lamaran/kalender.jpeg" alt="Dasbor Utama" class="rounded-lg relative z-10 overflow-hidden flex flex-col flex-grow w-full shadow-lg">
+                </a>
+                </div>    
+            <div class="text-center md:text-left max-w-2xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">🗓️ SCHEDULE</h2>
+                    <p>Atur semua jadwal interview dan tes Anda di sini agar tidak ada yang terlewat.</p>
+                    <ul>
+                        <li><strong>Kalender Pribadi</strong> 📅: Lihat semua jadwal Anda dalam format kalender mingguan yang mudah dibaca.</li>
+                        <li><strong>Rincian Jadwal</strong> ⏰: Catat tanggal dan waktu spesifik untuk setiap agenda, seperti "INTERVIEW HRD" atau "PSIKOTES".</li>
+                        <li><strong>Pengingat Semangat</strong> 🌟: Dapatkan kutipan penyemangat setiap hari untuk menjaga motivasi Anda tetap tinggi.</li>
+                    </ul>
+            </div>
+            </div>         
+              
             </section>
 
         
@@ -124,10 +135,13 @@
             <h2 class="text-3xl font-bold text-gray-800">Siap Meningkatkan Produktivitas?</h2>
             <p class="text-lg text-gray-600 mt-2 mb-8">Pilih platform favorit Anda untuk mendapatkan template ini sekarang.</p>
             <div class="max-w-md mx-auto space-y-4">
-                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di Lynk.ID</a>
-                <a href="https://LINK-PEMBELIAN-ANDA" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di KaryaKarsa</a>
+                <a href="https://lynk.id/rsquareidea/2v4r09xe6y90" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di Lynk.ID</a>
+                <a href="https://karyakarsa.com/rsquare/template-tracking-lamaran" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-white text-base">Akses di KaryaKarsa</a>
             </div>
-            <a href="personal-budgeting.html" class="inline-block mt-8 text-gray-500 hover:text-orange-600 transition">&larr; Kembali ke Ringkasan Produk</a>
+           <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
+            <a href="/templates/tracking-lamaran.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">&larr; Kembali ke Ringkasan</a>
+            <a href="../../templates.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">Lihat Semua Template &rarr;</a>
+           </div>
         </section>
         
     </main>
@@ -178,6 +192,7 @@
 </footer>
 
        <script src="../../app.js"></script>
-
+       <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+    
 </body>
 </html>
