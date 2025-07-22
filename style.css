@@ -223,3 +223,85 @@ body {
 #scrollTopBtn:hover {
     background-color: #EA580C; /* Oranye lebih gelap saat hover */
 }
+
+/* ========================================================================
+   GAYA TIMELINE RESPONSIVE BARU
+   ======================================================================== */
+
+.timeline-line {
+    position: absolute;
+    width: 4px; /* Garis lebih tebal */
+    height: 100%;
+    background-color: #fdba74; /* Oranye muda */
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 5rem;
+}
+
+.timeline-icon {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;  /* 48px */
+    height: 3rem; /* 48px */
+    background-color: white;
+    border-radius: 9999px; /* Bulat sempurna */
+    border: 3px solid #f97316; /* Border oranye tebal */
+    opacity: 0; /* Mulai transparan untuk animasi */
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.timeline-content {
+    opacity: 0; /* Mulai transparan untuk animasi */
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+/* --- Tampilan Mobile (Lurus di Tengah) --- */
+.timeline-line {
+    left: 1.5rem; /* Posisi garis di kiri */
+    transform: translateX(-50%);
+}
+.timeline-icon {
+    left: 1.5rem;
+    transform: translateX(-50%);
+}
+.timeline-content {
+    padding-left: 4.5rem; /* Jarak dari garis */
+}
+
+/* --- Tampilan Desktop (Zig-Zag) --- */
+@media (min-width: 768px) {
+    .timeline-line {
+        left: 50%;
+    }
+    .timeline-icon {
+        left: 50%;
+    }
+    .timeline-content {
+        width: calc(50% - 4rem);
+        padding-left: 0; /* Reset padding mobile */
+    }
+    
+    /* Atur posisi konten kiri dan kanan */
+    .timeline-item-left .timeline-content {
+        float: left;
+        text-align: right;
+    }
+    .timeline-item-right .timeline-content {
+        float: right;
+        text-align: left;
+    }
+    
+    /* Bersihkan float setelah setiap item */
+    .timeline-item::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
