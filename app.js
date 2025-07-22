@@ -97,3 +97,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// ===== KODE BARU UNTUK SEMUA EFEK INTERAKTIF KURSOR =====
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Target semua elemen yang ingin punya efek sorotan/cahaya
+    // Dalam kasus ini: tombol primer, sekunder, DAN semua kartu
+    const interactiveElements = document.querySelectorAll('.btn-primary, .btn-secondary, .card');
+
+    interactiveElements.forEach(element => {
+        element.addEventListener('mousemove', e => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            element.style.setProperty('--mouse-x', `${x}px`);
+            element.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // Kode untuk animasi kursor custom Anda bisa tetap ada di bawah ini jika masih dipakai
+    // ... kode .cursor-follower Anda ...
+});
