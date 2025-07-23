@@ -331,7 +331,7 @@
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         <div>
             <a href="index.html" class="inline-block mb-4">
-                <img src="photos/RSQUARE-LOGO2.png" alt="RSQUARE Logo" class="h-12 mx-auto md:mx-0">
+                <img src="photos/RSQUARE-LOGO.png" alt="RSQUARE Logo" class="h-12 mx-auto md:mx-0">
             </a>
             <p class="text-gray-500 text-sm mb-4">
                 Template Google Sheets premium untuk produktivitas Anda.
@@ -413,8 +413,32 @@
     }
   });
 </script>
-    
     
-    <script src="app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const timelineItems = document.querySelectorAll('.timeline-item-to-animate');
+        const timelineContainer = document.querySelector('.timeline-container');
+
+        if (timelineContainer) {
+            const observer = new IntersectionObserver((entries) => {
+                // Hanya jalankan sekali saat container terlihat
+                if (entries[0].isIntersecting) {
+                    timelineItems.forEach((item, index) => {
+                        // Beri jeda waktu untuk setiap item
+                        setTimeout(() => {
+                            item.classList.add('is-visible');
+                        }, index * 300); // Jeda 300ms antar item
+                    });
+                    observer.unobserve(timelineContainer); // Hentikan pengamatan
+                }
+            }, { threshold: 0.1 });
+
+            observer.observe(timelineContainer);
+        }
+    });
+</script>
+
+<script src="app.js"></script>
+
 </body>
 </html>
