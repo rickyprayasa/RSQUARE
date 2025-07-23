@@ -257,10 +257,11 @@ body {
     justify-content: center;
     width: 3rem;  /* 48px */
     height: 3rem; /* 48px */
-    background-color: #f97316;
-    color: white;
+    background-color: #f97316; /* Latar menjadi oranye */
+    color: white;              /* Warna ikon menjadi putih */
     border-radius: 9999px;
-    border: 4px solid white;
+    border: 3px solid white;   /* Border putih agar tetap terlihat "pop" */
+    box-shadow: 0 0 0 3px #f97316; /* Efek "glow" oranye tipis */
 }
 .timeline-content {
     /* Gaya konten umum */
