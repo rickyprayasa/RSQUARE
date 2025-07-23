@@ -224,7 +224,7 @@ body {
     background-color: #EA580C; /* Oranye lebih gelap saat hover */
     transform: translateY(-3px); /* Efek sedikit terangkat saat hover */
 }
- /* /* /* /* ========================================================================
+/* ========================================================================
    GAYA TIMELINE RESPONSIVE (Final & Stabil)
    ======================================================================== */
 .timeline-container {
@@ -240,9 +240,8 @@ body {
 }
 .timeline-item {
     position: relative;
+    padding-left: 3.5rem; /* Jarak dari garis di mobile */
     margin-bottom: 4rem;
-    opacity: 0; /* Mulai dari transparan */
-    transition: opacity 0.8s ease, transform 0.8s ease; /* Transisi halus */
 }
 .timeline-item:last-child {
     margin-bottom: 0;
