@@ -9,24 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== 2. FUNGSI UNTUK ANIMASI ON-SCROLL (FADE IN UP) =====
-    const animatedElements = document.querySelectorAll('.animated-section, .animated-timeline-item');
-    if ('IntersectionObserver' in window && animatedElements.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    if (entry.target.classList.contains('animated-timeline-item')) {
-                        entry.target.style.animationDelay = `${index * 0.2}s`;
-                    }
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        animatedElements.forEach(element => {
-            observer.observe(element);
+    // ===== 2. FUNGSI UNTUK ANIMASI ON-SCROLL UMUM =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Hentikan observasi setelah animasi berjalan
+            }
         });
-    }
+    }, { threshold: 0.1 });
+
+    const animatedSections = document.querySelectorAll('.animated-section');
+    animatedSections.forEach(section => {
+        observer.observe(section);
+    });
     
     // ===== 3. FUNGSI UNTUK TOMBOL SCROLL TO TOP (STABIL) =====
     const scrollTopBtn = document.getElementById('scrollTopBtn');
