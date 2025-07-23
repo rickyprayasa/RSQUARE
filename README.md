@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="photos/RSQUARE-LOGO.png" alt="RSQUARE Logo" width="150">
+  <img src="photos/RSQUARE-LOGO2.png" alt="RSQUARE Logo" width="150">
 </p>
 
 # 👋 Selamat Datang di Repositori RSQUARE!
