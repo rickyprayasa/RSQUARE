@@ -9,14 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== 2. FUNGSI UNTUK ANIMASI ON-SCROLL (FADE IN UP) =====
-    const animatedElements = document.querySelectorAll('.animated-section, .animated-timeline-item');
-    if ('IntersectionObserver' in window && animatedElements.length > 0) {
+   // ===== 2. KODE UNTUK ANIMASI ON-SCROLL (Fade In & Staggered) =====
+    const animatedElements = document.querySelectorAll('.animated-section, .timeline-item');
+    if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    if (entry.target.classList.contains('animated-timeline-item')) {
-                        entry.target.style.animationDelay = `${index * 0.2}s`;
+                    // Cek jika elemen adalah bagian dari timeline untuk delay berurutan
+                    if (entry.target.classList.contains('timeline-item')) {
+                        entry.target.style.transitionDelay = `${index * 150}ms`;
                     }
                     entry.target.classList.add('is-visible');
                     observer.unobserve(entry.target);
