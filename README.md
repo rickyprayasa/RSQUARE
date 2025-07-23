@@ -4,7 +4,7 @@
 
 # 👋 Selamat Datang di Repositori RSQUARE!
 
-Halo! Ini adalah "dapur" di balik website [rsquareidea.netlify.app](https://rsquareidea.netlify.app), tempat saya merancang, membangun, dan mengembangkan semua template Google Sheets yang keren.
+Halo! Ini adalah "dapur" di balik website [rsquareidea.my.id](https://rsquareidea.my.id/), tempat saya merancang, membangun, dan mengembangkan semua template Google Sheets yang keren.
 
 ## 🚀 Tentang Proyek Ini
 
