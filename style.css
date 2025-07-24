@@ -215,17 +215,31 @@ body {
 
 /* --- EFEK ANIMASI EKSKLUSIF --- */
 
-/* EFEK 1: Gradasi Bernapas (HANYA untuk .btn-pulse) */
-.btn-pulse {
-    background-size: 300% 100%;
-    animation: pulse-gradient 6s ease-in-out infinite;
+/* EFEK 1: Gradasi Bernapas (HANYA untuk .btn-animated-gradient) */
+.btn-animated-gradient {
+    background: linear-gradient(
+        to right, 
+        #EA580C, /* Oranye Tua */
+        #F97316, /* Oranye Terang */
+        #FBBF24, /* Emas (sebagai kilap) */
+        #374151, /* Abu Gelap */
+        #1F2937, /* Hitam */
+        #374151, /* Abu Gelap */
+        #FBBF24, /* Emas */
+        #F97316, /* Oranye Terang */
+        #EA580C  /* Oranye Tua */
+    );
+    background-size: 400% 100%;
+    animation: breathing-gradient 8s ease-in-out infinite;
 }
 
-@keyframes pulse-gradient {
+@keyframes breathing-gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+
 /* ========================================================================
    GAYA TOMBOL SCROLL TO TOP
    ======================================================================== */
