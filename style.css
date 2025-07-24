@@ -239,7 +239,29 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* EFEK KILAP & PERUBAHAN WARNA (HANYA untuk .btn-shiny-sweep) */
+.btn-shiny-sweep {
+    background: linear-gradient(
+        90deg, 
+        #EA580C 0%, 
+        #F97316 20%, 
+        #ffffff 50%, /* Puncak kilap putih */
+        #374151 80%, /* Abu Gelap setelah kilap */
+        #1F2937 100% /* Hitam di ujung */
+    );
+    background-size: 400% 100%;
+    animation: shiny-sweep 4s linear infinite;
+    animation-delay: 2s; /* Jeda sebelum animasi dimulai */
+}
 
+@keyframes shiny-sweep {
+    0% {
+        background-position: 120% 50%;
+    }
+    100% {
+        background-position: -120% 50%;
+    }
+}
 /* ========================================================================
    GAYA TOMBOL SCROLL TO TOP
    ======================================================================== */
