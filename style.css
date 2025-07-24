@@ -213,6 +213,19 @@ body {
     100% { opacity: 0; }
 }
 
+/* --- EFEK ANIMASI EKSKLUSIF --- */
+
+/* EFEK 1: Gradasi Bernapas (HANYA untuk .btn-pulse) */
+.btn-pulse {
+    background-size: 300% 100%;
+    animation: pulse-gradient 6s ease-in-out infinite;
+}
+
+@keyframes pulse-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 /* ========================================================================
    GAYA TOMBOL SCROLL TO TOP
    ======================================================================== */
