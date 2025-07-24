@@ -1,13 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ===== 1. FUNGSI UNTUK MENU MOBILE =====
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
+// ===== KODE UNTUK MENU MOBILE (dengan Animasi Halus) =====
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+        // Cek jika menu sedang terbuka (punya max-height)
+        if (mobileMenu.style.maxHeight) {
+            mobileMenu.style.maxHeight = null; // Jika ya, tutup menu
+        } else {
+            // Jika tidak, buka menu setinggi kontennya
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+        }
+    });
+}
 
    // ===== 2. KODE UNTUK ANIMASI ON-SCROLL (Fade In & Staggered) =====
     const animatedElements = document.querySelectorAll('.animated-section, .timeline-item');
