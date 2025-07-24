@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ===== 5. FUNGSI UNTUK EFEK SOROTAN KURSOR (ILLUMINATED GLASS) =====
-    const interactiveElements = document.querySelectorAll('.btn-primary, .btn-secondary, .card-container, .btn-dark');
+    const interactiveElements = document.querySelectorAll('.btn-primary, .btn-secondary, .card-container');
     interactiveElements.forEach(element => {
         element.addEventListener('mousemove', e => {
             const rect = element.getBoundingClientRect();
