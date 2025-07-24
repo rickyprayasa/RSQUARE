@@ -131,29 +131,84 @@ body {
 }
 
 
-/* EFEK 3: Kilap Berulang (EKSKLUSIF untuk .btn-shiny) */
+/* ========================================================================
+   EFEK FINAL: Kilap & Perubahan Warna (Hanya untuk .btn-shiny)
+   ======================================================================== */
+
 .btn-shiny {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    /* Transisi untuk perubahan warna latar dan teks */
+    transition: color 0.4s ease, background 0.4s ease;
 }
+
+/* Lapisan untuk efek kilap */
 .btn-shiny::after {
     content: '';
     position: absolute;
     top: 0;
-    width: 50%;
+    left: -150%; /* Mulai dari luar */
+    width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
     transform: skewX(-25deg);
-    animation: shine 3s ease-in-out infinite;
-    animation-delay: 1s;
-    z-index: 0; /* Pastikan di bawah teks */
-}
-@keyframes shine {
-    0% { left: -100%; }
-    100% { left: 150%; }
+    transition: left 0.8s ease;
+    z-index: 1; /* Pastikan di atas lapisan warna baru */
 }
 
+/* Memicu semua efek saat hover */
+.btn-shiny:hover {
+    background: #1F2937; /* Background berubah menjadi hitam/abu gelap */
+    color: #F97316;      /* Teks berubah menjadi oranye */
+}
+
+.btn-shiny:hover::after {
+    left: 150%; /* Jalankan animasi kilap */
+}
+
+/* ========================================================================
+   EFEK BARU: Tombol "Glow" Interaktif
+   ======================================================================== */
+
+/* Wadah untuk tombol agar efek glow tidak terpotong */
+.btn-container {
+    position: relative;
+}
+
+/* Tombol utama (hanya gaya dasar, tanpa animasi) */
+.btn-primary {
+    color: #FFFFFF;
+    background: linear-gradient(to right, #F97116, #EA580C);
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+}
+
+/* Pseudo-element untuk menciptakan efek "glow" */
+.btn-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120%; /* Sedikit lebih besar dari tombol */
+    height: 150%; /* Sedikit lebih besar dari tombol */
+    
+    /* Gradasi cahaya yang lembut */
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(249, 115, 22, 0.6), transparent 70%);
+    
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Tampilkan glow saat kursor masuk ke area wadah */
+.btn-container:hover::before {
+    opacity: 1;
+}
 /* ========================================================================
    EFEK FINAL: Tombol Terbang dengan Garis Angin
    ======================================================================== */
@@ -200,6 +255,77 @@ body {
     100% { opacity: 0; }
 }
 
+/* --- EFEK ANIMASI EKSKLUSIF --- */
+
+/* EFEK 1: Gradasi Bernapas (HANYA untuk .btn-animated-gradient) */
+.btn-animated-gradient {
+    background: linear-gradient(
+        to right, 
+        #EA580C, /* Oranye Tua */
+        #F97316, /* Oranye Terang */
+        #FBBF24, /* Emas (sebagai kilap) */
+        #374151, /* Abu Gelap */
+        #1F2937, /* Hitam */
+        #374151, /* Abu Gelap */
+        #FBBF24, /* Emas */
+        #F97316, /* Oranye Terang */
+        #EA580C  /* Oranye Tua */
+    );
+    background-size: 400% 100%;
+    animation: breathing-gradient 8s ease-in-out infinite;
+}
+
+@keyframes breathing-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- EFEK ANIMASI EKSKLUSIF --- */
+
+/* EFEK KILAP & SAPUAN WARNA (HANYA untuk .btn-shiny-sweep) */
+.btn-shiny-sweep {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    /* Lapisan dasar tetap oranye */
+    background: linear-gradient(to right, #F97316, #EA580C);
+}
+.btn-shiny-sweep::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    /* Gradasi sapuan yang sangat panjang */
+    background: linear-gradient(
+        90deg, 
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0) 40%,
+        #374151 48%, /* Abu Gelap */
+        #ffffff 50%, /* Kilap Putih di tengah */
+        #374151 52%, /* Abu Gelap */
+        rgba(255,255,255,0) 60%,
+        rgba(255,255,255,0) 100%
+    );
+    background-size: 300% 100%;
+    
+    /* Animasi satu arah */
+    animation: shiny-sweep-oneway 4s linear infinite;
+    animation-delay: 2s;
+}
+
+@keyframes shiny-sweep-oneway {
+    0% {
+        background-position: 150% 50%;
+    }
+    100% {
+        background-position: -150% 50%;
+    }
+}
 /* ========================================================================
    GAYA TOMBOL SCROLL TO TOP
    ======================================================================== */
