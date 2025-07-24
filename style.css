@@ -168,6 +168,48 @@ body {
 }
 
 /* ========================================================================
+   EFEK BARU: Tombol "Glow" Interaktif
+   ======================================================================== */
+
+/* Wadah untuk tombol agar efek glow tidak terpotong */
+.btn-container {
+    position: relative;
+}
+
+/* Tombol utama (hanya gaya dasar, tanpa animasi) */
+.btn-primary {
+    color: #FFFFFF;
+    background: linear-gradient(to right, #F97116, #EA580C);
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+}
+
+/* Pseudo-element untuk menciptakan efek "glow" */
+.btn-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120%; /* Sedikit lebih besar dari tombol */
+    height: 150%; /* Sedikit lebih besar dari tombol */
+    
+    /* Gradasi cahaya yang lembut */
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(249, 115, 22, 0.6), transparent 70%);
+    
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Tampilkan glow saat kursor masuk ke area wadah */
+.btn-container:hover::before {
+    opacity: 1;
+}
+/* ========================================================================
    EFEK FINAL: Tombol Terbang dengan Garis Angin
    ======================================================================== */
 
