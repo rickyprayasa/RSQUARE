@@ -131,27 +131,40 @@ body {
 }
 
 
-/* EFEK 3: Kilap Berulang (EKSKLUSIF untuk .btn-shiny) */
+/* ========================================================================
+   EFEK FINAL: Kilap & Perubahan Warna (Hanya untuk .btn-shiny)
+   ======================================================================== */
+
 .btn-shiny {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    /* Transisi untuk perubahan warna latar dan teks */
+    transition: color 0.4s ease, background 0.4s ease;
 }
+
+/* Lapisan untuk efek kilap */
 .btn-shiny::after {
     content: '';
     position: absolute;
     top: 0;
-    width: 50%;
+    left: -150%; /* Mulai dari luar */
+    width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
     transform: skewX(-25deg);
-    animation: shine 3s ease-in-out infinite;
-    animation-delay: 1s;
-    z-index: 0; /* Pastikan di bawah teks */
+    transition: left 0.8s ease;
+    z-index: 1; /* Pastikan di atas lapisan warna baru */
 }
-@keyframes shine {
-    0% { left: -100%; }
-    100% { left: 150%; }
+
+/* Memicu semua efek saat hover */
+.btn-shiny:hover {
+    background: #1F2937; /* Background berubah menjadi hitam/abu gelap */
+    color: #F97316;      /* Teks berubah menjadi oranye */
+}
+
+.btn-shiny:hover::after {
+    left: 150%; /* Jalankan animasi kilap */
 }
 
 /* ========================================================================
