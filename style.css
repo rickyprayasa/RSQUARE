@@ -224,93 +224,46 @@ body {
     background-color: #EA580C; /* Oranye lebih gelap saat hover */
     transform: translateY(-3px); /* Efek sedikit terangkat saat hover */
 }
+
 /* ========================================================================
-   GAYA TIMELINE RESPONSIVE (Final & Stabil)
+   EFEK BARU: Spotlight Fill (untuk Tombol Hitam)
    ======================================================================== */
-.timeline-container {
-    position: relative;
-}
-.timeline-line {
-    position: absolute;
-    width: 3px; /* Garis lebih tebal */
-    height: 100%;
-    background-color: #fdba74; /* Oranye muda */
-    left: 1.5rem; /* Posisi default untuk mobile (kiri) */
-    transform: translateX(-50%);
-}
-.timeline-item {
-    position: relative;
-    padding-left: 3.5rem; /* Jarak dari garis di mobile */
-    margin-bottom: 4rem;
-}
-.timeline-item:last-child {
-    margin-bottom: 0;
-}
-.timeline-icon {
-    position: absolute;
-    left: 1.5rem;
-    top: 0.25rem;
-    transform: translateX(-50%);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;  /* 48px */
-    height: 3rem; /* 48px */
-    background-color: #f97316; /* Latar menjadi oranye */
-    color: white;              /* Warna ikon menjadi putih */
-    border-radius: 9999px;
-    border: 3px solid white;   /* Border putih agar tetap terlihat "pop" */
-    box-shadow: 0 0 0 3px #f97316; /* Efek "glow" oranye tipis */
-}
-.timeline-content {
-    /* Gaya konten umum */
+
+.btn-spotlight {
+    position: relative; /* Wajib untuk efek */
+    overflow: hidden;   /* Wajib, agar efek tidak keluar dari tombol */
+    z-index: 1;         /* Agar teks tombol selalu di atas */
 }
 
-/* --- Tampilan Desktop (Zig-Zag) --- */
-@media (min-width: 768px) {
-    .timeline-line {
-        left: 50%;
-    }
-    .timeline-item {
-        width: 50%;
-        padding-left: 0; /* Reset padding mobile */
-    }
-    .timeline-icon {
-        left: 50%;
-    }
-    .timeline-item-left {
-        left: 0;
-        padding-right: 3.5rem;
-        text-align: right;
-    }
-    .timeline-item-right {
-        left: 50%;
-        padding-left: 3.5rem;
-        text-align: left;
-    }
+.btn-spotlight::before {
+    content: '';
+    position: absolute;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+    
+    width: 0;
+    height: 0;
+    
+    background: radial-gradient(circle, #EA580C 0%, #F97316 100%);
+    border-radius: 50%;
+    
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+}
+
+.btn-spotlight:hover::before {
+    width: 400px;  /* Ukuran lingkaran cahaya saat membesar */
+    height: 400px;
 }
 
 /* ========================================================================
-   GAYA TIMELINE IKON (Agar tidak bertabrakan)
+   ANIMASI MENU MOBILE (Slide Down Halus)
    ======================================================================== */
 
-.timeline-icon-wrapper {
-    position: absolute;
-    left: 6px;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;  /* 48px */
-    height: 3rem; /* 48px */
-    background-color: white; /* Bantalan putih agar ikon tidak tertimpa garis */
-    border-radius: 9999px;
+#mobile-menu {
+    max-height: 0; /* Mulai dari tinggi 0 (tersembunyi) */
+    transition: max-height 0.5s ease-in-out; /* Animasi transisi yang halus */
+    overflow: hidden; /* Sembunyikan konten saat menu tertutup */
 }
 
-@media (min-width: 768px) {
-    .timeline-icon-wrapper {
-        position: static; /* Kembalikan ke posisi normal di desktop */
-    }
-}
