@@ -405,12 +405,13 @@ body {
     opacity: 1;
 }
 
-/* =/* /* ========================================================================
-   GAYA FOOTER BARU DENGAN GRADASI ABU-ABU
+/* =/* /* /* ========================================================================
+   GAYA FOOTER BARU DENGAN GRADASI "WARM GREY"
    ======================================================================== */
 .footer-gradient {
-    background: linear-gradient(to top, #FFFFFF, #F3F4F6); /* Gradasi putih ke abu-abu sangat terang */
-    border-top: 1px solid #E5E7EB; /* Garis batas tipis */
+    /* Gradasi abu-abu terang ke peach/oranye pucat */
+    background: linear-gradient(to top, #FFF7F2, #F9FAFB); 
+    border-top: 1px solid #E5E7EB;
     color: #4B5563; /* Warna teks abu-abu gelap */
 }
 
