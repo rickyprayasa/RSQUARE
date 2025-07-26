@@ -11,25 +11,8 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #1F2937;
     overflow-x: hidden;
-    /* Gradasi abu-abu terang ke peach/oranye pucat */
-    background: linear-gradient(to top, #FFF7F2, #F9FAFB); 
-}
-
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.animated-section {
-    opacity: 0;
-}
-.is-visible {
-    animation: fadeInUp 0.8s ease-out forwards;
+    /* KEMBALIKAN KE WARNA SOLID YANG BERSIH */
+    background-color: #F9FAFB; /* Abu-abu sangat terang */
 }
 
 /* ==========================================================================
