@@ -458,7 +458,7 @@ body {
 
 .marquee-content {
     display: flex;
-    animation-duration: 50s; /* Durasi animasi, bisa diubah */
+    animation-duration: 20s; /* Durasi animasi, bisa diubah */
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
