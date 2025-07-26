@@ -465,8 +465,8 @@ body {
 .marquee-item {
     flex-shrink: 0;
     margin: 0 0.75rem; /* Jarak antar gambar diperkecil (12px) */
-    width: 250px; /* Lebar setiap gambar diperkecil */
-    height: 180px; /* Tinggi setiap gambar diperkecil */
+    width: 280px; /* Lebar setiap gambar diperkecil */
+    height: 210px; /* Tinggi setiap gambar diperkecil (rasio 4:3) */
 }
 
 
