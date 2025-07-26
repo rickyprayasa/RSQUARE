@@ -359,33 +359,30 @@ body {
     100% { background-position: 400% 50%; }
 }
 
-/* ========================================================================
+/* /* ========================================================================
    GAYA UNTUK TOOLTIP PENJELASAN
    ======================================================================== */
 .tooltip-container {
     position: relative;
-    display: inline-block;
-    cursor: help; /* Mengubah kursor menjadi tanda tanya */
+    display: inline-flex; /* Menggunakan inline-flex agar ikon sejajar */
+    align-items: center;
+    cursor: help;
 }
 
-/* Kotak tooltip yang tersembunyi secara default */
+/* Kotak tooltip yang tersembunyi */
 .tooltip-text {
     visibility: hidden;
-    width: 250px; /* Lebar kotak penjelasan */
-    background-color: #1F2937; /* Warna abu gelap */
-    color: #fff; /* Teks putih */
+    width: 250px;
+    background-color: #1F2937;
+    color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 10px;
-    
-    /* Posisi tooltip */
     position: absolute;
     z-index: 10;
-    bottom: 125%; /* Posisikan di atas elemen */
+    bottom: 125%;
     left: 50%;
-    margin-left: -125px; /* Setengah dari lebar untuk memusatkan */
-    
-    /* Efek fade in */
+    margin-left: -125px;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -402,7 +399,7 @@ body {
     border-color: #1F2937 transparent transparent transparent;
 }
 
-/* Tampilkan tooltip saat kursor di atas container */
+/* Tampilkan tooltip saat hover */
 .tooltip-container:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
