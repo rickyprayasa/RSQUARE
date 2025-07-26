@@ -464,10 +464,10 @@ body {
 }
 .marquee-item {
     flex-shrink: 0;
-    margin: 0 1rem; /* Jarak antar gambar */
-    width: 320px; /* Lebar setiap gambar */
-    height: 240px; /* Tinggi setiap gambar */
+    margin: 0 0.5rem; /* Jarak antar gambar diperkecil */
+    width: 200px; /* Lebar gambar diperkecil untuk mobile */
 }
+
 .marquee-item img {
     width: 100%;
     height: 100%;
