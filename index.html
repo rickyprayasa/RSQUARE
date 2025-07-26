@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -142,6 +143,27 @@ src="https://www.facebook.com/tr?id=2279334852517386&ev=PageView&noscript=1"
             <a href="templates.html" class="btn-primary btn-shiny inline-block px-10 py-4 rounded-lg font-semibold text-white text-lg">Lihat Templates Kami</a>
 
         </div>
+<section class="py-20 px-6">
+    <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800">Desain yang Hidup & Fungsional</h2>
+            <p class="text-xl text-gray-600 mt-4">Lihat beberapa contoh template kami dalam aksi.</p>
+        </div>
+        
+        <div class="swiper-container rounded-2xl shadow-xl overflow-hidden">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="photos/tracking-lamaran/dashboard.jpeg" alt="Template 1" class="w-full h-full object-cover"></div>
+                <div class="swiper-slide"><img src="photos/personal-budgetinf/Transaksi.png" alt="Template 2" class="w-full h-full object-cover"></div>
+                <div class="swiper-slide"><img src="photos/goal-planner/review.jpeg" alt="Template 3" class="w-full h-full object-cover"></div>
+                <div class="swiper-slide"><img src="photos/anggaran-acara/dashboard.jpeg" alt="Template 4" class="w-full h-full object-cover"></div>
+                <div class="swiper-slide"><img src="photos/Invoice-maker/Invoice.png" alt="Template 4" class="w-full h-full object-cover"></div>
+                </div>
+        </div>
+    </div>
+</section>
+
+
+    
 </section>
     
 
@@ -512,6 +534,20 @@ src="https://www.facebook.com/tr?id=2279334852517386&ev=PageView&noscript=1"
     <button id="scrollTopBtn" title="Kembali ke atas">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
     </button>
-    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+      delay: 2500, // Jeda 2.5 detik antar slide
+      disableOnInteraction: false,
+    },
+    effect: 'fade', // Efek transisi fade
+    fadeEffect: {
+      crossFade: true
+    },
+  });
+</script>
+
 </body>
 </html>
