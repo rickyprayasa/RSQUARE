@@ -464,10 +464,20 @@ body {
 }
 .marquee-item {
     flex-shrink: 0;
-    margin: 0 0.75rem; /* Jarak antar gambar diperkecil (12px) */
-    width: 280px; /* Lebar setiap gambar diperkecil */
-    height: 210px; /* Tinggi setiap gambar diperkecil (rasio 4:3) */
+    margin: 0 0.5rem; /* Jarak antar gambar di mobile (8px) */
+    width: 180px; /* Lebar gambar di mobile (LEBIH KECIL) */
+    height: 135px; /* Tinggi gambar di mobile (rasio 4:3) */
 }
+
+/* Aturan HANYA untuk layar besar (desktop) */
+@media (min-width: 768px) {
+    .marquee-item {
+        margin: 0 1rem; /* Jarak antar gambar di desktop (16px) */
+        width: 320px; /* Lebar gambar di desktop (LEBIH BESAR) */
+        height: 240px; /* Tinggi gambar di desktop */
+    }
+}
+
 
 
 .marquee-item img {
