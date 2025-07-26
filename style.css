@@ -11,26 +11,8 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #1F2937;
     overflow-x: hidden;
-    background: linear-gradient(-45deg, #ffffff, #fff7f2, #f9fafb, #fff7f2);
-    background-size: 400% 400%;
-    animation: gradientAnimation 30s ease infinite;
-}
-
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.animated-section {
-    opacity: 0;
-}
-.is-visible {
-    animation: fadeInUp 0.8s ease-out forwards;
+    /* KEMBALIKAN KE WARNA SOLID YANG BERSIH */
+    background-color: #F9FAFB; /* Abu-abu sangat terang */
 }
 
 /* ==========================================================================
@@ -43,25 +25,7 @@ body {
     color: transparent;
 }
 
-/* ========================================================================
-   GAYA KARTU BARU - EFEK "ILLUMINATED GLASS" (Gaya n8n)
-   ======================================================================== */
 
-/* Desain Kartu Final (Gaya Solid & Bersih) */
-/* Desain Kartu Final (dengan Bayangan Berwarna) */
-.card {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    /* BAYANGAN BARU: Efek glow oranye yang lembut */
-    box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.2);
-    transition: all 0.3s ease-out;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    /* BAYANGAN HOVER BARU: Efek glow menjadi lebih kuat */
-    box-shadow: 0 0 35px -5px rgba(249, 115, 22, 0.4);
-}
 /* ========================================================================
    GAYA TOMBOL (Versi Final Lengkap)
    ======================================================================== */
@@ -131,8 +95,7 @@ body {
 }
 
 
-/* ========================================================================
-   EFEK FINAL: Kilap & Perubahan Warna (Hanya untuk .btn-shiny)
+/*    EFEK FINAL: Kilap & Perubahan Warna (Hanya untuk .btn-shiny)
    ======================================================================== */
 
 /* EFEK 3: Kilap Berulang (EKSKLUSIF untuk .btn-shiny) */
@@ -350,6 +313,27 @@ body {
     100% { background-position: 400% 50%; }
 }
 
+
+/* ========================================================================
+   GAYA TOMBOL CTA JASA WEBSITE (Gaya "Ghost" Baru)
+   ======================================================================== */
+
+.btn-cta-ghost {
+    color: #374151; /* Warna teks abu gelap */
+    border: 2px solid #e5e7eb; /* Border abu-abu terang */
+    background-color: transparent;
+}
+
+.btn-cta-ghost:hover {
+    color: #FFFFFF; /* Teks menjadi putih */
+    background-color: #1F2937; /* Latar menjadi hitam/abu gelap */
+    border-color: #1F2937; /* Border menjadi hitam/abu gelap */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+
+
 /* /* ========================================================================
    GAYA UNTUK TOOLTIP PENJELASAN
    ======================================================================== */
@@ -394,4 +378,28 @@ body {
 .tooltip-container:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
+}
+
+/* =/* /* /* ========================================================================
+   GAYA FOOTER BARU DENGAN GRADASI "WARM GREY"
+   ======================================================================== */
+.footer-gradient {
+    /* Gradasi abu-abu terang ke peach/oranye pucat */
+    background: linear-gradient(to top, #FFF7F2, #F9FAFB); 
+    border-top: 1px solid #E5E7EB;
+    color: #4B5563; /* Warna teks abu-abu gelap */
+}
+
+/* Mengubah warna link di dalam footer */
+.footer-gradient a {
+    color: #374151;
+    transition: color 0.3s ease;
+}
+.footer-gradient a:hover {
+    color: #F97316; /* Warna oranye saat hover */
+}
+
+/* Mengubah warna judul di dalam footer */
+.footer-gradient h3 {
+    color: #111827; /* Warna hitam pekat */
 }
