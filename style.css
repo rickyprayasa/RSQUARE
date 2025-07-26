@@ -25,25 +25,50 @@ body {
     color: transparent;
 }
 
-=======================================================================
-   GAYA KARTU BARU - EFEK "ILLUMINATED GLASS" (Gaya n8n)
+==/* ========================================================================
+   GAYA KARTU (Final dengan Efek Illuminated Glass)
    ======================================================================== */
 
-/* Desain Kartu Final (Gaya Solid & Bersih) */
-/* Desain Kartu Final (dengan Bayangan Berwarna) */
+/* Wadah untuk efek cahaya di belakang kartu */
+.card-container::before {
+    content: '';
+    position: absolute;
+    z-index: -1; /* Posisikan di belakang kartu */
+    width: 700px;
+    height: 700px;
+    
+    /* Posisi diambil dari JavaScript */
+    left: var(--mouse-x, 50%); 
+    top: var(--mouse-y, 50%);
+    
+    /* Gradasi cahaya oranye yang besar dan lembut */
+    background: radial-gradient(circle at center, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0) 60%);
+    
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Tampilkan sorotan saat kursor masuk ke area wadah */
+.card-container:hover::before {
+    opacity: 1;
+}
+
+/* Kartu dibuat semi-transparan agar cahaya di belakang terlihat */
 .card {
-    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.7); /* Kaca semi-transparan */
+    backdrop-filter: blur(16px); /* Efek blur kaca */
     border: 1px solid #E5E7EB;
-    /* BAYANGAN BARU: Efek glow oranye yang lembut */
-    box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.2);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
     transition: all 0.3s ease-out;
 }
 
-.card:hover {
+/* Efek hover standar untuk mengangkat kartu */
+.card-container:hover .card {
     transform: translateY(-5px);
-    /* BAYANGAN HOVER BARU: Efek glow menjadi lebih kuat */
-    box-shadow: 0 0 35px -5px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
+
 /* 
 /* ========================================================================
    GAYA TOMBOL (Versi Final Lengkap)
