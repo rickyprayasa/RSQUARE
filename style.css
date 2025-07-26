@@ -25,25 +25,20 @@ body {
     color: transparent;
 }
 
-==/* ========================================================================
-   GAYA KARTU (Final dengan Efek Illuminated Glass)
+==/* =/* ========================================================================
+   GAYA KARTU FINAL (Efek Angkat & Bayangan Oranye)
    ======================================================================== */
 
 /* Wadah untuk efek cahaya di belakang kartu */
 .card-container::before {
     content: '';
     position: absolute;
-    z-index: -1; /* Posisikan di belakang kartu */
+    z-index: -1;
     width: 700px;
     height: 700px;
-    
-    /* Posisi diambil dari JavaScript */
     left: var(--mouse-x, 50%); 
     top: var(--mouse-y, 50%);
-    
-    /* Gradasi cahaya oranye yang besar dan lembut */
     background: radial-gradient(circle at center, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0) 60%);
-    
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -56,17 +51,19 @@ body {
 
 /* Kartu dibuat semi-transparan agar cahaya di belakang terlihat */
 .card {
-    background: rgba(255, 255, 255, 0.7); /* Kaca semi-transparan */
-    backdrop-filter: blur(16px); /* Efek blur kaca */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
     border: 1px solid #E5E7EB;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    /* Bayangan abu-abu lembut standar */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease-out;
 }
 
-/* Efek hover standar untuk mengangkat kartu */
+/* Efek hover untuk mengangkat kartu & mengubah bayangan menjadi oranye */
 .card-container:hover .card {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transform: translateY(-8px); /* Efek mengangkat ditambahkan kembali */
+    /* BAYANGAN BARU: Efek glow oranye yang lebih kuat */
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2);
 }
 
 /* 
