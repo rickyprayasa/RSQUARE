@@ -341,6 +341,27 @@ body {
     100% { background-position: 400% 50%; }
 }
 
+
+/* ========================================================================
+   GAYA TOMBOL CTA JASA WEBSITE (Gaya "Ghost" Baru)
+   ======================================================================== */
+
+.btn-cta-ghost {
+    color: #374151; /* Warna teks abu gelap */
+    border: 2px solid #e5e7eb; /* Border abu-abu terang */
+    background-color: transparent;
+}
+
+.btn-cta-ghost:hover {
+    color: #FFFFFF; /* Teks menjadi putih */
+    background-color: #1F2937; /* Latar menjadi hitam/abu gelap */
+    border-color: #1F2937; /* Border menjadi hitam/abu gelap */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+
+
 /* /* ========================================================================
    GAYA UNTUK TOOLTIP PENJELASAN
    ======================================================================== */
