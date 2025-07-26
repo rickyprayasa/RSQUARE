@@ -425,3 +425,52 @@ body {
 .footer-gradient h3 {
     color: #111827; /* Warna hitam pekat */
 }
+
+/* ========================================================================
+   GAYA UNTUK ANIMASI GALERI BERGERAK (MARQUEE)
+   ======================================================================== */
+
+.marquee {
+    overflow: hidden; /* Sembunyikan gambar saat di luar frame */
+    position: relative;
+    width: 100%;
+}
+.marquee-content {
+    display: flex;
+    animation-duration: 40s; /* Durasi animasi, bisa diubah */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.marquee-item {
+    flex-shrink: 0; /* Mencegah gambar menyusut */
+    margin: 0 1rem; /* Jarak antar gambar */
+    width: 300px; /* Lebar setiap gambar */
+}
+.marquee-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem; /* Sudut membulat */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: transform 0.3s ease;
+}
+.marquee-item img:hover {
+    transform: scale(1.05); /* Sedikit membesar saat disentuh */
+}
+
+/* Animasi untuk baris atas (kiri ke kanan) */
+.scroll-left {
+    animation-name: scroll-left;
+}
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Bergerak sejauh setengah lebar total */
+}
+
+/* Animasi untuk baris bawah (kanan ke kiri) */
+.scroll-right {
+    animation-name: scroll-right;
+}
+@keyframes scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
