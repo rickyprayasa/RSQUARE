@@ -409,7 +409,7 @@ body {
    GAYA FOOTER BARU DENGAN LATAR GELOMBANG
    ======================================================================== */
 .footer-wave {
-    background-image: url('../images/wave-background.svg'); /* Path ke gambar SVG Anda */
+    background-image: url('wave-background.svg'); /* Path ke gambar SVG Anda */
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
