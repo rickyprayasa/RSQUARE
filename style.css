@@ -11,9 +11,8 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #1F2937;
     overflow-x: hidden;
-    background: linear-gradient(-45deg, #ffffff, #fff7f2, #f9fafb, #fff7f2);
-    background-size: 400% 400%;
-    animation: gradientAnimation 30s ease infinite;
+    /* Gradasi abu-abu terang ke peach/oranye pucat */
+    background: linear-gradient(to top, #FFF7F2, #F9FAFB); 
 }
 
 @keyframes gradientAnimation {
