@@ -25,7 +25,26 @@ body {
     color: transparent;
 }
 
+=======================================================================
+   GAYA KARTU BARU - EFEK "ILLUMINATED GLASS" (Gaya n8n)
+   ======================================================================== */
 
+/* Desain Kartu Final (Gaya Solid & Bersih) */
+/* Desain Kartu Final (dengan Bayangan Berwarna) */
+.card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    /* BAYANGAN BARU: Efek glow oranye yang lembut */
+    box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.2);
+    transition: all 0.3s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    /* BAYANGAN HOVER BARU: Efek glow menjadi lebih kuat */
+    box-shadow: 0 0 35px -5px rgba(249, 115, 22, 0.4);
+}
+/* 
 /* ========================================================================
    GAYA TOMBOL (Versi Final Lengkap)
    ======================================================================== */
