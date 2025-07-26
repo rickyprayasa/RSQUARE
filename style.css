@@ -25,15 +25,15 @@ body {
     color: transparent;
 }
 
-/* ========================================================================
-   GAYA KARTU FINAL (Efek Angkat & Bayangan Oranye)
+/* /* ========================================================================
+   GAYA KARTU FINAL (Efek Angkat & Bayangan Oranye - Diperbaiki)
    ======================================================================== */
 
 /* Wadah untuk efek cahaya di belakang kartu */
 .card-container::before {
     content: '';
     position: absolute;
-    z-index: -1;
+    z-index: 0; /* Posisikan di belakang kartu */
     width: 700px;
     height: 700px;
     left: var(--mouse-x, 50%); 
@@ -51,20 +51,23 @@ body {
 
 /* Kartu dibuat semi-transparan agar cahaya di belakang terlihat */
 .card {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8); /* Dibuat sedikit lebih solid */
     backdrop-filter: blur(16px);
     border: 1px solid #E5E7EB;
-    /* Bayangan abu-abu lembut standar */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease-out;
+    
+    /* INI KUNCI PERBAIKANNYA */
+    position: relative; /* Angkat kartu di atas pseudo-element */
+    z-index: 1;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 /* Efek hover untuk mengangkat kartu & mengubah bayangan menjadi oranye */
 .card-container:hover .card {
-    transform: translateY(-8px); /* Efek mengangkat ditambahkan kembali */
-    /* BAYANGAN BARU: Efek glow oranye yang lebih kuat */
-    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2);
+    transform: translateY(-8px); /* Efek mengangkat */
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2); /* Bayangan oranye */
 }
+
 
 
 /* 
