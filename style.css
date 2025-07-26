@@ -405,12 +405,24 @@ body {
     opacity: 1;
 }
 
-/* ========================================================================
-   GAYA FOOTER BARU DENGAN LATAR GELOMBANG
+/* =/* ========================================================================
+   GAYA FOOTER BARU DENGAN LATAR GRADASI
    ======================================================================== */
-.footer-wave {
-    background-image: url('wave-background.svg'); /* Path ke gambar SVG Anda */
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
+.footer-gradient {
+    background: linear-gradient(to top, #111827, #1F2937); /* Gradasi abu-abu gelap */
+    color: #9CA3AF; /* Warna teks abu-abu terang */
+}
+
+/* Mengubah warna link di dalam footer */
+.footer-gradient a {
+    color: #D1D5DB;
+    transition: color 0.3s ease;
+}
+.footer-gradient a:hover {
+    color: #F97316; /* Warna oranye saat hover */
+}
+
+/* Mengubah warna judul di dalam footer */
+.footer-gradient h3 {
+    color: #FFFFFF;
 }
