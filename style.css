@@ -405,17 +405,18 @@ body {
     opacity: 1;
 }
 
-/* =/* ========================================================================
-   GAYA FOOTER BARU DENGAN LATAR GRADASI
+/* =/* /* ========================================================================
+   GAYA FOOTER BARU DENGAN GRADASI ABU-ABU
    ======================================================================== */
 .footer-gradient {
-    background: linear-gradient(to top, #111827, #1F2937); /* Gradasi abu-abu gelap */
-    color: #9CA3AF; /* Warna teks abu-abu terang */
+    background: linear-gradient(to top, #FFFFFF, #F3F4F6); /* Gradasi putih ke abu-abu sangat terang */
+    border-top: 1px solid #E5E7EB; /* Garis batas tipis */
+    color: #4B5563; /* Warna teks abu-abu gelap */
 }
 
 /* Mengubah warna link di dalam footer */
 .footer-gradient a {
-    color: #D1D5DB;
+    color: #374151;
     transition: color 0.3s ease;
 }
 .footer-gradient a:hover {
@@ -424,5 +425,5 @@ body {
 
 /* Mengubah warna judul di dalam footer */
 .footer-gradient h3 {
-    color: #FFFFFF;
+    color: #111827; /* Warna hitam pekat */
 }
