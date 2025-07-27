@@ -425,3 +425,88 @@ body {
 .footer-gradient h3 {
     color: #111827; /* Warna hitam pekat */
 }
+
+/* ========================================================================
+   GAYA UNTUK ANIMASI GALERI BERGERAK (MARQUEE)
+   ======================================================================== */
+
+.marquee {
+    overflow: hidden; /* Sembunyikan gambar saat di luar frame */
+    position: relative;
+    width: 100%;
+}
+
+/* Efek memudar di ujung kiri dan kanan */
+.marquee::before,
+.marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10rem; /* Lebar area pudar */
+    z-index: 2;
+    pointer-events: none;
+}
+.marquee::before {
+    left: 0;
+    background: linear-gradient(to right, #F9FAFB, transparent);
+}
+.marquee::after {
+    right: 0;
+    background: linear-gradient(to left, #F9FAFB, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.marquee-item {
+    flex-shrink: 0;
+    margin: 0 0.5rem; /* Jarak antar gambar di mobile (8px) */
+    width: 180px; /* Lebar gambar di mobile (LEBIH KECIL) */
+    height: 135px; /* Tinggi gambar di mobile (rasio 4:3) */
+}
+
+/* Aturan HANYA untuk layar besar (desktop) */
+@media (min-width: 768px) {
+    .marquee-item {
+        margin: 0 1rem; /* Jarak antar gambar di desktop (16px) */
+        width: 320px; /* Lebar gambar di desktop (LEBIH BESAR) */
+        height: 240px; /* Tinggi gambar di desktop */
+    }
+}
+
+
+
+.marquee-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar pas tanpa distorsi */
+    border-radius: 0.75rem; /* Sudut membulat */
+    border: 1px solid #e5e7eb;
+}
+
+/* ========================================================================
+   ANIMASI GALERI BERGERAK (Versi Seamless Loop)
+   ======================================================================== */
+
+/* Animasi untuk baris atas (kiri ke kanan) */
+.scroll-left {
+    animation: scroll-left 20s linear infinite;
+}
+@keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Animasi untuk baris bawah (kanan ke kiri) */
+.scroll-right {
+    animation: scroll-right 20s linear infinite;
+}
+@keyframes scroll-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
