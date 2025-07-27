@@ -458,10 +458,11 @@ body {
 
 .marquee-content {
     display: flex;
-    animation-duration: 10s; /* Durasi animasi, bisa diubah */
+    animation-duration: 50s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
+
 .marquee-item {
     flex-shrink: 0;
     margin: 0 0.5rem; /* Jarak antar gambar di mobile (8px) */
