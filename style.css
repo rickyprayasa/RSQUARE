@@ -489,20 +489,24 @@ body {
     border: 1px solid #e5e7eb;
 }
 
+/* ========================================================================
+   ANIMASI GALERI BERGERAK (Versi Seamless Loop)
+   ======================================================================== */
+
 /* Animasi untuk baris atas (kiri ke kanan) */
 .scroll-left {
-    animation-name: scroll-left;
+    animation: scroll-left 50s linear infinite;
 }
 @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
 /* Animasi untuk baris bawah (kanan ke kiri) */
 .scroll-right {
-    animation-name: scroll-right;
+    animation: scroll-right 50s linear infinite;
 }
 @keyframes scroll-right {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
 }
