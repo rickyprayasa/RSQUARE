@@ -458,7 +458,7 @@ body {
 
 .marquee-content {
     display: flex;
-    animation-duration: 50s;
+    animation-duration: 10s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
@@ -495,7 +495,7 @@ body {
 
 /* Animasi untuk baris atas (kiri ke kanan) */
 .scroll-left {
-    animation: scroll-left 50s linear infinite;
+    animation: scroll-left 10s linear infinite;
 }
 @keyframes scroll-left {
     from { transform: translateX(0); }
@@ -504,7 +504,7 @@ body {
 
 /* Animasi untuk baris bawah (kanan ke kiri) */
 .scroll-right {
-    animation: scroll-right 50s linear infinite;
+    animation: scroll-right 10s linear infinite;
 }
 @keyframes scroll-right {
     from { transform: translateX(-50%); }
