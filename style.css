@@ -624,3 +624,35 @@ body {
   font-weight: 600;
   display: inline-block;
 }
+.section-black {
+  background: linear-gradient(to bottom, #111827, #1f2937);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-black h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.section-black p {
+  font-size: 1rem;
+  color: #d1d5db;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+
+.btn-cta {
+  background-color: #ff6a00;
+  padding: 12px 24px;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: #e55a00;
+}
