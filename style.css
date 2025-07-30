@@ -667,3 +667,27 @@ body {
     box-shadow: 0 15px 40px -15px rgba(234, 88, 12, 0.2);
     border: 1px solid #F3F4F6; /* Garis tepi yang sangat tipis */
 }
+
+/* ========================================================================
+   ANIMASI UNTUK ILUSTRASI HEADER (FADE IN DARI KIRI)
+   ======================================================================== */
+
+/* Mendefinisikan langkah-langkah animasi */
+@keyframes fadeInFromLeft {
+  /* Kondisi awal: gambar bergeser sedikit ke kiri dan transparan total */
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  
+  /* Kondisi akhir: gambar di posisi normal dengan transparansi 20% */
+  100% {
+    transform: translateX(0);
+    opacity: 0.2; /* Sesuaikan dengan opacity di HTML jika berbeda */
+  }
+}
+
+/* Kelas yang akan kita panggil di HTML untuk menerapkan animasi */
+.animate-fade-in-left {
+  animation: fadeInFromLeft 1.5s ease-out forwards;
+}
