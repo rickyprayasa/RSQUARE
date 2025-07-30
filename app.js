@@ -16,24 +16,23 @@ if (menuToggle && mobileMenu) {
 }
 
    // ===== 2. KODE UNTUK ANIMASI ON-SCROLL (Fade In & Staggered) =====
-    const animatedElements = document.querySelectorAll('.animated-section, .timeline-item');
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Cek jika elemen adalah bagian dari timeline untuk delay berurutan
-                    if (entry.target.classList.contains('timeline-item')) {
-                        entry.target.style.transitionDelay = `${index * 150}ms`;
-                    }
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        animatedElements.forEach(element => {
-            observer.observe(element);
+// ===== KODE UNTUK ANIMASI ON-SCROLL (VERSI FINAL YANG BERSIH) =====
+const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+
+if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
         });
-    }
+    }, { threshold: 0.1 });
+
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
+    });
+}
     
     // ===== 3. FUNGSI UNTUK TOMBOL SCROLL TO TOP (STABIL) =====
     const scrollTopBtn = document.getElementById('scrollTopBtn');
