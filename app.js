@@ -103,3 +103,23 @@ if (menuToggle && mobileMenu) {
     }
 
 });
+
+    // Fungsi untuk animasi fade-in
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Hentikan pengamatan setelah animasi berjalan
+            }
+        });
+    }, {
+        threshold: 0.1 // Memicu animasi saat 10% elemen terlihat
+    });
+
+    // Pilih semua elemen yang ingin dianimasikan
+    const elementsToAnimate = document.querySelectorAll('.fade-in-card');
+    elementsToAnimate.forEach(el => {
+        observer.observe(el);
+    });
+
+});
