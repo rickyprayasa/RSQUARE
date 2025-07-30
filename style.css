@@ -658,11 +658,12 @@ body {
 }
 
 /* ========================================================================
-   GAYA UNTUK FRAME CTA & MISI GABUNGAN
+   GAYA UNTUK FRAME CTA & MISI (VERSI TERANG)
    ======================================================================== */
-.combined-cta-frame {
-    /* Gradasi gelap yang elegan dari abu-abu ke hitam pekat */
-    background: linear-gradient(135deg, #374151, #111827);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
-    border: 1px solid #4B5563; /* Garis tepi tipis agar terlihat premium */
+.combined-cta-frame-light {
+    /* Gradasi lembut dari putih ke oranye sangat pucat */
+    background: linear-gradient(135deg, #FFFFFF, #FFF7F2);
+    /* Bayangan lembut berwarna oranye agar menonjol */
+    box-shadow: 0 15px 40px -15px rgba(234, 88, 12, 0.2);
+    border: 1px solid #F3F4F6; /* Garis tepi yang sangat tipis */
 }
