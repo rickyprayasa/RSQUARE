@@ -511,3 +511,159 @@ body {
     from { transform: translateX(-50%); }
     to { transform: translateX(0); }
 }
+
+/* ========================================================================
+   GAYA BARU UNTUK KARTU TEMPLATE UNGGULAN
+   ======================================================================== */
+.featured-card {
+    position: relative;
+    overflow: hidden;
+    height: 350px; /* Anda bisa menyesuaikan tinggi kartu di sini */
+    border-radius: 1rem; /* rounded-xl */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: all 0.4s ease-out;
+}
+
+.featured-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.featured-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-out;
+}
+
+.featured-card:hover .featured-card-bg {
+    transform: scale(1.1); /* Efek zoom pada gambar saat hover */
+}
+
+/* Lapisan gradasi gelap di atas gambar */
+.featured-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+/* Konten teks di dalam kartu */
+.featured-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem; /* p-6 */
+    color: white;
+    transform: translateY(20px); /* Mulai dari bawah untuk animasi */
+    opacity: 0; /* Mulai dari transparan */
+    transition: all 0.4s ease-out;
+}
+
+.featured-card:hover .featured-card-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.card-template {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(255, 122, 0, 0.25); /* shadow oranye */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-template:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(255, 122, 0, 0.4);
+}
+
+.card-template img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: top;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.card-template .content {
+  padding: 20px;
+}
+
+.card-template h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.card-template p {
+  font-size: 0.95rem;
+  color: #4B5563;
+  margin-bottom: 16px;
+}
+
+.card-template .label {
+  font-size: 0.8rem;
+  color: #2563EB;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.card-template .btn {
+  background-color: #ff6a00;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+.section-black {
+  background: linear-gradient(to bottom, #111827, #1f2937);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-black h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.section-black p {
+  font-size: 1rem;
+  color: #d1d5db;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+
+.btn-cta {
+  background-color: #ff6a00;
+  padding: 12px 24px;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: #e55a00;
+}
+
+/* ========================================================================
+   GAYA UNTUK FRAME CTA & MISI (VERSI TERANG)
+   ======================================================================== */
+.combined-cta-frame-light {
+    /* Gradasi lembut dari putih ke oranye sangat pucat */
+    background: linear-gradient(135deg, #FFFFFF, #FFF7F2);
+    /* Bayangan lembut berwarna oranye agar menonjol */
+    box-shadow: 0 15px 40px -15px rgba(234, 88, 12, 0.2);
+    border: 1px solid #F3F4F6; /* Garis tepi yang sangat tipis */
+}
