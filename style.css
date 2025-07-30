@@ -693,23 +693,26 @@ body {
 }
 
 /* ========================================================================
-   ANIMASI FADE-IN UNTUK KARTU KEUNGGULAN
+   SISTEM ANIMASI ON-SCROLL UNIVERSAL
    ======================================================================== */
 
-/* Kondisi awal kartu: transparan dan sedikit di bawah posisi aslinya */
-.fade-in-card {
+/* Kondisi awal untuk semua elemen yang akan dianimasikan */
+.animate-on-scroll {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Kondisi akhir kartu (setelah kelas .is-visible ditambahkan oleh JavaScript) */
-.fade-in-card.is-visible {
+/* Kondisi akhir setelah elemen terlihat */
+.animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Memberi jeda animasi (staggered effect) untuk setiap kartu */
-.fade-in-card:nth-child(2) { transition-delay: 0.15s; }
-.fade-in-card:nth-child(3) { transition-delay: 0.3s; }
-.fade-in-card:nth-child(4) { transition-delay: 0.45s; }
+/* Memberi jeda animasi (staggered effect) KHUSUS untuk item 
+   di dalam div yang memiliki kelas .stagger-container. 
+   Ini kita pakai untuk timeline zig-zag.
+*/
+.stagger-container .animate-on-scroll:nth-child(2) { transition-delay: 0.15s; }
+.stagger-container .animate-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+.stagger-container .animate-on-scroll:nth-child(4) { transition-delay: 0.45s; }
