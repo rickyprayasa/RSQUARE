@@ -656,3 +656,13 @@ body {
 .btn-cta:hover {
   background-color: #e55a00;
 }
+
+/* ========================================================================
+   GAYA UNTUK FRAME CTA & MISI GABUNGAN
+   ======================================================================== */
+.combined-cta-frame {
+    /* Gradasi gelap yang elegan dari abu-abu ke hitam pekat */
+    background: linear-gradient(135deg, #374151, #111827);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+    border: 1px solid #4B5563; /* Garis tepi tipis agar terlihat premium */
+}
