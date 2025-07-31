@@ -36,7 +36,7 @@ body {
     border: 1px solid #E5E7EB;
     /* BAYANGAN BARU: Efek glow oranye yang lembut */
     box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.2);
-    transition: all 0.3s ease-out;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 .card:hover {
@@ -45,7 +45,30 @@ body {
     box-shadow: 0 0 35px -5px rgba(249, 115, 22, 0.4);
 }
 
+/* ========================================================================
+   SISTEM ANIMASI ON-SCROLL UNIVERSAL
+   ======================================================================== */
 
+/* Kondisi awal untuk semua elemen yang akan dianimasikan */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Kondisi akhir setelah elemen terlihat */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Memberi jeda animasi (staggered effect) KHUSUS untuk item 
+   di dalam div yang memiliki kelas .stagger-container. 
+   Ini kita pakai untuk timeline zig-zag.
+*/
+.stagger-container .animate-on-scroll:nth-child(2) { transition-delay: 0.15s; }
+.stagger-container .animate-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+.stagger-container .animate-on-scroll:nth-child(4) { transition-delay: 0.45s; }
 
 /* 
 /* ========================================================================
@@ -667,3 +690,29 @@ body {
     box-shadow: 0 15px 40px -15px rgba(234, 88, 12, 0.2);
     border: 1px solid #F3F4F6; /* Garis tepi yang sangat tipis */
 }
+
+/* ========================================================================
+   ANIMASI UNTUK ILUSTRASI HEADER (FADE IN DARI KIRI)
+   ======================================================================== */
+
+/* Mendefinisikan langkah-langkah animasi */
+@keyframes fadeInFromLeft {
+  /* Kondisi awal: gambar bergeser sedikit ke kiri dan transparan total */
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  
+  /* Kondisi akhir: gambar di posisi normal dengan transparansi 20% */
+  100% {
+    transform: translateX(0);
+    opacity: 0.2; /* Sesuaikan dengan opacity di HTML jika berbeda */
+  }
+}
+
+/* Kelas yang akan kita panggil di HTML untuk menerapkan animasi */
+.animate-fade-in-left {
+  animation: fadeInFromLeft 1.5s ease-out forwards;
+}
+
+
