@@ -108,15 +108,15 @@ body {
 
 /* Tombol Hitam (Dark) */
 .btn-dark {
-    background-color: #1F2937;
+    background-color: #EA580C;
     color: #FFFFFF;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
 }
 .btn-dark:hover {
-    background-color: #374151;
+    background-color: #F97316;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
 }
 
 
