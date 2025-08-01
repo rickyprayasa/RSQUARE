@@ -715,4 +715,33 @@ body {
   animation: fadeInFromLeft 1.5s ease-out forwards;
 }
 
+/* ======================================================
+   EFEK GRADASI BERGERAK UNTUK LINK
+   ====================================================== */
+.link-animated-gradient {
+    /* Gradasi warna dari kuning cerah ke putih, lalu kembali ke kuning */
+    background-image: linear-gradient(
+        90deg, 
+        #fde047, /* Kuning cerah */
+        #ffffff, /* Putih */
+        #fde047  /* Kuning cerah lagi */
+    );
+    background-size: 200% 100%; /* Buat gradasi 2x lebih lebar dari teksnya */
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Teks dibuat transparan agar gradasi terlihat */
+    animation: move-gradient 3s linear infinite; /* Panggil animasi bergerak */
+    font-weight: 700; /* Dibuat tebal agar lebih terlihat */
+    text-transform: uppercase;
+}
+
+@keyframes move-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: -200% 50%; /* Geser posisi background gradasi */
+    }
+}
 
