@@ -61,6 +61,9 @@ src="https://www.facebook.com/tr?id=2279334852517386&ev=PageView&noscript=1"
     <div id="announcement-bar" class="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-3 px-6 text-center text-sm font-medium shadow-lg">
         <p>
             🔥 Kode Voucher Bulan Ini: <span class="font-bold tracking-wider">JULYESS</span> untuk mendapatkan Diskon semua Templates
+         <a href="templates.html" class="link-animated-gradient">
+            Klaim Sekarang &rarr;
+        </a>           
         </p>
     </div>
     </div>
@@ -472,7 +475,7 @@ src="https://www.facebook.com/tr?id=2279334852517386&ev=PageView&noscript=1"
 <section class="py-16 px-6 animate-on-scroll">
     <div class="container mx-auto">
         <a href="jasa-website.html" class="block max-w-2xl mx-auto">
-            <div class="btn-cta-service group relative p-6 text-center rounded-2xl transition-all duration-300 ease-in-out">
+            <div class="btn-cta-service group relative p-6 text-center rounded-2xl transition-all duration-300 ease-in-out" onclick="fbq('track', 'InitiateCheckout');">
                 <div class="relative z-10">
                     <h3 class="text-2xl font-bold text-white">Ingin Punya Website Profesional Seperti Ini?</h3>
                     <p class="text-white/80 mt-2">Klik di sini untuk melihat penawaran jasa kami.</p>
@@ -516,7 +519,7 @@ src="https://www.facebook.com/tr?id=2279334852517386&ev=PageView&noscript=1"
                 <li><a href="index.html" class="text-gray-600 hover:text-orange-600 transition">Beranda</a></li>
                 <li><a href="templates.html" class="text-gray-600 hover:text-orange-600 transition">Templates</a></li>
                 <li><a href="kontak.html" class="text-gray-600 hover:text-orange-600 transition">Kontak</a></li>
-                <li><a href="feedback.html" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-orange-600 transition">Kirim Masukan</a></li>
+                <li><a href="feedback.html" class="text-gray-600 hover:text-orange-600 transition">Kirim Masukan</a></li>
             </ul>
             </ul>
         </div>
@@ -532,46 +535,64 @@ src="https://www.facebook.com/tr?id=2279334852517386&ev=PageView&noscript=1"
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
 </footer>
+
+   <button id="scrollTopBtn" title="Kembali ke atas">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
 <!-- Library Swiper -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <!-- Library YouTube API -->
 <script src="https://www.youtube.com/iframe_api"></script>
 
-<script>
-  const players = {};
+   <script>
+        // Inisialisasi untuk Swiper Video YouTube
+        const videoSwiper = new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            on: {
+                slideChange: function () {
+                    // Coba pause semua video YouTube saat slide diganti
+                    const players = window.ytPlayers || {};
+                    for (const id in players) {
+                        if (players[id] && typeof players[id].pauseVideo === 'function') {
+                            players[id].pauseVideo();
+                        }
+                    }
+                }
+            }
+        });
 
-  // Fungsi YouTube API setelah siap
-  function onYouTubeIframeAPIReady() {
-    const iframes = document.querySelectorAll('.swiper-slide iframe');
-    iframes.forEach((iframe, index) => {
-      const playerId = `yt-player-${index}`;
-      iframe.id = playerId;
-      players[playerId] = new YT.Player(playerId);
-    });
-  }
+        // Inisialisasi untuk Swiper Lainnya (jika ada, misal .swiper-container)
+        const anotherSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+        });
 
-  // Inisialisasi Swiper
-  const swiper = new Swiper('.swiper', {
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
-
-  // Saat slide diganti, pause semua video
-  swiper.on('slideChange', function () {
-    for (const id in players) {
-      if (players[id] && typeof players[id].pauseVideo === 'function') {
-        players[id].pauseVideo();
-      }
-    }
-  });
-</script>
+        // Fungsi YouTube API setelah siap
+        function onYouTubeIframeAPIReady() {
+            window.ytPlayers = {};
+            const iframes = document.querySelectorAll('.swiper-slide iframe');
+            iframes.forEach((iframe, index) => {
+                const playerId = `yt-player-${index}`;
+                iframe.id = playerId;
+                window.ytPlayers[playerId] = new YT.Player(playerId);
+            });
+        }
+    </script>
     
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -597,24 +618,7 @@ src="https://www.facebook.com/tr?id=2279334852517386&ev=PageView&noscript=1"
     });
 </script>
     
-    <button id="scrollTopBtn" title="Kembali ke atas">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
-    </button>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  const swiper = new Swiper('.swiper-container', {
-    loop: true,
-    autoplay: {
-      delay: 2500, // Jeda 2.5 detik antar slide
-      disableOnInteraction: false,
-    },
-    effect: 'fade', // Efek transisi fade
-    fadeEffect: {
-      crossFade: true
-    },
-  });
-</script>
-
+ 
 <script src="app.js"></script>
     
 </body>
