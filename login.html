@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - RSQUARE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+
+<div class="sticky top-0 z-50">
+    <nav class="px-6 py-4 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="photos/RSQUARE-LOGO.png" alt="RSQUARE Logo" class="h-10">
+                <span class="text-3xl font-bold gradient-text">RSQUARE</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-orange-600 font-medium transition">Beranda</a>
+                <a href="templates.html" class="text-gray-600 hover:text-orange-600 font-medium transition">Templates</a>
+                <a href="kontak.html" class="text-gray-600 hover:text-orange-600 font-medium transition">Kontak</a>
+            </div>
+        </div>
+    </nav>
+    <div id="announcement-bar" class="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-3 px-6 text-center text-sm font-medium shadow-lg">
+        <p>Halaman ini hanya untuk Administrator.</p>
+    </div>
+</div>
+
+<main class="py-20 px-6 animate-on-scroll">
+    <div class="container mx-auto max-w-lg">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text pb-2">Admin Area</h1>
+            <p class="text-lg text-gray-600">Silakan masuk untuk mengelola konten website.</p>
+        </header>
+        <div class="card p-8 md:p-10 rounded-2xl">
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                    <input type="text" id="username" name="username" required class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password" id="password" name="password" required class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <button type="submit" class="btn-primary w-full py-3 rounded-lg font-semibold text-lg text-white">
+                        🔑 Masuk
+                    </button>
+                </div>
+                <p id="errorMessage" class="text-red-500 text-center text-sm pt-2"></p>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer class="pt-20 pb-12 px-6 footer-gradient">
+    <div class="container mx-auto text-center text-gray-500 pt-8 border-t border-gray-200">
+        <p>© 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
+    </div>
+</footer>
+
+<script src="app.js"></script> 
+
+<script>
+    // Menunggu seluruh elemen HTML dimuat sebelum menjalankan script
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Cari elemen form login berdasarkan ID-nya
+        const loginForm = document.getElementById('loginForm');
+
+        // Tambahkan 'event listener' yang akan berjalan saat tombol 'submit' (Login) ditekan
+        loginForm.addEventListener('submit', function(event) {
+            // Mencegah halaman me-refresh dirinya sendiri saat form di-submit
+            event.preventDefault();
+
+            // --- Atur Username & Password Admin Di Sini ---
+            const adminUsername = 'rsquareidea';
+            const adminPassword = 'Ultimate704554'; // Ganti dengan password yang Anda inginkan
+
+            // Ambil nilai yang diketik pengguna dari input field
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+
+            // Cari elemen untuk menampilkan pesan error
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Logika Pengecekan
+            if (usernameInput === adminUsername && passwordInput === adminPassword) {
+                // Jika BERHASIL:
+                console.log('Login berhasil!');
+                errorMessage.textContent = ''; // Kosongkan pesan error
+                
+                // Simpan status login di browser agar halaman admin tahu kita sudah login
+                sessionStorage.setItem('isAdminLoggedIn', 'true');
+                
+                // Arahkan (redirect) pengguna ke halaman admin
+                window.location.href = 'admin.html';
+
+            } else {
+                // Jika GAGAL:
+                console.log('Login gagal: username atau password salah.');
+                
+                // Tampilkan pesan error di halaman
+                errorMessage.textContent = 'Username atau password yang Anda masukkan salah!';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
