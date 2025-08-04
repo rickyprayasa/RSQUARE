@@ -1,0 +1,202 @@
+[
+  {
+    "id": "goal-planner",
+    "judul": "Goal Planner",
+    "harga": 35000,
+    "deskripsi_singkat": "Rencanakan dan lacak semua tujuan Anda dengan dasbor interaktif, rencana bulanan, daftar tugas prioritas, dan kalender cerdas.",
+    "gambar_preview": "photos/goal-planer/Dashboard Goal Planner.png",
+    "detail": {
+      "gambar_utama": "photos/goal-planer/Dashboard Goal Planner.png",
+      "deskripsi_lengkap": "Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template Goal Planner untuk mengubah mimpi menjadi rencana aksi yang terukur.",
+      "link_preview_detail": "templates/preview-detail.html?product=goal-planner",
+      "link_youtube": "https://www.youtube.com/embed/OWwID0f8vSE?enablejsapi=1",
+      "link_pembelian": [
+        { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/2xr97n07n0p1" },
+        { "platform": "KaryaKarsa", "url": "https://karyakarsa.com/rsquare/template-goal-planner" }
+      ],
+      "galeri": [
+        {
+          "gambar": "photos/goal-planer/Dashboard Goal Planner.png",
+          "judul": "🎯 Dashboard",
+          "deskripsi": "Ini adalah layar utama tempat Anda memulai hari. Dapatkan gambaran besar dari semua tujuan, progres, dan tugas terpenting Anda dalam satu halaman yang dinamis dan interaktif.<br><strong class='font-bold text-gray-800'>🌟 Laporan Bulanan Cerdas:</strong> Pilih Bulan dan Tahun, dan saksikan seluruh dashboard berubah untuk menampilkan fokus aksi dan performa Anda khusus untuk periode tersebut.<br><strong class='font-bold text-gray-800'>📊 Kartu Progres Dinamis:</strong> Pantau progres keseluruhan dari setiap tujuan utama yang sedang Anda kerjakan di bulan terpilih.<br><strong class='font-bold text-gray-800'>⚡Tugas Prioritas Otomatis:</strong> Daftar tugas harian paling mendesak akan muncul secara otomatis di sini."
+        },
+        {
+          "gambar": "photos/goal-planer/list.jpeg",
+          "judul": "🥅 Input Tujuan Utama",
+          "deskripsi": "Di sinilah Anda meletakkan fondasi kesuksesan Anda dengan mendefinisikan mimpi dan tujuan jangka panjang secara jelas.<br><strong class='font-bold text-gray-800'>🔥 ID Tujuan Otomatis:</strong> Cukup pilih kategori, dan sistem akan membuatkan ID unik untuk setiap tujuan Anda.<br><strong class='font-bold text-gray-800'>✨ Kutipan Inspiratif Harian:</strong> Dapatkan suntikan motivasi baru setiap pagi dari kutipan yang berganti secara otomatis.<br><strong class='font-bold text-gray-800'>⛓️ Terpusat & Terstruktur:</strong> Semua tujuan besar Anda tersimpan rapi di satu tempat."
+        },
+        {
+          "gambar": "photos/goal-planer/review.jpeg",
+          "judul": "📝 Rencana & Review Bulanan",
+          "deskripsi": "Sheet ini adalah jantung dari strategi Anda. Terjemahkan tujuan besar menjadi target-target bulanan yang konkret, lalu lakukan review mendalam untuk belajar dan berkembang.<br><strong class='font-bold text-gray-800'>📕 Sistem Blok Bulanan:</strong> Desain 'jurnal panjang' yang intuitif untuk melihat histori dan rencana dari bulan ke bulan.<br><strong class='font-bold text-gray-800'>🗂️ Kartu Review Terstruktur:</strong> Fasilitasi refleksi dengan tiga area khusus: capaian, tantangan, dan prioritas.<br><strong class='font-bold text-gray-800'>⏳ Widget Countdown Cerdas:</strong> Hitung mundur yang dinamis dan sadar waktu."
+        },
+        {
+          "gambar": "photos/goal-planer/tugas-prioritas.jpeg",
+          "judul": "📋 Tugas Prioritas",
+          "deskripsi": "Kelola semua tugas harian Anda dalam satu daftar yang simpel, bersih, dan efektif.<br><strong class='font-bold text-gray-800'>📊 Dashboard Mini Otomatis:</strong> Progress bar dan pesan motivasi cerdas akan ter-update secara real-time.<br><strong class='font-bold text-gray-800'>💥 Prioritas & Deadline:</strong> Atur prioritas (Tinggi, Sedang, Rendah) dan batas waktu untuk setiap tugas.<br><strong class='font-bold text-gray-800'>⌨️ Terintegrasi Penuh:</strong> Terhubung langsung dengan Dashboard utama dan Kalender."
+        },
+        {
+          "gambar": "photos/goal-planer/kalender.jpeg",
+          "judul": "🗓️ Kalender",
+          "deskripsi": "Lihat jadwal dan deadline tugas Anda dalam format kalender bulanan yang bersih. Bukan hanya kalender biasa, ia dilengkapi dengan 'Asisten Cerdas' pribadi Anda.<br><strong class='font-bold text-gray-800'>🤖 Asisten Pengingat Cerdas:</strong> Sebuah pesan otomatis di atas kalender yang akan mengingatkan Anda tugas paling penting.<br><strong class='font-bold text-gray-800'>🎨 Desain Visual Dinamis:</strong> Tanggal dari bulan lain akan otomatis meredup, membantu mata Anda untuk fokus."
+        }
+      ]
+    }
+  },
+  {
+    "id": "invoice-maker",
+    "judul": "Invoice Maker",
+    "harga": 0,
+    "deskripsi_singkat": "Buat faktur profesional secara otomatis. Cukup masukkan data klien dan item, lalu simpan sebagai PDF langsung ke Google Drive Anda.",
+    "gambar_preview": "photos/Invoice-maker/Invoice.png",
+    "detail": {
+      "gambar_utama": "photos/Invoice-maker/Invoice.png",
+      "deskripsi_lengkap": "Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template Invoice Maker gratis ini.",
+      "link_preview_detail": "templates/preview-detail.html?product=invoice-maker",
+      "link_youtube": "https://www.youtube.com/embed/2nptWANixos?enablejsapi=1",
+      "link_pembelian": [
+        { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/rqrl1zr2jqn0" },
+        { "platform": "KaryaKarsa", "url": "https://karyakarsa.com/rsquare/racikan-jamu-invoice" }
+      ],
+      "galeri": [
+        {
+          "gambar": "photos/Invoice-maker/Invoice-Input.png",
+          "judul": "📝 INPUT",
+          "deskripsi": "Di sinilah Anda memasukkan semua data yang diperlukan untuk membuat faktur secara otomatis.<br><strong>Informasi Klien & Perusahaan</strong> 🏢: Masukkan detail klien dan informasi perusahaan Anda.<br><strong>Detail Item/Jasa</strong> 🛍️: Tuliskan semua item atau jasa yang dibeli klien.<br><strong>Pengaturan Faktur</strong> ⚙️: Atur nomor faktur, tanggal, dan ketentuan pembayaran."
+        },
+        {
+          "gambar": "photos/Invoice-maker/Invoice.png",
+          "judul": "🧾 INVOICE",
+          "deskripsi": "Sheet ini secara otomatis akan menghasilkan faktur yang rapi dan profesional berdasarkan data dari sheet 'INPUT'.<br><strong>Tampilan Profesional</strong> ✨: Faktur yang siap cetak atau dikirim, lengkap dengan logo.<br><strong>Rincian Otomatis</strong> 🤖: Semua detail pesanan dan total biaya akan terhitung secara otomatis.<br><strong>Siap Kirim</strong> 📤: Cukup klik menu '<b>Invoice Tool</b>' lalu '<b>Simpan Invoice</b>' maka PDF akan tersimpan otomatis."
+        }
+      ]
+    }
+  },
+  {
+    "id": "perencanaan-acara",
+    "judul": "Perencanaan Anggaran Acara",
+    "harga": 25000,
+    "deskripsi_singkat": "Kelola semua aspek keuangan acara Anda, mulai dari anggaran, vendor, hingga jadwal pembayaran dalam satu dasbor terpusat.",
+    "gambar_preview": "photos/anggaran-acara/dashboard.jpeg",
+    "detail": {
+      "gambar_utama": "photos/anggaran-acara/dashboard.jpeg",
+      "deskripsi_lengkap": "Pusat kendali acara Anda, tempat di mana Anda bisa memantau semua metrik penting dalam sekejap untuk membuat keputusan yang lebih baik.",
+      "link_preview_detail": "templates/preview-detail.html?product=perencanaan-acara",
+      "link_youtube": "https://www.youtube.com/embed/uk8scHNKWz4?enablejsapi=1",
+      "link_pembelian": [
+        { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/kl0gk33q81zd" },
+        { "platform": "KaryaKarsa", "url": "https://karyakarsa.com/rsquare/template-perencanaan-anggaran-acara-v10" }
+      ],
+      "galeri": [
+        {
+          "gambar": "photos/anggaran-acara/dashboard.jpeg",
+          "judul": "🎉 Dashboard Acara",
+          "deskripsi": "Pusat kendali acara Anda untuk memantau semua metrik penting dalam sekejap.<br><strong class='font-bold text-gray-800'>📊 Ringkasan Anggaran:</strong> Lihat gambaran besar keuangan acara Anda.<br><strong class='font-bold text-gray-800'>💰 Sisa Anggaran:</strong> Ketahui sisa dana Anda secara real-time.<br><strong class='font-bold text-gray-800'>⏳ Hitung Mundur:</strong> Fitur hitung mundur interaktif menuju hari-H.<br><strong class='font-bold text-gray-800'>👍 Progres Cerdas:</strong> Dapatkan analisis singkat apakah progres anggaran Anda di jalur yang benar."
+        },
+        {
+          "gambar": "photos/anggaran-acara/anggaran.jpeg",
+          "judul": "💰 Anggaran Detail",
+          "deskripsi": "Rinci semua pengeluaran dengan cermat di dalam sheet ini.<br><strong class='font-bold text-gray-800'>📝 Daftar Rinci:</strong> Catat semua jenis pengeluaran, mulai dari sewa gedung hingga souvenir.<br><strong class='font-bold text-gray-800'>⚖️ Estimasi vs Aktual:</strong> Bandingkan biaya perkiraan dengan biaya sesungguhnya.<br><strong class='font-bold text-gray-800'>🚦 Status Pembayaran:</strong> Lacak status setiap tagihan dengan mudah (lunas, DP, belum bayar).<br><strong class='font-bold text-gray-800'>🗓️ Jatuh Tempo:</strong> Pengingat tanggal jatuh tempo untuk setiap pembayaran."
+        },
+        {
+          "gambar": "photos/anggaran-acara/daftar.jpeg",
+          "judul": "🤝 Vendor & Kontak",
+          "deskripsi": "Kelola semua kontak penting Anda di satu tempat yang rapi dan terorganisir.<br><strong class='font-bold text-gray-800'>📇 Direktori Vendor:</strong> Simpan informasi lengkap setiap vendor.<br><strong class='font-bold text-gray-800'>📞 Kontak Darurat:</strong> Dapatkan akses cepat ke nomor telepon dan email.<br><strong class='font-bold text-gray-800'>💳 Info Pembayaran:</strong> Catat detail rekening bank untuk mempermudah transaksi.<br><strong class='font-bold text-gray-800'>✍️ Catatan Penting:</strong> Tambahkan catatan khusus untuk setiap vendor."
+        },
+        {
+          "gambar": "photos/anggaran-acara/kategori.jpeg",
+          "judul": "⚙️ Pengaturan & Kategori",
+          "deskripsi": "Di sinilah semua keajaiban perencanaan Anda dimulai dan fondasi acara Anda diletakkan.<br><strong class='font-bold text-gray-800'>🏷️ Kategori Anggaran:</strong> Sesuaikan kategori pengeluaran utama (Venue, Katering, dll).<br><strong class='font-bold text-gray-800'>🗓️ Info Acara:</strong> Tetapkan detail penting seperti nama dan tanggal acara.<br><strong class='font-bold text-gray-800'>🎯 Target Anggaran:</strong> Masukkan target anggaran awal Anda sebagai patokan."
+        }
+      ]
+    }
+  },
+  {
+    "id": "personal-budgeting",
+    "judul": "Personal Budgeting",
+    "harga": 35000,
+    "deskripsi_singkat": "Pusat komando keuangan pribadi Anda untuk melacak pemasukan, pengeluaran, anggaran, hutang, dan tujuan tabungan secara otomatis.",
+    "gambar_preview": "photos/personal-budgeting/Dashboard.png",
+    "detail": {
+      "gambar_utama": "photos/personal-budgeting/Dashboard.png",
+      "deskripsi_lengkap": "Ini adalah pusat komando keuangan pribadi Anda, tempat semua data transaksi diolah. Setiap angka dan grafik dirancang untuk memberikan wawasan cerdas yang mudah dipahami.",
+      "link_preview_detail": "templates/preview-detail.html?product=personal-budgeting",
+      "link_youtube": "https://www.youtube.com/embed/FS5Fs4UoLAk?si=ZyKQaQfPzAjTO4kv",
+      "link_pembelian": [
+        { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/8jq7zeq8m1kl" },
+        { "platform": "KaryaKarsa", "url": "https://karyakarsa.com/rsquare/template-personal-budget" }
+      ],
+      "galeri": [
+        {
+          "gambar": "photos/personal-budgeting/Dashboard.png",
+          "judul": "📈 Laporan (Dashboard Utama)",
+          "deskripsi": "Pusat komando keuangan pribadi Anda. Cukup pilih bulan dan tahun, maka seluruh laporan akan ter-update secara otomatis.<br><strong class='font-bold text-gray-800'>✨ Dashboard Interaktif:</strong> Semua laporan ter-update berdasarkan pilihan Anda.<br><strong class='font-bold text-gray-800'>💡 Analisis Cerdas:</strong> Dapatkan feedback instan mengenai level kesehatan finansial Anda.<br><strong class='font-bold text-gray-800'>🚦 Progress Bar Anggaran:</strong> Lihat kategori mana yang boros dengan indikator warna."
+        },
+        {
+          "gambar": "photos/personal-budgeting/Budgeting.png",
+          "judul": "💰 Budgeting",
+          "deskripsi": "Pusat komando keuangan pribadi Anda, tempat semua data transaksi diolah. Atur anggaran yang berbeda untuk setiap bulan dalam setahun.<br><strong class='font-bold text-gray-800'>🗓️ Rencana 12 Bulan:</strong> Atur anggaran yang berbeda untuk setiap bulan.<br><strong class='font-bold text-gray-800'>🔀 Budget Fleksibel:</strong> Sangat cocok untuk kebutuhan yang berubah-ubah.<br><strong class='font-bold text-gray-800'>🔗 Terhubung ke Dashboard:</strong> Anggaran Anda menjadi tolok ukur otomatis di laporan."
+        },
+        {
+          "gambar": "photos/personal-budgeting/Transaksi.png",
+          "judul": "📝 Catatan Transaksi",
+          "deskripsi": "Jantung dari seluruh sistem. Luangkan 30 detik untuk mencatat setiap pemasukan, pengeluaran, dan transfer di sini.<br><strong class='font-bold text-gray-800'>⚡ Pencatatan Cepat:</strong> Dilengkapi dropdown untuk mempercepat pengisian.<br><strong class='font-bold text-gray-800'>↔️ Lacak Transfer:</strong> Catat perpindahan uang antar bank dengan mudah.<br><strong class='font-bold text-gray-800'>✍️ Input Mudah:</strong> Desain yang simpel dan fokus pada fungsi utama."
+        },
+        {
+          "gambar": "photos/personal-budgeting/Progress-Hutang.png",
+          "judul": "📊 Progress Hutang",
+          "deskripsi": "Pusat kendali Anda untuk menaklukkan semua kewajiban finansial. Lacak setiap pembayaran cicilan untuk KPR, kendaraan, hingga PayLater.<br><strong class='font-bold text-gray-800'>🔗 Satu Tempat untuk Semua:</strong> Pantau semua jenis hutang secara terpusat.<br><strong class='font-bold text-gray-800'>📈 Progress Bar Pelunasan:</strong> Lihat progres visual yang memuaskan setiap kali membayar.<br><strong class='font-bold text-gray-800'>🎯 Target Jelas:</strong> Tahu persis sisa saldo utang Anda secara real-time."
+        },
+        {
+          "gambar": "photos/personal-budgeting/Tujuan-Tabungan.png",
+          "judul": "🎯 Tujuan Tabungan",
+          "deskripsi": "Ubah semua impian finansial Anda menjadi sebuah rencana yang terukur dan nyata. Mulai dari dana darurat hingga DP rumah, semuanya terpantau.<br><strong class='font-bold text-gray-800'>🏆 Tulis Impianmu:</strong> Catat semua tujuan beserta target dana.<br><strong class='font-bold text-gray-800'>📊 Progress Bar Visual:</strong> Saksikan 'celengan' digitalmu terisi mendekati 100%.<br><strong class='font-bold text-gray-800'>💰 Alokasi Dana Cerdas:</strong> Pastikan setiap rupiah tabungan punya misi yang jelas."
+        },
+        {
+          "gambar": "photos/personal-budgeting/Pusat-Kontrol.png",
+          "judul": "⚙️ Pusat Kontrol",
+          "deskripsi": "'Ruang mesin' dari template Anda yang cukup diatur sekali saja di awal. Daftarkan kategori, akun bank, dan hutang untuk mengotomatiskan seluruh template.<br><strong class='font-bold text-gray-800'>🔧 Pengaturan Mudah:</strong> Cukup atur sekali, lalu pakai selamanya.<br><strong class='font-bold text-gray-800'>🏦 Daftarkan Semuanya:</strong> Masukkan daftar kategori, akun bank, dan profil hutang Anda.<br><strong class='font-bold text-gray-800'>🤖 Otomatisasi Penuh:</strong> Semua yang Anda atur menjadi pilihan dropdown di seluruh template."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tracking-lamaran",
+    "judul": "Tracking Lamaran Kerja",
+    "harga": 20000,
+    "deskripsi_singkat": "Lacak setiap lamaran kerja, kelola database lowongan, cari peluang, dan atur jadwal interview Anda dalam satu template terpadu.",
+    "gambar_preview": "photos/tracking-lamaran/dashboard.jpeg",
+    "detail": {
+      "gambar_utama": "photos/tracking-lamaran/dashboard.jpeg",
+      "deskripsi_lengkap": "Pantau setiap langkah dari proses lamaran kerja Anda, mulai dari jumlah loker yang dilamar, panggilan interview, hingga status akhir.",
+      "link_preview_detail": "templates/preview-detail.html?product=tracking-lamaran",
+      "link_youtube": "https://www.youtube.com/embed/XD8ImBgaamc?enablejsapi=1",
+      "link_pembelian": [
+        { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/2v4r09xe6y90" },
+        { "platform": "KaryaKarsa", "url": "https://karyakarsa.com/rsquare/template-tracking-lamaran" }
+      ],
+      "galeri": [
+        {
+          "gambar": "photos/tracking-lamaran/dashboard.jpeg",
+          "judul": "📨 TRACKING LAMARAN",
+          "deskripsi": "Pantau setiap langkah dari proses lamaran kerja Anda di sini.<br><strong>Dasbor Progres</strong> 📊: Lihat ringkasan jumlah loker yang dilamar, panggilan interview, dan tes.<br><strong>Status Lamaran</strong> 📤: Lacak status setiap lamaran, dari proses hingga ditolak.<br><strong>Catatan Penting</strong> 📝: Tambahkan catatan pribadi untuk setiap lamaran."
+        },
+        {
+          "gambar": "photos/tracking-lamaran/data-base.jpeg",
+          "judul": "📑 DATABASE LOWONGAN",
+          "deskripsi": "Sheet ini adalah pusat data untuk semua lowongan pekerjaan yang Anda temukan.<br><strong>Pusat Informasi</strong> 🗃️: Semua detail penting tentang lowongan tersimpan di sini.<br><strong>Filter Cepat</strong> ✅/❌: Tandai apakah sebuah lowongan 'Cocok' atau 'Tidak Cocok' untuk Anda.<br><strong>Tautan Langsung</strong> 🔗: Simpan tautan langsung ke halaman lowongan pekerjaan."
+        },
+        {
+          "gambar": "photos/tracking-lamaran/loker.jpeg",
+          "judul": "🔎 SEARCH BOX",
+          "deskripsi": "Gunakan sheet ini untuk mencari dan memfilter lowongan kerja yang ada di database dengan cepat.<br><strong>Pencarian Cerdas</strong> 🕵️: Cari lowongan berdasarkan jabatan, perusahaan, lokasi, atau tipe pekerjaan.<br><strong>Filter per Bulan & Tahun</strong> 🗓️: Saring lowongan berdasarkan periode.<br><strong>Hasil Terperinci</strong> ✨: Hasil pencarian akan menampilkan semua informasi penting."
+        },
+        {
+          "gambar": "photos/tracking-lamaran/kalender.jpeg",
+          "judul": "🗓️ SCHEDULE",
+          "deskripsi": "Atur semua jadwal interview dan tes Anda di sini agar tidak ada yang terlewat.<br><strong>Kalender Pribadi</strong> 📅: Lihat semua jadwal Anda dalam format kalender mingguan.<br><strong>Rincian Jadwal</strong> ⏰: Catat tanggal dan waktu spesifik untuk setiap agenda.<br><strong>Pengingat Semangat</strong> 🌟: Dapatkan kutipan penyemangat setiap hari."
+        }
+      ]
+    }
+  }
+]
