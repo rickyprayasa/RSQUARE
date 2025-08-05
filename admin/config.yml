@@ -15,6 +15,7 @@ collections:
     slug: "{{id}}" # <-- PENTING: Nama file akan dibuat dari field 'id'
     extension: "json" # Menentukan ekstensi file baru
     format: "json" # Menentukan format penyimpanan file
+    summary: "{{image}} {{fields.judul}}" # <-- TAMBAHKAN thumbail gambar
     fields: # Field untuk SATU produk. Strukturnya sama persis dengan yang Anda buat.
       - {label: "ID Produk (slug, tanpa spasi, huruf kecil)", name: "id", widget: "string"}
       - {label: "Judul", name: "judul", widget: "string"}
