@@ -7,7 +7,7 @@
     "detail": {
       "gambar_utama": "/photos/goal-planner/Dashboard Goal Planner.png",
       "deskripsi_lengkap": "Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template Goal Planner untuk mengubah mimpi menjadi rencana aksi yang terukur.",
-      "link_preview_detail": "templates/preview-detail.html?product=goal-planner",
+      "link_preview_detail": "content/template-preview.html?product=goal-planner",
       "link_youtube": "https://www.youtube.com/embed/OWwID0f8vSE?enablejsapi=1",
       "link_pembelian": [
         { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/2xr97n07n0p1" },
