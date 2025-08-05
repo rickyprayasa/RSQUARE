@@ -1,1 +1,44 @@
-
+{
+    "id": "goal-planner",
+    "judul": "Goal Planner",
+    "harga": 35000,
+    "deskripsi_singkat": "Rencanakan dan lacak semua tujuan Anda dengan dasbor interaktif, rencana bulanan, daftar tugas prioritas, dan kalender cerdas.",
+    "gambar_preview": "photos/goal-planer/Dashboard Goal Planner.png",
+    "detail": {
+      "gambar_utama": "photos/goal-planer/Dashboard Goal Planner.png",
+      "deskripsi_lengkap": "Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template Goal Planner untuk mengubah mimpi menjadi rencana aksi yang terukur.",
+      "link_preview_detail": "templates/preview-detail.html?product=goal-planner",
+      "link_youtube": "https://www.youtube.com/embed/OWwID0f8vSE?enablejsapi=1",
+      "link_pembelian": [
+        { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/2xr97n07n0p1" },
+        { "platform": "KaryaKarsa", "url": "https://karyakarsa.com/rsquare/template-goal-planner" }
+      ],
+      "galeri": [
+        {
+          "gambar": "photos/goal-planer/Dashboard Goal Planner.png",
+          "judul": "🎯 Dashboard",
+          "deskripsi": "Ini adalah layar utama tempat Anda memulai hari. Dapatkan gambaran besar dari semua tujuan, progres, dan tugas terpenting Anda dalam satu halaman yang dinamis dan interaktif.<br><strong class='font-bold text-gray-800'>🌟 Laporan Bulanan Cerdas:</strong> Pilih Bulan dan Tahun, dan saksikan seluruh dashboard berubah untuk menampilkan fokus aksi dan performa Anda khusus untuk periode tersebut.<br><strong class='font-bold text-gray-800'>📊 Kartu Progres Dinamis:</strong> Pantau progres keseluruhan dari setiap tujuan utama yang sedang Anda kerjakan di bulan terpilih.<br><strong class='font-bold text-gray-800'>⚡Tugas Prioritas Otomatis:</strong> Daftar tugas harian paling mendesak akan muncul secara otomatis di sini."
+        },
+        {
+          "gambar": "photos/goal-planer/list.jpeg",
+          "judul": "🥅 Input Tujuan Utama",
+          "deskripsi": "Di sinilah Anda meletakkan fondasi kesuksesan Anda dengan mendefinisikan mimpi dan tujuan jangka panjang secara jelas.<br><strong class='font-bold text-gray-800'>🔥 ID Tujuan Otomatis:</strong> Cukup pilih kategori, dan sistem akan membuatkan ID unik untuk setiap tujuan Anda.<br><strong class='font-bold text-gray-800'>✨ Kutipan Inspiratif Harian:</strong> Dapatkan suntikan motivasi baru setiap pagi dari kutipan yang berganti secara otomatis.<br><strong class='font-bold text-gray-800'>⛓️ Terpusat & Terstruktur:</strong> Semua tujuan besar Anda tersimpan rapi di satu tempat."
+        },
+        {
+          "gambar": "photos/goal-planer/review.jpeg",
+          "judul": "📝 Rencana & Review Bulanan",
+          "deskripsi": "Sheet ini adalah jantung dari strategi Anda. Terjemahkan tujuan besar menjadi target-target bulanan yang konkret, lalu lakukan review mendalam untuk belajar dan berkembang.<br><strong class='font-bold text-gray-800'>📕 Sistem Blok Bulanan:</strong> Desain 'jurnal panjang' yang intuitif untuk melihat histori dan rencana dari bulan ke bulan.<br><strong class='font-bold text-gray-800'>🗂️ Kartu Review Terstruktur:</strong> Fasilitasi refleksi dengan tiga area khusus: capaian, tantangan, dan prioritas.<br><strong class='font-bold text-gray-800'>⏳ Widget Countdown Cerdas:</strong> Hitung mundur yang dinamis dan sadar waktu."
+        },
+        {
+          "gambar": "photos/goal-planer/tugas-prioritas.jpeg",
+          "judul": "📋 Tugas Prioritas",
+          "deskripsi": "Kelola semua tugas harian Anda dalam satu daftar yang simpel, bersih, dan efektif.<br><strong class='font-bold text-gray-800'>📊 Dashboard Mini Otomatis:</strong> Progress bar dan pesan motivasi cerdas akan ter-update secara real-time.<br><strong class='font-bold text-gray-800'>💥 Prioritas & Deadline:</strong> Atur prioritas (Tinggi, Sedang, Rendah) dan batas waktu untuk setiap tugas.<br><strong class='font-bold text-gray-800'>⌨️ Terintegrasi Penuh:</strong> Terhubung langsung dengan Dashboard utama dan Kalender."
+        },
+        {
+          "gambar": "photos/goal-planer/kalender.jpeg",
+          "judul": "🗓️ Kalender",
+          "deskripsi": "Lihat jadwal dan deadline tugas Anda dalam format kalender bulanan yang bersih. Bukan hanya kalender biasa, ia dilengkapi dengan 'Asisten Cerdas' pribadi Anda.<br><strong class='font-bold text-gray-800'>🤖 Asisten Pengingat Cerdas:</strong> Sebuah pesan otomatis di atas kalender yang akan mengingatkan Anda tugas paling penting.<br><strong class='font-bold text-gray-800'>🎨 Desain Visual Dinamis:</strong> Tanggal dari bulan lain akan otomatis meredup, membantu mata Anda untuk fokus."
+        }
+      ]
+    }
+  }
