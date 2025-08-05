@@ -35,7 +35,7 @@ collections:
         fields:
           - {label: "Gambar Utama", name: "gambar_utama", widget: "image"}
           - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
-          - {label: "Link Preview Detail", name: "link_preview_detail", widget: "string", hint: "Contoh: content/preview/template-preview.html?product={{id}}"}
+          #- {label: "Link Preview Detail", name: "link_preview_detail", widget: "string", hint: "Contoh: content/preview/template-preview.html?product={{id}}"}
           - {label: "Link YouTube", name: "link_youtube", widget: "string", required: false}
           - name: "link_pembelian"
             label: "Link Pembelian"
