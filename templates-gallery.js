@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const galleryContainer = document.getElementById('product-gallery-container');
-    if (!galleryContainer) {
-        console.error('PENTING: Elemen #product-gallery-container tidak ditemukan.');
-        return;
-    }
+    if (!galleryContainer) return;
+
     galleryContainer.innerHTML = '<p class="text-center col-span-full">Memuat koleksi template...</p>';
 
     try {
@@ -13,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const productFiles = await indexResponse.json();
         if (productFiles.length === 0) {
             galleryContainer.innerHTML = '<p class="text-center col-span-full">Belum ada template.</p>';
-            // Jangan hentikan skrip di sini agar kartu "coming soon" tetap muncul
+            return;
         }
 
         const productPromises = productFiles.map(file => fetch(`content/produk/${file}`).then(res => res.ok ? res.json() : null));
@@ -24,19 +22,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             const priceDisplay = product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`;
             const detailLink = `content/template-detail.html?product=${product.id}`;
             
-            // Menggunakan ide Anda yang lebih sederhana untuk path gambar
-            let imagePath = product.gambar_thumbnail || '';
-            if (imagePath.startsWith('/')) {
-                // Menghapus '/' di depan jika masih ada, untuk keamanan
-                imagePath = imagePath.substring(1);
-            }
-            
+            // --- MENGGUNAKAN IDE ANDA YANG LEBIH SEDERHANA ---
+            // Langsung menggabungkan path, dengan asumsi `gambar_thumbnail` tidak punya '/' di depan.
+            const correctImagePath = `content/produk/${product.gambar_thumbnail}`;
+            // --- SELESAI ---
+
             return `
                 <div class="card rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                     <div class="relative z-10 flex flex-col flex-grow">
                         <a href="${detailLink}" class="block">
                             <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                                <img src="${imagePath}" alt="Cover ${product.judul}" class="w-full h-full object-contain p-2">
+                                <img src="${correctImagePath}" alt="Cover ${product.judul}" class="w-full h-full object-contain p-2">
                             </div>
                         </a>
                         <div class="p-6 flex flex-col flex-grow">
