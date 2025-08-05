@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const productFiles = await indexResponse.json();
         if (productFiles.length === 0) {
             galleryContainer.innerHTML = '<p class="text-center col-span-full">Belum ada template.</p>';
+            // Jangan hentikan skrip di sini agar kartu "coming soon" tetap muncul
         }
 
         const productPromises = productFiles.map(file => fetch(`content/produk/${file}`).then(res => res.ok ? res.json() : null));
@@ -23,8 +24,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             const priceDisplay = product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`;
             const detailLink = `content/template-detail.html?product=${product.id}`;
             
+            // Menggunakan ide Anda yang lebih sederhana untuk path gambar
             let imagePath = product.gambar_thumbnail || '';
             if (imagePath.startsWith('/')) {
+                // Menghapus '/' di depan jika masih ada, untuk keamanan
                 imagePath = imagePath.substring(1);
             }
             
@@ -47,10 +50,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }).join('');
 
+        // Menampilkan semua kartu produk dinamis
         galleryContainer.innerHTML = allCardsHTML;
         
-        // --- BAGIAN YANG HILANG & KINI DIPERBAIKI ---
-        // Variabel ini berisi seluruh kode HTML untuk kartu 'Segera Hadir'.
+        // --- BAGIAN YANG DIPERBAIKI ---
+        // Variabel ini sekarang berisi kode HTML yang lengkap.
         const comingSoonCard = `
             <div class="card rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center p-6">
                 <div class="flex-grow flex flex-col items-center justify-center">
@@ -61,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <a href="kontak.html" class="btn-primary btn-shiny mt-auto text-center px-6 py-2 rounded-lg font-semibold text-white">Request Template?</a>
             </div>`;
 
-        // Baris ini mengambil HTML kartu di atas dan menyisipkannya di akhir galeri.
+        // Perintah untuk menambahkan kartu "Segera Hadir" di akhir.
         galleryContainer.insertAdjacentHTML('beforeend', comingSoonCard);
         // --- AKHIR BAGIAN PERBAIKAN ---
 
