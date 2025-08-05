@@ -7,7 +7,7 @@
   "detail": {
     "gambar_utama": "/photos/personal-budgeting/Dashboard.png",
     "deskripsi_lengkap": "Ini adalah pusat komando keuangan pribadi Anda, tempat semua data transaksi diolah. Setiap angka dan grafik dirancang untuk memberikan wawasan cerdas yang mudah dipahami.",
-    "link_preview_detail": "templates/preview-detail.html?product=personal-budgeting",
+    "link_preview_detail": "content/template-preview.html?product=personal-budgeting",
     "link_youtube": "https://www.youtube.com/embed/FS5Fs4UoLAk?si=ZyKQaQfPzAjTO4kv",
     "link_pembelian": [
       { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/8jq7zeq8m1kl" },
