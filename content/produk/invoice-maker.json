@@ -3,6 +3,7 @@
     "judul": "Invoice Maker",
     "harga": 0,
     "deskripsi_singkat": "Buat faktur profesional secara otomatis. Cukup masukkan data klien dan item, lalu simpan sebagai PDF langsung ke Google Drive Anda.",
+    "gambar_thumbnail": "/photos/produk/invoice-maker/invoice-maker-thumbnail.png",
     "gambar_preview": "photos/invoice-maker/Invoice.png",
     "detail": {
       "gambar_utama": "photos/invoice-maker/Invoice.png",
