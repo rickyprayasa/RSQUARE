@@ -1,33 +1,30 @@
 backend:
   name: git-gateway
-  branch: main # Ganti ke 'master' jika itu nama branch utama Anda
+  branch: main
 
+# Konfigurasi ini sudah cukup untuk media library bawaan
 media_folder: "photos/uploads"
 public_folder: "/photos/uploads"
-media_library:
-  name: "uploads"
-  config:
-    multiple: false
 
 collections:
-  - name: "produk_collection" # Beri nama unik untuk koleksi
+  - name: "produk_collection"
     label: "Produk"
-    description: "Kelola semua produk di sini"
-    # Tipe 'files' untuk mengedit file tunggal
+    label_singular: "Produk Baru"
+    description: "Kelola semua produk di file produk.json"
     files:
-      - name: "produk"
+      - name: "produk_file"
         label: "Daftar Produk"
-        file: "produk.json" # Lokasi file 'database' Anda
-        # 'fields' di sini hanya menunjuk ke satu field utama di JSON
+        file: "produk.json"
         fields:
-          - name: "items" # Nama field di JSON yang berisi array produk
+          - name: "items"
             label: "Produk"
             label_singular: "Produk Baru"
-            widget: "list" # Perlakukan field ini sebagai daftar yang bisa ditambah/diedit
-            fields: # Ini adalah field untuk SATU item produk di dalam daftar
-              - {label: "ID Produk (slug)", name: "id", widget: "string", hint: "Gunakan huruf kecil, tanpa spasi, pisahkan dengan tanda hubung. Contoh: template-anggaran-baru"}
+            widget: "list"
+            summary: "{{fields.judul}}"
+            fields:
+              - {label: "ID Produk (slug)", name: "id", widget: "string"}
               - {label: "Judul", name: "judul", widget: "string"}
-              - {label: "Harga", name: "harga", widget: "number", value_type: "int", default: 0}
+              - {label: "Harga", name: "harga", widget: "number", value_type: "int"}
               - {label: "Deskripsi Singkat", name: "deskripsi_singkat", widget: "text"}
               - {label: "Gambar Preview", name: "gambar_preview", widget: "image"}
               - name: "detail"
@@ -36,17 +33,17 @@ collections:
                 fields:
                   - {label: "Gambar Utama", name: "gambar_utama", widget: "image"}
                   - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
-                  - {label: "Link Preview Detail", name: "link_preview_detail", widget: "string", hint: "Contoh: templates/preview-detail.html?product=ID_PRODUK"}
+                  - {label: "Link Preview Detail", name: "link_preview_detail", widget: "string"}
                   - {label: "Link YouTube", name: "link_youtube", widget: "string"}
                   - name: "link_pembelian"
                     label: "Link Pembelian"
-                    widget: "list" # 'list' di dalam 'list' bisa dilakukan
+                    widget: "list"
                     fields:
                       - {label: "Platform", name: "platform", widget: "string"}
                       - {label: "URL", name: "url", widget: "string"}
                   - name: "galeri"
                     label: "Galeri Fitur"
-                    widget: "list" # 'list' di dalam 'list' bisa dilakukan
+                    widget: "list"
                     fields:
                       - {label: "Gambar Fitur", name: "gambar", widget: "image"}
                       - {label: "Judul Fitur", name: "judul", widget: "string"}
