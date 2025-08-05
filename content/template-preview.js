@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const featuresHTML = product.detail.galeri.map(item => `
                 <div class="flex flex-col items-center gap-6">
                     <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                        <a href="../../${item.gambar}" class="zoomable-image cursor-zoom-in">
-                            <img src="../../${item.gambar}" alt="${item.judul}" class="rounded-lg w-full shadow-lg">
+                        <a href="produk/${item.gambar}" class="zoomable-image cursor-zoom-in">
+                            <img src="produk/${item.gambar}" alt="${item.judul}" class="rounded-lg w-full shadow-lg">
                         </a>
                     </div>    
                     <div class="text-center md:text-left max-w-2xl">
