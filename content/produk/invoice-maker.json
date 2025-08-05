@@ -7,7 +7,7 @@
     "detail": {
       "gambar_utama": "photos/invoice-maker/Invoice.png",
       "deskripsi_lengkap": "Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template Invoice Maker gratis ini.",
-      "link_preview_detail": "templates/preview-detail.html?product=invoice-maker",
+      "link_preview_detail": "content/template-preview.html?product=invoice-maker",
       "link_youtube": "https://www.youtube.com/embed/2nptWANixos?enablejsapi=1",
       "link_pembelian": [
         { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/rqrl1zr2jqn0" },
