@@ -4,9 +4,9 @@
     "harga": 0,
     "deskripsi_singkat": "Buat faktur profesional secara otomatis. Cukup masukkan data klien dan item, lalu simpan sebagai PDF langsung ke Google Drive Anda.",
     "gambar_thumbnail": "/photos/produk/invoice-maker/invoice-maker-thumbnail.png",
-    "gambar_preview": "photos/invoice-maker/Invoice.png",
+    "gambar_preview": "photos/produk/invoice-maker/Invoice.png",
     "detail": {
-      "gambar_utama": "photos/invoice-maker/Invoice.png",
+      "gambar_utama": "photos/produk/invoice-maker/Invoice.png",
       "deskripsi_lengkap": "Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template Invoice Maker gratis ini.",
       "link_preview_detail": "content/template-preview.html?product=invoice-maker",
       "link_youtube": "https://www.youtube.com/embed/2nptWANixos?enablejsapi=1",
@@ -16,12 +16,12 @@
       ],
       "galeri": [
         {
-          "gambar": "photos/invoice-maker/Invoice-Input.png",
+          "gambar": "photos/produk/invoice-maker/Invoice-Input.png",
           "judul": "📝 INPUT",
           "deskripsi": "Di sinilah Anda memasukkan semua data yang diperlukan untuk membuat faktur secara otomatis.<br><strong>Informasi Klien & Perusahaan</strong> 🏢: Masukkan detail klien dan informasi perusahaan Anda.<br><strong>Detail Item/Jasa</strong> 🛍️: Tuliskan semua item atau jasa yang dibeli klien.<br><strong>Pengaturan Faktur</strong> ⚙️: Atur nomor faktur, tanggal, dan ketentuan pembayaran."
         },
         {
-          "gambar": "photos/invoice-maker/Invoice.png",
+          "gambar": "photos/produk/invoice-maker/Invoice.png",
           "judul": "🧾 INVOICE",
           "deskripsi": "Sheet ini secara otomatis akan menghasilkan faktur yang rapi dan profesional berdasarkan data dari sheet 'INPUT'.<br><strong>Tampilan Profesional</strong> ✨: Faktur yang siap cetak atau dikirim, lengkap dengan logo.<br><strong>Rincian Otomatis</strong> 🤖: Semua detail pesanan dan total biaya akan terhitung secara otomatis.<br><strong>Siap Kirim</strong> 📤: Cukup klik menu '<b>Invoice Tool</b>' lalu '<b>Simpan Invoice</b>' maka PDF akan tersimpan otomatis."
         }
