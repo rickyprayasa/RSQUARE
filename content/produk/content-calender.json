@@ -19,11 +19,15 @@
         "deskripsi": "C﻿alendar"
       }
     ],
-    "link_youtube": "https://www.youtube.com/@RSQUAREIDEA",
+    "link_youtube": "https://youtu.be/FS5Fs4UoLAk",
     "link_pembelian": [
       {
         "platform": "TikTok",
         "url": "https://www.tiktok.com/"
+      },
+      {
+        "platform": "Lynk.Id",
+        "url": "https://youtu.be/FS5Fs4UoLAk"
       }
     ]
   }
