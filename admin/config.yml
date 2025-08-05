@@ -4,7 +4,7 @@ backend:
 
 # Folder default untuk media (wajib ada di level atas)
 media_folder: "photos/uploads"
-public_folder: "/photos/uploads"
+public_folder: "photos/uploads"
 
 collections:
   - name: "produk"
@@ -16,7 +16,7 @@ collections:
     
     # Menimpa (override) pengaturan global untuk koleksi ini
     media_folder: "photos/produk/{{id}}"
-    public_folder: "/photos/produk/{{id}}"
+    public_folder: "photos/produk/{{id}}"
     
     slug: "{{id}}"
     extension: "json"
