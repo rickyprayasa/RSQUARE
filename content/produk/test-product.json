@@ -1,0 +1,30 @@
+{
+  "harga": 1000,
+  "id": "test-product",
+  "judul": "semoga berhasil",
+  "deskripsi_singkat": "bismillah aja yah",
+  "gambar_preview": "/photos/uploads/whatsapp-image-2025-07-31-at-13.14.23.jpeg",
+  "detail": {
+    "gambar_utama": "/photos/uploads/4.png",
+    "deskripsi_lengkap": "itu gambar 1",
+    "link_preview_detail": "https://www.youtube.com/",
+    "link_youtube": "https://www.youtube.com/@RSQUAREIDEA",
+    "link_pembelian": [
+      {
+        "platform": "lynk id",
+        "url": "https://www.youtube.com/@RSQUAREIDEA"
+      },
+      {
+        "platform": "karya karyaan",
+        "url": "https://www.youtube.com/@RSQUAREIDEA"
+      }
+    ],
+    "galeri": [
+      {
+        "gambar": "/photos/uploads/screenshot-from-2025-06-09-13-44-54.png",
+        "judul": "tuneeca",
+        "deskripsi": "tuneeca abaya"
+      }
+    ]
+  }
+}
