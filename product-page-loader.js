@@ -1,14 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // --- PERUBAHAN KUNCI 1: Mendapatkan ID dari Nama File ---
-    // 1. Ambil path URL halaman saat ini (contoh: "/templates/personal-budgeting.html")
     const path = window.location.pathname;
-    
-    // 2. Ambil bagian terakhir dari path untuk mendapatkan nama file ("personal-budgeting.html")
     const filename = path.split('/').pop();
-    
-    // 3. Hapus ekstensi ".html" untuk mendapatkan ID produk ("personal-budgeting")
     const productId = filename.replace('.html', '');
-    // --- AKHIR PERUBAHAN KUNCI 1 ---
 
     const container = document.getElementById('product-detail-container');
 
@@ -18,12 +11,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        // --- PERUBAHAN KUNCI 2: Menyesuaikan Path Fetch ---
-        // Karena halaman HTML ada di folder /templates/, kita perlu 'naik' satu level (../) 
-        // untuk mencapai root, lalu masuk ke folder 'content/produk/'
-        const response = await fetch(`../content/produk/${productId}.json`);
-        // --- AKHIR PERUBAHAN KUNCI 2 ---
-
+        // --- PERBAIKAN 1: Menggunakan path absolut untuk fetch ---
+        // Tanda '/' di depan memastikan path dimulai dari root domain.
+        const response = await fetch(`/content/produk/${productId}.json`);
+        
         if (!response.ok) {
             throw new Error(`File produk ${productId}.json tidak ditemukan.`);
         }
@@ -31,9 +22,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const product = await response.json();
 
         if (product) {
-            // Bagian ini sama persis dengan 'template-detail.js' sebelumnya,
-            // bertugas membangun HTML dari data JSON yang berhasil didapat.
-            
             document.title = `${product.judul} - RSQUARE`;
             document.querySelector('meta[name="description"]').setAttribute('content', product.deskripsi_singkat);
 
@@ -44,15 +32,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </a>
             `).join('');
 
-            // Path untuk gambar dan link preview juga perlu disesuaikan dengan '../'
+            // --- PERBAIKAN 2 & 3: Menggunakan path absolut untuk gambar dan link ---
+            // Dengan asumsi path di JSON adalah "photos/..." dan "content/...",
+            // kita tambahkan '/' di depan untuk membuatnya absolut dari root.
             const productHTML = `
                 <div class="container mx-auto">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="flex flex-col items-center gap-2">
                             <div class="w-full group perspective-container">
                                 <div id="image-container" class="card rounded-xl p-4 w-full md:max-w-3xl h-auto relative transition-transform duration-500 ease-in-out group-hover:rotate-y-3 group-hover:-rotate-x-2 group-hover:scale-105">
-                                    <a href="../${product.detail.gambar_utama}" class="cursor-zoom-in">
-                                        <img id="product-image" src="../${product.detail.gambar_utama}" alt="Tampilan Utama ${product.judul}" class="rounded-lg w-full shadow-lg">
+                                    <a href="/${product.detail.gambar_utama}" class="cursor-zoom-in">
+                                        <img id="product-image" src="/${product.detail.gambar_utama}" alt="Tampilan Utama ${product.judul}" class="rounded-lg w-full shadow-lg">
                                     </a>
                                 </div>
                             </div>
@@ -66,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <div class="space-y-4">
                                     ${purchaseButtonsHTML}
                                     <hr class="border-gray-700">
-                                    <a href="../${product.detail.link_preview_detail}" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
+                                    <a href="/${product.detail.link_preview_detail}" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
                                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                         Lihat Preview Detail
                                     </a>
@@ -77,11 +67,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
             `;
             container.innerHTML = productHTML;
-
-            // ... (Kode untuk lightbox tetap sama)
-
+            // ... (Kode untuk lightbox tetap sama dan akan berfungsi)
+            
         } else {
-            container.innerHTML = `<div class="container mx-auto text-center"><h1 class="text-3xl font-bold">Error 404</h1><p>Produk dengan ID "${productId}" tidak dapat ditemukan.</p></div>`;
+             container.innerHTML = `<div class="container mx-auto text-center"><h1 class="text-3xl font-bold">Error 404</h1><p>Produk dengan ID "${productId}" tidak dapat ditemukan.</p></div>`;
         }
     } catch (error) {
         console.error('Gagal memuat data produk:', error);
