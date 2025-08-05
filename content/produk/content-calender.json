@@ -1,0 +1,18 @@
+{
+  "harga": 15000,
+  "id": "content-calender",
+  "judul": "Content Calendar",
+  "deskripsi_singkat": "Template Simple Content Calendar hadir untuk mengubah kekacauan menjadi keteraturan. Ini bukan sekadar spreadsheet biasa, melainkan pusat komando konten digital Anda yang cerdas, visual, dan dirancang untuk menghemat waktu Anda.",
+  "gambar_thumbnail": "photos/produk/content-calender/1.png",
+  "detail": {
+    "gambar_utama": "photos/produk/content-calender/2.png",
+    "deskripsi_lengkap": "Pernah kehabisan ide saat harus posting? Atau punya banyak ide brilian tapi tersimpan berantakan di mana-mana? Jadwal posting yang seharusnya teratur malah jadi acak-acakan, membuat Anda stres dan tidak konsisten.\n\nTemplate Simple Content Calendar hadir untuk mengubah kekacauan menjadi keteraturan. Ini bukan sekadar spreadsheet biasa, melainkan pusat komando konten digital Anda yang cerdas, visual, dan dirancang untuk menghemat waktu Anda.",
+    "galeri": [
+      {
+        "gambar": "photos/produk/content-calender/2.png",
+        "judul": "🗓️ CALENDAR",
+        "deskripsi": "✨ Sinkronisasi Instan ke Google Calendar Ini\n\nCukup klik satu tombol dari menu, dan jadwal konten Anda akan langsung terkirim ke Google Calendar. Dapatkan notifikasi di HP Anda dan jangan pernah lewatkan jadwal posting lagi!\n\n📊Dashboard Mini & Ringkasan Otomatis\n\nDashboard di bagian atas akan secara otomatis menghitung total konten, yang sudah terbit, dan yang masih perlu dikerjakan untuk bulan ini, lengkap dengan kalimat ringkasan yang cerdas.\n\n✍️Perencanaan Visual & Terstruktur Lacak\n\nSemua rencana Anda tersaji dalam satu tabel yang rapi dan mudah dibaca.\n\n⚡Input Waktu Super Cepat Hemat waktu saat mengisi jadwal\n\nCukup ketik 930 dan sel akan otomatis berubah menjadi 09:30, atau ketik 16 menjadi 16:00. Efisiensi di ujung jari Anda.\n\n🔗Integrasi Link link konten\n\nSemua data ini juga akan ikut tersinkronisasi ke deskripsi event di Google Calendar Anda."
+      }
+    ]
+  }
+}
