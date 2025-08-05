@@ -1,44 +1,44 @@
 backend:
   name: git-gateway
-  branch: main # Ganti ke 'master' jika itu nama branch utama Anda
+  branch: main # Pastikan ini adalah branch utama Anda
 
-media_folder: "photos/uploads"
-public_folder: "/photos/uploads"
+media_folder: "photos/uploads" # Folder untuk menyimpan gambar yang baru di-upload
+public_folder: "/photos/uploads" # Path publik untuk gambar yang di-upload
 
 collections:
-  - name: "produk"
-    label: "Produk"
-    label_singular: "Produk"
+  - name: "produk" # Nama internal koleksi
+    label: "Produk" # Nama yang muncul di sidebar admin
+    label_singular: "Produk" # Nama untuk satu item baru
     description: "Kumpulan semua produk template spreadsheet."
-    # Perubahan penting ada di sini. Kita menggunakan 'files' bukan 'file'
-    files:
-      - name: "data_produk"
-        label: "Semua Data Produk"
-        file: "produk.json" # File yang akan diedit
-        fields: # Semua field formulir sekarang masuk ke dalam sini
-          - {label: "ID Produk (slug)", name: "id", widget: "string"}
-          - {label: "Judul", name: "judul", widget: "string"}
-          - {label: "Harga", name: "harga", widget: "number", value_type: "int", default: 0}
-          - {label: "Deskripsi Singkat", name: "deskripsi_singkat", widget: "text"}
-          - {label: "Gambar Preview", name: "gambar_preview", widget: "image"}
-          - name: "detail"
-            label: "Detail Lengkap Produk"
-            widget: "object"
+    folder: "content/produk" # <-- PERUBAHAN KUNCI: Menunjuk ke folder, bukan file
+    create: true # <-- PERUBAHAN KUNCI: Mengizinkan pembuatan produk baru
+    slug: "{{id}}" # <-- PENTING: Nama file akan dibuat dari field 'id'
+    extension: "json" # Menentukan ekstensi file baru
+    format: "json" # Menentukan format penyimpanan file
+    fields: # Field untuk SATU produk. Strukturnya sama persis dengan yang Anda buat.
+      - {label: "ID Produk (slug, tanpa spasi, huruf kecil)", name: "id", widget: "string"}
+      - {label: "Judul", name: "judul", widget: "string"}
+      - {label: "Harga", name: "harga", widget: "number", value_type: "int", default: 0}
+      - {label: "Deskripsi Singkat", name: "deskripsi_singkat", widget: "text"}
+      - {label: "Gambar Preview", name: "gambar_preview", widget: "image"}
+      - name: "detail"
+        label: "Detail Lengkap Produk"
+        widget: "object"
+        fields:
+          - {label: "Gambar Utama", name: "gambar_utama", widget: "image"}
+          - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
+          - {label: "Link Preview Detail", name: "link_preview_detail", widget: "string", hint: "Contoh: templates/preview-detail.html?product=ID_PRODUK"}
+          - {label: "Link YouTube", name: "link_youtube", widget: "string"}
+          - name: "link_pembelian"
+            label: "Link Pembelian"
+            widget: "list"
             fields:
-              - {label: "Gambar Utama", name: "gambar_utama", widget: "image"}
-              - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
-              - {label: "Link Preview Detail", name: "link_preview_detail", widget: "string", hint: "Contoh: templates/preview-detail.html?product=ID_PRODUK"}
-              - {label: "Link YouTube", name: "link_youtube", widget: "string"}
-              - name: "link_pembelian"
-                label: "Link Pembelian"
-                widget: "list"
-                fields:
-                  - {label: "Platform", name: "platform", widget: "string"}
-                  - {label: "URL", name: "url", widget: "string"}
-              - name: "galeri"
-                label: "Galeri Fitur"
-                widget: "list"
-                fields:
-                  - {label: "Gambar Fitur", name: "gambar", widget: "image"}
-                  - {label: "Judul Fitur", name: "judul", widget: "string"}
-                  - {label: "Deskripsi Fitur", name: "deskripsi", widget: "markdown"}
+              - {label: "Platform", name: "platform", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+          - name: "galeri"
+            label: "Galeri Fitur"
+            widget: "list"
+            fields:
+              - {label: "Gambar Fitur", name: "gambar", widget: "image"}
+              - {label: "Judul Fitur", name: "judul", widget: "string"}
+              - {label: "Deskripsi Fitur", name: "deskripsi", widget: "markdown"}
