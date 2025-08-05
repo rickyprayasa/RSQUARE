@@ -1,0 +1,24 @@
+{
+  "harga": 0,
+  "id": "test-drive",
+  "judul": "Masa sih ga bisa",
+  "deskripsi_singkat": "ini bisa ga yah",
+  "gambar_thumbnail": "photos/produk/test-drive/screenshot-from-2025-06-09-13-44-54.png",
+  "detail": {
+    "gambar_utama": "photos/produk/test-drive/screenshot-from-2025-06-09-13-44-54.png",
+    "deskripsi_lengkap": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis ex a facilisis placerat. Cras tortor arcu, auctor egestas felis et, pharetra scelerisque lorem. Proin viverra ipsum leo, ut pellentesque erat volutpat vel. Sed maximus velit a nisl porttitor, at blandit nulla iaculis. Nunc quis massa dignissim, eleifend elit sed, tristique sapien. Praesent nec convallis nulla, a condimentum dolor. Curabitur sed nisi scelerisque, lobortis nisi vel, convallis lacus. Aliquam vel tortor sit amet justo aliquet vestibulum. Nam ac tortor hendrerit, tincidunt nibh et, consequat arcu. In hac habitasse platea dictumst. Aenean non consectetur odio. Morbi in massa mi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus efficitur mattis lacus, ut vulputate lectus posuere sit amet. Praesent lectus dui, commodo vel sollicitudin id, porta et nibh. Pellentesque maximus imperdiet augue",
+    "link_pembelian": [
+      {
+        "platform": "yt",
+        "url": "https://www.tiktok.com/"
+      }
+    ],
+    "galeri": [
+      {
+        "gambar": "photos/produk/test-drive/screenshot-from-2025-07-30-09-55-47.png",
+        "judul": "wow",
+        "deskripsi": "h﻿ufttttt"
+      }
+    ]
+  }
+}
