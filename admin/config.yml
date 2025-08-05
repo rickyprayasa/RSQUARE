@@ -4,41 +4,50 @@ backend:
 
 media_folder: "photos/uploads"
 public_folder: "/photos/uploads"
+media_library:
+  name: "uploads"
+  config:
+    multiple: false
 
 collections:
-  - name: "produk"
+  - name: "produk_collection" # Beri nama unik untuk koleksi
     label: "Produk"
-    label_singular: "Produk"
-    description: "Kumpulan semua produk template spreadsheet."
-    # Perubahan penting ada di sini. Kita menggunakan 'files' bukan 'file'
+    description: "Kelola semua produk di sini"
+    # Tipe 'files' untuk mengedit file tunggal
     files:
-      - name: "data_produk"
-        label: "Semua Data Produk"
-        file: "produk.json" # File yang akan diedit
-        fields: # Semua field formulir sekarang masuk ke dalam sini
-          - {label: "ID Produk (slug)", name: "id", widget: "string"}
-          - {label: "Judul", name: "judul", widget: "string"}
-          - {label: "Harga", name: "harga", widget: "number", value_type: "int", default: 0}
-          - {label: "Deskripsi Singkat", name: "deskripsi_singkat", widget: "text"}
-          - {label: "Gambar Preview", name: "gambar_preview", widget: "image"}
-          - name: "detail"
-            label: "Detail Lengkap Produk"
-            widget: "object"
-            fields:
-              - {label: "Gambar Utama", name: "gambar_utama", widget: "image"}
-              - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
-              - {label: "Link Preview Detail", name: "link_preview_detail", widget: "string", hint: "Contoh: templates/preview-detail.html?product=ID_PRODUK"}
-              - {label: "Link YouTube", name: "link_youtube", widget: "string"}
-              - name: "link_pembelian"
-                label: "Link Pembelian"
-                widget: "list"
+      - name: "produk"
+        label: "Daftar Produk"
+        file: "produk.json" # Lokasi file 'database' Anda
+        # 'fields' di sini hanya menunjuk ke satu field utama di JSON
+        fields:
+          - name: "items" # Nama field di JSON yang berisi array produk
+            label: "Produk"
+            label_singular: "Produk Baru"
+            widget: "list" # Perlakukan field ini sebagai daftar yang bisa ditambah/diedit
+            fields: # Ini adalah field untuk SATU item produk di dalam daftar
+              - {label: "ID Produk (slug)", name: "id", widget: "string", hint: "Gunakan huruf kecil, tanpa spasi, pisahkan dengan tanda hubung. Contoh: template-anggaran-baru"}
+              - {label: "Judul", name: "judul", widget: "string"}
+              - {label: "Harga", name: "harga", widget: "number", value_type: "int", default: 0}
+              - {label: "Deskripsi Singkat", name: "deskripsi_singkat", widget: "text"}
+              - {label: "Gambar Preview", name: "gambar_preview", widget: "image"}
+              - name: "detail"
+                label: "Detail Lengkap Produk"
+                widget: "object"
                 fields:
-                  - {label: "Platform", name: "platform", widget: "string"}
-                  - {label: "URL", name: "url", widget: "string"}
-              - name: "galeri"
-                label: "Galeri Fitur"
-                widget: "list"
-                fields:
-                  - {label: "Gambar Fitur", name: "gambar", widget: "image"}
-                  - {label: "Judul Fitur", name: "judul", widget: "string"}
-                  - {label: "Deskripsi Fitur", name: "deskripsi", widget: "markdown"}
+                  - {label: "Gambar Utama", name: "gambar_utama", widget: "image"}
+                  - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
+                  - {label: "Link Preview Detail", name: "link_preview_detail", widget: "string", hint: "Contoh: templates/preview-detail.html?product=ID_PRODUK"}
+                  - {label: "Link YouTube", name: "link_youtube", widget: "string"}
+                  - name: "link_pembelian"
+                    label: "Link Pembelian"
+                    widget: "list" # 'list' di dalam 'list' bisa dilakukan
+                    fields:
+                      - {label: "Platform", name: "platform", widget: "string"}
+                      - {label: "URL", name: "url", widget: "string"}
+                  - name: "galeri"
+                    label: "Galeri Fitur"
+                    widget: "list" # 'list' di dalam 'list' bisa dilakukan
+                    fields:
+                      - {label: "Gambar Fitur", name: "gambar", widget: "image"}
+                      - {label: "Judul Fitur", name: "judul", widget: "string"}
+                      - {label: "Deskripsi Fitur", name: "deskripsi", widget: "markdown"}
