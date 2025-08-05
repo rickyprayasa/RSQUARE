@@ -1,0 +1,2 @@
+# Abaikan file manifest produk karena akan dibuat saat proses build
+content/produk/_index.json
