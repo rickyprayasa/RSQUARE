@@ -1,56 +1,52 @@
 backend:
   name: git-gateway
-  branch: main
-
-# Hapus atau komentari media_folder global jika ada
-# media_folder: "photos"
-# public_folder: "/photos"
+  branch: main # Pastikan ini adalah branch utama Anda
 
 collections:
-  - name: "produk"
-    label: "Produk"
-    folder: "content/produk"
-    create: true
-    slug: "{{slug}}"
+  - name: "produk" # Nama internal koleksi
+    label: "Produk" # Nama yang muncul di sidebar admin
+    label_singular: "Produk" # Nama untuk satu item baru (dari config Anda)
+    description: "Kumpulan semua produk template spreadsheet." # (dari config Anda)
+    folder: "content/produk" # Folder untuk menyimpan file .json
+    create: true # Mengizinkan pembuatan produk baru
     
-    # --- PERUBAHAN UTAMA DIMULAI DI SINI ---
-    # Mendefinisikan folder media KHUSUS untuk koleksi produk ini
-    # {{slug}} akan otomatis diganti dengan ID/slug produk
-    media_folder: "photos/produk/{{slug}}"
-    public_folder: "/photos/produk/{{slug}}"
-    # --- AKHIR PERUBAHAN UTAMA ---
-
+    # --- PERUBAHAN UTAMA UNTUK FOLDER MEDIA DINAMIS ---
+    # {{id}} akan mengambil nilai dari field "id" yang Anda isi di bawah
+    media_folder: "photos/produk/{{id}}"
+    public_folder: "/photos/produk/{{id}}"
+    
+    slug: "{{id}}" # Nama file akan dibuat dari field 'id' (sesuai config Anda)
+    extension: "json" # (dari config Anda)
+    format: "json" # (dari config Anda)
+    summary: "{{fields.judul}} | ID: {{fields.id}}" # Summary yang lebih jelas
     fields:
-      - { label: "ID Unik (Slug)", name: "id", widget: "string" }
-      - { label: "Judul Produk", name: "judul", widget: "string" }
-      - { label: "Deskripsi Singkat (untuk kartu galeri)", name: "deskripsi_singkat", widget: "text" }
-      - { label: "Harga (angka saja, 0 untuk gratis)", name: "harga", widget: "number" }
+      - {label: "ID Produk (slug, tanpa spasi, huruf kecil)", name: "id", widget: "string"}
+      - {label: "Judul", name: "judul", widget: "string"}
+      - {label: "Harga", name: "harga", widget: "number", value_type: "int", default: 0}
+      - {label: "Deskripsi Singkat", name: "deskripsi_singkat", widget: "text"}
       
-      # Field gambar sekarang akan mengunggah ke folder dinamis di atas
-      - { label: "Gambar Thumbnail (untuk galeri)", name: "gambar_thumbnail", widget: "image" }
+      # --- MENGGANTI 'gambar_preview' MENJADI 'gambar_thumbnail' ---
+      # Agar konsisten dengan kode JavaScript di galeri
+      - {label: "Gambar Thumbnail (untuk galeri)", name: "gambar_thumbnail", widget: "image"}
       
-      # Kita tetap menggunakan object 'detail' untuk kerapian data
-      - label: "Detail Produk"
-        name: "detail"
+      - name: "detail"
+        label: "Detail Lengkap Produk"
         widget: "object"
         fields:
-          - { label: "Gambar Utama (di halaman detail)", name: "gambar_utama", widget: "image" }
-          - { label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown" }
-          - { label: "Link Preview Detail", name: "link_preview_detail", widget: "string", required: false }
-          - { label: "Link Video Youtube (Embed)", name: "link_youtube", widget: "string", required: false }
-          
-          - label: "Link Pembelian"
-            name: "link_pembelian"
+          - {label: "Gambar Utama", name: "gambar_utama", widget: "image"}
+          - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
+          - {label: "Link Preview Detail", name: "link_preview_detail", widget: "string", hint: "Contoh: content/preview/template-preview.html?product={{id}}"}
+          - {label: "Link YouTube", name: "link_youtube", widget: "string", required: false}
+          - name: "link_pembelian"
+            label: "Link Pembelian"
             widget: "list"
             fields:
-              - { label: "Platform (e.g., Tokopedia)", name: "platform", widget: "string" }
-              - { label: "URL", name: "url", widget: "string" }
-              
-          - label: "Galeri Gambar (di halaman preview)"
-            name: "galeri"
+              - {label: "Platform", name: "platform", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+          - name: "galeri"
+            label: "Galeri Fitur"
             widget: "list"
-            required: false
             fields:
-              - { label: "Gambar", name: "gambar", widget: "image" }
-              - { label: "Judul Fitur", name: "judul", widget: "string" }
-              - { label: "Deskripsi Fitur", name: "deskripsi", widget: "text" }
+              - {label: "Gambar Fitur", name: "gambar", widget: "image"}
+              - {label: "Judul Fitur", name: "judul", widget: "string"}
+              - {label: "Deskripsi Fitur", name: "deskripsi", widget: "markdown"}
