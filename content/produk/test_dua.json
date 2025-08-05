@@ -3,7 +3,7 @@
   "id": "test_dua",
   "judul": "Ini pasti bisa",
   "deskripsi_singkat": "bismillah",
-  "gambar_thumbnail": "/photos/produk/test_dua/screenshot-from-2025-06-09-13-44-54.png",
+  "gambar_thumbnail": "photos/produk/test_dua/screenshot-from-2025-06-09-13-44-54.png",
   "detail": {
     "gambar_utama": "/photos/produk/test_dua/4.png",
     "deskripsi_lengkap": "tuneeca report",
