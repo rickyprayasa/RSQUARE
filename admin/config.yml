@@ -2,31 +2,39 @@ backend:
   name: git-gateway
   branch: main # Pastikan ini adalah branch utama Anda
 
+# --- PERBAIKAN BERDASARKAN ERROR ---
+# 1. Menambahkan kembali media_folder dan public_folder di level atas sebagai default.
+# Ini adalah folder fallback jika koleksi tidak menentukannya sendiri.
+media_folder: "photos/uploads"
+public_folder: "/photos/uploads"
+
+# 2. Menambahkan properti media_library yang wajib ada.
+# Objek kosong {} akan menggunakan pengaturan default dari CMS.
+media_library: {}
+# --- AKHIR PERBAIKAN ---
+
 collections:
-  - name: "produk" # Nama internal koleksi
-    label: "Produk" # Nama yang muncul di sidebar admin
-    label_singular: "Produk" # Nama untuk satu item baru (dari config Anda)
-    description: "Kumpulan semua produk template spreadsheet." # (dari config Anda)
-    folder: "content/produk" # Folder untuk menyimpan file .json
-    create: true # Mengizinkan pembuatan produk baru
+  - name: "produk"
+    label: "Produk"
+    label_singular: "Produk"
+    description: "Kumpulan semua produk template spreadsheet."
+    folder: "content/produk"
+    create: true
     
-    # --- PERUBAHAN UTAMA UNTUK FOLDER MEDIA DINAMIS ---
-    # {{id}} akan mengambil nilai dari field "id" yang Anda isi di bawah
+    # Pengaturan ini akan MENIMPA (OVERRIDE) pengaturan global di atas.
+    # Jadi, untuk produk, gambar TETAP akan masuk ke folder dinamis.
     media_folder: "photos/produk/{{id}}"
     public_folder: "/photos/produk/{{id}}"
     
-    slug: "{{id}}" # Nama file akan dibuat dari field 'id' (sesuai config Anda)
-    extension: "json" # (dari config Anda)
-    format: "json" # (dari config Anda)
-    summary: "{{fields.judul}} | ID: {{fields.id}}" # Summary yang lebih jelas
+    slug: "{{id}}"
+    extension: "json"
+    format: "json"
+    summary: "{{fields.judul}} | ID: {{fields.id}}"
     fields:
       - {label: "ID Produk (slug, tanpa spasi, huruf kecil)", name: "id", widget: "string"}
       - {label: "Judul", name: "judul", widget: "string"}
       - {label: "Harga", name: "harga", widget: "number", value_type: "int", default: 0}
       - {label: "Deskripsi Singkat", name: "deskripsi_singkat", widget: "text"}
-      
-      # --- MENGGANTI 'gambar_preview' MENJADI 'gambar_thumbnail' ---
-      # Agar konsisten dengan kode JavaScript di galeri
       - {label: "Gambar Thumbnail (untuk galeri)", name: "gambar_thumbnail", widget: "image"}
       
       - name: "detail"
