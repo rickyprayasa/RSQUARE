@@ -1,0 +1,39 @@
+ {
+    "id": "tracking-lamaran",
+    "judul": "Tracking Lamaran Kerja",
+    "harga": 20000,
+    "deskripsi_singkat": "Lacak setiap lamaran kerja, kelola database lowongan, cari peluang, dan atur jadwal interview Anda dalam satu template terpadu.",
+    "gambar_preview": "../photos/tracking-lamaran/dashboard.jpeg",
+    "detail": {
+      "gambar_utama": "../photos/tracking-lamaran/dashboard.jpeg",
+      "deskripsi_lengkap": "Pantau setiap langkah dari proses lamaran kerja Anda, mulai dari jumlah loker yang dilamar, panggilan interview, hingga status akhir.",
+      "link_preview_detail": "templates/preview-detail.html?product=tracking-lamaran",
+      "link_youtube": "https://www.youtube.com/embed/XD8ImBgaamc?enablejsapi=1",
+      "link_pembelian": [
+        { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/2v4r09xe6y90" },
+        { "platform": "KaryaKarsa", "url": "https://karyakarsa.com/rsquare/template-tracking-lamaran" }
+      ],
+      "galeri": [
+        {
+          "gambar": "../photos/tracking-lamaran/dashboard.jpeg",
+          "judul": "📨 TRACKING LAMARAN",
+          "deskripsi": "Pantau setiap langkah dari proses lamaran kerja Anda di sini.<br><strong>Dasbor Progres</strong> 📊: Lihat ringkasan jumlah loker yang dilamar, panggilan interview, dan tes.<br><strong>Status Lamaran</strong> 📤: Lacak status setiap lamaran, dari proses hingga ditolak.<br><strong>Catatan Penting</strong> 📝: Tambahkan catatan pribadi untuk setiap lamaran."
+        },
+        {
+          "gambar": "../photos/tracking-lamaran/data-base.jpeg",
+          "judul": "📑 DATABASE LOWONGAN",
+          "deskripsi": "Sheet ini adalah pusat data untuk semua lowongan pekerjaan yang Anda temukan.<br><strong>Pusat Informasi</strong> 🗃️: Semua detail penting tentang lowongan tersimpan di sini.<br><strong>Filter Cepat</strong> ✅/❌: Tandai apakah sebuah lowongan 'Cocok' atau 'Tidak Cocok' untuk Anda.<br><strong>Tautan Langsung</strong> 🔗: Simpan tautan langsung ke halaman lowongan pekerjaan."
+        },
+        {
+          "gambar": "../photos/tracking-lamaran/loker.jpeg",
+          "judul": "🔎 SEARCH BOX",
+          "deskripsi": "Gunakan sheet ini untuk mencari dan memfilter lowongan kerja yang ada di database dengan cepat.<br><strong>Pencarian Cerdas</strong> 🕵️: Cari lowongan berdasarkan jabatan, perusahaan, lokasi, atau tipe pekerjaan.<br><strong>Filter per Bulan & Tahun</strong> 🗓️: Saring lowongan berdasarkan periode.<br><strong>Hasil Terperinci</strong> ✨: Hasil pencarian akan menampilkan semua informasi penting."
+        },
+        {
+          "gambar": "../photos/tracking-lamaran/kalender.jpeg",
+          "judul": "🗓️ SCHEDULE",
+          "deskripsi": "Atur semua jadwal interview dan tes Anda di sini agar tidak ada yang terlewat.<br><strong>Kalender Pribadi</strong> 📅: Lihat semua jadwal Anda dalam format kalender mingguan.<br><strong>Rincian Jadwal</strong> ⏰: Catat tanggal dan waktu spesifik untuk setiap agenda.<br><strong>Pengingat Semangat</strong> 🌟: Dapatkan kutipan penyemangat setiap hari."
+        }
+      ]
+    }
+  }

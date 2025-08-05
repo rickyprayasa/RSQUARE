@@ -8,11 +8,11 @@
 
     "deskripsi_singkat": "Buat faktur profesional secara otomatis. Cukup masukkan data klien dan item, lalu simpan sebagai PDF langsung ke Google Drive Anda.",
 
-    "gambar_preview": "photos/Invoice-maker/Invoice.png",
+    "gambar_preview": "../photos/Invoice-maker/Invoice.png",
 
     "detail": {
 
-      "gambar_utama": "photos/Invoice-maker/Invoice.png",
+      "gambar_utama": "../photos/Invoice-maker/Invoice.png",
 
       "deskripsi_lengkap": "Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template Invoice Maker gratis ini.",
 
@@ -32,7 +32,7 @@
 
         {
 
-          "gambar": "photos/Invoice-maker/Invoice-Input.png",
+          "gambar": "../photos/Invoice-maker/Invoice-Input.png",
 
           "judul": "📝 INPUT",
 
@@ -42,7 +42,7 @@
 
         {
 
-          "gambar": "photos/Invoice-maker/Invoice.png",
+          "gambar": "../photos/Invoice-maker/Invoice.png",
 
           "judul": "🧾 INVOICE",
 

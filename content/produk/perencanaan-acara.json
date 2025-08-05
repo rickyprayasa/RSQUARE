@@ -8,11 +8,11 @@
 
     "deskripsi_singkat": "Kelola semua aspek keuangan acara Anda, mulai dari anggaran, vendor, hingga jadwal pembayaran dalam satu dasbor terpusat.",
 
-    "gambar_preview": "photos/anggaran-acara/dashboard.jpeg",
+    "gambar_preview": "../photos/anggaran-acara/dashboard.jpeg",
 
     "detail": {
 
-      "gambar_utama": "photos/anggaran-acara/dashboard.jpeg",
+      "gambar_utama": "../photos/anggaran-acara/dashboard.jpeg",
 
       "deskripsi_lengkap": "Pusat kendali acara Anda, tempat di mana Anda bisa memantau semua metrik penting dalam sekejap untuk membuat keputusan yang lebih baik.",
 
@@ -32,7 +32,7 @@
 
         {
 
-          "gambar": "photos/anggaran-acara/dashboard.jpeg",
+          "gambar": "../photos/anggaran-acara/dashboard.jpeg",
 
           "judul": "🎉 Dashboard Acara",
 
@@ -42,7 +42,7 @@
 
         {
 
-          "gambar": "photos/anggaran-acara/anggaran.jpeg",
+          "gambar": "../photos/anggaran-acara/anggaran.jpeg",
 
           "judul": "💰 Anggaran Detail",
 
@@ -52,7 +52,7 @@
 
         {
 
-          "gambar": "photos/anggaran-acara/daftar.jpeg",
+          "gambar": "../photos/anggaran-acara/daftar.jpeg",
 
           "judul": "🤝 Vendor & Kontak",
 
@@ -62,7 +62,7 @@
 
         {
 
-          "gambar": "photos/anggaran-acara/kategori.jpeg",
+          "gambar": "../photos/anggaran-acara/kategori.jpeg",
 
           "judul": "⚙️ Pengaturan & Kategori",
 
