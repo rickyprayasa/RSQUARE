@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: selasaku # Pastikan ini adalah branch utama Anda
+  branch: main # Pastikan ini adalah branch utama Anda
 
 media_folder: "photos/uploads" # Folder untuk menyimpan gambar yang baru di-upload
 public_folder: "/photos/uploads" # Path publik untuk gambar yang di-upload
