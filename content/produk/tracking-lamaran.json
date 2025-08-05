@@ -7,7 +7,7 @@
     "detail": {
       "gambar_utama": "photos/tracking-lamaran/dashboard.jpeg",
       "deskripsi_lengkap": "Pantau setiap langkah dari proses lamaran kerja Anda, mulai dari jumlah loker yang dilamar, panggilan interview, hingga status akhir.",
-      "link_preview_detail": "templates/preview-detail.html?product=tracking-lamaran",
+      "link_preview_detail": "content/template-preview.html?product=tracking-lamaran",
       "link_youtube": "https://www.youtube.com/embed/XD8ImBgaamc?enablejsapi=1",
       "link_pembelian": [
         { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/2v4r09xe6y90" },
