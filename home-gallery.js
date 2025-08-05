@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Kita akan ambil 'gambar_utama' dari setiap produk untuk ditampilkan di marquee
         const images = products.map(product => {
             // Pastikan path tidak diawali '/'
-            let imagePath = product.detail.gambar_utama || '';
+            let imagePath = "content/produk/${product.detail.gambar_utama}" || '';
             if (imagePath.startsWith('/')) {
                 imagePath = imagePath.substring(1);
             }
