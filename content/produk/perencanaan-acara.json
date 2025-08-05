@@ -7,7 +7,7 @@
     "detail": {
       "gambar_utama": "photos/anggaran-acara/dashboard.jpeg",
       "deskripsi_lengkap": "Pusat kendali acara Anda, tempat di mana Anda bisa memantau semua metrik penting dalam sekejap untuk membuat keputusan yang lebih baik.",
-      "link_preview_detail": "templates/preview-detail.html?product=perencanaan-acara",
+      "link_preview_detail": "content/template-preview.html?product=perencanaan-acara",
       "link_youtube": "https://www.youtube.com/embed/uk8scHNKWz4?enablejsapi=1",
       "link_pembelian": [
         { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/kl0gk33q81zd" },
