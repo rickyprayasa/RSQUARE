@@ -1,14 +1,10 @@
 backend:
   name: git-gateway
-  branch: main # Pastikan ini adalah branch utama Anda
+  branch: main
 
-# Mengembalikan media_folder dan public_folder global sesuai config asli Anda
-# Ini akan menjadi folder default untuk upload media.
+# Folder default untuk media (wajib ada di level atas)
 media_folder: "photos/uploads"
 public_folder: "/photos/uploads"
-
-# Properti 'media_library' dihapus karena tidak ada di config asli Anda
-# dan menyebabkan error turunan.
 
 collections:
   - name: "produk"
@@ -18,8 +14,7 @@ collections:
     folder: "content/produk"
     create: true
     
-    # Pengaturan ini akan MENIMPA (OVERRIDE) pengaturan global di atas.
-    # INI ADALAH FITUR YANG ANDA INGINKAN DAN AKAN TETAP BERFUNGSI.
+    # Menimpa (override) pengaturan global untuk koleksi ini
     media_folder: "photos/produk/{{id}}"
     public_folder: "/photos/produk/{{id}}"
     
