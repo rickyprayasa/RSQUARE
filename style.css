@@ -536,19 +536,23 @@ body {
 }
 
 /* ========================================================================
-   GAYA BARU UNTUK KARTU TEMPLATE UNGGULAN
+/* ========================================================================
+   GAYA BARU UNTUK KARTU TEMPLATE UNGGULAN (Hover Interaktif)
    ======================================================================== */
+
 .featured-card {
     position: relative;
     overflow: hidden;
-    height: 350px; /* Anda bisa menyesuaikan tinggi kartu di sini */
+    height: 350px; /* Tinggi kartu normal, bisa disesuaikan */
     border-radius: 1rem; /* rounded-xl */
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out; /* Tambahkan transisi untuk semua properti */
+    cursor: pointer;
 }
 
 .featured-card:hover {
-    transform: scale(1.03);
+    /* Efek membesar saat hover */
+    transform: scale(1.05); 
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
@@ -581,15 +585,25 @@ body {
     right: 0;
     padding: 1.5rem; /* p-6 */
     color: white;
-    transform: translateY(20px); /* Mulai dari bawah untuk animasi */
-    opacity: 0; /* Mulai dari transparan */
+    transform: translateY(0); /* Posisi awal normal */
+    opacity: 1; /* Transparan total saat normal */
     transition: all 0.4s ease-out;
 }
 
-.featured-card:hover .featured-card-content {
-    transform: translateY(0);
-    opacity: 1;
+/* Bagian deskripsi yang akan muncul saat hover */
+.featured-card-description {
+    /* Deskripsi awalnya disembunyikan dan transparan */
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: all 0.4s ease-out;
 }
+
+/* Saat hover, konten akan ditampilkan */
+.featured-card:hover .featured-card-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .card-template {
   background: white;
