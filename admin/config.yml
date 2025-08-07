@@ -23,7 +23,7 @@ collections:
     format: "json"
     summary: "{{fields.judul}} | ID: {{fields.id}}"
     # Menunjuk ke cangkang HTML yang akan kita gunakan di dalam admin.
-    preview_path: "preview-templates/produk-preview.html"
+    #preview_path: "preview-templates/produk-preview.html"
     fields:
       - {label: "ID Produk (slug, tanpa spasi, huruf kecil)", name: "id", widget: "string"}
       - {label: "Judul", name: "judul", widget: "string"}
