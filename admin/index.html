@@ -3,11 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
-  <title>Manajemen Konten | RSQUARE</title>
+  <title>Content Manager | RSQUARE</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="/admin/preview-templates/produk-preview.js"></script>
+  <script>
+    CMS.registerPreviewTemplate("produk", ProdukPreview);
+    CMS.registerPreviewStyle("/style.css");
+  </script>
 </body>
 </html>
