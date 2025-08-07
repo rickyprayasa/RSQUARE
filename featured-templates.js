@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <img src="${imagePath}" alt="${product.judul}">
                     <div class="content">
                         <span class="label">★ Template Unggulan</span>
-                        <h3 style="color:green">🎯 ${product.judul}</h3>
-                        <p style="color:red">${product.deskripsi_singkat}</p>
+                        <h3 >🎯 ${product.judul}</h3>
+                        <p >${product.deskripsi_singkat}</p>
                         <a href="${detailLink}" class="btn">Lihat Template</a>
                     </div>
                 </div>
