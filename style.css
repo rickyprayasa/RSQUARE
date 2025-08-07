@@ -91,6 +91,54 @@ body {
     box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
 }
 
+/* ========================================================================
+   GAYA TOMBOL DENGAN EFEK GRADASI BERULANG
+   ======================================================================== */
+.btn-primary-small {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: #F97316; /* Warna solid awal */
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.btn-primary-small:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+}
+
+.btn-primary-small::before {
+    content: '';
+    position: absolute;
+    inset: -2px; /* Sedikit lebih besar dari tombol */
+    z-index: -1;
+    border-radius: 10px; /* Sudut membulat yang sedikit lebih besar */
+    /* Gradasi warna yang bergerak */
+    background: linear-gradient(90deg, #F97316, #a371f7, #2563eb, #F97316);
+    background-size: 200% 100%;
+    animation: flow-gradient 3s linear infinite; /* Animasi bergerak berulang */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.btn-primary-small:hover::before {
+    opacity: 1;
+}
+
+@keyframes flow-gradient {
+    0% { background-position: -100% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+
 /* Tombol Sekunder (Outline Oranye) */
 .btn-secondary {
     position: relative;
@@ -360,25 +408,6 @@ body {
 }
 
 
-/* ========================================================================
-   GAYA TOMBOL CTA JASA WEBSITE (Gaya "Ghost" Baru)
-   ======================================================================== */
-
-.btn-cta-ghost {
-    color: #374151; /* Warna teks abu gelap */
-    border: 2px solid #e5e7eb; /* Border abu-abu terang */
-    background-color: transparent;
-}
-
-.btn-cta-ghost:hover {
-    color: #FFFFFF; /* Teks menjadi putih */
-    background-color: #1F2937; /* Latar menjadi hitam/abu gelap */
-    border-color: #1F2937; /* Border menjadi hitam/abu gelap */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-}
-
-
 
 /* /* ========================================================================
    GAYA UNTUK TOOLTIP PENJELASAN
@@ -536,60 +565,83 @@ body {
 }
 
 /* ========================================================================
-   GAYA BARU UNTUK KARTU TEMPLATE UNGGULAN
+   GAYA KARTU TEMPLATE UNGGULAN (Revisi Akhir Final)
    ======================================================================== */
+
 .featured-card {
-    position: relative;
+    background-color: white;
     overflow: hidden;
-    height: 350px; /* Anda bisa menyesuaikan tinggi kartu di sini */
-    border-radius: 1rem; /* rounded-xl */
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    height: 350px;
+    /* Lebar kartu akan diatur oleh Grid, bukan style inline */
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.2);
     transition: all 0.4s ease-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 
 .featured-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    height: 470px; /* Atur tinggi yang melebar ke bawah saat hovered */
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 20px 30px rgba(249, 115, 22, 0.4);
 }
 
-.featured-card-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
+.featured-card-image {
     width: 100%;
-    height: 100%;
+    height: 200px;
     object-fit: cover;
-    transition: transform 0.4s ease-out;
+    object-position: top;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    flex-shrink: 0;
 }
 
-.featured-card:hover .featured-card-bg {
-    transform: scale(1.1); /* Efek zoom pada gambar saat hover */
-}
-
-/* Lapisan gradasi gelap di atas gambar */
-.featured-card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
-}
-
-/* Konten teks di dalam kartu */
 .featured-card-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem; /* p-6 */
-    color: white;
-    transform: translateY(20px); /* Mulai dari bawah untuk animasi */
-    opacity: 0; /* Mulai dari transparan */
-    transition: all 0.4s ease-out;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    perspective: 1000px;
 }
 
-.featured-card:hover .featured-card-content {
-    transform: translateY(0);
-    opacity: 1;
+.featured-card-content h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 0.5rem;
 }
+
+.featured-card-content .label {
+    font-size: 0.8rem;
+    color: #2563EB;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Bagian deskripsi dan tombol yang akan muncul saat hover */
+.featured-card-description-wrapper {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding-bottom 0.4s ease-in-out;
+}
+
+.featured-card.is-hovered .featured-card-description-wrapper {
+    max-height: 250px;
+    opacity: 1;
+    padding-bottom: 1rem;
+}
+
+.featured-card-description {
+    font-size: 0.95rem;
+    color: #4B5563;
+    margin-bottom: 1rem;
+}
+
 
 .card-template {
   background: white;
@@ -745,3 +797,13 @@ body {
     }
 }
 
+/* ========================================================================
+   GAYA TATA LETAK GRID UNTUK KARTU
+   ======================================================================== */
+.template-grid {
+    display: grid;
+    /* Atur kolom agar muat 340px dan fleksibel mengisi ruang */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+    justify-items: center;
+}
