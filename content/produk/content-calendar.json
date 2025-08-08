@@ -20,13 +20,13 @@
       },
       {
         "gambar": "photos/produk/content-calendar/template-content-calendar-1-.png",
-        "deskripsi": "Fitur ini akan menjadwalkan konten dari sheet <b>Calendar</b> ke Google Calendar secara automatis tanpa perlu kita repot input ulang lagi ke Google Calendar setelah pengaktifan awal fiturnya di menu <b>Fitur Kalender</b>",
+        "deskripsi": "Fitur ini akan menjadwalkan konten dari sheet <b>Calendar</b> ke Google Calendar secara automatis tanpa perlu kita repot input ulang lagi setelah pengaktifan awal fiturnya di menu <b>Fitur Kalender</b>",
         "judul": "✨ Fitur Google Calendar"
       },
       {
         "gambar": "photos/produk/content-calendar/template-content-calendar-2-.png",
         "deskripsi": "Jadwal konten yang Anda susun di spreadsheet akan langsung tersinkronisasi ke Google Calendar pribadi Anda. Anda dapat memvisualisasikan jadwal postingan dengan jelas dan mendapatkan notifikasi, membuat manajemen waktu menjadi sangat mudah.",
-        "judul": "✨ Fitur Google Calendar"
+        "judul": "📅 Google Calendar"
       }
     ],
     "link_pembelian": [
