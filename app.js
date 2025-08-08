@@ -1,3 +1,32 @@
+// Fungsi untuk memuat dan menyisipkan konten dari file eksternal
+const loadComponent = (selector, path) => {
+    fetch(path)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Gagal memuat ${path}: ${response.statusText}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.innerHTML = data;
+            }
+        })
+        .catch(error => console.error(error));
+};
+
+// Panggil fungsi ini setelah halaman selesai dimuat
+document.addEventListener('DOMContentLoaded', () => {
+    // Memuat footer ke dalam elemen dengan id="footer-placeholder"
+    // Pastikan path '/footer.html' sudah benar sesuai lokasi file Anda
+    loadComponent('#footer-placeholder', '/footer.html');
+    
+    // Anda juga bisa melakukan ini untuk komponen lain, misalnya header/navbar
+    // loadComponent('#navbar-placeholder', '/navbar.html'); 
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
 // ===== KODE UNTUK MENU MOBILE (dengan Animasi Halus) =====
