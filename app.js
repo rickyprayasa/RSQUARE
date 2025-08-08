@@ -20,7 +20,7 @@ const loadComponent = (selector, path) => {
 document.addEventListener('DOMContentLoaded', () => {
     // Memuat footer ke dalam elemen dengan id="footer-placeholder"
     // Pastikan path '/footer.html' sudah benar sesuai lokasi file Anda
-    loadComponent('#footer-placeholder', '/footer.html');
+    loadComponent('#footer-placeholder', 'footer.html');
     
     // Anda juga bisa melakukan ini untuk komponen lain, misalnya header/navbar
     // loadComponent('#navbar-placeholder', '/navbar.html'); 
