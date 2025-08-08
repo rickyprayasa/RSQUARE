@@ -10,23 +10,23 @@
     "galeri": [
       {
         "gambar": "photos/produk/content-calendar/sheet-calendar.png",
-        "deskripsi": "\n\nPada sheet utama, **🗓️ CALENDAR**, Anda akan menemukan kalender konten yang sangat intuitif. Di sini, Anda bisa merencanakan setiap detail konten, mulai dari ide, topik, platform publikasi (misalnya Instagram, TikTok, YouTube), hingga status pengerjaannya. Semua terorganisir dalam satu tempat, memastikan Anda tidak lagi bingung atau melewatkan jadwal postingan.\n\nKeunggulan utama template ini terletak pada kecanggihan Apps Script yang disematkan di dalamnya, memberikan dua fitur revolusioner:\n\n1. **Otomatisasi Ajaib!** ✨: Sinkronisasi jadwal postingan langsung ke Google Calendar hanya dengan 1 klik!  \n2. **Input Waktu Sat-set** ⏱️: Ketik angka (misal 930), otomatis jadi format waktu yang benar. Hemat waktu banget!\n3. **Perencanaan Rapi** 🗓️: Semua ide, status, dan platform konten terorganisir di satu tempat.",
+        "deskripsi": "\n\nPada sheet utama, <b>🗓️ CALENDAR</b>, Anda akan menemukan kalender konten yang sangat intuitif. Di sini, Anda bisa merencanakan setiap detail konten, mulai dari ide, topik, platform publikasi (misalnya Instagram, TikTok, YouTube), hingga status pengerjaannya. Semua terorganisir dalam satu tempat, memastikan Anda tidak lagi bingung atau melewatkan jadwal postingan.<p>Keunggulan utama template ini terletak pada kecanggihan Apps Script yang disematkan di dalamnya, memberikan dua fitur revolusioner:</p> <p><b>Otomatisasi Ajaib!</b> ✨: Sinkronisasi jadwal postingan langsung ke Google Calendar hanya dengan 1 klik!  </p> <p><b>Input Waktu Sat-set</b> ⏱️: Ketik angka (misal 930), otomatis jadi format waktu yang benar. Hemat waktu banget!</p> <p><b>Perencanaan Rapi</b> 🗓️: Semua ide, status, dan platform konten terorganisir di satu tempat.</p>",
         "judul": "🗓️ CALENDAR"
       },
       {
         "gambar": "photos/produk/content-calendar/format-waktu.png",
         "judul": "⏱️ Fitur Format Waktu",
-        "deskripsi": "Input Waktu menjadi Cepat dan Efisien dengan hanya input angka saja dan secara otomatis, Apps Script akan mengubahnya menjadi format waktu yang benar untuk bisa masuk ke Google Calendar.\n\n(misalnya : Input angka **930** menjadi **09:30** atau angka **16** menjadi **16:00**)."
+        "deskripsi": "Input Waktu menjadi Cepat dan Efisien dengan hanya input angka saja dan secara otomatis, Apps Script akan mengubahnya menjadi format waktu yang benar untuk bisa masuk ke Google Calendar.<p>(misalnya : Input angka <b>930</b> menjadi <b>09:30</b> atau angka <b>16</b> menjadi <b>16:00</b>).</p>"
       },
       {
         "gambar": "photos/produk/content-calendar/template-content-calendar-1-.png",
-        "deskripsi": "Fitur ini akan menjadwalkan konten dari sheet **Calendar** ke Google Calendar secara automatis tanpa perlu kita repot input ulang lagi ke Google Calendar setelah pengaktifan awal fiturnya di menu **Fitur Kalender**",
+        "deskripsi": "Fitur ini akan menjadwalkan konten dari sheet <b>Calendar</b> ke Google Calendar secara automatis tanpa perlu kita repot input ulang lagi setelah pengaktifan awal fiturnya di menu <b>Fitur Kalender</b>",
         "judul": "✨ Fitur Google Calendar"
       },
       {
         "gambar": "photos/produk/content-calendar/template-content-calendar-2-.png",
         "deskripsi": "Jadwal konten yang Anda susun di spreadsheet akan langsung tersinkronisasi ke Google Calendar pribadi Anda. Anda dapat memvisualisasikan jadwal postingan dengan jelas dan mendapatkan notifikasi, membuat manajemen waktu menjadi sangat mudah.",
-        "judul": "✨ Fitur Google Calendar"
+        "judul": "📅 Google Calendar"
       }
     ],
     "link_pembelian": [
