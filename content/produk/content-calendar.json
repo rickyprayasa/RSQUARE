@@ -16,11 +16,11 @@
       {
         "gambar": "photos/produk/content-calendar/format-waktu.png",
         "judul": "⏱️ Fitur Format Waktu",
-        "deskripsi": "Input Waktu menjadi Cepat dan Efisien dengan hanya input angka saja dan secara otomatis, Apps Script akan mengubahnya menjadi format waktu yang benar untuk bisa masuk ke Google Calendar.\n\n(misalnya : Input angka **930** menjadi **09:30** atau angka **16** menjadi **16:00**)."
+        "deskripsi": "Input Waktu menjadi Cepat dan Efisien dengan hanya input angka saja dan secara otomatis, Apps Script akan mengubahnya menjadi format waktu yang benar untuk bisa masuk ke Google Calendar.<p>(misalnya : Input angka <b>930</b> menjadi <b>09:30</b> atau angka <b>16</b> menjadi <b>16:00</b>)."
       },
       {
         "gambar": "photos/produk/content-calendar/template-content-calendar-1-.png",
-        "deskripsi": "Fitur ini akan menjadwalkan konten dari sheet **Calendar** ke Google Calendar secara automatis tanpa perlu kita repot input ulang lagi ke Google Calendar setelah pengaktifan awal fiturnya di menu **Fitur Kalender**",
+        "deskripsi": "Fitur ini akan menjadwalkan konten dari sheet <b>Calendar</b> ke Google Calendar secara automatis tanpa perlu kita repot input ulang lagi ke Google Calendar setelah pengaktifan awal fiturnya di menu <b>Fitur Kalender</b>",
         "judul": "✨ Fitur Google Calendar"
       },
       {
