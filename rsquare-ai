@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat - Didukung oleh Gemini Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .chat-bubble {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .typing-indicator {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .chat-container {
+            height: calc(100vh - 140px);
+        }
+        
+        .message-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="max-w-4xl mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        <span class="text-xl">✨</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">AI Chat Pro</h1>
+                        <p class="text-sm opacity-90">Didukung oleh Gemini</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    <span class="text-sm">Online</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-4 py-6">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div id="chatContainer" class="chat-container overflow-y-auto p-6 space-y-4">
+                <div class="chat-bubble flex items-start space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-sm">AI</span>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-xs md:max-w-md">
+                        <p class="text-gray-800">Halo! Saya adalah asisten AI yang didukung oleh Gemini Pro. Saya bisa menjawab pertanyaan kompleks, membantu Anda menulis, menerjemahkan, dan banyak lagi. Apa yang ingin Anda diskusikan hari ini?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t bg-gray-50 p-4">
+                <div class="flex items-end space-x-3">
+                    <div class="flex-1">
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="Ketik pesan Anda di sini..."
+                            class="message-input w-full px-4 py-3 border border-gray-300 rounded-2xl resize-none focus:border-purple-500 transition-colors"
+                            rows="1"
+                        ></textarea>
+                    </div>
+                    <button 
+                        id="sendButton"
+                        class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-2xl hover:from-purple-600 hover:to-blue-600 transition-all duration-200 font-medium flex items-center space-x-2 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        <span>Kirim</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                    </button>
+                </div>
+                 <div class="text-xs text-gray-500 mt-2">
+                    <span>Tekan Enter untuk kirim, Shift+Enter untuk baris baru.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chatContainer');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+
+        // ======================================================================
+        // PENTING: Ganti dengan API Key Anda yang didapatkan dari Google AI Studio
+        // ======================================================================
+        const GEMINI_API_KEY = "AIzaSyBZ56MGETfqJaLyLzphTG3TRXz1qBsimCg"; 
+        const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+        
+        // Auto-resize textarea
+        messageInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+
+        // ======================================================================
+        // FUNGSI INTI BARU: Mendapatkan respons dari Gemini Pro API
+        // ======================================================================
+        async function getGeminiResponse(userMessage) {
+            try {
+                const payload = {
+                    contents: [{
+                        parts: [{
+                            text: userMessage
+                        }]
+                    }]
+                };
+
+                const response = await fetch(GEMINI_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error("API Error:", errorData);
+                    return `Maaf, terjadi kesalahan saat menghubungi AI. (${response.status} ${response.statusText}). Pastikan API Key Anda valid.`;
+                }
+
+                const data = await response.json();
+                // Ekstrak teks dari respons API
+                const candidate = data.candidates && data.candidates[0];
+                if (candidate && candidate.content && candidate.content.parts && candidate.content.parts[0]) {
+                    return candidate.content.parts[0].text;
+                }
+                
+                return "Maaf, saya tidak dapat memproses permintaan Anda saat ini. Respons dari AI tidak memiliki format yang diharapkan.";
+
+            } catch (error) {
+                console.error("Fetch Error:", error);
+                return "Maaf, terjadi masalah koneksi. Silakan coba lagi nanti.";
+            }
+        }
+
+        // Send message function (telah dimodifikasi)
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+            
+            if (GEMINI_API_KEY === "MASUKKAN_API_KEY_ANDA_DISINI") {
+                addMessage("Konfigurasi Error: Harap masukkan API Key Gemini Anda di dalam kode JavaScript.", 'ai');
+                return;
+            }
+
+            // Nonaktifkan input dan tombol selama memproses
+            messageInput.disabled = true;
+            sendButton.disabled = true;
+
+            // Tambahkan pesan pengguna ke UI
+            addMessage(message, 'user');
+            messageInput.value = '';
+            messageInput.style.height = 'auto';
+
+            // Tampilkan indikator mengetik
+            showTypingIndicator();
+
+            // Dapatkan respons dari Gemini dan tampilkan
+            const aiResponse = await getGeminiResponse(message);
+            hideTypingIndicator();
+            addMessage(aiResponse, 'ai');
+            
+            // Aktifkan kembali input dan tombol
+            messageInput.disabled = false;
+            sendButton.disabled = false;
+            messageInput.focus();
+        }
+
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-bubble flex items-start space-x-3';
+            
+            // Mengganti baris baru (\n) dengan tag <br> untuk tampilan HTML
+            const formattedText = text.replace(/\n/g, '<br>');
+
+            if (sender === 'user') {
+                messageDiv.className += ' flex-row-reverse space-x-reverse';
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-sm">U</span>
+                    </div>
+                    <div class="bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-xs md:max-w-md">
+                        <p>${formattedText}</p>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-white text-sm">AI</span>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-xs md:max-w-md">
+                        <p class="text-gray-800">${formattedText}</p>
+                    </div>
+                `;
+            }
+            
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Show typing indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typingIndicator';
+            typingDiv.className = 'flex items-start space-x-3';
+            typingDiv.innerHTML = `
+                <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-white text-sm">AI</span>
+                </div>
+                <div class="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3">
+                    <div class="flex space-x-1">
+                        <div class="w-2 h-2 bg-gray-400 rounded-full typing-indicator"></div>
+                        <div class="w-2 h-2 bg-gray-400 rounded-full typing-indicator" style="animation-delay: 0.2s;"></div>
+                        <div class="w-2 h-2 bg-gray-400 rounded-full typing-indicator" style="animation-delay: 0.4s;"></div>
+                    </div>
+                </div>
+            `;
+            chatContainer.appendChild(typingDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Hide typing indicator
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        // Event listeners
+        sendButton.addEventListener('click', sendMessage);
+
+        messageInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+        
+        // Focus on input when page loads
+        window.addEventListener('load', function() {
+            messageInput.focus();
+        });
+
+    </script>
+</body>
+</html>
