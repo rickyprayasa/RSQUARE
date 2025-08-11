@@ -1,0 +1,15 @@
+{
+  "name": "rsquare",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">   <img src=\"photos/RSQUARE-LOGO3.jpg\" alt=\"RSQUARE Logo\" width=\"150\"> </p>",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.11.0"
+  }
+}
