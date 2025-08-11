@@ -31,12 +31,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             // Mengubah judul halaman dan meta deskripsi secara dinamis
             document.title = `Preview Detail: ${product.judul} - RSQUARE`;
-            // PERBAIKAN: Gunakan deskripsi_singkat untuk meta tag agar SEO friendly (teks biasa)
             document.querySelector('meta[name="description"]').setAttribute('content', product.deskripsi_singkat);
 
             // --- Mulai Membangun String HTML ---
 
-            // PERBAIKAN #1: Proses deskripsi utama dengan marked.js
             const deskripsiLengkapHTML = marked.parse(product.detail.deskripsi_lengkap);
 
             // A. Header Halaman
@@ -53,13 +51,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // B. Daftar Fitur (Looping dari data 'galeri')
             const featuresHTML = product.detail.galeri.map(item => {
-                // PERBAIKAN #2: Proses deskripsi di setiap fitur dengan marked.js
                 const deskripsiFiturHTML = marked.parse(item.deskripsi);
                 return `
                 <div class="flex flex-col items-center gap-6">
                     <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                        <a href="produk/${item.gambar}" class="zoomable-image cursor-zoom-in">
-                            <img src="produk/${item.gambar}" alt="${item.judul}" class="rounded-lg w-full shadow-lg">
+                        <a href="/produk/${item.gambar}" class="zoomable-image cursor-zoom-in">
+                            <img src="/produk/${item.gambar}" alt="${item.judul}" class="rounded-lg w-full shadow-lg">
                         </a>
                     </div>
                     <div class="text-center md:text-left max-w-2xl">
@@ -109,8 +106,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ${ctaButtonsHTML}
                     </div>
                     <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
-                        <a href="template-detail.html?product=${product.id}" class="text-gray-500 hover:text-orange-600 font-semibold transition">← Kembali ke Ringkasan</a>
-                        <a href="../../templates.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">Lihat Semua Template →</a>
+                        <a href="/template-detail.html?product=${product.id}" class="text-gray-500 hover:text-orange-600 font-semibold transition">← Kembali ke Ringkasan</a>
+                        <a href="/templates.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">Lihat Semua Template →</a>
                     </div>
                 </section>`;
 
