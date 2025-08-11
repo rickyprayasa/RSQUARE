@@ -1,0 +1,19 @@
+{
+  "harga": 0,
+  "id": "new_product",
+  "judul": "test product",
+  "detail": {
+    "deskripsi_lengkap": "Pada sheet utama, **🗓️ CALENDAR**, Anda akan menemukan kalender konten yang sangat intuitif. Di sini, Anda bisa merencanakan setiap detail konten, mulai dari ide, topik, platform publikasi (misalnya Instagram, TikTok, YouTube), hingga status pengerjaannya. Semua terorganisir dalam satu tempat, memastikan Anda tidak lagi bingung atau melewatkan jadwal postingan.\n\nKeunggulan utama template ini terletak pada kecanggihan Apps Script yang disematkan di dalamnya, memberikan dua fitur revolusioner:\n\n**Otomatisasi Ajaib!** ✨: Sinkronisasi jadwal postingan langsung ke Google Calendar hanya dengan 1 klik!\n\n**Input Waktu Sat-set** ⏱️: Ketik angka (misal 930), otomatis jadi format waktu yang benar. Hemat waktu banget!\n\n**Perencanaan Rapi** 🗓️: Semua ide, status, dan platform konten terorganisir di satu tempat.",
+    "galeri": [
+      {
+        "judul": "🗓️ CALENDAR",
+        "deskripsi": "Pada sheet utama, **🗓️ CALENDAR**, Anda akan menemukan kalender konten yang sangat intuitif. Di sini, Anda bisa merencanakan setiap detail konten, mulai dari ide, topik, platform publikasi (misalnya Instagram, TikTok, YouTube), hingga status pengerjaannya. Semua terorganisir dalam satu tempat, memastikan Anda tidak lagi bingung atau melewatkan jadwal postingan.\n\nKeunggulan utama template ini terletak pada kecanggihan Apps Script yang disematkan di dalamnya, memberikan dua fitur revolusioner:\n\n**Otomatisasi Ajaib!** ✨: Sinkronisasi jadwal postingan langsung ke Google Calendar hanya dengan 1 klik!\n\n**Input Waktu Sat-set** ⏱️: Ketik angka (misal 930), otomatis jadi format waktu yang benar. Hemat waktu banget!\n\n**Perencanaan Rapi** 🗓️: Semua ide, status, dan platform konten terorganisir di satu tempat.",
+        "gambar": "photos/produk/new_product/screenshot-from-2025-06-09-13-44-54.png"
+      }
+    ],
+    "gambar_utama": "photos/produk/new_product/screenshot-from-2025-06-09-13-44-54.png",
+    "link_youtube": "https://rsquareidea.my.id/content/template-preview.html?product=content-calendar"
+  },
+  "deskripsi_singkat": "🗓️ CALENDAR",
+  "gambar_thumbnail": "photos/produk/new_product/screenshot-from-2025-06-09-13-44-54.png"
+}
