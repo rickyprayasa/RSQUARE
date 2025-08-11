@@ -55,11 +55,22 @@
                 <p class="font-semibold text-gray-700">Total Pembayaran:</p>
                 <p id="harga-produk" class="text-4xl font-bold text-orange-600 mb-4">Rp 0</p>
                 <p class="font-semibold text-gray-700 mt-6">Silakan transfer ke salah satu rekening berikut:</p>
-                <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
-                    <li>BCA: <strong>1234567890</strong> (a.n. Nama Anda)</li>
-                    <li>GoPay/OVO: <strong>08123456789</strong> (a.n. Nama Anda)</li>
+                
+                <ul class="text-gray-700 mt-2 space-y-3">
+                    <li class="flex justify-between items-center bg-white p-3 rounded-md border">
+                        <span>BCA: <strong id="bca-number">1234567890</strong> (a.n. Nama Anda)</span>
+                        <button type="button" class="copy-btn p-2 rounded-md hover:bg-gray-200 transition" data-copy-text="1234567890" title="Salin nomor">
+                            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        </button>
+                    </li>
+                    <li class="flex justify-between items-center bg-white p-3 rounded-md border">
+                        <span>GoPay/OVO: <strong id="ewallet-number">08123456789</strong> (a.n. Nama Anda)</span>
+                        <button type="button" class="copy-btn p-2 rounded-md hover:bg-gray-200 transition" data-copy-text="08123456789" title="Salin nomor">
+                            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        </button>
+                    </li>
                 </ul>
-            </div>
+                </div>
 
             <h2 class="text-xl font-bold text-gray-800 mb-2">Lengkapi Formulir Konfirmasi</h2>
             <p class="text-gray-600 mb-6">Pastikan data yang Anda masukkan sudah benar, terutama alamat email untuk pengiriman produk.</p>
@@ -68,22 +79,18 @@
                 <input type="hidden" name="form-name" value="konfirmasi-pembayaran">
                 <p class="hidden"><label>Don’t fill this out if you’re human: <input name="bot-field"></label></p>
                 <input type="hidden" name="nama-produk" id="input-nama-produk">
-                
                 <div>
                     <label for="nama" class="block text-sm font-medium text-gray-700 mb-2">Nama Anda</label>
                     <input type="text" id="nama" name="nama" required class="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
-                
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Alamat Email (Untuk pengiriman produk)</label>
                     <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
-                
                 <div>
                     <label for="bukti-transfer" class="block text-sm font-medium text-gray-700 mb-2">Upload Bukti Transfer</label>
                     <input type="file" id="bukti-transfer" name="bukti-transfer" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-orange-100 file:text-orange-700 hover:file:bg-orange-200 transition cursor-pointer border border-gray-300 p-2">
                 </div>
-                
                 <div>
                     <button type="submit" class="btn-primary w-full py-3 rounded-lg font-semibold text-lg text-white">
                         <svg class="inline-block w-5 h-5 mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -96,27 +103,6 @@
 </main>
 
 <footer class="pt-20 pb-12 px-6 footer-gradient">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-        <div>
-            <a href="index.html" class="inline-block mb-4"><img src="photos/RSQUARE-LOGO.png" alt="RSQUARE Logo" class="h-12 mx-auto md:mx-0"></a>
-            <p class="text-gray-500 text-sm mb-4">Template Google Sheets premium untuk produktivitas Anda.</p>
-        </div>
-        <div>
-            <h3 class="font-semibold text-gray-800 mb-4">Tautan Cepat</h3>
-            <ul class="space-y-2">
-                <li><a href="index.html" class="text-gray-600 hover:text-orange-600 transition">Beranda</a></li>
-                <li><a href="templates.html" class="text-gray-600 hover:text-orange-600 transition">Templates</a></li>
-                <li><a href="kontak.html" class="text-gray-600 hover:text-orange-600 transition">Kontak</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3 class="font-semibold text-gray-800 mb-4">Legal</h3>
-            <ul class="space-y-2">
-                <li><a href="kebijakan-privasi.html" class="text-gray-600 hover:text-orange-600 transition">Kebijakan Privasi</a></li>
-                <li><a href="syarat-ketentuan.html" class="text-gray-600 hover:text-orange-600 transition">Syarat & Ketentuan</a></li>
-            </ul>
-        </div>
-    </div>
     <div class="container mx-auto text-center text-gray-500 mt-12 pt-8 border-t border-gray-200">
         <p>&copy; 2025 RSQUARE. Dirancang dengan Penuh Semangat.</p>
     </div>
@@ -128,20 +114,47 @@
 
 <script src="app.js"></script>
 <script>
+    // Script untuk mengambil data dari URL (tidak berubah)
     document.addEventListener('DOMContentLoaded', () => {
         const params = new URLSearchParams(window.location.search);
         const namaProduk = params.get('nama_produk') || 'Produk Pilihan Anda';
         const hargaProduk = params.get('harga') || '0';
-
-        // Mengatur judul header
         const judulHeader = document.querySelector('main header h1');
         judulHeader.textContent = `Pembayaran untuk: ${namaProduk}`;
-
-        // Mengatur harga dan nama produk di dalam form
         document.getElementById('harga-produk').textContent = (parseInt(hargaProduk) === 0) ? 'Gratis' : `Rp ${parseInt(hargaProduk).toLocaleString('id-ID')}`;
         document.getElementById('input-nama-produk').value = namaProduk;
     });
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const copyButtons = document.querySelectorAll('.copy-btn');
+
+        copyButtons.forEach(button => {
+            const originalContent = button.innerHTML; // Simpan ikon copy asli
+
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // Mencegah perilaku default tombol
+                const textToCopy = button.dataset.copyText;
+
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    // Berhasil menyalin: berikan feedback visual
+                    button.innerHTML = `
+                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    `;
+                    
+                    // Kembalikan ke ikon semula setelah 2 detik
+                    setTimeout(() => {
+                        button.innerHTML = originalContent;
+                    }, 2000);
+
+                }).catch(err => {
+                    console.error('Gagal menyalin teks: ', err);
+                    alert('Oops, gagal menyalin teks.');
+                });
+            });
+        });
+    });
+</script>
 </body>
 </html>
