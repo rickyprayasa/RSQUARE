@@ -12,7 +12,13 @@
       }
     ],
     "gambar_utama": "photos/produk/new_product/screenshot-from-2025-06-09-13-44-54.png",
-    "link_youtube": "https://rsquareidea.my.id/content/template-preview.html?product=content-calendar"
+    "link_youtube": "https://rsquareidea.my.id/content/template-preview.html?product=content-calendar",
+    "link_pembelian": [
+      {
+        "platform": "web",
+        "url": "https://rsquareidea.my.id/content/template-preview.html?product=content-calendar"
+      }
+    ]
   },
   "deskripsi_singkat": "🗓️ CALENDAR",
   "gambar_thumbnail": "photos/produk/new_product/screenshot-from-2025-06-09-13-44-54.png"
