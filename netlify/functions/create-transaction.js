@@ -1,4 +1,4 @@
-// File: netlify/functions/create-transaction.js
+// File: netlify/functions/create-transaction.js (Versi Perbaikan)
 const axios = require('axios');
 
 exports.handler = async function (event, context) {
@@ -10,11 +10,13 @@ exports.handler = async function (event, context) {
     try {
         const { productName, productPrice, customerName, customerEmail } = JSON.parse(event.body);
 
-        // Ambil Server Key rahasia dari Netlify Environment Variables
         const serverKey = process.env.MIDTRANS_SERVER_KEY;
-        const encodedKey = Buffer.from(serverKey).toString('base64');
 
-        // Buat ID pesanan yang unik, contohnya dengan timestamp
+        // --- PERBAIKAN DI BARIS BERIKUT ---
+        // Tambahkan karakter ':' setelah serverKey sebelum di-encode
+        const encodedKey = Buffer.from(serverKey + ':').toString('base64');
+        // --- AKHIR PERBAIKAN ---
+
         const orderId = `RSQ-${Date.now()}`;
 
         const response = await axios.post(
@@ -50,7 +52,8 @@ exports.handler = async function (event, context) {
         };
 
     } catch (error) {
-        console.error('Error creating Midtrans transaction:', error);
+        // Tampilkan error yang lebih detail di log untuk debugging
+        console.error('Error creating Midtrans transaction:', error.response ? error.response.data : error.message);
         return {
             statusCode: 500,
             body: JSON.stringify({ error: 'Failed to create transaction.' }),
