@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // --- TOMBOL-TOMBOL PEMBAYARAN ---
 
-            // // 1. TOMBOL BARU: Tombol untuk pembayaran otomatis Midtrans
-            // const midtransButtonHTML = `
-            //     <button id="midtrans-pay-button" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
-            //         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H4a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-            //         Beli Otomatis (QRIS, VA, E-Wallet)
-            //     </button>
-            // `;
+            // 1. TOMBOL BARU: Tombol untuk pembayaran otomatis Midtrans
+            const midtransButtonHTML = `
+                <button id="midtrans-pay-button" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H4a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    Beli Otomatis (QRIS, VA, E-Wallet)
+                </button>
+            `;
             
             // 2. TOMBOL LAMA: Tombol untuk pembayaran manual (tetap dipertahankan)
             const linkBeliManual = `/${'bayar.html'}?nama_produk=${encodeURIComponent(product.judul)}&harga=${product.harga}`;
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <div>
                                 <p class="text-sm font-semibold text-gray-600 mb-3">Pilih metode pembelian:</p>
                                 <div class="space-y-4">
-                                    ${midtransButtonHTML}      ${tombolBeliManualHTML}    ${externalButtonsHTML}      <hr class="border-gray-700">
+                                          ${tombolBeliManualHTML}    ${externalButtonsHTML}      <hr class="border-gray-700">
                                     <a href="template-preview.html?product=${product.id}" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
                                         Lihat Preview Detail
                                     </a>
