@@ -7,3 +7,4 @@
   # Untuk situs statis sederhana, biasanya adalah direktori root (.).
   # Jika Anda memiliki folder output lain seperti "dist" atau "public", ganti "." dengan nama folder tersebut.
   publish = "."
+  functions = "netlify/functions"
