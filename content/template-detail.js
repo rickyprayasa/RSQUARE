@@ -12,22 +12,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. Ambil data produk dari file JSON yang spesifik
     try {
-        // --- PERUBAHAN UTAMA DI SINI ---
-        // Kita membuat path file secara dinamis menggunakan productId.
-        // Contoh: jika productId adalah "personal-budgeting", maka path akan menjadi '../content/produk/personal-budgeting.json'
-        const response = await fetch(`../content/produk/${productId}.json`); 
+        const response = await fetch(`../content/produk/${productId}.json`);
         
-        // Cek jika file tidak ditemukan (error 404)
         if (!response.ok) {
             throw new Error(`File produk tidak ditemukan: ${response.statusText}`);
         }
 
-        // Langsung dapatkan objek produk, tidak perlu .find() lagi
-        const product = await response.json(); 
-        // --- AKHIR PERUBAHAN UTAMA ---
+        const product = await response.json();
 
         if (product) {
-            // 4. Jika produk ditemukan, isi halaman dengan datanya (logika ini sebagian besar sama)
+            // 4. Jika produk ditemukan, isi halaman dengan datanya
             
             // Mengubah title dan meta description halaman
             document.title = `${product.judul} - RSQUARE`;
@@ -40,6 +34,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     Akses di ${link.platform}
                 </a>
             `).join('');
+
+            // =========================================================
+            // === PERUBAHAN UTAMA ADA DI SINI =========================
+            // =========================================================
+            
+            // 1. Proses string Markdown dari deskripsi lengkap menjadi HTML
+            const deskripsiLengkapHTML = marked.parse(product.detail.deskripsi_lengkap);
 
             // Membangun seluruh HTML untuk konten utama
             const productHTML = `
@@ -57,7 +58,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div>
                             <h1 class="text-4xl font-bold mb-4 gradient-text pb-2">${product.judul}</h1>
                             <p class="text-3xl font-bold text-gray-900 mb-6">${product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`}</p>
-                            <p class="text-gray-600 mb-8 leading-relaxed">${product.detail.deskripsi_lengkap}</p>
+                            
+                            <div class="prose max-w-none text-gray-600 mb-8 leading-relaxed">
+                                ${deskripsiLengkapHTML}
+                            </div>
+                            
                             <div>
                                 <p class="text-sm font-semibold text-gray-600 mb-3">Pilih platform pembelian favorit Anda:</p>
                                 <div class="space-y-4">
@@ -84,13 +89,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     if (e.target.closest('a')) {
                         e.preventDefault();
                         const imageUrl = e.target.closest('a').href;
-                        basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
+                        // Pastikan basicLightbox sudah terdefinisi
+                        if (typeof basicLightbox !== 'undefined') {
+                            basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
+                        }
                     }
                 });
             }
 
         } else {
-            // Ini seharusnya tidak terjadi jika JSON valid, tapi sebagai pengaman
             container.innerHTML = `<div class="container mx-auto text-center"><h1 class="text-3xl font-bold">Error 404</h1><p>Produk dengan ID "${productId}" tidak dapat ditemukan.</p></div>`;
         }
     } catch (error) {
