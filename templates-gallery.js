@@ -1,35 +1,28 @@
+// File: templates-gallery.js (Versi Final yang Seharusnya Berjalan)
+
 document.addEventListener('DOMContentLoaded', async () => {
     const galleryContainer = document.getElementById('product-gallery-container');
     if (!galleryContainer) return;
 
-    // Menampilkan pesan loading awal
     galleryContainer.innerHTML = '<p class="text-center col-span-full text-gray-500">Memuat koleksi template...</p>';
 
     try {
-        // 1. Memuat file index dari path absolut yang benar
-        const response = await fetch('/content/_index.json'');
+        const response = await fetch('/content/_index.json');
         if (!response.ok) {
-            throw new Error(`Gagal memuat file index produk: ${response.statusText}`);
+            throw new Error('Gagal memuat file index produk');
         }
         
-        // 2. Data produk sudah lengkap di sini, tidak perlu fetch berulang kali
         const products = await response.json();
 
-        // Cek jika tidak ada produk
         if (!products || products.length === 0) {
             galleryContainer.innerHTML = '<p class="text-center col-span-full">Belum ada template yang tersedia.</p>';
-            galleryContainer.insertAdjacentHTML('beforeend', createComingSoonCard()); // Tambahkan kartu "Coming Soon"
+            galleryContainer.insertAdjacentHTML('beforeend', createComingSoonCard());
             return;
         }
 
-        // 3. Langsung proses data produk untuk membuat kartu HTML
         const allCardsHTML = products.map(product => {
             const priceDisplay = product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`;
-            
-            // Menggunakan path absolut untuk link detail agar lebih aman dan andal
             const detailLink = `/template-detail.html?product=${product.id}`;
-            
-            // Path gambar langsung dari data JSON, dengan path absolut
             const imagePath = `/${product.gambar_thumbnail}`;
 
             return `
@@ -51,10 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }).join('');
 
-        // Tampilkan semua kartu produk
         galleryContainer.innerHTML = allCardsHTML;
-        
-        // Tambahkan kartu "Segera Hadir" di akhir daftar
         galleryContainer.insertAdjacentHTML('beforeend', createComingSoonCard());
 
     } catch (error) {
@@ -63,7 +53,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Fungsi untuk membuat HTML kartu "Coming Soon"
 function createComingSoonCard() {
     return `
         <div class="card rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center p-6 min-h-[450px]">
