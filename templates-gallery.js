@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 1. Memuat file index dari path absolut yang benar
-        const response = await fetch('/content/_index.json');
+        const response = await fetch('content/produk/_index.json');
         if (!response.ok) {
             throw new Error(`Gagal memuat file index produk: ${response.statusText}`);
         }
