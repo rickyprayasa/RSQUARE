@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pembayaran - NAMA WEB ANDA</title>
+    <link href="/path/to/your/tailwind.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+
+    <div class="container mx-auto max-w-2xl py-12 px-4">
+        
+        <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+            <h1 id="judul-produk" class="text-3xl font-bold text-gray-900 mb-2">Konfirmasi Pembayaran</h1>
+            <p class="text-gray-600 mb-6">Silakan selesaikan pembayaran untuk melanjutkan.</p>
+
+            <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                <p class="font-semibold text-gray-700">Total Pembayaran:</p>
+                <p id="harga-produk" class="text-3xl font-bold text-blue-600 mb-4">Rp 50.000</p>
+                
+                <p class="font-semibold text-gray-700 mt-4">Silakan transfer ke salah satu rekening berikut:</p>
+                <ul class="list-disc list-inside text-gray-700 mt-2">
+                    <li>BCA: <strong>1234567890</strong> (a.n. Nama Anda)</li>
+                    <li>GoPay/OVO: <strong>08123456789</strong> (a.n. Nama Anda)</li>
+                </ul>
+                <p class="text-sm text-gray-500 mt-4">Setelah melakukan transfer, mohon isi formulir konfirmasi di bawah ini.</p>
+            </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Formulir Konfirmasi</h2>
+            
+            <form name="konfirmasi-pembayaran" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+                
+                <p class="hidden">
+                    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                </p>
+
+                <input type="hidden" name="nama-produk" id="input-nama-produk">
+                
+                <div class="mb-4">
+                    <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                    <input type="text" name="nama" id="nama" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email (Untuk pengiriman produk)</label>
+                    <input type="email" name="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="bukti-transfer" class="block text-sm font-medium text-gray-700 mb-1">Upload Bukti Transfer (JPG/PNG)</label>
+                    <input type="file" name="bukti-transfer" id="bukti-transfer" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" required>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+                    Kirim Konfirmasi
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Skrip kecil untuk mengambil data produk dari URL dan menampilkannya
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const namaProduk = params.get('nama_produk') || 'Produk Pilihan';
+            const hargaProduk = params.get('harga') || '0';
+
+            document.getElementById('judul-produk').textContent = `Konfirmasi Pembayaran: ${namaProduk}`;
+            document.getElementById('harga-produk').textContent = `Rp ${parseInt(hargaProduk).toLocaleString('id-ID')}`;
+            document.getElementById('input-nama-produk').value = namaProduk;
+        });
+    </script>
+</body>
+</html>
