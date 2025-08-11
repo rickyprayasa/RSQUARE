@@ -6,6 +6,8 @@ backend:
 media_folder: "photos/uploads"
 public_folder: "photos/uploads"
 
+publish_mode: editorial_workflow
+
 collections:
   - name: "produk"
     label: "Produk"
