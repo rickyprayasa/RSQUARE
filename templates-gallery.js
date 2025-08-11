@@ -2,71 +2,76 @@ document.addEventListener('DOMContentLoaded', async () => {
     const galleryContainer = document.getElementById('product-gallery-container');
     if (!galleryContainer) return;
 
-    galleryContainer.innerHTML = '<p class="text-center col-span-full">Memuat koleksi template...</p>';
+    // Menampilkan pesan loading awal
+    galleryContainer.innerHTML = '<p class="text-center col-span-full text-gray-500">Memuat koleksi template...</p>';
 
     try {
-        const indexResponse = await fetch('content/produk/_index.json');
-        if (!indexResponse.ok) throw new Error(`Gagal memuat _index.json: ${indexResponse.statusText}`);
+        // 1. Memuat file index dari path absolut yang benar
+        const response = await fetch('/content/_index.json');
+        if (!response.ok) {
+            throw new Error(`Gagal memuat file index produk: ${response.statusText}`);
+        }
         
-        const productFiles = await indexResponse.json();
-        if (productFiles.length === 0) {
-            galleryContainer.innerHTML = '<p class="text-center col-span-full">Belum ada template.</p>';
+        // 2. Data produk sudah lengkap di sini, tidak perlu fetch berulang kali
+        const products = await response.json();
+
+        // Cek jika tidak ada produk
+        if (!products || products.length === 0) {
+            galleryContainer.innerHTML = '<p class="text-center col-span-full">Belum ada template yang tersedia.</p>';
+            galleryContainer.insertAdjacentHTML('beforeend', createComingSoonCard()); // Tambahkan kartu "Coming Soon"
             return;
         }
 
-        const productPromises = productFiles.map(file => fetch(`content/produk/${file}`).then(res => res.ok ? res.json() : null));
-        let products = await Promise.all(productPromises);
-        products = products.filter(p => p !== null);
-
+        // 3. Langsung proses data produk untuk membuat kartu HTML
         const allCardsHTML = products.map(product => {
             const priceDisplay = product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`;
-            const detailLink = `content/template-detail.html?product=${product.id}`;
             
-            // --- MENGGUNAKAN IDE ANDA YANG LEBIH SEDERHANA ---
-            // Langsung menggabungkan path, dengan asumsi `gambar_thumbnail` tidak punya '/' di depan.
-            const correctImagePath = `content/produk/${product.gambar_thumbnail}`;
-            // --- SELESAI ---
+            // Menggunakan path absolut untuk link detail agar lebih aman dan andal
+            const detailLink = `/template-detail.html?product=${product.id}`;
+            
+            // Path gambar langsung dari data JSON, dengan path absolut
+            const imagePath = `/${product.gambar_thumbnail}`;
 
             return `
                 <div class="card rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-                    <div class="relative z-10 flex flex-col flex-grow">
-                        <a href="${detailLink}" class="block">
-                            <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                                <img src="${correctImagePath}" alt="Cover ${product.judul}" class="w-full h-full object-contain p-2">
-                            </div>
-                        </a>
+                    <a href="${detailLink}" class="block flex flex-col flex-grow">
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                            <img src="${imagePath}" alt="Cover ${product.judul}" class="w-full h-full object-contain p-2">
+                        </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-bold text-gray-800 mb-2">${product.judul}</h3>
                             <p class="text-gray-600 mb-4 flex-grow">${product.deskripsi_singkat}</p>
                             <p class="text-2xl font-bold text-gray-900 mb-6">${priceDisplay}</p>
-                            <a href="${detailLink}" class="btn-secondary mt-auto text-center px-6 py-2 rounded-lg font-semibold">Lihat Detail</a>
+                            <div class="mt-auto">
+                                <span class="btn-secondary text-center block w-full px-6 py-2 rounded-lg font-semibold">Lihat Detail</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             `;
         }).join('');
 
-        // Menampilkan semua kartu produk dinamis
+        // Tampilkan semua kartu produk
         galleryContainer.innerHTML = allCardsHTML;
         
-        // --- BAGIAN YANG DIPERBAIKI ---
-        // Variabel ini sekarang berisi kode HTML yang lengkap.
-        const comingSoonCard = `
-            <div class="card rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center p-6">
-                <div class="flex-grow flex flex-col items-center justify-center">
-                    <svg class="w-16 h-16 text-orange-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.573L16.5 21.75l-.398-1.177a3.375 3.375 0 00-2.455-2.455l-1.177-.398 1.177-.398a3.375 3.375 0 002.455-2.455l.398-1.177.398 1.177a3.375 3.375 0 002.455 2.455l1.177.398-1.177.398a3.375 3.375 0 00-2.455 2.455z" /></svg>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Template Baru Segera Hadir!</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">Kami terus berinovasi untuk Anda.</p>
-                </div>
-                <a href="kontak.html" class="btn-primary btn-shiny mt-auto text-center px-6 py-2 rounded-lg font-semibold text-white">Request Template?</a>
-            </div>`;
-
-        // Perintah untuk menambahkan kartu "Segera Hadir" di akhir.
-        galleryContainer.insertAdjacentHTML('beforeend', comingSoonCard);
-        // --- AKHIR BAGIAN PERBAIKAN ---
+        // Tambahkan kartu "Segera Hadir" di akhir daftar
+        galleryContainer.insertAdjacentHTML('beforeend', createComingSoonCard());
 
     } catch (error) {
         console.error('Gagal memuat galeri produk:', error);
         galleryContainer.innerHTML = `<p class="text-center text-red-500 col-span-full">Maaf, terjadi kesalahan. Error: ${error.message}</p>`;
     }
 });
+
+// Fungsi untuk membuat HTML kartu "Coming Soon"
+function createComingSoonCard() {
+    return `
+        <div class="card rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center p-6 min-h-[450px]">
+            <div class="flex-grow flex flex-col items-center justify-center">
+                <svg class="w-16 h-16 text-orange-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.573L16.5 21.75l-.398-1.177a3.375 3.375 0 00-2.455-2.455l-1.177-.398 1.177-.398a3.375 3.375 0 002.455-2.455l.398-1.177.398 1.177a3.375 3.375 0 002.455 2.455l1.177.398-1.177.398a3.375 3.375 0 00-2.455 2.455z" /></svg>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Template Baru Segera Hadir!</h3>
+                <p class="text-gray-600 mb-6 flex-grow">Kami terus berinovasi untuk Anda.</p>
+            </div>
+            <a href="/kontak.html" class="btn-primary btn-shiny mt-auto text-center w-full px-6 py-2 rounded-lg font-semibold text-white">Request Template?</a>
+        </div>`;
+}
