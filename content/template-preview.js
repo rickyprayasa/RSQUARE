@@ -18,33 +18,33 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. Ambil data dari file JSON yang spesifik
     try {
-        // --- PERUBAHAN UTAMA DI SINI ---
-        // Path '../../' dipertahankan, tapi tujuannya diubah ke file JSON individual.
-        const response = await fetch(`../../content/produk/${productId}.json`); 
+        const response = await fetch(`../../content/produk/${productId}.json`);
         
         if (!response.ok) {
             throw new Error(`File produk tidak ditemukan: ${response.statusText}`);
         }
 
-        // Langsung dapatkan objek produk tunggal, tidak perlu .find() lagi
         const product = await response.json();
-        // --- AKHIR PERUBAHAN UTAMA ---
 
         // 4. Jika produk dan data galerinya ditemukan, bangun halaman
         if (product && product.detail && product.detail.galeri) {
             
             // Mengubah judul halaman dan meta deskripsi secara dinamis
             document.title = `Preview Detail: ${product.judul} - RSQUARE`;
-            document.querySelector('meta[name="description"]').setAttribute('content', product.detail.deskripsi_lengkap);
+            // PERBAIKAN: Gunakan deskripsi_singkat untuk meta tag agar SEO friendly (teks biasa)
+            document.querySelector('meta[name="description"]').setAttribute('content', product.deskripsi_singkat);
 
-            // --- Mulai Membangun String HTML (BAGIAN INI TIDAK BERUBAH) ---
+            // --- Mulai Membangun String HTML ---
+
+            // PERBAIKAN #1: Proses deskripsi utama dengan marked.js
+            const deskripsiLengkapHTML = marked.parse(product.detail.deskripsi_lengkap);
 
             // A. Header Halaman
             const headerHTML = `
                 <header class="py-20 px-6 text-center">
                     <div class="container mx-auto">
                         <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text pb-2">Preview Detail: ${product.judul}</h1>
-                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">${product.detail.deskripsi_lengkap}</p>
+                        <div class="prose max-w-2xl mx-auto text-lg text-gray-600">${deskripsiLengkapHTML}</div>
                         <div class="inline-block bg-orange-100 text-orange-800 font-bold text-2xl px-8 py-3 rounded-full mt-6 shadow-sm">
                             ${product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`}
                         </div>
@@ -52,20 +52,23 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </header>`;
 
             // B. Daftar Fitur (Looping dari data 'galeri')
-            // Path "../../" di sini sudah benar karena relatif terhadap file HTML, bukan file JS.
-            const featuresHTML = product.detail.galeri.map(item => `
+            const featuresHTML = product.detail.galeri.map(item => {
+                // PERBAIKAN #2: Proses deskripsi di setiap fitur dengan marked.js
+                const deskripsiFiturHTML = marked.parse(item.deskripsi);
+                return `
                 <div class="flex flex-col items-center gap-6">
                     <div class="card rounded-xl p-4 w-full md:max-w-3xl">
                         <a href="produk/${item.gambar}" class="zoomable-image cursor-zoom-in">
                             <img src="produk/${item.gambar}" alt="${item.judul}" class="rounded-lg w-full shadow-lg">
                         </a>
-                    </div>    
+                    </div>
                     <div class="text-center md:text-left max-w-2xl">
                         <h2 class="text-3xl font-bold text-gray-800 mb-4">${item.judul}</h2>
-                        <div class="text-gray-600 leading-relaxed space-y-3">${item.deskripsi}</div>
+                        <div class="prose max-w-none text-gray-600 leading-relaxed space-y-3">${deskripsiFiturHTML}</div>
                     </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
 
             // C. Bagian Video Tutorial
             const videoHTML = `
@@ -78,11 +81,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="card rounded-2xl p-2 md:p-4 relative group perspective-container">
                             <div class="transition-transform duration-500 ease-in-out group-hover:rotate-y-2 group-hover:-rotate-x-2 group-hover:scale-105">
                                 <div class="relative overflow-hidden rounded-lg" style="padding-top: 56.25%;">
-                                    <iframe class="absolute top-0 left-0 w-full h-full" 
+                                    <iframe class="absolute top-0 left-0 w-full h-full"
                                             src="${product.detail.link_youtube}"
                                             title="Tutorial ${product.judul}"
-                                            frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             allowfullscreen>
                                     </iframe>
                                 </div>
@@ -98,8 +101,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </a>
             `).join('');
             
-            // Perhatikan path untuk "Kembali ke Ringkasan". Kita ubah menjadi dinamis dan lebih aman.
-            // Asumsi halaman detail ada di /templates/template-detail.html
             const ctaHTML = `
                 <section class="container mx-auto mt-12 text-center">
                     <h2 class="text-3xl font-bold text-gray-800">Siap Meningkatkan Produktivitas?</h2>
@@ -120,7 +121,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <section class="container mx-auto flex flex-col items-center gap-8 space-y-24 py-12">
                         ${featuresHTML}
                     </section>
-                    ${videoHTML}
+                    ${product.detail.link_youtube ? videoHTML : ''}
                     ${ctaHTML}
                 </main>
             `;
@@ -130,13 +131,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // 6. Aktifkan kembali fungsionalitas JavaScript (Lightbox untuk zoom gambar)
             const zoomableImages = document.querySelectorAll('.zoomable-image');
-            zoomableImages.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const imageUrl = this.href;
-                    basicLightbox.create(`<img src="${imageUrl}">`).show();
+            if (typeof basicLightbox !== 'undefined') {
+                zoomableImages.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const imageUrl = this.href;
+                        basicLightbox.create(`<img src="${imageUrl}">`).show();
+                    });
                 });
-            });
+            }
 
         } else {
             // Jika produk tidak ditemukan atau tidak punya data galeri
