@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.title = `${product.judul} - RSQUARE`;
             document.querySelector('meta[name="description"]').setAttribute('content', product.deskripsi_singkat);
 
-            // --- BAGIAN BARU: MEMBUAT TOMBOL BELI LANGSUNG SECARA OTOMATIS ---
+            // --- PERBAIKAN ADA DI BARIS BERIKUT ---
 
-            // 1. Buat link dinamis ke halaman pembayaran
-            const linkBeliLangsung = `bayar.html?nama_produk=${encodeURIComponent(product.judul)}&harga=${product.harga}`;
+            // 1. Buat link dinamis ke halaman pembayaran DENGAN TANDA / DI DEPAN
+            const linkBeliLangsung = `/${'bayar.html'}?nama_produk=${encodeURIComponent(product.judul)}&harga=${product.harga}`;
 
             // 2. Buat HTML untuk tombol baru tersebut
             const tombolBeliLangsungHTML = `
@@ -37,8 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     Beli Langsung (Transfer & Konfirmasi)
                 </a>
             `;
-            // --- AKHIR BAGIAN BARU ---
-
+            // --- AKHIR PERBAIKAN ---
 
             // Membuat HTML untuk tombol-tombol dari pihak ketiga (Karyakarsa, dll)
             const externalButtonsHTML = product.detail.link_pembelian.map(link => `
@@ -76,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     ${tombolBeliLangsungHTML}
                                     ${externalButtonsHTML}
                                     <hr class="border-gray-700">
-                                    <a href="template-preview.html?product=${product.id}" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
+                                    <a href="/template-preview.html?product=${product.id}" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
                                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                         Lihat Preview Detail
                                     </a>
