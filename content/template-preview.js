@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             // 2. Buat HTML untuk tombol baru
             const tombolBeliLangsungHTML = `
-                <a href="${linkBeliLangsung}" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
+                <a href="${linkBeliLangsung}" class="btn-primary btn-spotlight flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
                     <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H4a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                     Beli Langsung (Transfer & Konfirmasi)
                 </a>
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // D. Bagian Tombol Pembelian (Call to Action)
             const ctaButtonsHTML = product.detail.link_pembelian.map(link => `
-                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-spotlight flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
                     Akses di ${link.platform}
                 </a>
             `).join('');
