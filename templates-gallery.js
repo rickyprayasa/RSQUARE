@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Template Baru Segera Hadir!</h3>
                     <p class="text-gray-600 mb-6 flex-grow">Kami terus berinovasi untuk Anda.</p>
                 </div>
-                <a href="kontak.html" class="btn-primary btn-shiny mt-auto text-center px-6 py-2 rounded-lg font-semibold text-white">Request Template?</a>
+                <a href="jasa-kustom.html" class="btn-primary btn-shiny mt-auto text-center px-6 py-2 rounded-lg font-semibold text-white">Request Template?</a>
             </div>`;
 
         // Perintah untuk menambahkan kartu "Segera Hadir" di akhir.
