@@ -807,3 +807,88 @@ body {
     gap: 24px;
     justify-items: center;
 }
+
+/* ========================================================================
+   CONTOH ANIMASI LOADING SVG (EQUALIZER)
+   ======================================================================== */
+
+#svg-loader .loader-bar {
+  /* Titik pusat animasi berada di tengah secara horizontal dan di bawah secara vertikal */
+  transform-origin: center bottom;
+  
+  /* Panggil animasi 'equalize' */
+  animation: equalize 1.2s ease-in-out infinite;
+}
+
+/* Beri jeda animasi untuk baris kedua dan ketiga agar tidak bergerak bersamaan */
+#svg-loader .loader-bar:nth-child(2) {
+  animation-delay: -1.0s; /* Jeda animasi */
+}
+
+#svg-loader .loader-bar:nth-child(3) {
+  animation-delay: -0.8s; /* Jeda animasi */
+}
+
+/* Definisi animasi 'equalize' (naik-turun) */
+@keyframes equalize {
+  0% {
+    transform: scaleY(0.2); /* Tinggi awal (20%) */
+  }
+  50% {
+    transform: scaleY(1.0); /* Tinggi penuh (100%) */
+  }
+  100% {
+    transform: scaleY(0.2); /* Kembali ke tinggi awal */
+  }
+}
+
+
+/* ========================================================================
+   GAYA TOMBOL SEKUNDER DENGAN ANIMATED BORDER
+   ======================================================================== */
+
+.btn-secondary-animated-border {
+    position: relative; /* Wajib agar pseudo-element bisa diposisikan */
+    z-index: 1; /* Pastikan konten tombol di atas efek */
+    background-color: transparent;
+    border: 2px solid #F97316;
+    color: #F97316;
+    transition: all 0.3s ease;
+}
+
+/* Saat di-hover, tombol tetap terisi warna oranye seperti biasa */
+.btn-secondary-animated-border:hover {
+    background-color: #F97316;
+    color: #FFFFFF;
+    transform: translateY(-3px);
+}
+
+/* Ini adalah pseudo-element yang menciptakan efek border bergerak */
+.btn-secondary-animated-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px; /* Sedikit lebih besar dari tombol agar border terlihat */
+    z-index: -1;
+    border-radius: 10px; /* Sesuaikan dengan border-radius tombol Anda (8px + 2px) */
+    
+    /* Gradasi warna yang akan bergerak */
+    background: linear-gradient(90deg, #FBBF24, #F97316, #a371f7, #2563eb, #FBBF24);
+    background-size: 400% 100%;
+    
+    /* Panggil animasi */
+    animation: flowing-border 8s linear infinite;
+    
+    opacity: 0; /* Sembunyi secara default */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Tampilkan border animasi saat kursor di atas tombol */
+.btn-secondary-animated-border:hover::before {
+    opacity: 1;
+}
+
+/* Keyframe untuk animasi flowing-border sudah ada di CSS Anda, tapi ini definisinya */
+@keyframes flowing-border {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
