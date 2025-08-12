@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // 1. TOMBOL BARU: Tombol untuk pembayaran otomatis Midtrans
             const midtransButtonHTML = `
-                <button id="midtrans-pay-button" class="btn-primary btn-shiny inline block secondarydary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
+                <button id="midtrans-pay-button" class="btn-primary btn-shiny inline block secondarydary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
                     <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H4a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                     Beli Otomatis (QRIS, VA, E-Wallet)
                 </button>
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // 2. TOMBOL LAMA: Tombol untuk pembayaran manual (tetap dipertahankan)
             const linkBeliManual = `/${'bayar.html'}?nama_produk=${encodeURIComponent(product.judul)}&harga=${product.harga}`;
             const tombolBeliManualHTML = `
-                <a href="${linkBeliManual}" class="btn-primary inline-block flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');>
+                <a href="${linkBeliManual}" class="btn-primary inline-block flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
                     <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     Beli Manual (Transfer & Konfirmasi)
                 </a>
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // 3. TOMBOL LAMA: Tombol untuk platform eksternal (tetap dipertahankan)
             const externalButtonsHTML = product.detail.link_pembelian.map(link => `
-                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn-primary inline-block flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');>
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn-primary inline-block flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
                     <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
                     Akses di ${link.platform}
                 </a>
