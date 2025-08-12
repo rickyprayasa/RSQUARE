@@ -809,25 +809,39 @@ body {
 }
 
 /* ========================================================================
-   ANIMASI LOADING SPINNER
+   CONTOH ANIMASI LOADING SVG (EQUALIZER)
    ======================================================================== */
-#loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #E5E7EB; /* Warna lingkaran abu-abu terang */
-  border-top-color: #F97316; /* Warna oranye untuk bagian yang berputar */
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+
+#svg-loader .loader-bar {
+  /* Titik pusat animasi berada di tengah secara horizontal dan di bawah secara vertikal */
+  transform-origin: center bottom;
+  
+  /* Panggil animasi 'equalize' */
+  animation: equalize 1.2s ease-in-out infinite;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
+/* Beri jeda animasi untuk baris kedua dan ketiga agar tidak bergerak bersamaan */
+#svg-loader .loader-bar:nth-child(2) {
+  animation-delay: -1.0s; /* Jeda animasi */
+}
+
+#svg-loader .loader-bar:nth-child(3) {
+  animation-delay: -0.8s; /* Jeda animasi */
+}
+
+/* Definisi animasi 'equalize' (naik-turun) */
+@keyframes equalize {
+  0% {
+    transform: scaleY(0.2); /* Tinggi awal (20%) */
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: scaleY(1.0); /* Tinggi penuh (100%) */
+  }
+  100% {
+    transform: scaleY(0.2); /* Kembali ke tinggi awal */
   }
 }
+
 
 /* ========================================================================
    GAYA TOMBOL SEKUNDER DENGAN ANIMATED BORDER
