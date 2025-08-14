@@ -70,13 +70,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Masukkan semua HTML ke dalam halaman
         const productHTML = `
-            <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <a href="produk/${product.detail.gambar_utama}" class="cursor-zoom-in">
+             <div class="container mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-full group perspective-container">
+                                <div id="image-container" class="card rounded-xl p-4 w-full md:max-w-3xl h-auto relative transition-transform duration-500 ease-in-out group-hover:rotate-y-3 group-hover:-rotate-x-2 group-hover:scale-105">
+                                    <a href="produk/${product.detail.gambar_utama}" class="cursor-zoom-in">
                                         <img id="product-image" src="produk/${product.detail.gambar_utama}" alt="Tampilan Utama ${product.judul}" class="rounded-lg w-full shadow-lg">
                                     </a>
-                </div>
-                <div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
                     <h1 class="text-4xl font-bold text-gray-800 mb-4">${product.judul}</h1>
                     <p class="text-3xl font-bold text-orange-600 mb-6">${priceDisplay}</p>
                     <div class="prose max-w-none text-gray-700 mb-8">
