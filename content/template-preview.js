@@ -26,6 +26,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const product = await response.json();
 
+        // --- BAGIAN SEO BARU YANG DITAMBAHKAN ---
+            if (typeof updateSeoTags === 'function') {
+                updateSeoTags({
+                    title: product.seo?.meta_title || product.judul,
+                    description: product.seo?.meta_description || product.deskripsi_singkat,
+                    ogImage: product.seo?.og_image || product.detail?.gambar_utama,
+                    ogType: 'article'
+                });
+            } else {
+                // Fallback sederhana jika seo.js gagal dimuat
+                document.title = `${product.judul} - RSQUARE`;
+                console.warn("Fungsi updateSeoTags() tidak ditemukan. Pastikan seo.js dimuat sebelum skrip ini.");
+            }
+            // --- AKHIR BAGIAN SEO ---
         // 4. Jika produk dan data galerinya ditemukan, bangun halaman
         if (product && product.detail && product.detail.galeri) {
             

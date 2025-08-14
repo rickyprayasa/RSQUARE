@@ -1,33 +1,32 @@
-// Mengimpor modul bawaan Node.js untuk berinteraksi dengan file sistem
 const fs = require('fs');
 const path = require('path');
 
-// Menentukan lokasi folder produk
-const produkDir = path.join(__dirname, '..', 'content', 'produk');
-// Menentukan lokasi di mana file _index.json akan disimpan
-const indexPath = path.join(produkDir, '_index.json');
+// Tentukan path ke folder produk dan file indeks
+const productsDirectory = path.join(__dirname, '..', 'content', 'produk');
+const indexPath = path.join(__dirname, '..', 'content', '_index.json');
 
-console.log(`Membaca file dari direktori: ${produkDir}`);
+console.log('Memulai proses generate _index.json...');
 
 try {
-    // Membaca semua item di dalam direktori produk
-    const allFiles = fs.readdirSync(produkDir);
+    // Baca semua nama file dari dalam folder /content/produk/
+    const filenames = fs.readdirSync(productsDirectory);
 
-    // Menyaring hanya file yang berakhiran .json dan BUKAN _index.json itu sendiri
-    const productFiles = allFiles.filter(file => 
-        file.endsWith('.json') && file !== '_index.json'
-    );
+    // Lakukan filter:
+    // 1. Hanya ambil file yang berakhiran .json
+    // 2. Buang file _index.json itu sendiri agar tidak masuk ke dalam daftarnya
+    const productFiles = filenames
+        .filter(file => file.endsWith('.json') && file !== '_index.json');
 
-    console.log(`Ditemukan ${productFiles.length} file produk:`, productFiles);
+    // Urutkan nama file secara alfabet untuk konsistensi
+    productFiles.sort();
 
-    // Menulis array nama file ke dalam _index.json
-    // JSON.stringify(..., null, 2) digunakan agar format file JSON rapi dan mudah dibaca
+    // Tulis kembali file _index.json dengan daftar file yang baru
+    // JSON.stringify(productFiles, null, 2) akan membuat format JSON rapi
     fs.writeFileSync(indexPath, JSON.stringify(productFiles, null, 2));
 
-    console.log(`File _index.json berhasil dibuat/diperbarui di ${indexPath}`);
+    console.log(`Berhasil! _index.json diperbarui dengan ${productFiles.length} produk.`);
 
 } catch (error) {
-    console.error('Terjadi kesalahan saat membuat file _index.json:', error);
-    // Keluar dengan status error agar proses build Netlify gagal jika skrip ini error
-    process.exit(1); 
+    console.error('Error saat membuat file _index.json:', error);
+    process.exit(1); // Hentikan proses build jika terjadi error
 }
