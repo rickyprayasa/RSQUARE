@@ -2,7 +2,6 @@ backend:
   name: git-gateway
   branch: main
 
-# Folder default untuk media (wajib ada di level atas)
 media_folder: "photos/uploads"
 public_folder: "photos/uploads"
 
@@ -16,7 +15,6 @@ collections:
     folder: "content/produk"
     create: true
     
-    # Menimpa (override) pengaturan global untuk koleksi ini
     media_folder: "photos/produk/{{id}}"
     public_folder: "photos/produk/{{id}}"
     
@@ -31,13 +29,22 @@ collections:
       - {label: "Deskripsi Singkat", name: "deskripsi_singkat", widget: "text"}
       - {label: "Gambar Thumbnail (untuk galeri)", name: "gambar_thumbnail", widget: "image"}
       
+      # --- BAGIAN SEO YANG BARU DITAMBAHKAN ---
+      - name: "seo"
+        label: "Pengaturan SEO"
+        widget: "object"
+        fields:
+          - {label: "Meta Title", name: "meta_title", widget: "string", required: false, hint: "Judul yang muncul di Google & tab browser. Jika kosong, akan memakai Judul utama."}
+          - {label: "Meta Description", name: "meta_description", widget: "text", required: false, hint: "Deskripsi singkat (maks 160 karakter) untuk hasil pencarian Google."}
+          - {label: "Gambar Open Graph", name: "og_image", widget: "image", required: false, hint: "Gambar untuk preview saat dibagikan ke media sosial (rekomendasi: 1200x630px). Jika kosong, akan memakai Gambar Utama."}
+      
+      # --- LANJUTAN KONFIGURASI ANDA ---
       - name: "detail"
         label: "Detail Lengkap Produk"
         widget: "object"
         fields:
           - {label: "Gambar Utama", name: "gambar_utama", widget: "image"}
           - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
-          #- {label: "Link Preview Detail", name: "link_preview_detail", widget: "string", hint: "Contoh: content/preview/template-preview.html?product={{id}}"}
           - {label: "Link YouTube", name: "link_youtube", widget: "string", required: false}
           - name: "link_pembelian"
             label: "Link Pembelian"
