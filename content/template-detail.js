@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const product = await response.json();
 
         if (product) {
-            // Mengubah title dan meta description halaman
-            document.title = `${product.judul} - RSQUARE`;
-            document.querySelector('meta[name="description"]').setAttribute('content', product.deskripsi_singkat);
+            // // Mengubah title dan meta description halaman
+            // document.title = `${product.judul} - RSQUARE`;
+            // document.querySelector('meta[name="description"]').setAttribute('content', product.deskripsi_singkat);
 
             // --- BAGIAN SEO BARU YANG DITAMBAHKAN ---
             if (typeof updateSeoTags === 'function') {
