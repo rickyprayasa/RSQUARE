@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         const product = await response.json();
 
         if (product) {
+            // Mengubah title dan meta description halaman
+            document.title = `${product.judul} - RSQUARE`;
+            document.querySelector('meta[name="description"]').setAttribute('content', product.deskripsi_singkat);
+
             // --- BAGIAN SEO BARU YANG DITAMBAHKAN ---
             if (typeof updateSeoTags === 'function') {
                 updateSeoTags({
@@ -35,12 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.warn("Fungsi updateSeoTags() tidak ditemukan. Pastikan seo.js dimuat sebelum skrip ini.");
             }
             // --- AKHIR BAGIAN SEO ---
-
-            if (product) {
-            // Mengubah title dan meta description halaman
-            document.title = `${product.judul} - RSQUARE`;
-            document.querySelector('meta[name="description"]').setAttribute('content', product.deskripsi_singkat);
-
+            
             // --- TOMBOL-TOMBOL PEMBAYARAN ---
 
             // 1. TOMBOL BARU: Tombol untuk pembayaran otomatis Midtrans
