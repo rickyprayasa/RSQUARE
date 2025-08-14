@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             let actionButtonsHTML = '';
             if (product.harga === 0) {
             if (product.detail?.file_panduan_pdf) {
-                actionButtonsHTML = `<a href="${product.detail.file_panduan_pdf}" download class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">Download Gratis</a>`;
+                actionButtonsHTML = `<a href="produk/${product.detail.file_panduan_pdf}" download class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">Download Gratis</a>`;
             } else {
                 actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
             }} else
