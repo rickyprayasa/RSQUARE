@@ -45,6 +45,7 @@ collections:
         fields:
           - {label: "Gambar Utama", name: "gambar_utama", widget: "image"}
           - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
+          - {label: "File PDF Panduan", name: "file_panduan_pdf", widget: "file", required: false, hint: "Unggah file PDF panduan penggunaan untuk produk ini."}
           - {label: "Link YouTube", name: "link_youtube", widget: "string", required: false}
           - name: "link_pembelian"
             label: "Link Pembelian"

@@ -6,6 +6,7 @@
     "gambar_thumbnail": "/photos/produk/invoice-maker/invoice-maker-thumbnail.png",
     "gambar_preview": "photos/produk/invoice-maker/Invoice.png",
     "detail": {
+      "file_panduan_pdf":"photos/produk/invoice-maker/Template Invoice Maker BETA.pdf",
       "gambar_utama": "photos/produk/invoice-maker/Invoice.png",
       "deskripsi_lengkap": "Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template Invoice Maker gratis ini.",
       "link_preview_detail": "content/template-preview.html?product=invoice-maker",

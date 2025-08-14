@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // --- PENAMBAHAN TOMBOL BELI LANGSUNG ---
             
+            
             // 1. Buat link absolut ke halaman pembayaran
             const linkBeliLangsung = `/${'bayar.html'}?nama_produk=${encodeURIComponent(product.judul)}&harga=${product.harga}`;
             
@@ -117,14 +118,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                     Akses di ${link.platform}
                 </a>
             `).join('');
+
+            let actionButtonsHTML = '';
+            if (product.harga === 0) {
+            if (product.detail?.file_panduan_pdf) {
+                actionButtonsHTML = `<a href="petunjuk.html?product=${product.id}" class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
+            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Lihat Petunjuk & Download
+        </a>`;
+            } else {
+                actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
+            }} else
+            { actionButtonsHTML = `
+                                ${tombolBeliLangsungHTML}
+                                ${ctaButtonsHTML}
+                            `;}
             
             const ctaHTML = `
                 <section class="container mx-auto mt-12 text-center">
                     <h2 class="text-3xl font-bold text-gray-800">Siap Meningkatkan Produktivitas?</h2>
                     <p class="text-lg text-gray-600 mt-2 mb-8">Pilih platform favorit Anda untuk mendapatkan template ini sekarang.</p>
                     <div class="max-w-md mx-auto space-y-4">
-                        ${tombolBeliLangsungHTML}
-                        ${ctaButtonsHTML}
+                        ${actionButtonsHTML}
                     </div>
                     <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
                         <a href="template-detail.html?product=${product.id}" class="text-gray-500 hover:text-orange-600 font-semibold transition">← Kembali ke Ringkasan</a>
