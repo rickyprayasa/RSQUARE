@@ -72,7 +72,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const productHTML = `
             <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 <div class="bg-white p-4 rounded-lg shadow-md">
-                    <img src="${correctImagePath}" alt="Cover ${product.judul}" class="w-full h-auto rounded-md">
+                    <a href="produk/${product.detail.gambar_utama}" class="cursor-zoom-in">
+                                        <img id="product-image" src="produk/${product.detail.gambar_utama}" alt="Tampilan Utama ${product.judul}" class="rounded-lg w-full shadow-lg">
+                                    </a>
                 </div>
                 <div>
                     <h1 class="text-4xl font-bold text-gray-800 mb-4">${product.judul}</h1>
