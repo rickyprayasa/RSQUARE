@@ -1,31 +1,24 @@
 /**
  * Fungsi ini memperbarui tag SEO utama di dalam <head> dokumen.
+ * Ia akan menggunakan data yang diberikan, tanpa nilai default internal.
  * @param {object} seoData - Objek yang berisi data SEO.
- * @param {string} seoData.title - Judul untuk tag <title> dan og:title.
- * @param {string} seoData.description - Deskripsi untuk meta description dan og:description.
- * @param {string} seoData.ogImage - URL gambar untuk og:image.
- * @param {string} [seoData.ogType='website'] - Tipe Open Graph, defaultnya 'website'.
  */
 function updateSeoTags(seoData) {
-    // Memberikan nilai default jika ada data yang kosong
-    const defaults = {
-        title: 'RSQUARE - Template Google Sheets Premium',
-        description: 'Temukan template Google Sheets dan Slides premium untuk meningkatkan produktivitas dan analisis data Anda.',
-        ogImage: 'https://rsquareidea.my.id/photos/RSQUARE-LOGO.png', // Ganti dengan URL gambar default Anda
-        ogType: 'website'
-    };
+    // Pastikan seoData adalah objek untuk menghindari error
+    const data = seoData || {};
 
-    const title = seoData.title || defaults.title;
-    const description = seoData.description || defaults.description;
-    const ogImage = seoData.ogImage || defaults.ogImage;
-    const ogType = seoData.ogType || defaults.ogType;
-    const canonicalUrl = window.location.href; // URL halaman saat ini
+    const title = data.title || document.title; // Gunakan judul yang ada jika tidak ada yang baru
+    const description = data.description || '';
+    const ogImage = data.ogImage || '';
+    const ogType = data.ogType || 'website';
+    const canonicalUrl = window.location.href;
 
     // 1. Update Judul Halaman
     document.title = title;
 
     // 2. Fungsi bantuan untuk mencari atau membuat meta tag
     function setMetaTag(attr, attrValue, content) {
+        if (!content) return; // Jangan buat tag jika kontennya kosong
         let element = document.querySelector(`meta[${attr}='${attrValue}']`);
         if (!element) {
             element = document.createElement('meta');
