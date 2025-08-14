@@ -47,13 +47,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 2. Tombol Beli Manual
         const linkBeliManual = `/bayar.html?nama_produk=${encodeURIComponent(product.judul)}&harga=${product.harga}`;
         const tombolBeliManualHTML = `
-            <a href="${linkBeliManual}" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
+            <a href="${linkBeliManual}" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
                 Beli Manual (Transfer & Konfirmasi)
             </a>`;
 
         // 3. Tombol Platform Eksternal
         const externalButtonsHTML = product.detail.link_pembelian.map(link => `
-            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
+            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
                 Akses di ${link.platform}
             </a>
         `).join('');
