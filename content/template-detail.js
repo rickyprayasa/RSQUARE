@@ -71,7 +71,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             let actionButtonsHTML = '';
             if (product.harga === 0) {
             if (product.detail?.file_panduan_pdf) {
-                actionButtonsHTML = `<a href="produk/${product.detail.file_panduan_pdf}" download class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">Download Gratis</a>`;
+                actionButtonsHTML = ` <button id="download-and-redirect-btn" 
+                    data-pdf-url="produk/${product.detail.file_panduan_pdf}" 
+                    class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
+                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download & Lihat Petunjuk
+            </button>`;
             } else {
                 actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
             }} else
