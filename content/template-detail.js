@@ -39,24 +39,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.warn("Fungsi updateSeoTags() tidak ditemukan. Pastikan seo.js dimuat sebelum skrip ini.");
             }
             // --- AKHIR BAGIAN SEO ---
-            let actionButtonsHTML = ''; // Variabel untuk menampung semua tombol aksi
-
-            // Cek jika harga produk adalah 0 (gratis)
-            if (product.harga === 0) {
-                // Jika gratis, hanya buat tombol download panduan PDF
-                // Menggunakan '?.' untuk memeriksa 'detail' dan 'file_panduan_pdf' dengan aman
-                if (product.detail?.file_panduan_pdf) {
-                    actionButtonsHTML = `
-                        <a href="/${product.detail.file_panduan_pdf}" download class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
-                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            Download Gratis
-                        </a>
-                    `;
-                } else {
-                    // Pesan jika produk gratis tapi tidak ada file PDF
-                    actionButtonsHTML = '<p class="text-center text-gray-500">Panduan untuk produk ini akan segera tersedia.</p>';
-                }
-            } else {
             
             // --- TOMBOL-TOMBOL PEMBAYARAN ---
 
@@ -86,6 +68,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             `).join('');
             
             const deskripsiLengkapHTML = marked.parse(product.detail.deskripsi_lengkap);
+            let actionButtonsHTML = '';
+            if (product.harga === 0) {
+            if (product.detail?.file_panduan_pdf) {
+                actionButtonsHTML = `<a href="/${product.detail.file_panduan_pdf}" download class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">Download Gratis</a>`;
+            } else {
+                actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
+            }} else
+            { actionButtonsHTML = `
+                                ${tombolBeliManualHTML}
+                                ${externalButtonsHTML}
+                            `;}
 
             const productHTML = `
                 <div class="container mx-auto">
@@ -106,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <div>
                                 <p class="text-sm font-semibold text-gray-600 mb-3">Pilih metode pembelian:</p>
                                 <div class="space-y-4">
-                                          ${tombolBeliManualHTML}    ${externalButtonsHTML}      <hr class="border-gray-700">
+                                          ${actionButtonsHTML}    <hr class="border-gray-700">
                         <a href="template-preview.html?product=${product.id}" class="btn-secondary-animated-border flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
                             <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                             Lihat Preview Detail
@@ -118,7 +111,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
             `;
-            }
 
             container.innerHTML = productHTML;
 
