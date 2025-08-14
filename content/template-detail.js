@@ -44,10 +44,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Cek jika harga produk adalah 0 (gratis)
             if (product.harga === 0) {
                 // Jika gratis, hanya buat tombol download panduan PDF
-                if (product.detail.file_panduan_pdf) {
+                // Menggunakan '?.' untuk memeriksa 'detail' dan 'file_panduan_pdf' dengan aman
+                if (product.detail?.file_panduan_pdf) {
                     actionButtonsHTML = `
-                        <a href="${product.detail.file_panduan_pdf}" download class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
-                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        <a href="/${product.detail.file_panduan_pdf}" download class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             Download Gratis
                         </a>
                     `;
@@ -116,7 +117,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                     </div>
                 </div>
-            `;}
+            `;
+            }
 
             container.innerHTML = productHTML;
 
