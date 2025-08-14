@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const indexResponse = await fetch('content/produk/_index.json');
+        const indexResponse = await fetch('content/_index.json');
         if (!indexResponse.ok) throw new Error(`Gagal memuat _index.json`);
         
         const productFiles = await indexResponse.json();
