@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             Lihat Petunjuk & Download
         </a> ${ctaButtonsHTML}`;
             } else {
-                actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
+                actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p> ${ctaButtonsHTML}';
             }} else
             { actionButtonsHTML = `
                                 ${tombolBeliLangsungHTML}
