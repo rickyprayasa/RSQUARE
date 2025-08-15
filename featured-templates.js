@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         // Ambil data produk
         const featuredResponse = await fetch('_data/homepage.json');
-        const featuredIds = await featuredResponse.json();
+        const settings = await featuredResponse.json();
+        const featuredIds = settings.produk_unggulan || ['personal-budgeting'];
 
         const productPromises = featuredIds.map(id => 
             fetch(`content/produk/${id}.json`).then(res => res.ok ? res.json() : null)
