@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (product.detail?.file_panduan_pdf) {
                 actionButtonsHTML = ` <a href="petunjuk.html?product=${product.id}" class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
             <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            Lihat Petunjuk & Download
+            Download Gratis
         </a> ${externalButtonsHTML}`;
             } else {
                 actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             { actionButtonsHTML = `
                                 ${tombolBeliManualHTML}
                                 ${externalButtonsHTML}
+                                <a class="mayar-button iframe-lightbox-link" href="https://rsquareidea.myr.id/pl/Personal-Budgeting-37550?iframe=true" data-padding-bottom="30%" data-scrolling="true"><span></span>Beli Langsung Sekarang</a>
                             `;}
 
             const productHTML = `
