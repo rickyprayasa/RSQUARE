@@ -58,6 +58,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                     Beli Manual (Transfer & Konfirmasi)
                 </a>
             `;
+            // TOMBOL PAYMENT GATE AWAY
+            const linkPayment = `${product.detail.payment_gateway}`;
+            const tombolPayment = `
+                <a href="${linkPayment}" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Beli Langsung
+                </a>
+            `;
 
             // 3. TOMBOL LAMA: Tombol untuk platform eksternal (tetap dipertahankan)
             const externalButtonsHTML = product.detail.link_pembelian.map(link => `
@@ -80,9 +88,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             }} else
             { actionButtonsHTML = `
                                 ${tombolBeliManualHTML}
+                                ${tombolPayment}
                                 ${externalButtonsHTML}
-                                <a class="mayar-button iframe-lightbox-link" href="https://rsquareidea.myr.id/pl/Personal-Budgeting-37550?iframe=true" data-padding-bottom="30%" data-scrolling="true"><span></span>Beli Langsung Sekarang</a>
-                            `;}
+                                `;}
 
             const productHTML = `
                 <div class="container mx-auto">
