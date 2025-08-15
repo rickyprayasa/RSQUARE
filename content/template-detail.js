@@ -42,22 +42,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             // --- TOMBOL-TOMBOL PEMBAYARAN ---
 
-            // 1. TOMBOL BARU: Tombol untuk pembayaran otomatis Midtrans
-            const midtransButtonHTML = `
-                <button id="midtrans-pay-button" class="btn-primary btn-shiny inline block secondarydary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
-                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H4a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                    Beli Otomatis (QRIS, VA, E-Wallet)
-                </button>
+            // 1. TOMBOL BARU: Tombol untuk pembayaran otomatis Mayar.id
+            const linkPayment = `${product.detail.payment_gateway}`;
+            const tombolPayment = `
+                <a href="${linkPayment}" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    Beli Langsung
+                </a>
             `;
             
             // 2. TOMBOL LAMA: Tombol untuk pembayaran manual (tetap dipertahankan)
             const linkBeliManual = `/${'bayar.html'}?nama_produk=${encodeURIComponent(product.judul)}&harga=${product.harga}`;
             const tombolBeliManualHTML = `
                 <a href="${linkBeliManual}" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
-                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
                     Beli Manual (Transfer & Konfirmasi)
                 </a>
             `;
+           
 
             // 3. TOMBOL LAMA: Tombol untuk platform eksternal (tetap dipertahankan)
             const externalButtonsHTML = product.detail.link_pembelian.map(link => `
@@ -73,15 +75,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (product.detail?.file_panduan_pdf) {
                 actionButtonsHTML = ` <a href="petunjuk.html?product=${product.id}" class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
             <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            Lihat Petunjuk & Download
+            Download Gratis
         </a> ${externalButtonsHTML}`;
             } else {
                 actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
             }} else
             { actionButtonsHTML = `
-                                ${tombolBeliManualHTML}
+                               
+                                ${tombolPayment}
                                 ${externalButtonsHTML}
-                            `;}
+                                `;}
 
             const productHTML = `
                 <div class="container mx-auto">
@@ -117,51 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             container.innerHTML = productHTML;
 
-            // --- TAMBAHKAN LOGIKA JAVASCRIPT UNTUK TOMBOL MIDTRANS ---
-            // Kode ini harus berada SETELAH 'container.innerHTML'
-            const payButton = document.getElementById('midtrans-pay-button');
-            if (payButton) {
-                payButton.addEventListener('click', async () => {
-                    payButton.disabled = true;
-                    payButton.textContent = 'Memproses...';
-
-                    try {
-                        const response = await fetch('/.netlify/functions/create-transaction', {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                productName: product.judul,
-                                productPrice: product.harga,
-                                customerName: 'Pelanggan', 
-                                customerEmail: 'pelanggan@example.com' 
-                            })
-                        });
-                        if (!response.ok) throw new Error('Gagal mendapatkan token pembayaran.');
-                        const { token } = await response.json();
-
-                        window.snap.pay(token, {
-                            onSuccess: (result) => { window.location.href = '/terima-kasih.html'; },
-                            onPending: (result) => { alert("Menunggu pembayaran Anda!"); },
-                            onError: (result) => { 
-                                alert("Pembayaran gagal!");
-                                payButton.disabled = false;
-                                payButton.textContent = 'Beli Otomatis (QRIS, VA, E-Wallet)';
-                            },
-                            onClose: () => {
-                                payButton.disabled = false;
-                                payButton.textContent = 'Beli Otomatis (QRIS, VA, E-Wallet)';
-                            }
-                        });
-                    } catch (error) {
-                        console.error(error);
-                        alert('Terjadi kesalahan. Silakan coba lagi.');
-                        payButton.disabled = false;
-                        payButton.textContent = 'Beli Otomatis (QRIS, VA, E-Wallet)';
-                    }
-                });
-            }
-            // --- AKHIR LOGIKA JAVASCRIPT BARU ---
-
-
+            
             // Aktifkan kembali fitur lightbox (tidak berubah)
             const imageContainer = document.getElementById('image-container');
             if (imageContainer) {

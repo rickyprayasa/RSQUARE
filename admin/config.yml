@@ -47,6 +47,7 @@ collections:
           - {label: "Deskripsi Lengkap", name: "deskripsi_lengkap", widget: "markdown"}
           - {label: "File PDF Panduan", name: "file_panduan_pdf", widget: "file", required: false, hint: "Unggah file PDF panduan penggunaan untuk produk ini."}
           - {label: "Link YouTube", name: "link_youtube", widget: "string", required: false}
+          - {label: "Link Pembelian Langsung", name: "payment_gateway", widget: "string", required: true, hint: "https://rsquareidea.myr.id/..."}
           - name: "link_pembelian"
             label: "Link Pembelian"
             widget: "list"

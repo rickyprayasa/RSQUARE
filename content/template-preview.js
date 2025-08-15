@@ -97,6 +97,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </section>`;
 
             // --- PENAMBAHAN TOMBOL BELI LANGSUNG ---
+
+            // 1. TOMBOL BARU: Tombol untuk pembayaran otomatis Mayar.id
+            const linkPayment = `${product.detail.payment_gateway}`;
+            const tombolPayment = `
+                <a href="${linkPayment}" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    Beli Langsung
+                </a>
+            `;
             
             
             // 1. Buat link absolut ke halaman pembayaran
@@ -130,7 +139,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p> ${ctaButtonsHTML}';
             }} else
             { actionButtonsHTML = `
-                                ${tombolBeliLangsungHTML}
+                                ${tombolPayment}
                                 ${ctaButtonsHTML}
                             `;}
             
