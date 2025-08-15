@@ -14,6 +14,11 @@ collections:
       - name: "beranda" # Nama internal untuk file
         label: "Pilih Produk Unggulan" # Nama yang muncul di menu CMS
         file: "_data/homepage.json" # Lokasi penyimpanan file
+        # --- TAMBAHKAN DUA BARIS INI ---
+        format: "json"
+        editor:
+          preview: false
+        # ----------------------------
         fields:
           - name: "produk_unggulan"
             label: "Pilih Produk Unggulan"
