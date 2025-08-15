@@ -8,6 +8,22 @@ public_folder: "photos/uploads"
 publish_mode: editorial_workflow
 
 collections:
+  - name: "pengaturan" # Nama internal untuk koleksi
+    label: "Pengaturan Halaman" # Nama yang muncul di menu CMS
+    files:
+      - name: "beranda" # Nama internal untuk file
+        label: "Pengaturan Beranda" # Nama yang muncul di menu CMS
+        file: "_data/homepage.json" # Lokasi penyimpanan file
+        fields:
+          - name: "produk_unggulan"
+            label: "Pilih Produk Unggulan"
+            widget: "relation"
+            collection: "produk"      # Mengambil data dari koleksi 'produk'
+            multiple: true            # Memungkinkan memilih lebih dari satu
+            search_fields: ["judul"]  # Memungkinkan pencarian berdasarkan judul
+            value_field: "id"         # Menyimpan 'id' produk yang dipilih
+            display_fields: ["judul"] # Menampilkan 'judul' produk di daftar pilihan
+            hint: "Ceklis produk yang ingin ditampilkan di halaman utama."
   - name: "produk"
     label: "Produk"
     label_singular: "Produk"
