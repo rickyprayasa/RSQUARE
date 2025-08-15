@@ -3,19 +3,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!container) return;
 
     try {
-        // 1. Ambil daftar ID dari file pengaturan
-        const settingsResponse = await fetch('/_data/homepage.json');
-        if (!settingsResponse.ok) throw new Error("File pengaturan tidak ditemukan.");
-        
-        const settings = await settingsResponse.json();
-        const featuredIds = settings.produk_unggulan || [];
 
-        if (featuredIds.length === 0) {
-            container.innerHTML = '<p>Belum ada produk unggulan yang dipilih.</p>';
-            return;
-        }
+        // Ambil data produk
+        const featuredResponse = await fetch('_data/homepage.json');
+        const settings = await featuredResponse.json();
+        const featuredIds = settings.produk_unggulan || ['personal-budgeting', 'content-calendar'];
 
-        // 2. Ambil detail untuk setiap ID produk unggulan
         const productPromises = featuredIds.map(id => 
             fetch(`/content/produk/${id}.json`).then(res => res.ok ? res.json() : null)
         );
