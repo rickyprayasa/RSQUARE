@@ -13,7 +13,7 @@ collections:
     files:
       - name: "beranda" # Nama internal untuk file
         label: "Pengaturan Beranda" # Nama yang muncul di menu CMS
-        file: "_data/homepage.json" # Lokasi penyimpanan file
+        file: "/content/featured-products.json" # Lokasi penyimpanan file
         fields:
           - name: "produk_unggulan"
             label: "Pilih Produk Unggulan"
