@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             featuredIds = ['personal-budgeting', 'content-calendar', 'perencanaan-acara'];
         }
 
+        console.log(featuredIds);
+
         // 2. Ambil detail hanya untuk produk yang ID-nya ada di daftar
         const productPromises = featuredIds.map(id => 
             fetch(`/content/produk/${id}.json`).then(res => res.ok ? res.json() : null)
