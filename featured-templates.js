@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 1. Ambil daftar ID produk unggulan dari file pengaturan baru
-        const settingsResponse = await fetch('/_data/homepage.json');
+        const settingsResponse = await fetch('/content/featured-products.json');
         if (!settingsResponse.ok) throw new Error("Gagal memuat file pengaturan.");
         const settings = await settingsResponse.json();
         const featuredIds = settings.produk_unggulan || []; // Ambil array ID
