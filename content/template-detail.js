@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
             }} else
             { actionButtonsHTML = `
-                                ${tombolBeliManualHTML}
+                               
                                 ${tombolPayment}
                                 ${externalButtonsHTML}
                                 `;}
