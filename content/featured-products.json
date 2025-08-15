@@ -1,5 +1,6 @@
-[
-  "goal-planner",
+{
+  "produk_unggulan": [
   "personal-budgeting",
-  "perencanaan-acara"
-]
+    "content-calendar"
+  ]
+}
