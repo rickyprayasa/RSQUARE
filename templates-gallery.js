@@ -1,32 +1,23 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const galleryContainer = document.getElementById('product-gallery-container');
+    const sortDropdown = document.getElementById('sort-options'); // Asumsi ID dropdown adalah 'sort-options'
     if (!galleryContainer) return;
 
-    galleryContainer.innerHTML = '<p class="text-center col-span-full">Memuat koleksi template...</p>';
+    // Variabel untuk menyimpan data semua produk agar tidak perlu fetch berulang kali
+    let allProducts = [];
 
-    try {
-        const indexResponse = await fetch('content/_index.json');
-        if (!indexResponse.ok) throw new Error(`Gagal memuat _index.json: ${indexResponse.statusText}`);
-        
-        const productFiles = await indexResponse.json();
-        if (productFiles.length === 0) {
-            galleryContainer.innerHTML = '<p class="text-center col-span-full">Belum ada template.</p>';
+    // --- FUNGSI UNTUK MENAMPILKAN PRODUK ---
+    const renderProducts = (productsToRender) => {
+        if (productsToRender.length === 0) {
+            galleryContainer.innerHTML = '<p class="text-center col-span-full">Tidak ada produk yang cocok.</p>';
             return;
         }
 
-        const productPromises = productFiles.map(file => fetch(`content/produk/${file}`).then(res => res.ok ? res.json() : null));
-        let products = await Promise.all(productPromises);
-        products = products.filter(p => p !== null);
-
-        const allCardsHTML = products.map(product => {
+        const allCardsHTML = productsToRender.map(product => {
             const priceDisplay = product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`;
             const detailLink = `content/template-detail.html?product=${product.id}`;
-            
-            // --- MENGGUNAKAN IDE ANDA YANG LEBIH SEDERHANA ---
-            // Langsung menggabungkan path, dengan asumsi `gambar_thumbnail` tidak punya '/' di depan.
             const correctImagePath = `content/produk/${product.gambar_thumbnail}`;
-            // --- SELESAI ---
-
+            
             return `
                 <div class="card rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                     <div class="relative z-10 flex flex-col flex-grow">
@@ -46,11 +37,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }).join('');
 
-        // Menampilkan semua kartu produk dinamis
+        // Tampilkan semua kartu produk yang sudah di-render
         galleryContainer.innerHTML = allCardsHTML;
-        
-        // --- BAGIAN YANG DIPERBAIKI ---
-        // Variabel ini sekarang berisi kode HTML yang lengkap.
+
+        // Kartu "Segera Hadir" (tidak berubah)
         const comingSoonCard = `
             <div class="card rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center p-6">
                 <div class="flex-grow flex flex-col items-center justify-center">
@@ -60,13 +50,61 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 <a href="jasa-kustom.html" class="btn-primary btn-shiny mt-auto text-center px-6 py-2 rounded-lg font-semibold text-white">Request Template?</a>
             </div>`;
-
-        // Perintah untuk menambahkan kartu "Segera Hadir" di akhir.
+        
         galleryContainer.insertAdjacentHTML('beforeend', comingSoonCard);
-        // --- AKHIR BAGIAN PERBAIKAN ---
+    };
+
+    // --- LOGIKA UTAMA SAAT HALAMAN DIMUAT ---
+    try {
+        galleryContainer.innerHTML = '<p class="text-center col-span-full">Memuat koleksi template...</p>';
+
+        const indexResponse = await fetch('content/_index.json');
+        if (!indexResponse.ok) throw new Error(`Gagal memuat _index.json: ${indexResponse.statusText}`);
+        
+        const productFiles = await indexResponse.json();
+        if (productFiles.length === 0) {
+            galleryContainer.innerHTML = '<p class="text-center col-span-full">Belum ada template.</p>';
+            return;
+        }
+
+        const productPromises = productFiles.map(file => fetch(`content/produk/${file}`).then(res => res.ok ? res.json() : null));
+        allProducts = await Promise.all(productPromises);
+        allProducts = allProducts.filter(p => p !== null);
+
+        // Tampilan Awal: Sortir GRATIS di paling depan (Urutan "Unggulan")
+        allProducts.sort((a, b) => a.harga - b.harga);
+        renderProducts(allProducts);
 
     } catch (error) {
         console.error('Gagal memuat galeri produk:', error);
         galleryContainer.innerHTML = `<p class="text-center text-red-500 col-span-full">Maaf, terjadi kesalahan. Error: ${error.message}</p>`;
+    }
+
+    // --- EVENT LISTENER UNTUK DROPDOWN SORTIR ---
+    if (sortDropdown) {
+        sortDropdown.addEventListener('change', (event) => {
+            const sortBy = event.target.value;
+            let sortedProducts = [...allProducts]; // Buat salinan agar data asli tidak berubah
+
+            switch (sortBy) {
+                case 'price-asc':
+                    sortedProducts.sort((a, b) => a.harga - b.harga);
+                    break;
+                case 'price-desc':
+                    sortedProducts.sort((a, b) => b.harga - a.harga);
+                    break;
+                case 'name-asc':
+                    sortedProducts.sort((a, b) => a.judul.localeCompare(b.judul));
+                    break;
+                case 'name-desc':
+                    sortedProducts.sort((a, b) => b.judul.localeCompare(a.judul));
+                    break;
+                default:
+                    // Urutan "Unggulan" (Gratis di depan)
+                    sortedProducts.sort((a, b) => a.harga - b.harga);
+                    break;
+            }
+            renderProducts(sortedProducts);
+        });
     }
 });
