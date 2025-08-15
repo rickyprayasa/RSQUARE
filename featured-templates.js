@@ -1,18 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Tentukan kontainer tempat galeri akan ditampilkan
     const container = document.getElementById('featured-grid-container');
-    if (!container) {
-        console.error("Kontainer dengan ID 'featured-grid-container' tidak ditemukan.");
-        return;
-    }
+    if (!container) return;
 
     try {
-        // 2. Ambil daftar ID produk unggulan dari file pengaturan baru Anda
-        const settingsResponse = await fetch('/content/featured-products.json');
-        if (!settingsResponse.ok) throw new Error("Gagal memuat file featured-products.json.");
+        // 1. Ambil daftar ID dari file pengaturan
+        const settingsResponse = await fetch('/_data/homepage.json');
+        if (!settingsResponse.ok) throw new Error("File pengaturan tidak ditemukan.");
         
         const settings = await settingsResponse.json();
-        // Ambil array ID dari dalam objek, berikan array kosong jika tidak ada
         const featuredIds = settings.produk_unggulan || [];
 
         if (featuredIds.length === 0) {
@@ -20,19 +15,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        // 3. Ambil detail hanya untuk produk yang ID-nya ada di daftar
+        // 2. Ambil detail untuk setiap ID produk unggulan
         const productPromises = featuredIds.map(id => 
             fetch(`/content/produk/${id}.json`).then(res => res.ok ? res.json() : null)
         );
         let featuredProducts = await Promise.all(productPromises);
-        featuredProducts = featuredProducts.filter(p => p !== null); // Hapus produk yang gagal dimuat
+        featuredProducts = featuredProducts.filter(p => p !== null);
 
-        // 4. Buat HTML untuk setiap kartu produk
+        // 3. Buat HTML untuk ditampilkan (tidak ada perubahan di bagian ini)
         const cardsHTML = featuredProducts.map(product => {
-            // Gunakan path absolut (diawali '/') agar konsisten
             const imagePath = `/${product.gambar_thumbnail}`;
             const detailLink = `/content/template-detail.html?product=${product.id}`;
-
             return `
                 <div class="featured-card">
                     <img src="${imagePath}" alt="${product.judul}" class="featured-card-image">
@@ -48,10 +41,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }).join('');
         
-        // 5. Masukkan semua kartu ke dalam kontainer
         container.innerHTML = cardsHTML;
 
-        // 6. Tambahkan event listener untuk efek hover setelah kartu dibuat
+        // Efek hover
         const featuredCards = document.querySelectorAll('.featured-card');
         featuredCards.forEach(card => {
             card.addEventListener('mouseenter', () => card.classList.add('is-hovered'));
