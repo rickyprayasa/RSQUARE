@@ -23,7 +23,7 @@ collections:
             search_fields: ["judul"]  # Memungkinkan pencarian berdasarkan judul
             value_field: "id"         # Menyimpan 'id' produk yang dipilih
             display_fields: ["judul"] # Menampilkan 'judul' produk di daftar pilihan
-            hint: "Ceklis produk yang ingin ditampilkan di halaman utama."
+            hint: "Ceklis produk yang ingin dijadikan produk unggulan di halaman utama."
   - name: "produk"
     label: "Produk"
     label_singular: "Produk"
