@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const featuredIds = settings.produk_unggulan || []; // Ambil array ID
 
         if (featuredIds.length === 0) {
-            container.innerHTML = '<p>Belum ada produk unggulan yang dipilih.</p>';
-            return;
+            featuredIds = ['personal-budgeting', 'content-calendar', 'perencanaan-acara'];
         }
 
         // 2. Ambil detail hanya untuk produk yang ID-nya ada di daftar
