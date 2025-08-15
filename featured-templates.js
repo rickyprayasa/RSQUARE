@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // Ambil data produk
-        const featuredResponse = await fetch('content/featured-products.json');
+        const featuredResponse = await fetch('_data/homepage.json');
         const featuredIds = await featuredResponse.json();
 
         const productPromises = featuredIds.map(id => 
