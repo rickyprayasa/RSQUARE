@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 1. Ambil urutan produk dari file pengaturan yang baru
-        const orderResponse = await fetch('/_data/template_order.json');
+        const indexResponse = await fetch('/content/_index.json'); 
         if (!orderResponse.ok) throw new Error("Gagal memuat file urutan template.");
         
         const orderData = await orderResponse.json();
