@@ -1,32 +1,35 @@
 const fs = require('fs');
 const path = require('path');
 
-// Tentukan path ke folder produk dan file indeks
 const productsDirectory = path.join(__dirname, '..', 'content', 'produk');
 const indexPath = path.join(__dirname, '..', 'content', '_index.json');
 
-console.log('Memulai proses generate _index.json...');
+console.log('Memulai proses generate _index.json berdasarkan tanggal...');
 
 try {
-    // Baca semua nama file dari dalam folder /content/produk/
-    const filenames = fs.readdirSync(productsDirectory);
-
-    // Lakukan filter:
-    // 1. Hanya ambil file yang berakhiran .json
-    // 2. Buang file _index.json itu sendiri agar tidak masuk ke dalam daftarnya
-    const productFiles = filenames
+    const filenames = fs.readdirSync(productsDirectory)
         .filter(file => file.endsWith('.json') && file !== '_index.json');
 
-    // Urutkan nama file secara alfabet untuk konsistensi
-    productFiles.sort();
+    const filesWithStats = filenames.map(file => {
+        const filePath = path.join(productsDirectory, file);
+        const stats = fs.statSync(filePath);
+        return {
+            name: file,
+            createdAt: stats.birthtime // 'birthtime' adalah waktu file dibuat
+        };
+    });
 
-    // Tulis kembali file _index.json dengan daftar file yang baru
-    // JSON.stringify(productFiles, null, 2) akan membuat format JSON rapi
-    fs.writeFileSync(indexPath, JSON.stringify(productFiles, null, 2));
+    // Urutkan file berdasarkan tanggal pembuatan, dari yang paling baru ke paling lama
+    filesWithStats.sort((a, b) => b.createdAt - a.createdAt);
 
-    console.log(`Berhasil! _index.json diperbarui dengan ${productFiles.length} produk.`);
+    // Ambil hanya nama filenya saja setelah diurutkan
+    const sortedFilenames = filesWithStats.map(file => file.name);
+
+    fs.writeFileSync(indexPath, JSON.stringify(sortedFilenames, null, 2));
+
+    console.log(`Berhasil! _index.json diperbarui dengan ${sortedFilenames.length} produk, terbaru di awal.`);
 
 } catch (error) {
     console.error('Error saat membuat file _index.json:', error);
-    process.exit(1); // Hentikan proses build jika terjadi error
+    process.exit(1);
 }
