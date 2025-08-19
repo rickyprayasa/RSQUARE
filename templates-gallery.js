@@ -5,14 +5,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     galleryContainer.innerHTML = '<p class="text-center col-span-full">Memuat koleksi template...</p>';
 
     try {
-        // --- LANGKAH 1 & 2: Ambil _index.json dan template_order.json secara bersamaan ---
-        const [indexResponse, orderResponse] = await Promise.all([
-            fetch('content/_index.json'),
-            fetch('_data/template_order.json').catch(err => {
-                console.warn('File urutan tidak dapat diakses, lanjut dengan urutan default.', err);
-                return null; // Jika gagal, kembalikan null agar Promise.all tidak berhenti
+        // --- LANGKAH 1 & 2: Ambil _index.json dan siapkan data urutan ---
+        const indexResponse = await fetch('content/_index.json');
+
+        // --- PERUBAHAN LOGIKA ---
+        // Langsung fetch dan parse, jika gagal di tahap mana pun, hasilnya adalah {}
+        const orderData = await fetch('_data/template_order.json')
+            .then(response => {
+                if (!response.ok) { // Gagal jika file tidak ditemukan (404)
+                    return {};
+                }
+                return response.json(); // Coba baca sebagai JSON
             })
-        ]);
+            .catch(error => {
+                // Gagal jika file kosong, tidak valid, atau ada error jaringan
+                console.warn('Gagal memuat/parse template_order.json. Menggunakan urutan default.', error);
+                return {};
+            });
+        // --- SELESAI PERUBAHAN ---
 
 
         if (!indexResponse.ok) throw new Error(`Gagal memuat _index.json: ${indexResponse.statusText}`);
