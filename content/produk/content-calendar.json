@@ -40,6 +40,8 @@
       }
     ],
     "link_youtube": "https://www.youtube.com/embed/BfHNr29C6yo?si=VONarwlhd3BxMBDF",
-    "file_panduan_pdf":"photos/produk/content-calendar/Template Content Calendar.pdf"
-  }
+    "file_panduan_pdf": "photos/produk/content-calendar/Template Content Calendar.pdf",
+    "payment_gateway": "https://rsquareidea.my.id/"
+  },
+  "order": 1
 }
