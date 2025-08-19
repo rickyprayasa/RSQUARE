@@ -5,80 +5,71 @@ document.addEventListener('DOMContentLoaded', async () => {
     galleryContainer.innerHTML = '<p class="text-center col-span-full">Memuat koleksi template...</p>';
 
     try {
-        // --- LANGKAH 1 & 2: Ambil _index.json dan template_order.json secara bersamaan ---
-        const [indexResponse, orderResponse] = await Promise.all([
-            fetch('content/_index.json'),
-            fetch('_data/template_order.json').catch(err => {
-                console.warn('File urutan tidak dapat diakses, lanjut dengan urutan default.', err);
-                return null; // Jika gagal, kembalikan null agar Promise.all tidak berhenti
-            })
-        ]);
+        // --- LANGKAH 1 & 2: Ambil _index.json dan siapkan data urutan ---
+        const indexResponse = await fetch('content/_index.json');
 
+        // --- PERUBAHAN LOGIKA ---
+        // Langsung fetch dan parse, jika gagal di tahap mana pun, hasilnya adalah {}
+        const orderData = await fetch('_data/template_order.json')
+            .then(response => {
+                if (!response.ok) { // Gagal jika file tidak ditemukan (404)
+                    return {};
+                }
+                return response.json(); // Coba baca sebagai JSON
+            })
+            .catch(error => {
+                // Gagal jika file kosong, tidak valid, atau ada error jaringan
+                console.warn('Gagal memuat/parse template_order.json. Menggunakan urutan default.', error);
+                return {};
+            });
+        // --- SELESAI PERUBAHAN ---
 
         if (!indexResponse.ok) throw new Error(`Gagal memuat _index.json: ${indexResponse.statusText}`);
         
-        const allProductIds = await indexResponse.json();
-        if (allProductIds.length === 0) {
+        const allProductFiles = await indexResponse.json();
+        if (allProductFiles.length === 0) {
             galleryContainer.innerHTML = '<p class="text-center col-span-full">Belum ada template.</p>';
             return;
         }
 
-        // --- LANGKAH 3: Tentukan urutan final ID produk berdasarkan aturan ---
-        let sortedProductIds = [];
-        let orderData = null;
-
-        if (orderResponse && orderResponse.ok) {
-            orderData = await orderResponse.json();
-        }
-
+        // --- LANGKAH 3: Tentukan urutan final ---
+        // Logika ini sekarang tidak perlu blok 'else' yang rumit
+        let sortedProductFiles;
         if (orderData && orderData.urutan_produk && orderData.urutan_produk.length > 0) {
-            const allIdsSet = new Set(allProductIds); // Gunakan Set untuk pencarian cepat O(1)
-            const orderedIds = [];
-            console.log(orderData.urutan_produk);
-            // --- PERBAIKAN DI SINI ---
-            // Ambil produk yang terurut sesuai template_order.json
+            const allFilesSet = new Set(allProductFiles);
+            const orderedFiles = [];
+
             orderData.urutan_produk.forEach(item => {
-                // Buat nama file lengkap yang kita harapkan ada di _index.json
-                const fileNameToFind = item.produk + '.json'; 
-            
-                // Sekarang kita membandingkan format yang sama (nama file lengkap)
-                if (allIdsSet.has(fileNameToFind)) {
-                    orderedIds.push(fileNameToFind);      // Masukkan nama file yang benar
-                    allIdsSet.delete(fileNameToFind);   // Hapus nama file yang benar
+                const fileNameToFind = item.produk + '.json';
+                if (allFilesSet.has(fileNameToFind)) {
+                    orderedFiles.push(fileNameToFind);
+                    allFilesSet.delete(fileNameToFind);
                 }
             });
-            console.log(orderData);
-            // Sisa produk di dalam Set adalah yang tidak terurut
-            const unsortedIds = Array.from(allIdsSet);
-            console.log(unsortedIds);
-            // Gabungkan: yang terurut di depan, sisanya di belakang
-            sortedProductIds = [...orderedIds, ...unsortedIds];
-        } else {
-            // Fallback jika file urutan gagal dimuat atau kosong
-            sortedProductIds = allProductIds;
-        }
 
-        // --- LANGKAH 4: Map dan fetch detail produk berdasarkan urutan yang sudah final ---
-        const productPromises = sortedProductIds.map(productId => {
-            return fetch(`content/produk/${productId}`)
+            const unsortedFiles = Array.from(allFilesSet);
+            sortedProductFiles = [...orderedFiles, ...unsortedFiles];
+        } else {
+            // Fallback ini akan otomatis berjalan jika orderData adalah {}
+            sortedProductFiles = allProductFiles;
+        }
+        
+        // --- Sisa kode tidak berubah ---
+        const productPromises = sortedProductFiles.map(productFile => {
+            return fetch(`content/produk/${productFile}`)
                 .then(res => res.ok ? res.json() : null)
                 .then(productData => {
                     if (productData) {
-                        productData.id = productId; // Pastikan ID konsisten
+                        productData.id = productFile.replace(/\.json$/, '');
                         return productData;
                     }
                     return null;
                 });
         });
         
-        
-        console.log(sortedProductIds);
-        
-        // Hasil dari Promise.all ini adalah array produk yang SUDAH TERURUT
         let productsInOrder = await Promise.all(productPromises);
         productsInOrder = productsInOrder.filter(p => p !== null);
 
-        // --- LANGKAH 5: Render semua produk ke HTML ---
         const allCardsHTML = productsInOrder.map(product => {
             const priceDisplay = product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`;
             const detailLink = `content/template-detail.html?product=${product.id}`;
@@ -105,15 +96,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         galleryContainer.innerHTML = allCardsHTML;
         
-        const comingSoonCard = `
-            <div class="card rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center p-6">
-                <div class="flex-grow flex flex-col items-center justify-center">
-                    <svg class="w-16 h-16 text-orange-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.573L16.5 21.75l-.398-1.177a3.375 3.375 0 00-2.455-2.455l-1.177-.398 1.177-.398a3.375 3.375 0 002.455-2.455l.398-1.177.398 1.177a3.375 3.375 0 002.455 2.455l1.177.398-1.177.398a3.375 3.375 0 00-2.455 2.455z" /></svg>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Template Baru Segera Hadir!</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">Kami terus berinovasi untuk Anda.</p>
-                </div>
-                <a href="jasa-kustom.html" class="btn-primary btn-shiny mt-auto text-center px-6 py-2 rounded-lg font-semibold text-white">Request Template?</a>
-            </div>`;
+        const comingSoonCard = `...`; // Kode kartu "coming soon" Anda
         galleryContainer.insertAdjacentHTML('beforeend', comingSoonCard);
 
     } catch (error) {

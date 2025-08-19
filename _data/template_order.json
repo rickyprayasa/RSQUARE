@@ -1,16 +1,8 @@
+
 {
   "urutan_produk": [
     {
-      "produk": "content-calendar"
-    },
-    {
-      "produk": "goal-planner"
-    },
-    {
       "produk": "personal-budgeting"
-    },
-    {
-      "produk": "perencanaan-acara"
     }
   ]
 }
