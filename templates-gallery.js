@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                     allIdsSet.delete(item.produk); // Hapus dari Set agar tidak duplikat
                 }
             });
-
+            console.log(orderData);
             // Sisa produk di dalam Set adalah yang tidak terurut
             const unsortedIds = Array.from(allIdsSet);
-            
+            console.log(unsortedIds);
             // Gabungkan: yang terurut di depan, sisanya di belakang
             sortedProductIds = [...orderedIds, ...unsortedIds];
         } else {
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     return null;
                 });
         });
-        console.log(orderData);
-        console.log(unsortedIds);
+        
+        
         console.log(sortedProductIds);
         
         // Hasil dari Promise.all ini adalah array produk yang SUDAH TERURUT
