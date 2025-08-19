@@ -1,10 +1,9 @@
 {
-  "id": "tracking-lamaran",
-  "judul": "Tracking Lamaran Kerja",
-  "harga": 20000,
   "deskripsi_singkat": "Lacak setiap lamaran kerja, kelola database lowongan, cari peluang, dan atur jadwal interview Anda dalam satu template terpadu.",
-  "gambar_thumbnail": "/photos/produk/tracking-lamaran/tracking-lamaran-thumbnail.png",
   "gambar_preview": "photos/produk/tracking-lamaran/dashboard.jpeg",
+  "gambar_thumbnail": "/photos/produk/tracking-lamaran/tracking-lamaran-thumbnail.png",
+  "order": 0,
+  "judul": "Tracking Lamaran Kerja",
   "detail": {
     "gambar_utama": "photos/produk/tracking-lamaran/dashboard.jpeg",
     "deskripsi_lengkap": "Pantau setiap langkah dari proses lamaran kerja Anda, mulai dari jumlah loker yang dilamar, panggilan interview, hingga status akhir.",
@@ -44,6 +43,8 @@
     ],
     "payment_gateway": "https://rsquareidea.myr.id/pl/tracking-lamaran"
   },
+  "harga": 20000,
+  "id": "tracking-lamaran",
   "seo": {
     "meta_description": "Dapatkan Template Tracking Lamaran Kerja dari RSQUARE. Organisir semua proses pencarian kerja Anda, mulai dari lamaran terkirim hingga jadwal wawancara, di satu tempat.",
     "meta_title": "Template Tracking Lamaran Kerja - RSQUARE"
