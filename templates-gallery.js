@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     return null;
                 });
         });
-        console.log('1 ' +orderedIds);
-        console.log('2 '+ unsortedIds);
-        console.log('result '+sortedProductIds);
+        console.log(orderedIds);
+        console.log(unsortedIds);
+        console.log(sortedProductIds);
         
         // Hasil dari Promise.all ini adalah array produk yang SUDAH TERURUT
         let productsInOrder = await Promise.all(productPromises);
