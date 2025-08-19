@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // --- LANGKAH 3: Tentukan urutan final ID produk berdasarkan aturan ---
         let sortedProductIds = [];
-        let orderData = null;
+        // let orderData = null;
 
         if (orderResponse && orderResponse.ok) {
             orderData = await orderResponse.json();
