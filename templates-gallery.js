@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // --- LANGKAH 4: Map dan fetch detail produk berdasarkan urutan yang sudah final ---
         const productPromises = sortedProductIds.map(productId => {
-            return fetch(`content/produk/${productId}.json`)
+            return fetch(`content/produk/${productId}`)
                 .then(res => res.ok ? res.json() : null)
                 .then(productData => {
                     if (productData) {
