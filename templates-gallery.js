@@ -35,11 +35,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             const allIdsSet = new Set(allProductIds); // Gunakan Set untuk pencarian cepat O(1)
             const orderedIds = [];
             console.log(orderData.urutan_produk);
+            // --- PERBAIKAN DI SINI ---
             // Ambil produk yang terurut sesuai template_order.json
             orderData.urutan_produk.forEach(item => {
-                if (allIdsSet.has(item.produk)) {
-                    orderedIds.push(item.produk);
-                    allIdsSet.delete(item.produk); // Hapus dari Set agar tidak duplikat
+                // Buat nama file lengkap yang kita harapkan ada di _index.json
+                const fileNameToFind = item.produk + '.json'; 
+            
+                // Sekarang kita membandingkan format yang sama (nama file lengkap)
+                if (allIdsSet.has(fileNameToFind)) {
+                    orderedIds.push(fileNameToFind);      // Masukkan nama file yang benar
+                    allIdsSet.delete(fileNameToFind);   // Hapus nama file yang benar
                 }
             });
             console.log(orderData);
