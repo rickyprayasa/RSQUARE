@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return null; // Jika gagal, kembalikan null agar Promise.all tidak berhenti
             })
         ]);
-        console.log(indexResponse);
-        console.log(orderResponse);
+
 
         if (!indexResponse.ok) throw new Error(`Gagal memuat _index.json: ${indexResponse.statusText}`);
         
@@ -66,7 +65,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     return null;
                 });
         });
-        console.log(sortedProductIds);
+        console.log('1 ' +orderedIds);
+        console.log('2 '+ unsortedIds);
+        console.log('result '+sortedProductIds);
         
         // Hasil dari Promise.all ini adalah array produk yang SUDAH TERURUT
         let productsInOrder = await Promise.all(productPromises);
