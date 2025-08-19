@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // --- LANGKAH 1 & 2: Ambil _index.json dan template_order.json secara bersamaan ---
         const [indexResponse, orderResponse] = await Promise.all([
             fetch('content/_index.json'),
-            fetch('_data/_data/template_order.json').catch(err => {
+            fetch('_data/template_order.json').catch(err => {
                 console.warn('File urutan tidak dapat diakses, lanjut dengan urutan default.', err);
                 return null; // Jika gagal, kembalikan null agar Promise.all tidak berhenti
             })
