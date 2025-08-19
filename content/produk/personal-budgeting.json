@@ -2,7 +2,7 @@
   "id": "personal-budgeting",
   "judul": "Personal Budgeting",
   "harga": 35000,
-  "deskripsi_singkat": "Pusat komando keuangan pribadi Anda untuk melacak pemasukan, pengeluaran, anggaran, hutang, dan tujuan tabungan secara otomatis.",
+  "deskripsi_singkat": "Pusat komando keuangan pribadi Anda untuk melacak pemasukan, pengeluaran, anggaran, hutang, dan tujuan tabungan secara otomatis. ",
   "gambar_thumbnail": "/photos/produk/personal-budgeting/personal-budgeting-thumbnail.png",
   "gambar_preview": "/photos/produk/personal-budgeting/Dashboard.png",
   "detail": {
@@ -10,10 +10,16 @@
     "deskripsi_lengkap": "Ini adalah pusat komando keuangan pribadi Anda, tempat semua data transaksi diolah. Setiap angka dan grafik dirancang untuk memberikan wawasan cerdas yang mudah dipahami.",
     "link_preview_detail": "content/template-preview.html?product=personal-budgeting",
     "link_youtube": "https://www.youtube.com/embed/FS5Fs4UoLAk?si=ZyKQaQfPzAjTO4kv",
-    "payment_gateway":"https://rsquareidea.myr.id/pl/Personal-Budgeting-33997",
+    "payment_gateway": "https://rsquareidea.myr.id/pl/Personal-Budgeting-33997",
     "link_pembelian": [
-      { "platform": "Lynk.ID", "url": "https://lynk.id/rsquareidea/8jq7zeq8m1kl" },
-      { "platform": "KaryaKarsa", "url": "https://karyakarsa.com/rsquare/template-personal-budget" }
+      {
+        "platform": "Lynk.ID",
+        "url": "https://lynk.id/rsquareidea/8jq7zeq8m1kl"
+      },
+      {
+        "platform": "KaryaKarsa",
+        "url": "https://karyakarsa.com/rsquare/template-personal-budget"
+      }
     ],
     "galeri": [
       {
@@ -47,5 +53,6 @@
         "deskripsi": "'Ruang mesin' dari template Anda yang cukup diatur sekali saja di awal. Daftarkan kategori, akun bank, dan hutang untuk mengotomatiskan seluruh template.<br><strong class='font-bold text-gray-800'>🔧 Pengaturan Mudah:</strong> Cukup atur sekali, lalu pakai selamanya.<br><strong class='font-bold text-gray-800'>🏦 Daftarkan Semuanya:</strong> Masukkan daftar kategori, akun bank, dan profil hutang Anda.<br><strong class='font-bold text-gray-800'>🤖 Otomatisasi Penuh:</strong> Semua yang Anda atur menjadi pilihan dropdown di seluruh template."
       }
     ]
-  }
+  },
+  "order": 0
 }
