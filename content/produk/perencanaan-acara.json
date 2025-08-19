@@ -1,10 +1,9 @@
 {
-  "id": "perencanaan-acara",
-  "judul": "Perencanaan Anggaran Acara",
-  "harga": 25000,
   "deskripsi_singkat": "Kelola semua aspek keuangan acara Anda, mulai dari anggaran, vendor, hingga jadwal pembayaran dalam satu dasbor terpusat.",
-  "gambar_thumbnail": "/photos/produk/anggaran-acara/anggaran-acara-thumbnail.png",
   "gambar_preview": "photos/produk/anggaran-acara/dashboard.jpeg",
+  "gambar_thumbnail": "/photos/produk/anggaran-acara/anggaran-acara-thumbnail.png",
+  "order": 0,
+  "judul": "Perencanaan Anggaran Acara",
   "detail": {
     "gambar_utama": "photos/produk/anggaran-acara/dashboard.jpeg",
     "deskripsi_lengkap": "Pusat kendali acara Anda, tempat di mana Anda bisa memantau semua metrik penting dalam sekejap untuk membuat keputusan yang lebih baik.",
@@ -44,6 +43,8 @@
     ],
     "payment_gateway": "https://rsquareidea.myr.id/pl/anggaran-acara"
   },
+  "harga": 25000,
+  "id": "perencanaan-acara",
   "seo": {
     "meta_description": "Dapatkan Template Perencanaan Anggaran Acara dari RSQUARE. Kelola budget untuk setiap event dengan mudah, mulai dari pernikahan hingga rapat perusahaan, secara profesional.",
     "meta_title": "Template Perencanaan Anggaran Acara - RSQUARE"
