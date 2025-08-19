@@ -8,6 +8,15 @@
     },
     {
       "produk": "goal-planner"
+    },
+    {
+      "produk": "tracking-lamaran"
+    },
+    {
+      "produk": "content-calendar"
+    },
+    {
+      "produk": "invoice-maker"
     }
   ]
 }
