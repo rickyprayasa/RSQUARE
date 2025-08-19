@@ -29,6 +29,26 @@ collections:
             value_field: "id"         # Menyimpan 'id' produk yang dipilih
             display_fields: ["judul"] # Menampilkan 'judul' produk di daftar pilihan
             hint: "Ceklis produk yang ingin dijadikan produk unggulan di halaman utama."
+
+  # --- TAMBAHKAN BAGIAN BARU INI ---
+      - name: "urutan_template"
+        label: "Urutan Halaman Templates"
+        file: "_data/template_order.json" # File baru untuk menyimpan urutan
+        fields:
+          - name: "urutan_produk"
+            label: "Urutan Semua Produk"
+            widget: "list"
+            hint: "Seret dan lepas untuk mengatur urutan produk di halaman Templates."
+            fields:
+              - name: "produk"
+                label: "Pilih Produk"
+                widget: "relation"
+                collection: "produk"
+                multiple: false
+                search_fields: ["judul"]
+                value_field: "id"
+                display_fields: ["judul"]
+      # --- AKHIR BAGIAN BARU ---
   - name: "produk"
     label: "Produk"
     label_singular: "Produk"

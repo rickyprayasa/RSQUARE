@@ -5,28 +5,85 @@ document.addEventListener('DOMContentLoaded', async () => {
     galleryContainer.innerHTML = '<p class="text-center col-span-full">Memuat koleksi template...</p>';
 
     try {
-        const indexResponse = await fetch('content/_index.json');
+        // --- LANGKAH 1 & 2: Ambil _index.json dan template_order.json secara bersamaan ---
+        const [indexResponse, orderResponse] = await Promise.all([
+            fetch('content/_index.json'),
+            fetch('_data/template_order.json').catch(err => {
+                console.warn('File urutan tidak dapat diakses, lanjut dengan urutan default.', err);
+                return null; // Jika gagal, kembalikan null agar Promise.all tidak berhenti
+            })
+        ]);
+
+
         if (!indexResponse.ok) throw new Error(`Gagal memuat _index.json: ${indexResponse.statusText}`);
         
-        const productFiles = await indexResponse.json();
-        if (productFiles.length === 0) {
+        const allProductIds = await indexResponse.json();
+        if (allProductIds.length === 0) {
             galleryContainer.innerHTML = '<p class="text-center col-span-full">Belum ada template.</p>';
             return;
         }
 
-        const productPromises = productFiles.map(file => fetch(`content/produk/${file}`).then(res => res.ok ? res.json() : null));
-        let products = await Promise.all(productPromises);
-        products = products.filter(p => p !== null);
+        // --- LANGKAH 3: Tentukan urutan final ID produk berdasarkan aturan ---
+        let sortedProductIds = [];
+        let orderData = null;
 
-        const allCardsHTML = products.map(product => {
+        if (orderResponse && orderResponse.ok) {
+            orderData = await orderResponse.json();
+        }
+
+        if (orderData && orderData.urutan_produk && orderData.urutan_produk.length > 0) {
+            const allIdsSet = new Set(allProductIds); // Gunakan Set untuk pencarian cepat O(1)
+            const orderedIds = [];
+            console.log(orderData.urutan_produk);
+            // --- PERBAIKAN DI SINI ---
+            // Ambil produk yang terurut sesuai template_order.json
+            orderData.urutan_produk.forEach(item => {
+                // Buat nama file lengkap yang kita harapkan ada di _index.json
+                const fileNameToFind = item.produk + '.json'; 
+            
+                // Sekarang kita membandingkan format yang sama (nama file lengkap)
+                if (allIdsSet.has(fileNameToFind)) {
+                    orderedIds.push(fileNameToFind);      // Masukkan nama file yang benar
+                    allIdsSet.delete(fileNameToFind);   // Hapus nama file yang benar
+                }
+            });
+            console.log(orderData);
+            // Sisa produk di dalam Set adalah yang tidak terurut
+            const unsortedIds = Array.from(allIdsSet);
+            console.log(unsortedIds);
+            // Gabungkan: yang terurut di depan, sisanya di belakang
+            sortedProductIds = [...orderedIds, ...unsortedIds];
+        } else {
+            // Fallback jika file urutan gagal dimuat atau kosong
+            sortedProductIds = allProductIds;
+        }
+
+        // --- LANGKAH 4: Map dan fetch detail produk berdasarkan urutan yang sudah final ---
+        const productPromises = sortedProductIds.map(productId => {
+            return fetch(`content/produk/${productId}`)
+                .then(res => res.ok ? res.json() : null)
+                .then(productData => {
+                    if (productData) {
+                        productData.id = productId; // Pastikan ID konsisten
+                        return productData;
+                    }
+                    return null;
+                });
+        });
+        
+        
+        console.log(sortedProductIds);
+        
+        // Hasil dari Promise.all ini adalah array produk yang SUDAH TERURUT
+        let productsInOrder = await Promise.all(productPromises);
+        productsInOrder = productsInOrder.filter(p => p !== null);
+
+        // --- LANGKAH 5: Render semua produk ke HTML ---
+        const allCardsHTML = productsInOrder.map(product => {
             const priceDisplay = product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`;
             const detailLink = `content/template-detail.html?product=${product.id}`;
-            
-            // --- MENGGUNAKAN IDE ANDA YANG LEBIH SEDERHANA ---
-            // Langsung menggabungkan path, dengan asumsi `gambar_thumbnail` tidak punya '/' di depan.
             const correctImagePath = `content/produk/${product.gambar_thumbnail}`;
-            // --- SELESAI ---
-
+            
             return `
                 <div class="card rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                     <div class="relative z-10 flex flex-col flex-grow">
@@ -46,11 +103,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }).join('');
 
-        // Menampilkan semua kartu produk dinamis
         galleryContainer.innerHTML = allCardsHTML;
         
-        // --- BAGIAN YANG DIPERBAIKI ---
-        // Variabel ini sekarang berisi kode HTML yang lengkap.
         const comingSoonCard = `
             <div class="card rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center p-6">
                 <div class="flex-grow flex flex-col items-center justify-center">
@@ -60,10 +114,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 <a href="jasa-kustom.html" class="btn-primary btn-shiny mt-auto text-center px-6 py-2 rounded-lg font-semibold text-white">Request Template?</a>
             </div>`;
-
-        // Perintah untuk menambahkan kartu "Segera Hadir" di akhir.
         galleryContainer.insertAdjacentHTML('beforeend', comingSoonCard);
-        // --- AKHIR BAGIAN PERBAIKAN ---
 
     } catch (error) {
         console.error('Gagal memuat galeri produk:', error);

@@ -1,7 +1,7 @@
 [build]
   # Perintah ini akan dieksekusi oleh Netlify setiap kali build
   # "node scripts/generate-product-index.js" akan menjalankan skrip yang baru kita buat
-  command = "node scripts/generate-product-index.js"
+   command = "node scripts/generate-product-index.js"
 
   # Direktori yang akan dipublikasikan setelah build selesai.
   # Untuk situs statis sederhana, biasanya adalah direktori root (.).
