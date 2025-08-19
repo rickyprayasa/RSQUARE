@@ -1,10 +1,9 @@
 {
-  "id": "goal-planner",
-  "judul": "Goal Planner",
-  "harga": 35000,
   "deskripsi_singkat": "Rencanakan dan lacak semua tujuan Anda dengan dasbor interaktif, rencana bulanan, daftar tugas prioritas, dan kalender cerdas.",
-  "gambar_thumbnail": "/photos/produk/goal-planner/goal-planner-thumbnail.png",
   "gambar_preview": "/photos/produk/goal-planner/Dashboard Goal Planner.png",
+  "gambar_thumbnail": "/photos/produk/goal-planner/goal-planner-thumbnail.png",
+  "order": 0,
+  "judul": "Goal Planner",
   "detail": {
     "gambar_utama": "/photos/produk/goal-planner/Dashboard Goal Planner.png",
     "deskripsi_lengkap": "Lihat lebih dekat setiap fitur dan sheet yang akan Anda dapatkan dalam template Goal Planner untuk mengubah mimpi menjadi rencana aksi yang terukur.",
@@ -49,6 +48,8 @@
     ],
     "payment_gateway": "https://rsquareidea.myr.id/pl/goal-planner"
   },
+  "harga": 35000,
+  "id": "goal-planner",
   "seo": {
     "meta_description": "Dapatkan Template Goal Planner dari RSQUARE. Rencanakan, lacak, dan capai semua tujuan hidup Anda dengan metode terstruktur untuk hasil yang maksimal.",
     "meta_title": "Template Goal Planner - RSQUARE"
