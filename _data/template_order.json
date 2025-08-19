@@ -1,8 +1,22 @@
-
 {
   "urutan_produk": [
     {
       "produk": "personal-budgeting"
+    },
+    {
+      "produk": "perencanaan-acara"
+    },
+    {
+      "produk": "goal-planner"
+    },
+    {
+      "produk": "tracking-lamaran"
+    },
+    {
+      "produk": "content-calendar"
+    },
+    {
+      "produk": "invoice-maker"
     }
   ]
 }
