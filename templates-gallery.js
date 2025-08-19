@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     return null;
                 });
         });
-        console.log(orderedIds);
+        console.log(orderData);
         console.log(unsortedIds);
         console.log(sortedProductIds);
         
