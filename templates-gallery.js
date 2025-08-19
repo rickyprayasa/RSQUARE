@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (orderData && orderData.urutan_produk && orderData.urutan_produk.length > 0) {
             const allIdsSet = new Set(allProductIds); // Gunakan Set untuk pencarian cepat O(1)
             const orderedIds = [];
-
+            console.log(orderData.urutan_produk);
             // Ambil produk yang terurut sesuai template_order.json
             orderData.urutan_produk.forEach(item => {
                 if (allIdsSet.has(item.produk)) {
