@@ -1,63 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <url>
+<url>
     <loc>https://rsquareidea.my.id/</loc>
-    <lastmod>2025-07-23</lastmod>
+    <lastmod>2025-08-23</lastmod>
     <priority>1.00</priority>
-  </url>
-  
-  <url>
-    <loc>https://rsquareidea.my.id/templates.html</loc>
-    <lastmod>2025-07-23</lastmod>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://rsquareidea.my.id/kontak.html</loc>
-    <lastmod>2025-07-23</lastmod>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/templates</loc>
+    <lastmod>2025-08-23</lastmod>
     <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://rsquareidea.my.id/jasa-kustom.html</loc>
-    <lastmod>2025-07-23</lastmod>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/kontak</loc>
+    <lastmod>2025-08-23</lastmod>
     <priority>0.80</priority>
-  </url>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/jasa-kustom</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.80</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/jasa-website</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.80</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/feedback</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.80</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/form-jasa</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.80</priority>
+</url>
 
-  <url>
-    <loc>https://rsquareidea.my.id/templates/personal-budgeting.html</loc>
-    <lastmod>2025-07-23</lastmod>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-detail.html?product=personal-budgeting</loc>
+    <lastmod>2025-08-23</lastmod>
     <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://rsquareidea.my.id/templates/perencanaan-acara.html</loc>
-    <lastmod>2025-07-23</lastmod>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-preview.html?product=personal-budgeting</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.60</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-detail.html?product=perencanaan-acara</loc>
+    <lastmod>2025-08-23</lastmod>
     <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://rsquareidea.my.id/templates/goal-planner.html</loc>
-    <lastmod>2025-07-23</lastmod>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-preview.html?product=perencanaan-acara</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.60</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-detail.html?product=goal-planner</loc>
+    <lastmod>2025-08-23</lastmod>
     <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://rsquareidea.my.id/templates/tracking-lamaran.html</loc>
-    <lastmod>2025-07-23</lastmod>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-preview.html?product=goal-planner</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.60</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-detail.html?product=tracking-lamaran</loc>
+    <lastmod>2025-08-23</lastmod>
     <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://rsquareidea.my.id/templates/invoice-maker.html</loc>
-    <lastmod>2025-07-23</lastmod>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-preview.html?product=tracking-lamaran</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.60</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-detail.html?product=content-calendar</loc>
+    <lastmod>2025-08-23</lastmod>
     <priority>0.70</priority>
-  </url>
-  
-  <url>
-    <loc>https://rsquareidea.my.id/syarat-ketentuan.html</loc>
-    <lastmod>2025-07-23</lastmod>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-preview.html?product=content-calendar</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.60</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-detail.html?product=invoice-maker</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.70</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-preview.html?product=invoice-maker</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.60</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-detail.html?product=my-to-do-list</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.70</priority>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/content/template-preview.html?product=my-to-do-list</loc>
+    <lastmod>2025-08-23</lastmod>
+    <priority>0.60</priority>
+</url>
+
+<url>
+    <loc>https://rsquareidea.my.id/kebijakan-privasi</loc>
+    <lastmod>2025-08-23</lastmod>
     <priority>0.30</priority>
-  </url>
-  <url>
-    <loc>https://rsquareidea.my.id/kebijakan-privasi.html</loc>
-    <lastmod>2025-07-23</lastmod>
+</url>
+<url>
+    <loc>https://rsquareidea.my.id/syarat-ketentuan</loc>
+    <lastmod>2025-08-23</lastmod>
     <priority>0.30</priority>
-  </url>
+</url>
 
 </urlset>
