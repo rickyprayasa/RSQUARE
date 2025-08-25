@@ -1,5 +1,3 @@
-// template-preview.js (Versi Perbaikan)
-
 document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('preview-container');
     const params = new URLSearchParams(window.location.search);
@@ -12,30 +10,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         const response = await fetch(`../content/produk/${productId}.json`);
-        if (!response.ok) throw new Error('Produk tidak ditemukan');
+        if (!response.ok) {
+            throw new Error('Produk tidak ditemukan');
+        }
         const product = await response.json();
 
-        // --- PANGGIL FUNGSI SEO DENGAN CANONICAL KUSTOM ---
-        // <-- PERUBAHAN PALING PENTING ADA DI SINI
-        if (typeof updateSeoTags === 'function') {
-            const canonicalUrl = `https://rsquareidea.my.id/content/template-detail.html?product=${productId}`;
-            
-            updateSeoTags({
-                title: `Preview: ${product.seo?.meta_title || product.judul}`,
-                description: product.seo?.meta_description || product.deskripsi_singkat,
-                ogImage: product.seo?.og_image || `https://rsquareidea.my.id/content/produk/${product.detail?.gambar_utama}`,
-                ogType: 'article',
-                canonicalUrl: canonicalUrl // <-- Mengirim URL halaman detail sebagai kanonis
-            });
-        }
-        // --- AKHIR BAGIAN SEO ---
+        if (product && product.detail && product.detail.galeri) {
+            // --- BAGIAN SEO (DENGAN CANONICAL KUSTOM) ---
+            if (typeof updateSeoTags === 'function') {
+                const canonicalUrl = `https://rsquareidea.my.id/content/template-detail.html?product=${productId}`;
+                updateSeoTags({
+                    title: `Preview: ${product.seo?.meta_title || product.judul}`,
+                    description: product.seo?.meta_description || product.deskripsi_singkat,
+                    ogImage: product.seo?.og_image || `https://rsquareidea.my.id/content/produk/${product.detail?.gambar_utama}`,
+                    ogType: 'article',
+                    canonicalUrl: canonicalUrl
+                });
+            }
 
-        // (Sisa kode Anda untuk membangun HTML halaman tidak perlu diubah, jadi saya persingkat)
-        // ... Pastikan sisa kode Anda dari file asli ada di sini ...
-        // Contohnya seperti ini:
-        const deskripsiLengkapHTML = marked.parse(product.detail.deskripsi_lengkap);
-        // ... dan seterusnya hingga akhir file ...
-         const headerHTML = `
+            // --- PEMBUATAN HTML ---
+            const deskripsiLengkapHTML = marked.parse(product.detail.deskripsi_lengkap);
+
+            // A. Header Halaman
+            const headerHTML = `
                 <header class="py-20 px-6 text-center">
                     <div class="container mx-auto">
                         <h1 class="text-4xl md:text-5xl font-extrabold mb-4 gradient-text pb-2">Preview Detail: ${product.judul}</h1>
@@ -46,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </header>`;
 
-            // B. Daftar Fitur
+            // B. Daftar Fitur (Galeri)
             const featuresHTML = product.detail.galeri.map(item => {
                 const deskripsiFiturHTML = marked.parse(item.deskripsi);
                 return `
@@ -60,12 +57,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <h2 class="text-3xl font-bold text-gray-800 mb-4">${item.judul}</h2>
                         <div class="prose max-w-none text-gray-600 leading-relaxed space-y-3">${deskripsiFiturHTML}</div>
                     </div>
-                </div>
-                `;
+                </div>`;
             }).join('');
 
             // C. Bagian Video Tutorial
-            const videoHTML = `
+            const videoHTML = product.detail.link_youtube ? `
                 <section class="py-16 px-6">
                     <div class="container mx-auto max-w-4xl">
                         <div class="text-center mb-10">
@@ -80,44 +76,45 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </div>
                         </div>
                     </div>
-                </section>`;
+                </section>` : '';
 
-            const linkPayment = `${product.detail.payment_gateway}`;
-            const ctaButtonsHTML = product.detail.link_pembelian.map(link => `
-                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn-primary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
-                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+            // D. Bagian Tombol Pembelian (Call to Action)
+            // <-- LOGIKA TOMBOL DIPERBAIKI DI SINI
+            const externalButtonsHTML = product.detail.link_pembelian.map(link => `
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     Akses di ${link.platform}
                 </a>
             `).join('');
 
-            let actionButtonsHTML = '';
+            let mainActionButtonHTML = '';
             if (product.harga === 0) {
-            if (product.detail?.file_panduan_pdf) {
-                actionButtonsHTML = `<a href="petunjuk.html?product=${product.id}" class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
-            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            Lihat Petunjuk & Download
-        </a> ${ctaButtonsHTML}`;
+                if (product.detail?.file_panduan_pdf) {
+                    mainActionButtonHTML = `<a href="petunjuk.html?product=${product.id}" class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
+                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Lihat Petunjuk & Download
+                    </a>`;
+                }
             } else {
-                actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p> ${ctaButtonsHTML}';
-            }} else
-            { actionButtonsHTML = `
-                                <a href="${linkPayment}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-shiny inline-block flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
+                const linkPayment = `${product.detail.payment_gateway}`;
+                mainActionButtonHTML = `<a href="${linkPayment}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-shiny inline-block flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
                     <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
                     Beli Langsung
-                </a>
-                                ${ctaButtonsHTML}
-                            `;}
+                </a>`;
+            }
             
+            const allActionButtonsHTML = `${mainActionButtonHTML} ${externalButtonsHTML}`;
+
             const ctaHTML = `
                 <section class="container mx-auto mt-12 text-center">
                     <h2 class="text-3xl font-bold text-gray-800">Siap Meningkatkan Produktivitas?</h2>
-                    <p class="text-lg text-gray-600 mt-2 mb-8">Pilih platform favorit Anda untuk mendapatkan template ini sekarang.</p>
+                    <p class="text-lg text-gray-600 mt-2 mb-8">Dapatkan template ini sekarang melalui metode di bawah.</p>
                     <div class="max-w-md mx-auto space-y-4">
-                        ${actionButtonsHTML}
+                        ${allActionButtonsHTML}
                     </div>
                     <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
                         <a href="template-detail.html?product=${product.id}" class="text-gray-500 hover:text-orange-600 font-semibold transition">← Kembali ke Ringkasan</a>
-                        <a href="../../templates.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">Lihat Semua Template →</a>
+                        <a href="../templates.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">Lihat Semua Template →</a>
                     </div>
                 </section>`;
 
@@ -128,10 +125,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <section class="container mx-auto flex flex-col items-center gap-8 space-y-24 py-12">
                         ${featuresHTML}
                     </section>
-                    ${product.detail.link_youtube ? videoHTML : ''}
+                    ${videoHTML}
                     ${ctaHTML}
-                </main>
-            `;
+                </main>`;
             
             container.innerHTML = finalHTML;
 
@@ -146,9 +142,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                     });
                 });
             }
-
+        } else {
+            throw new Error('Data produk atau galeri tidak lengkap');
+        }
     } catch (error) {
         console.error('Gagal memuat data produk:', error);
-        container.innerHTML = `<div class="container mx-auto text-center py-40"><h1 class="text-3xl font-bold">Oops! Terjadi Kesalahan</h1></div>`;
+        container.innerHTML = `<div class="container mx-auto text-center py-40"><h1 class="text-3xl font-bold">Oops! Terjadi Kesalahan</h1><p class="text-gray-600 mt-2">Tidak dapat memuat data preview untuk produk ini.</p></div>`;
     }
 });
