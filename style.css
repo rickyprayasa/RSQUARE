@@ -894,7 +894,7 @@ body {
 }
 
 
-/* === CSS untuk Slider Produk Gratis === */
+/* === CSS untuk Slider Produk (Gaya Konsisten) === */
 
 .slider-viewport {
     overflow: hidden;
@@ -907,60 +907,7 @@ body {
     transition: transform 0.5s ease-in-out;
 }
 
-.free-template-card {
-    flex: 0 0 calc(33.333% - 1rem); /* Tampilkan 3 kartu, dikurangi setengah gap */
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #e5e7eb;
-}
-
-.free-template-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-}
-
-.free-card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.free-card-content {
-    padding: 1.25rem;
-}
-
-.free-card-content h3 {
-    font-size: 1.125rem;
-    font-weight: bold;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
-}
-
-.free-card-content p {
-    font-size: 0.9rem;
-    color: #6b7280;
-    margin-bottom: 1rem;
-    height: 4.5rem; /* Batasi tinggi deskripsi */
-    overflow: hidden;
-}
-
-.free-card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.price-tag-free {
-    font-weight: bold;
-    font-size: 1.125rem;
-    color: #16a34a; /* Warna hijau untuk gratis */
-}
-
-/* Tombol Navigasi Slider */
+/* Tombol Navigasi Slider (Tidak berubah) */
 .slider-nav {
     position: absolute;
     top: 50%;
@@ -990,20 +937,37 @@ body {
     cursor: not-allowed;
 }
 
-.slider-nav.left-0 { left: -1.25rem; }
-.slider-nav.right-0 { right: -1.25rem; }
+/* Style BARU untuk label "GRATIS" */
+.label-free {
+    background-color: #16a34a; /* Warna hijau */
+    color: white;
+}
 
-/* Responsif untuk Mobile */
+
+/* === ATURAN RESPONSIVE BARU (PENTING) === */
+
+/* Tampilan Tablet (menargetkan kartu di dalam slider secara spesifik) */
 @media (max-width: 1024px) {
-    .free-template-card {
-        flex: 0 0 calc(50% - 0.75rem); /* Tampilkan 2 kartu di tablet */
+    .slider-track .featured-card {
+        flex: 0 0 calc(50% - 0.75rem); /* Tampilkan 2 kartu */
     }
     .slider-nav.left-0 { left: 0.5rem; }
     .slider-nav.right-0 { right: 0.5rem; }
 }
 
+/* Tampilan Mobile (menargetkan kartu di dalam slider secara spesifik) */
 @media (max-width: 768px) {
-    .free-template-card {
-        flex: 0 0 90%; /* Tampilkan ~1 kartu di mobile */
+    .slider-viewport {
+        /* Beri ruang agar kartu tidak menempel di tepi layar */
+        padding: 0 2.5rem; 
     }
+
+    .slider-track .featured-card {
+        /* Paksa kartu untuk mengisi 100% viewport yang sudah diberi padding */
+        flex: 0 0 100%; 
+    }
+
+    /* Posisikan tombol navigasi di dalam area padding */
+    .slider-nav.left-0 { left: 0.25rem; }
+    .slider-nav.right-0 { right: 0.25rem; }
 }
