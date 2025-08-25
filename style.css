@@ -989,14 +989,14 @@ body {
 
 
 /* From Uiverse.io by codebykay101 */ 
-.container {
+.container-card {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.container .glass {
+.container-card .glass {
   position: relative;
   width: 180px;
   height: 200px;
@@ -1013,12 +1013,12 @@ body {
   transform: rotate(calc(var(--r) * 1deg));
 }
 
-.container:hover .glass {
+.container-card:hover .glass {
   transform: rotate(0deg);
   margin: 0 10px;
 }
 
-.container .glass::before {
+.container-card .glass::before {
   content: attr(data-text);
   position: absolute;
   bottom: 0;
@@ -1030,7 +1030,7 @@ body {
   align-items: center;
   color: #fff;
 }
-.container .glass svg {
+.container-card .glass svg {
   font-size: 2.5em;
   fill: #fff;
 }
