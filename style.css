@@ -894,7 +894,7 @@ body {
 }
 
 
-/* === CSS untuk Slider Produk (Gaya Konsisten) === */
+/* === CSS untuk Slider Produk GRATIS (Gaya Konsisten) === */
 
 .slider-viewport {
     overflow: hidden;
@@ -944,7 +944,7 @@ body {
 }
 
 
-/* === PRODUK GRATIS ATURAN RESPONSIVE BARU (PENTING) === */
+/* === ATURAN RESPONSIVE BARU (PENTING) === */
 
 /* Tampilan Tablet (menargetkan kartu di dalam slider secara spesifik) */
 @media (max-width: 1024px) {
@@ -957,54 +957,17 @@ body {
 
 /* Tampilan Mobile (menargetkan kartu di dalam slider secara spesifik) */
 @media (max-width: 768px) {
-   .slider-viewport {
-       padding: 0 1.5rem; /* Kurangi sedikit padding samping */
-   }
+    .slider-viewport {
+        /* Beri ruang agar kartu tidak menempel di tepi layar */
+        padding: 0 2.5rem; 
+    }
 
-   .slider-track {
-       padding-left: 0;
-   }
+    .slider-track .featured-card {
+        /* Paksa kartu untuk mengisi 100% viewport yang sudah diberi padding */
+        flex: 0 0 100%; 
+    }
 
-   .slider-track .featured-card {
-       flex: 0 0 100%;
-       /* Atur tinggi minimum agar sebanding dengan kartu unggulan */
-       min-height: 380px; /* Anda mungkin perlu menyesuaikan nilai ini */
-       display: flex;
-       flex-direction: column; /* Susun elemen di dalam kartu secara vertikal */
-   }
-
-   .slider-track .featured-card .featured-card-image {
-       /* Biarkan tinggi gambar menyesuaikan proporsi */
-       height: auto;
-       object-fit: cover; /* Atau contain, coba mana yang lebih baik */
-       margin-bottom: 0.5rem; /* Beri sedikit jarak dengan konten di bawah */
-   }
-
-   .slider-track .featured-card .featured-card-content {
-       padding: 1rem;
-       flex-grow: 1; /* Biarkan konten mengisi sisa ruang */
-       display: flex;
-       flex-direction: column;
-       justify-content: space-between; /* Distribusikan ruang antara judul, deskripsi, dan tombol */
-   }
-
-   .slider-track .featured-card h3 {
-       font-size: 1.25rem; /* Sedikit lebih besar */
-       margin-bottom: 0.5rem;
-   }
-
-   .slider-track .featured-card .featured-card-description-wrapper {
-       flex-grow: 1; /* Biarkan deskripsi mengambil ruang yang tersedia */
-       margin-bottom: 0.5rem;
-   }
-
-   .slider-track .featured-card .featured-card-description {
-       font-size: 1rem;
-       /* Batasi tinggi deskripsi agar tidak terlalu panjang */
-       max-height: 4rem; /* Sesuaikan jika perlu */
-       overflow: hidden;
-   }
-
-   .slider-nav.left-0 { left: 0.25rem; }
-   .slider-nav.right-0 { right: 0.25rem; }
+    /* Posisikan tombol navigasi di dalam area padding */
+    .slider-nav.left-0 { left: 0.25rem; }
+    .slider-nav.right-0 { right: 0.25rem; }
 }
