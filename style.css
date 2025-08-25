@@ -1035,3 +1035,89 @@ body {
   fill: #fff;
 }
 
+/* Import font (opsional) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --card-width: 280px;
+    --card-height: 400px;
+}
+
+
+
+.carousel-container {
+    /* Menentukan area 3D */
+    perspective: 1000px;
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* Mengaktifkan ruang 3D untuk elemen anak */
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1); /* Transisi halus saat berputar */
+}
+
+.carousel-card {
+    position: absolute;
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 24px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    color: #e6edf3;
+    
+    /* --- EFEK GLASSMORPHISM --- */
+    background: rgba(33, 38, 45, 0.5); /* Warna kaca semi-transparan */
+    backdrop-filter: blur(10px); /* Efek blur di belakang kartu */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Bayangan lembut */
+    
+    /* Agar tulisan tidak bisa dipilih saat digeser */
+    user-select: none;
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+/* Teks di dalam kartu */
+.carousel-card h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.carousel-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #c9d1d9;
+}
+
+/* Tombol Navigasi */
+.carousel-nav {
+    position: absolute;
+    bottom: -60px; /* Posisi di bawah carousel */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+}
+
+.carousel-nav button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-nav button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
