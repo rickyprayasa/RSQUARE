@@ -1,7 +1,7 @@
 /**
  * File: featured-templates.js
- * Deskripsi: Versi ini menyamakan TAMPILAN KARTU produk gratis 
- * dengan produk unggulan, termasuk efek hover.
+ * Deskripsi: Versi ini diperbarui untuk menambahkan class 'active-slide'
+ * untuk mendukung efek tumpukan kartu (card stack) di CSS.
  */
 
 async function loadFreeProducts() {
@@ -48,7 +48,6 @@ async function loadFreeProducts() {
 
         section.style.display = 'block';
 
-        // --- PERUBAHAN 1: Menggunakan struktur & class dari .featured-card ---
         const cardsHTML = freeProducts.map(product => {
             const imagePath = `/content/produk/${product.gambar_thumbnail}`;
             const detailLink = `/content/template-detail.html?product=${product.id}`;
@@ -56,7 +55,7 @@ async function loadFreeProducts() {
                 <div class="featured-card">
                     <img src="${imagePath}" alt="${product.judul}" class="featured-card-image">
                     <div class="featured-card-content">
-                        <span class="label">GRATIS</span>
+                        <span class="label label-free">GRATIS</span>
                         <h3>🎯 ${product.judul}</h3>
                         <div class="featured-card-description-wrapper">
                             <p class="featured-card-description">${product.deskripsi_singkat}</p>
@@ -69,15 +68,12 @@ async function loadFreeProducts() {
 
         slider.innerHTML = cardsHTML;
 
-        // --- PERUBAHAN 2: Menambahkan logika hover effect ---
         const freeCards = slider.querySelectorAll('.featured-card');
         freeCards.forEach(card => {
             card.addEventListener('mouseenter', () => card.classList.add('is-hovered'));
             card.addEventListener('mouseleave', () => card.classList.remove('is-hovered'));
         });
 
-
-        // --- LOGIKA SLIDER RESPONSIVE (TETAP SAMA) ---
         let currentIndex = 0;
         const totalItems = freeProducts.length;
 
@@ -110,6 +106,26 @@ async function loadFreeProducts() {
             slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
             prevBtn.disabled = currentIndex === 0;
             nextBtn.disabled = currentIndex >= totalItems - itemsToShow;
+
+            // --- TAMBAHAN BARU: Memberi class 'active-slide' pada kartu di tengah ---
+            const allCards = slider.querySelectorAll('.featured-card');
+            allCards.forEach((card, index) => {
+                card.classList.remove('active-slide');
+                // Untuk mobile, yang aktif hanya currentIndex
+                // Untuk tablet/desktop, kita bisa tandai semua yang terlihat
+                if (index >= currentIndex && index < currentIndex + itemsToShow) {
+                     // Khusus untuk efek tumpukan kartu, kita hanya tandai yang di tengah
+                    if (itemsToShow === 1 && index === currentIndex) {
+                        card.classList.add('active-slide');
+                    } else if (itemsToShow > 1) { // Jika bukan mobile, anggap semua terlihat aktif
+                        card.classList.add('active-slide');
+                    }
+                }
+            });
+            // Khusus untuk mobile, pastikan hanya satu yang aktif
+             if (itemsToShow === 1) {
+                if(allCards[currentIndex]) allCards[currentIndex].classList.add('active-slide');
+             }
         };
 
         nextBtn.addEventListener('click', () => {
@@ -138,6 +154,7 @@ async function loadFreeProducts() {
 
 // Fungsi loadFeaturedProducts tidak perlu diubah
 async function loadFeaturedProducts() {
+    // ... (Fungsi ini tetap sama, tidak perlu diubah)
     const container = document.getElementById('featured-grid-container');
     if (!container) {
         console.warn('Elemen untuk grid produk unggulan tidak ditemukan.');
