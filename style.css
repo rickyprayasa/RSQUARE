@@ -898,114 +898,79 @@ body {
    CSS BARU: PRODUK GRATIS
    ======================================================================== */
 
-#free-templates-container .carousel-wrapper {
+/* === CSS BARU: EFEK TUMPUKAN KARTU (Uiverse Style + Tema Anda) === */
+
+#free-templates-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.stacked-card-container {
     position: relative;
-}
-
-.snap-carousel {
     display: flex;
-    gap: 1rem; /* Jarak antar kartu */
-    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px; /* Beri ruang yang cukup untuk kartu */
+}
+
+.stacked-card {
+    position: absolute; /* PENTING: agar kartu bisa menumpuk */
+    width: 280px;
+    height: 380px;
     
-    /* PENTING: Mengaktifkan scroll horizontal dan menyembunyikan scrollbar */
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-}
-.snap-carousel::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and Opera */
-}
-
-/* PENTING: Mengaktifkan efek "snap" saat digeser */
-.snap-carousel {
-    scroll-snap-type: x mandatory;
-}
-
-.snap-card {
-    /* Setiap kartu akan menjadi titik "snap" */
-    scroll-snap-align: center;
-
-    /* Ukuran kartu di mobile (85% lebar layar) */
-    flex: 0 0 85%;
-    
-    /* Styling Kartu */
-    background: rgba(255, 255, 255, 0.05); /* Sedikit transparan */
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* --- GAYA VISUAL (disesuaikan dengan tema Anda) --- */
+    background-color: #f9fafb; /* Latar belakang terang seperti produk unggulan */
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Sembunyikan gambar yang keluar dari border-radius */
+    
+    /* --- MEKANISME ANIMASI (dari Uiverse) --- */
+    transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: rotate(calc(var(--r) * 1deg));
 }
 
-.snap-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.snap-card-image {
-    width: 100%;
-    aspect-ratio: 16 / 9; /* Proporsi gambar */
-    background-color: #f0f0f0;
-}
-
-.snap-card-image img {
+.stacked-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* atau 'contain' jika logo tidak boleh terpotong */
+    object-fit: cover;
 }
 
-.snap-card-content {
-    padding: 1rem;
-}
-
-.snap-card-content h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0 0 0.5rem 0;
-}
-
-.snap-card-content p {
-    font-size: 0.9rem;
-    color: #a0a0a0;
-    line-height: 1.5;
-}
-
-/* Tombol Navigasi */
-.carousel-btn {
+/* Label Judul di Bagian Bawah Kartu */
+.stacked-card::before {
+    content: attr(data-text);
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    font-size: 1.25rem;
-    cursor: pointer;
-    z-index: 10;
-    display: none; /* Sembunyikan di mobile, tampilkan di desktop */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    
+    /* --- GAYA VISUAL (disesuaikan dengan tema Anda) --- */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    
+    /* Animasi halus saat muncul/hilang */
+    opacity: 0;
+    transform: translateY(100%);
+    transition: 0.5s;
 }
 
-.carousel-btn.prev { left: -10px; }
-.carousel-btn.next { right: -10px; }
+/* --- EFEK SAAT CONTAINER DI-HOVER (Desktop) atau DI-KLIK (Mobile) --- */
 
-
-/* Tampilan untuk layar lebih besar (Tablet & Desktop) */
-@media (min-width: 768px) {
-    .snap-card {
-        flex-basis: 40%; /* Tampilkan 2.5 kartu */
-    }
-    .carousel-btn {
-        display: block; /* Tampilkan tombol navigasi */
-    }
+.stacked-card-container:hover .stacked-card,
+.stacked-card-container.is-active .stacked-card {
+    transform: rotate(0deg);
+    margin: 0 15px; /* Jarak antar kartu saat menyebar */
 }
 
-@media (min-width: 1024px) {
-    .snap-card {
-        flex-basis: 30%; /* Tampilkan 3+ kartu */
-    }
+/* Tampilkan label judul saat kartu menyebar */
+.stacked-card-container:hover .stacked-card::before,
+.stacked-card-container.is-active .stacked-card::before {
+    opacity: 1;
+    transform: translateY(0%);
 }
