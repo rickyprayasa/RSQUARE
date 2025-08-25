@@ -892,3 +892,118 @@ body {
     0% { background-position: 0% 50%; }
     100% { background-position: 400% 50%; }
 }
+
+
+/* === CSS untuk Slider Produk Gratis === */
+
+.slider-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.slider-track {
+    display: flex;
+    gap: 1.5rem; /* Jarak antar kartu */
+    transition: transform 0.5s ease-in-out;
+}
+
+.free-template-card {
+    flex: 0 0 calc(33.333% - 1rem); /* Tampilkan 3 kartu, dikurangi setengah gap */
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.free-template-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+.free-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.free-card-content {
+    padding: 1.25rem;
+}
+
+.free-card-content h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.free-card-content p {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    height: 4.5rem; /* Batasi tinggi deskripsi */
+    overflow: hidden;
+}
+
+.free-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-tag-free {
+    font-weight: bold;
+    font-size: 1.125rem;
+    color: #16a34a; /* Warna hijau untuk gratis */
+}
+
+/* Tombol Navigasi Slider */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.slider-nav:hover {
+    background-color: white;
+    color: #f97316; /* Warna oranye saat hover */
+}
+
+.slider-nav:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slider-nav.left-0 { left: -1.25rem; }
+.slider-nav.right-0 { right: -1.25rem; }
+
+/* Responsif untuk Mobile */
+@media (max-width: 1024px) {
+    .free-template-card {
+        flex: 0 0 calc(50% - 0.75rem); /* Tampilkan 2 kartu di tablet */
+    }
+    .slider-nav.left-0 { left: 0.5rem; }
+    .slider-nav.right-0 { right: 0.5rem; }
+}
+
+@media (max-width: 768px) {
+    .free-template-card {
+        flex: 0 0 90%; /* Tampilkan ~1 kartu di mobile */
+    }
+}
