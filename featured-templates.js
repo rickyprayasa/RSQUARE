@@ -1,7 +1,7 @@
 /**
  * File: featured-templates.js
- * Deskripsi: VERSI FINAL dengan Carousel 3D Glassmorphism
- * untuk slider produk gratis.
+ * Deskripsi: VERSI BARU dengan Efek Kartu Tumpuk (Stacked Cards)
+ * untuk bagian produk gratis.
  */
 
 async function loadFreeProducts() {
@@ -43,72 +43,34 @@ async function loadFreeProducts() {
 
         section.style.display = 'block';
 
-        // 3. Buat HTML untuk kartu-kartu carousel
+        // --- PERUBAHAN UTAMA: Buat HTML untuk efek tumpukan kartu ---
+
+        // 3. Buat setiap kartu dengan custom property '--i' untuk indeksnya
         const cardsHTML = freeProducts.map((product, index) => {
-            // Kita gunakan inline style untuk memberikan indeks ke setiap kartu
+            const detailLink = `/content/template-detail.html?product=${product.id}`;
+            // Setiap kartu sekarang memiliki style inline untuk indeksnya
             return `
-                <div class="carousel-card" style="--card-index: ${index};">
-                    <h2>${product.judul}</h2>
-                    <p>${product.deskripsi_singkat}</p>
-                </div>
+                <a href="${detailLink}" class="stack-card" style="--i: ${index};">
+                    <div class="stack-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="stack-card-title">${product.judul}</div>
+                </a>
             `;
         }).join('');
 
-        // 4. Bangun struktur lengkap carousel dan masukkan ke dalam kontainer
+        // 4. Masukkan semua kartu ke dalam satu kontainer utama
         container.innerHTML = `
-            <div class="carousel-container">
-                <div class="carousel">
-                    ${cardsHTML}
-                </div>
-                <div class="carousel-nav">
-                    <button id="prevBtn">&larr;</button>
-                    <button id="nextBtn">&rarr;</button>
-                </div>
+            <div class="card-stack-container">
+                ${cardsHTML}
             </div>
         `;
 
-        // 5. Setelah HTML ada di DOM, kita bisa jalankan logika carousel 3D
-        const carousel = container.querySelector('.carousel');
-        const cards = container.querySelectorAll('.carousel-card');
-        const prevBtn = container.querySelector('#prevBtn');
-        const nextBtn = container.querySelector('#nextBtn');
+        // 5. SELESAI! Tidak ada lagi logika JavaScript untuk slider/carousel.
+        // Efek animasi murni ditangani oleh CSS.
 
-        let currentIndex = 0;
-        const totalCards = cards.length;
-        const theta = 360 / totalCards; // Sudut rotasi antar kartu
-        let radius;
-
-        function setupCarousel() {
-            // Hitung radius berdasarkan lebar kontainer agar responsif
-            radius = Math.round((carousel.offsetWidth / 2) / Math.tan(Math.PI / totalCards));
-            
-            cards.forEach((card, index) => {
-                const angle = theta * index;
-                // Atur posisi awal setiap kartu dalam lingkaran 3D
-                card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
-            });
-        }
-
-        function rotateCarousel() {
-            const angle = theta * currentIndex * -1;
-            // Putar seluruh elemen .carousel di sumbu Y
-            carousel.style.transform = `translateZ(-${radius}px) rotateY(${angle}deg)`;
-        }
-
-        nextBtn.addEventListener('click', () => {
-            currentIndex++;
-            rotateCarousel();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            currentIndex--;
-            rotateCarousel();
-        });
-
-        // Setup carousel saat pertama kali dimuat dan saat ukuran window berubah
-        setupCarousel();
-        window.addEventListener('resize', setupCarousel);
-        
     } catch (error) {
         console.error('Terjadi kesalahan saat memuat produk gratis:', error);
         section.style.display = 'none';
@@ -117,6 +79,7 @@ async function loadFreeProducts() {
 
 // Fungsi loadFeaturedProducts tidak perlu diubah
 async function loadFeaturedProducts() {
+    // ... (Fungsi ini tetap sama, tidak perlu diubah)
     const container = document.getElementById('featured-grid-container');
     if (!container) {
         console.warn('Elemen untuk grid produk unggulan tidak ditemukan.');
