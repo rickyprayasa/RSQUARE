@@ -964,8 +964,10 @@ body {
 
 .stacked-card-container:hover .stacked-card,
 .stacked-card-container.is-active .stacked-card {
-    transform: rotate(0deg);
-    margin: 0 15px; /* Jarak antar kartu saat menyebar */
+    /* Ganti 'margin' dengan 'transform: translateX()' untuk menggeser kartu.
+       Kita menggunakan kembali variabel --r (rotasi) untuk menentukan posisi horizontal.
+    */
+    transform: translateX(calc(var(--r) * 12%)) rotate(0deg);
 }
 
 /* Tampilkan label judul saat kartu menyebar */
