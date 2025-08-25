@@ -1,8 +1,8 @@
-// template-detail.js (Versi Perbaikan)
-
 document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Dapatkan ID produk dari URL
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('product');
+
     const container = document.getElementById('product-detail-container');
 
     if (!productId) {
@@ -10,48 +10,70 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
+    // 2. Ambil data produk dari file JSON yang spesifik
     try {
-        // Mengambil data dari file JSON terpisah untuk setiap produk
         const response = await fetch(`../content/produk/${productId}.json`);
-        if (!response.ok) throw new Error('Produk tidak ditemukan');
+        
+        if (!response.ok) {
+            throw new Error(`File produk tidak ditemukan: ${response.statusText}`);
+        }
+
         const product = await response.json();
 
-        // --- PANGGIL FUNGSI SEO ---
-        // Karena ini halaman detail, kita tidak perlu mengirim canonicalUrl kustom.
-        // Fungsi akan otomatis menggunakan URL halaman ini sebagai kanonis.
-        if (typeof updateSeoTags === 'function') {
-            updateSeoTags({
-                title: product.seo?.meta_title || product.judul,
-                description: product.seo?.meta_description || product.deskripsi_singkat,
-                ogImage: product.seo?.og_image || `https://rsquareidea.my.id/content/produk/${product.detail?.gambar_utama}`,
-                ogType: 'article'
-            });
-        }
-        // --- AKHIR BAGIAN SEO ---
+        if (product) {
+            // --- BAGIAN SEO (SUDAH BENAR) ---
+            if (typeof updateSeoTags === 'function') {
+                updateSeoTags({
+                    title: product.seo?.meta_title || product.judul,
+                    description: product.seo?.meta_description || product.deskripsi_singkat,
+                    ogImage: product.seo?.og_image || `https://rsquareidea.my.id/content/produk/${product.detail?.gambar_utama}`,
+                    ogType: 'article'
+                });
+            }
+            
+            // --- PEMBUATAN TOMBOL-TOMBOL (BAGIAN YANG DIPERBAIKI) ---
 
-        // (Sisa kode Anda untuk membangun HTML halaman tidak perlu diubah, jadi saya persingkat)
-        // ... Pastikan sisa kode Anda dari file asli ada di sini ...
-        // Contohnya seperti ini:
-        const linkPayment = `${product.detail.payment_gateway}`;
-        // ... dan seterusnya hingga akhir file ...
-        const deskripsiLengkapHTML = marked.parse(product.detail.deskripsi_lengkap);
-        let actionButtonsHTML = '';
-         if (product.harga === 0) {
-            if (product.detail?.file_panduan_pdf) {
-                actionButtonsHTML = ` <a href="petunjuk.html?product=${product.id}" class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
-            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            Download Gratis
-        </a>`;
-            } else {
-                actionButtonsHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
-            }} else
-            { actionButtonsHTML = `            
-                                <a href="${linkPayment}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-shiny inline-block flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
-                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
-                    Beli Langsung
+            // A. Buat tombol untuk platform eksternal terlebih dahulu
+            // <-- Kode yang hilang kini ditambahkan kembali
+            const externalButtonsHTML = product.detail.link_pembelian.map(link => `
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn-secondary flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    Akses di ${link.platform}
                 </a>
-                                `;}
+            `).join('');
+            
+            // B. Tentukan tombol aksi utama berdasarkan harga
+            let mainActionButtonHTML = '';
+            if (product.harga === 0) {
+                // Tombol untuk produk GRATIS
+                if (product.detail?.file_panduan_pdf) {
+                    mainActionButtonHTML = `
+                        <a href="petunjuk.html?product=${product.id}" class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Download Gratis
+                        </a>`;
+                } else {
+                    mainActionButtonHTML = '<p class="text-center text-gray-500">File untuk produk gratis ini akan segera tersedia.</p>';
+                }
+            } else {
+                // Tombol untuk produk BERBAYAR
+                const linkPayment = `${product.detail.payment_gateway}`;
+                mainActionButtonHTML = `
+                    <a href="${linkPayment}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-shiny inline-block flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold" onclick="fbq('track', 'InitiateCheckout');">
+                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                        Beli Langsung
+                    </a>`;
+            }
 
+            // C. Gabungkan semua tombol menjadi satu
+            // <-- Tombol eksternal kini digabungkan dengan benar
+            const allActionButtonsHTML = `
+                ${mainActionButtonHTML}
+                ${externalButtonsHTML}
+            `;
+           
+            // --- PEMBUATAN HTML UTAMA ---
+            const deskripsiLengkapHTML = marked.parse(product.detail.deskripsi_lengkap);
             const productHTML = `
                 <div class="container mx-auto">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -71,33 +93,38 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <div>
                                 <p class="text-sm font-semibold text-gray-600 mb-3">Pilih metode pembelian:</p>
                                 <div class="space-y-4">
-                                          ${actionButtonsHTML}    <hr class="border-gray-700">
-                        <a href="template-preview.html?product=${product.id}" class="btn-secondary-animated-border flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
-                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                            Lihat Preview Detail
-                        </a>
-
+                                    ${allActionButtonsHTML}
+                                    <hr class="border-gray-300">
+                                    <a href="template-preview.html?product=${product.id}" class="btn-secondary-animated-border flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
+                                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                        Lihat Preview Detail
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             `;
-        container.innerHTML = productHTML;
 
-        const imageContainer = document.getElementById('image-container');
-        if (imageContainer) {
-            imageContainer.addEventListener('click', function(e) {
-                if (e.target.closest('a')) {
-                    e.preventDefault();
-                    const imageUrl = e.target.closest('a').href;
-                    if (typeof basicLightbox !== 'undefined') {
-                        basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
+            container.innerHTML = productHTML;
+            
+            // Aktifkan kembali fitur lightbox
+            const imageContainer = document.getElementById('image-container');
+            if (imageContainer) {
+                imageContainer.addEventListener('click', function(e) {
+                    if (e.target.closest('a')) {
+                        e.preventDefault();
+                        const imageUrl = e.target.closest('a').href;
+                        if (typeof basicLightbox !== 'undefined') {
+                            basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
+                        }
                     }
-                }
-            });
-        }
+                });
+            }
 
+        } else {
+            container.innerHTML = `<div class="container mx-auto text-center"><h1 class="text-3xl font-bold">Error 404</h1><p>Produk dengan ID "${productId}" tidak dapat ditemukan.</p></div>`;
+        }
     } catch (error) {
         console.error('Gagal memuat data produk:', error);
         container.innerHTML = `<div class="container mx-auto text-center"><h1 class="text-3xl font-bold">Error 404</h1><p>Produk tidak ditemukan atau terjadi kesalahan.</p></div>`;
