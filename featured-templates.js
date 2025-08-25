@@ -1,32 +1,27 @@
 /**
  * File: featured-templates.js
- * Deskripsi: Versi ini diperbarui untuk menambahkan class 'active-slide'
- * untuk mendukung efek tumpukan kartu (card stack) di CSS.
+ * Deskripsi: VERSI FINAL dengan Carousel 3D Glassmorphism
+ * untuk slider produk gratis.
  */
 
 async function loadFreeProducts() {
+    // 1. Dapatkan elemen-elemen utama dari HTML
     const section = document.getElementById('free-templates-section');
-    const slider = document.getElementById('free-templates-slider');
-    const prevBtn = document.getElementById('free-slider-prev');
-    const nextBtn = document.getElementById('free-slider-next');
+    const container = document.getElementById('free-templates-container');
 
-    if (!section || !slider || !prevBtn || !nextBtn) {
-        console.warn('Elemen untuk slider produk gratis tidak ditemukan.');
+    if (!section || !container) {
+        console.warn('Elemen untuk section produk gratis tidak ditemukan.');
         return;
     }
 
     try {
+        // 2. Ambil semua data produk seperti sebelumnya
         const indexResponse = await fetch('content/_index.json');
         if (!indexResponse.ok) throw new Error('Gagal memuat content/_index.json');
         const allProductFiles = await indexResponse.json();
 
-        if (allProductFiles.length === 0) {
-            section.style.display = 'none';
-            return;
-        }
-
-        const productPromises = allProductFiles.map(productFile => {
-            return fetch(`content/produk/${productFile}`)
+        const productPromises = allProductFiles.map(productFile =>
+            fetch(`content/produk/${productFile}`)
                 .then(res => res.ok ? res.json() : null)
                 .then(productData => {
                     if (productData) {
@@ -34,8 +29,8 @@ async function loadFreeProducts() {
                         return productData;
                     }
                     return null;
-                });
-        });
+                })
+        );
         
         let allProducts = await Promise.all(productPromises);
         allProducts = allProducts.filter(p => p !== null);
@@ -48,104 +43,72 @@ async function loadFreeProducts() {
 
         section.style.display = 'block';
 
-        const cardsHTML = freeProducts.map(product => {
-            const imagePath = `/content/produk/${product.gambar_thumbnail}`;
-            const detailLink = `/content/template-detail.html?product=${product.id}`;
+        // 3. Buat HTML untuk kartu-kartu carousel
+        const cardsHTML = freeProducts.map((product, index) => {
+            // Kita gunakan inline style untuk memberikan indeks ke setiap kartu
             return `
-                <div class="featured-card">
-                    <img src="${imagePath}" alt="${product.judul}" class="featured-card-image">
-                    <div class="featured-card-content">
-                        <span class="label label-free">GRATIS</span>
-                        <h3>🎯 ${product.judul}</h3>
-                        <div class="featured-card-description-wrapper">
-                            <p class="featured-card-description">${product.deskripsi_singkat}</p>
-                            <a href="${detailLink}" class="btn-primary-small">Lihat Template</a>
-                        </div>
-                    </div>
+                <div class="carousel-card" style="--card-index: ${index};">
+                    <h2>${product.judul}</h2>
+                    <p>${product.deskripsi_singkat}</p>
                 </div>
             `;
         }).join('');
 
-        slider.innerHTML = cardsHTML;
+        // 4. Bangun struktur lengkap carousel dan masukkan ke dalam kontainer
+        container.innerHTML = `
+            <div class="carousel-container">
+                <div class="carousel">
+                    ${cardsHTML}
+                </div>
+                <div class="carousel-nav">
+                    <button id="prevBtn">&larr;</button>
+                    <button id="nextBtn">&rarr;</button>
+                </div>
+            </div>
+        `;
 
-        const freeCards = slider.querySelectorAll('.featured-card');
-        freeCards.forEach(card => {
-            card.addEventListener('mouseenter', () => card.classList.add('is-hovered'));
-            card.addEventListener('mouseleave', () => card.classList.remove('is-hovered'));
-        });
+        // 5. Setelah HTML ada di DOM, kita bisa jalankan logika carousel 3D
+        const carousel = container.querySelector('.carousel');
+        const cards = container.querySelectorAll('.carousel-card');
+        const prevBtn = container.querySelector('#prevBtn');
+        const nextBtn = container.querySelector('#nextBtn');
 
         let currentIndex = 0;
-        const totalItems = freeProducts.length;
+        const totalCards = cards.length;
+        const theta = 360 / totalCards; // Sudut rotasi antar kartu
+        let radius;
 
-        const getItemsToShow = () => {
-            if (window.innerWidth < 768) return 1;
-            if (window.innerWidth < 1024) return 2;
-            return 3;
-        };
-
-        const updateSlider = () => {
-            const itemsToShow = getItemsToShow();
-            const card = slider.querySelector('.featured-card');
-            if (!card) return;
-
-            if (totalItems > itemsToShow) {
-                prevBtn.style.display = 'flex';
-                nextBtn.style.display = 'flex';
-            } else {
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
-            }
+        function setupCarousel() {
+            // Hitung radius berdasarkan lebar kontainer agar responsif
+            radius = Math.round((carousel.offsetWidth / 2) / Math.tan(Math.PI / totalCards));
             
-            if (currentIndex > totalItems - itemsToShow) {
-                currentIndex = totalItems - itemsToShow;
-            }
-            
-            const gap = parseFloat(window.getComputedStyle(slider).gap) || 0;
-            const cardWidth = card.offsetWidth + gap;
-
-            slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-            prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex >= totalItems - itemsToShow;
-
-            // --- TAMBAHAN BARU: Memberi class 'active-slide' pada kartu di tengah ---
-            const allCards = slider.querySelectorAll('.featured-card');
-            allCards.forEach((card, index) => {
-                card.classList.remove('active-slide');
-                // Untuk mobile, yang aktif hanya currentIndex
-                // Untuk tablet/desktop, kita bisa tandai semua yang terlihat
-                if (index >= currentIndex && index < currentIndex + itemsToShow) {
-                     // Khusus untuk efek tumpukan kartu, kita hanya tandai yang di tengah
-                    if (itemsToShow === 1 && index === currentIndex) {
-                        card.classList.add('active-slide');
-                    } else if (itemsToShow > 1) { // Jika bukan mobile, anggap semua terlihat aktif
-                        card.classList.add('active-slide');
-                    }
-                }
+            cards.forEach((card, index) => {
+                const angle = theta * index;
+                // Atur posisi awal setiap kartu dalam lingkaran 3D
+                card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
             });
-            // Khusus untuk mobile, pastikan hanya satu yang aktif
-             if (itemsToShow === 1) {
-                if(allCards[currentIndex]) allCards[currentIndex].classList.add('active-slide');
-             }
-        };
+        }
+
+        function rotateCarousel() {
+            const angle = theta * currentIndex * -1;
+            // Putar seluruh elemen .carousel di sumbu Y
+            carousel.style.transform = `translateZ(-${radius}px) rotateY(${angle}deg)`;
+        }
 
         nextBtn.addEventListener('click', () => {
-            const itemsToShow = getItemsToShow();
-            if (currentIndex < totalItems - itemsToShow) {
-                currentIndex++;
-                updateSlider();
-            }
+            currentIndex++;
+            rotateCarousel();
         });
 
         prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            }
+            currentIndex--;
+            rotateCarousel();
         });
-        
-        window.addEventListener('resize', updateSlider);
-        updateSlider();
 
+        // Setup carousel saat pertama kali dimuat dan saat ukuran window berubah
+        setupCarousel();
+        window.addEventListener('resize', setupCarousel);
+        
     } catch (error) {
         console.error('Terjadi kesalahan saat memuat produk gratis:', error);
         section.style.display = 'none';
@@ -154,7 +117,6 @@ async function loadFreeProducts() {
 
 // Fungsi loadFeaturedProducts tidak perlu diubah
 async function loadFeaturedProducts() {
-    // ... (Fungsi ini tetap sama, tidak perlu diubah)
     const container = document.getElementById('featured-grid-container');
     if (!container) {
         console.warn('Elemen untuk grid produk unggulan tidak ditemukan.');
