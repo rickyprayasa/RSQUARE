@@ -1,7 +1,7 @@
 /**
  * File: featured-templates.js
- * Deskripsi: VERSI FINAL dengan Efek Kartu Tumpuk (Stacked Cards)
- * yang mendukung interaksi KLIK untuk perangkat mobile/sentuh.
+ * Deskripsi: VERSI BARU dengan Swipeable Snap Carousel, Gambar,
+ * dan Tombol Navigasi untuk Produk Gratis.
  */
 
 async function loadFreeProducts() {
@@ -41,59 +41,62 @@ async function loadFreeProducts() {
 
         section.style.display = 'block';
 
-        const cardsHTML = freeProducts.map((product, index) => {
+        // --- PERUBAHAN UTAMA: Buat HTML untuk efek Snap Carousel ---
+        const cardsHTML = freeProducts.map((product) => {
             const detailLink = `/content/template-detail.html?product=${product.id}`;
+            const imagePath = `/content/produk/${product.gambar_thumbnail}`;
+            
             return `
-                <a href="${detailLink}" class="stack-card" style="--i: ${index};">
-                    <div class="stack-card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                <a href="${detailLink}" class="snap-card">
+                    <div class="snap-card-image">
+                        <img src="${imagePath}" alt="${product.judul}">
                     </div>
-                    <div class="stack-card-title">${product.judul}</div>
+                    <div class="snap-card-content">
+                        <h3>${product.judul}</h3>
+                        <p>${product.deskripsi_singkat}</p>
+                    </div>
                 </a>
             `;
         }).join('');
 
+        // Masukkan carousel dan tombol navigasi ke dalam kontainer
         container.innerHTML = `
-            <div class="card-stack-container">
-                ${cardsHTML}
+            <div class="carousel-wrapper">
+                <div class="snap-carousel">
+                    ${cardsHTML}
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous Slide">&larr;</button>
+                <button class="carousel-btn next" aria-label="Next Slide">&rarr;</button>
             </div>
         `;
+
+        // --- LOGIKA BARU UNTUK NAVIGASI GESER/KLIK ---
+        const carousel = container.querySelector('.snap-carousel');
+        const prevBtn = container.querySelector('.carousel-btn.prev');
+        const nextBtn = container.querySelector('.carousel-btn.next');
         
-        // --- LOGIKA BARU UNTUK INTERAKSI KLIK ---
-        const stackContainer = container.querySelector('.card-stack-container');
-        const cards = container.querySelectorAll('.stack-card');
+        // Sembunyikan tombol jika semua kartu sudah terlihat
+        if (carousel.scrollWidth <= carousel.clientWidth) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            return;
+        }
 
-        cards.forEach(card => {
-            card.addEventListener('click', (event) => {
-                // Periksa apakah tumpukan sudah "mekar" atau belum
-                const isFanned = stackContainer.classList.contains('is-fanned');
+        const scrollAmount = carousel.querySelector('.snap-card').offsetWidth;
 
-                // Jika tumpukan BELUM mekar, maka klik ini bertugas untuk memekarkannya
-                if (!isFanned) {
-                    event.preventDefault(); // Mencegah link terbuka
-                    stackContainer.classList.add('is-fanned'); // Tambah class untuk memicu animasi
-                }
-                // Jika SUDAH mekar, biarkan link bekerja seperti biasa
-            });
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
 
-        // Menambahkan listener untuk menutup tumpukan saat klik di luar area
-        document.addEventListener('click', (event) => {
-            // Jika yang diklik bukan bagian dari kontainer tumpukan kartu
-            if (!stackContainer.contains(event.target)) {
-                stackContainer.classList.remove('is-fanned'); // Tutup kembali tumpukan
-            }
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         });
-
 
     } catch (error) {
         console.error('Terjadi kesalahan saat memuat produk gratis:', error);
         section.style.display = 'none';
     }
 }
-
 
 // Fungsi loadFeaturedProducts tidak perlu diubah
 async function loadFeaturedProducts() {
