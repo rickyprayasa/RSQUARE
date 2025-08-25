@@ -960,8 +960,16 @@ body {
 .card-stack-container .stack-card:not(:first-child) {
     filter: blur(1px);
 }
-.card-stack-container:hover .stack-card {
-    filter: blur(0px);
+/* --- EFEK SAAT CONTAINER DIKLIK (punya class .is-fanned) --- */
+.card-stack-container.is-fanned .stack-card {
+    /* Luruskan kembali semua kartu */
+    transform: rotate(0deg) translateY(0);
+
+    /* Geser setiap kartu ke kanan berdasarkan indeksnya untuk "mekar" */
+    transform: translateX(calc(var(--i) * 105%));
+
+    /* Beri sedikit jeda animasi agar terlihat lebih dinamis */
+    transition-delay: calc(var(--i) * 0.1s);
 }
 
 
