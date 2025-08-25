@@ -1,11 +1,10 @@
 /**
  * File: featured-templates.js
- * Deskripsi: VERSI BARU dengan Efek Kartu Tumpuk (Stacked Cards)
- * untuk bagian produk gratis.
+ * Deskripsi: VERSI FINAL dengan Efek Kartu Tumpuk (Stacked Cards)
+ * yang mendukung interaksi KLIK untuk perangkat mobile/sentuh.
  */
 
 async function loadFreeProducts() {
-    // 1. Dapatkan elemen-elemen utama dari HTML
     const section = document.getElementById('free-templates-section');
     const container = document.getElementById('free-templates-container');
 
@@ -15,7 +14,6 @@ async function loadFreeProducts() {
     }
 
     try {
-        // 2. Ambil semua data produk seperti sebelumnya
         const indexResponse = await fetch('content/_index.json');
         if (!indexResponse.ok) throw new Error('Gagal memuat content/_index.json');
         const allProductFiles = await indexResponse.json();
@@ -43,12 +41,8 @@ async function loadFreeProducts() {
 
         section.style.display = 'block';
 
-        // --- PERUBAHAN UTAMA: Buat HTML untuk efek tumpukan kartu ---
-
-        // 3. Buat setiap kartu dengan custom property '--i' untuk indeksnya
         const cardsHTML = freeProducts.map((product, index) => {
             const detailLink = `/content/template-detail.html?product=${product.id}`;
-            // Setiap kartu sekarang memiliki style inline untuk indeksnya
             return `
                 <a href="${detailLink}" class="stack-card" style="--i: ${index};">
                     <div class="stack-card-icon">
@@ -61,21 +55,45 @@ async function loadFreeProducts() {
             `;
         }).join('');
 
-        // 4. Masukkan semua kartu ke dalam satu kontainer utama
         container.innerHTML = `
             <div class="card-stack-container">
                 ${cardsHTML}
             </div>
         `;
+        
+        // --- LOGIKA BARU UNTUK INTERAKSI KLIK ---
+        const stackContainer = container.querySelector('.card-stack-container');
+        const cards = container.querySelectorAll('.stack-card');
 
-        // 5. SELESAI! Tidak ada lagi logika JavaScript untuk slider/carousel.
-        // Efek animasi murni ditangani oleh CSS.
+        cards.forEach(card => {
+            card.addEventListener('click', (event) => {
+                // Periksa apakah tumpukan sudah "mekar" atau belum
+                const isFanned = stackContainer.classList.contains('is-fanned');
+
+                // Jika tumpukan BELUM mekar, maka klik ini bertugas untuk memekarkannya
+                if (!isFanned) {
+                    event.preventDefault(); // Mencegah link terbuka
+                    stackContainer.classList.add('is-fanned'); // Tambah class untuk memicu animasi
+                }
+                // Jika SUDAH mekar, biarkan link bekerja seperti biasa
+            });
+        });
+
+        // Menambahkan listener untuk menutup tumpukan saat klik di luar area
+        document.addEventListener('click', (event) => {
+            // Jika yang diklik bukan bagian dari kontainer tumpukan kartu
+            if (!stackContainer.contains(event.target)) {
+                stackContainer.classList.remove('is-fanned'); // Tutup kembali tumpukan
+            }
+        });
+
 
     } catch (error) {
         console.error('Terjadi kesalahan saat memuat produk gratis:', error);
         section.style.display = 'none';
     }
 }
+
 
 // Fungsi loadFeaturedProducts tidak perlu diubah
 async function loadFeaturedProducts() {
