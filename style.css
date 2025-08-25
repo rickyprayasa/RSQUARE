@@ -897,91 +897,88 @@ body {
 /* ========================================================================
    CSS BARU: 3D GLASSMORPHISM CAROUSEL
    ======================================================================== */
+/* === CSS BARU: EFEK KARTU TUMPUK (STACKED CARDS) === */
 
-:root {
-    /* Variabel ini bisa disesuaikan untuk mengubah ukuran kartu */
-    --card-width: 280px;
-    --card-height: 400px;
+#free-templates-container {
+    /* Menambahkan sedikit perspektif untuk efek 3D yang lebih halus */
+    perspective: 1000px;
 }
 
-#free-templates-container .carousel-container {
-    /* Menentukan area 3D, penting untuk efek perspektif */
-    perspective: 1200px;
-    width: var(--card-width);
-    height: var(--card-height);
+.card-stack-container {
     position: relative;
-    margin: 0 auto; /* Pusatkan carousel */
+    width: 250px; /* Lebar tumpukan kartu */
+    height: 350px; /* Tinggi tumpukan kartu */
+    margin: 40px auto; /* Memberi ruang di atas dan bawah */
 }
 
-#free-templates-container .carousel {
+.stack-card {
+    /* PENTING: Semua kartu diposisikan absolut agar menumpuk */
+    position: absolute;
     width: 100%;
     height: 100%;
-    position: absolute;
-    /* Mengaktifkan ruang 3D untuk semua kartu di dalamnya */
-    transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-#free-templates-container .carousel-card {
-    position: absolute;
-    width: var(--card-width);
-    height: var(--card-height);
-    padding: 24px;
-    box-sizing: border-box;
-    border-radius: 16px;
-    color: #e6edf3;
     
-    /* --- EFEK KACA (GLASSMORPHISM) --- */
-    background: rgba(33, 38, 45, 0.5); /* Warna dasar kaca semi-transparan */
-    backdrop-filter: blur(12px);      /* Efek blur di belakang kartu */
-    -webkit-backdrop-filter: blur(12px); /* Dukungan untuk Safari */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Tepian bercahaya tipis */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Bayangan lembut */
+    /* Styling dasar kartu */
+    background-color: #2a2a2a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     
-    /* Agar tulisan tidak bisa dipilih saat digeser */
-    user-select: none;
-}
-
-/* Styling untuk teks di dalam kartu */
-#free-templates-container .carousel-card h2 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #58a6ff; /* Warna aksen biru terang */
-}
-
-#free-templates-container .carousel-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #c9d1d9;
-}
-
-/* Tombol Navigasi */
-#free-templates-container .carousel-nav {
-    position: absolute;
-    bottom: -70px; /* Posisi di bawah carousel */
-    left: 50%;
-    transform: translateX(-50%);
+    /* Styling konten di dalam kartu */
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #e0e0e0;
+    text-decoration: none;
+
+    /* Transisi untuk semua animasi */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* MENGGUNAKAN INDEKS DARI JS UNTUK MEMBUAT EFEK TUMPUKAN AWAL */
+    /* Setiap kartu diputar dan digeser sedikit berdasarkan indeksnya (--i) */
+    transform: rotate(calc(var(--i) * 4deg)) translateY(calc(var(--i) * -25px));
+    z-index: calc(10 - var(--i)); /* Kartu pertama (i=0) di paling atas */
 }
 
-#free-templates-container .carousel-nav button {
+/* --- EFEK SAAT CONTAINER DI-HOVER --- */
+
+.card-stack-container:hover .stack-card {
+    /* Luruskan kembali semua kartu */
+    transform: rotate(0deg) translateY(0);
+    
+    /* Geser setiap kartu ke kanan berdasarkan indeksnya untuk "mekar" */
+    transform: translateX(calc(var(--i) * 105%));
+
+    /* Beri sedikit jeda animasi agar terlihat lebih dinamis */
+    transition-delay: calc(var(--i) * 0.1s);
+}
+
+/* Bonus: Buat kartu di paling belakang sedikit blur */
+.card-stack-container .stack-card:not(:first-child) {
+    filter: blur(1px);
+}
+.card-stack-container:hover .stack-card {
+    filter: blur(0px);
+}
+
+
+/* Styling untuk ikon dan judul di dalam kartu */
+.stack-card-icon {
+    margin-bottom: 20px;
+}
+.stack-card-icon svg {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    color: #00aaff; /* Warna aksen */
 }
 
-#free-templates-container .carousel-nav button:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+.stack-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
 }
-
 /*=========================CARD 2========================*/
 /* Import font (opsional) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
