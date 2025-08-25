@@ -894,175 +894,35 @@ body {
 }
 
 
-/* === CSS untuk Slider Produk GRATIS (Gaya Konsisten) === */
-
-.slider-viewport {
-    overflow: hidden;
-    width: 100%;
-}
-
-.slider-track {
-    display: flex;
-    gap: 1.5rem; /* Jarak antar kartu */
-    transition: transform 0.5s ease-in-out;
-}
-
-/* Tombol Navigasi Slider (Tidak berubah) */
-.slider-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid #e5e7eb;
-    border-radius: 9999px;
-    width: 2.75rem;
-    height: 2.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #374151;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 10;
-}
-
-.slider-nav:hover {
-    background-color: white;
-    color: #f97316; /* Warna oranye saat hover */
-}
-
-.slider-nav:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-/* Style BARU untuk label "GRATIS" */
-.label-free {
-    /*background-color: #16a34a; /* Warna hijau */
-    color: white;
-}
-
-
-/* === ATURAN RESPONSIVE BARU (PENTING) === */
-
-/* Tampilan Tablet (menargetkan kartu di dalam slider secara spesifik) */
-@media (max-width: 1024px) {
-    .slider-track .featured-card {
-        flex: 0 0 calc(50% - 0.75rem); /* Tampilkan 2 kartu */
-    }
-    .slider-nav.left-0 { left: 0.5rem; }
-    .slider-nav.right-0 { right: 0.5rem; }
-}
-
-/* Tampilan Mobile (menargetkan kartu di dalam slider secara spesifik) */
-/* Tampilan Mobile untuk EFEK TUMPUKAN KARTU */
-@media (max-width: 768px) {
-    .slider-viewport {
-        /* PENTING: Ubah overflow menjadi visible agar kartu di samping terlihat */
-        overflow: visible;
-        /* Beri sedikit ruang vertikal agar bayangan kartu tidak terpotong */
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
-
-    .slider-track .featured-card {
-        /* Atur lebar kartu agar ada ruang untuk kartu di sampingnya */
-        flex: 0 0 80%;
-        
-        /* Gaya default untuk semua kartu (kecil dan transparan) */
-        transform: scale(0.85);
-        opacity: 0.7;
-        transition: transform 0.4s ease, opacity 0.4s ease;
-    }
-
-    /* Gaya untuk KARTU AKTIF (di tengah) */
-    .slider-track .featured-card.active-slide {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    /* Posisikan tombol navigasi sedikit lebih ke dalam */
-    .slider-nav.left-0 { left: -0.5rem; }
-    .slider-nav.right-0 { right: -0.5rem; }
-}
-
-
-/* From Uiverse.io by codebykay101 */ 
-.container-card {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-card .glass {
-  position: relative;
-  width: 180px;
-  height: 200px;
-  background: linear-gradient(#fff2, transparent);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s;
-  border-radius: 10px;
-  margin: 0 -45px;
-  backdrop-filter: blur(10px);
-  transform: rotate(calc(var(--r) * 1deg));
-}
-
-.container-card:hover .glass {
-  transform: rotate(0deg);
-  margin: 0 10px;
-}
-
-.container-card .glass::before {
-  content: attr(data-text);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.05);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-}
-.container-card .glass svg {
-  font-size: 2.5em;
-  fill: #fff;
-}
-
-/* Import font (opsional) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+/* ========================================================================
+   CSS BARU: 3D GLASSMORPHISM CAROUSEL
+   ======================================================================== */
 
 :root {
+    /* Variabel ini bisa disesuaikan untuk mengubah ukuran kartu */
     --card-width: 280px;
     --card-height: 400px;
 }
 
-
-
-.carousel-container {
-    /* Menentukan area 3D */
-    perspective: 1000px;
+#free-templates-container .carousel-container {
+    /* Menentukan area 3D, penting untuk efek perspektif */
+    perspective: 1200px;
     width: var(--card-width);
     height: var(--card-height);
     position: relative;
+    margin: 0 auto; /* Pusatkan carousel */
 }
 
-.carousel {
+#free-templates-container .carousel {
     width: 100%;
     height: 100%;
     position: absolute;
-    /* Mengaktifkan ruang 3D untuk elemen anak */
+    /* Mengaktifkan ruang 3D untuk semua kartu di dalamnya */
     transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1); /* Transisi halus saat berputar */
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.carousel-card {
+#free-templates-container .carousel-card {
     position: absolute;
     width: var(--card-width);
     height: var(--card-height);
@@ -1071,53 +931,54 @@ body {
     border-radius: 16px;
     color: #e6edf3;
     
-    /* --- EFEK GLASSMORPHISM --- */
-    background: rgba(33, 38, 45, 0.5); /* Warna kaca semi-transparan */
-    backdrop-filter: blur(10px); /* Efek blur di belakang kartu */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* --- EFEK KACA (GLASSMORPHISM) --- */
+    background: rgba(33, 38, 45, 0.5); /* Warna dasar kaca semi-transparan */
+    backdrop-filter: blur(12px);      /* Efek blur di belakang kartu */
+    -webkit-backdrop-filter: blur(12px); /* Dukungan untuk Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Tepian bercahaya tipis */
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Bayangan lembut */
     
     /* Agar tulisan tidak bisa dipilih saat digeser */
     user-select: none;
-    transition: opacity 0.6s, transform 0.6s;
 }
 
-/* Teks di dalam kartu */
-.carousel-card h2 {
+/* Styling untuk teks di dalam kartu */
+#free-templates-container .carousel-card h2 {
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: 1rem;
+    color: #58a6ff; /* Warna aksen biru terang */
 }
 
-.carousel-card p {
+#free-templates-container .carousel-card p {
     font-size: 0.95rem;
     line-height: 1.6;
     color: #c9d1d9;
 }
 
 /* Tombol Navigasi */
-.carousel-nav {
+#free-templates-container .carousel-nav {
     position: absolute;
-    bottom: -60px; /* Posisi di bawah carousel */
+    bottom: -70px; /* Posisi di bawah carousel */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 1rem;
 }
 
-.carousel-nav button {
+#free-templates-container .carousel-nav button {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.carousel-nav button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+#free-templates-container .carousel-nav button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
