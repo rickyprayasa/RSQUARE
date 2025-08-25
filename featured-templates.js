@@ -1,15 +1,16 @@
 /**
  * File: featured-templates.js
  * Deskripsi: Skrip ini memuat dua bagian pada halaman utama:
- * 1. Slider untuk produk-produk gratis.
- * 2. Grid untuk produk-produk unggulan.
- * Keduanya mengambil data secara dinamis dari file JSON.
+ * 1. Slider produk gratis, dengan mengambil data dari setiap file produk.
+ * 2. Grid produk unggulan, berdasarkan ID yang ditentukan.
  */
 
 /**
- * Memuat, memfilter, dan menampilkan produk gratis dalam format slider.
- * Slider hanya akan muncul jika ada setidaknya satu produk dengan harga 0.
- * Navigasi slider akan aktif jika jumlah produk gratis lebih dari 3.
+ * Memuat produk gratis dengan cara:
+ * 1. Mengambil daftar semua file produk dari _index.json.
+ * 2. Memuat detail setiap produk satu per satu.
+ * 3. Memfilter produk yang gratis (harga === 0).
+ * 4. Menampilkan hasilnya dalam format slider.
  */
 async function loadFreeProducts() {
     // 1. Ambil elemen-elemen HTML yang diperlukan
@@ -18,30 +19,53 @@ async function loadFreeProducts() {
     const prevBtn = document.getElementById('free-slider-prev');
     const nextBtn = document.getElementById('free-slider-next');
 
-    // Hentikan fungsi jika salah satu elemen tidak ditemukan
     if (!section || !slider || !prevBtn || !nextBtn) {
         console.warn('Elemen untuk slider produk gratis tidak ditemukan.');
         return;
     }
 
     try {
-        // 2. Ambil data semua produk dari file JSON
-        const response = await fetch('/_data/produk.json');
-        if (!response.ok) {
-            throw new Error(`Gagal memuat produk.json: ${response.statusText}`);
+        // 2. Ambil daftar semua nama file produk
+        const indexResponse = await fetch('content/_index.json');
+        if (!indexResponse.ok) {
+            throw new Error('Gagal memuat content/_index.json');
         }
-        const allProducts = await response.json();
+        const allProductFiles = await indexResponse.json();
 
-        // 3. Filter untuk mendapatkan produk yang harganya 0
+        if (allProductFiles.length === 0) {
+            section.style.display = 'none';
+            return;
+        }
+
+        // 3. Muat detail untuk setiap file produk secara paralel
+        const productPromises = allProductFiles.map(productFile => {
+            return fetch(`content/produk/${productFile}`)
+                .then(res => res.ok ? res.json() : null)
+                .then(productData => {
+                    // Pastikan data ada dan tambahkan 'id' dari nama file
+                    if (productData) {
+                        productData.id = productFile.replace(/\.json$/, '');
+                        return productData;
+                    }
+                    return null;
+                });
+        });
+        
+        // Tunggu semua proses fetch selesai
+        let allProducts = await Promise.all(productPromises);
+        // Bersihkan data yang null (jika ada file yang gagal dimuat)
+        allProducts = allProducts.filter(p => p !== null);
+
+        // 4. Filter untuk mendapatkan produk yang harganya 0
         const freeProducts = allProducts.filter(p => p.harga === 0);
 
-        // 4. Jika tidak ada produk gratis, sembunyikan section dan hentikan fungsi
+        // 5. Jika tidak ada produk gratis, sembunyikan section dan hentikan fungsi
         if (freeProducts.length === 0) {
             section.style.display = 'none';
             return;
         }
 
-        // 5. Jika ada, tampilkan section dan buat kartu HTML-nya
+        // 6. Jika ada, tampilkan section dan buat kartu HTML-nya
         section.style.display = 'block';
 
         const cardsHTML = freeProducts.map(product => {
@@ -66,8 +90,8 @@ async function loadFreeProducts() {
 
         slider.innerHTML = cardsHTML;
 
-        // 6. Atur logika slider
-        const itemsToShow = 3; // Jumlah kartu yang terlihat dalam satu waktu
+        // 7. Atur logika slider (bagian ini tidak berubah)
+        const itemsToShow = 3;
         if (freeProducts.length > itemsToShow) {
             prevBtn.style.display = 'flex';
             nextBtn.style.display = 'flex';
@@ -75,10 +99,9 @@ async function loadFreeProducts() {
             let currentIndex = 0;
             const totalItems = freeProducts.length;
             
-            // Fungsi untuk update posisi slider dan status tombol
             function updateSlider() {
                 const card = slider.querySelector('.free-template-card');
-                if (!card) return; // Pastikan kartu sudah ada di DOM
+                if (!card) return;
                 const gap = parseFloat(window.getComputedStyle(slider).gap);
                 const cardWidth = card.offsetWidth + gap;
 
@@ -87,7 +110,6 @@ async function loadFreeProducts() {
                 nextBtn.disabled = currentIndex >= totalItems - itemsToShow;
             }
 
-            // Event listener untuk tombol
             nextBtn.addEventListener('click', () => {
                 if (currentIndex < totalItems - itemsToShow) {
                     currentIndex++;
@@ -102,16 +124,13 @@ async function loadFreeProducts() {
                 }
             });
             
-            // Atur ulang posisi saat ukuran window berubah
             window.addEventListener('resize', updateSlider);
-
-            // Panggil sekali untuk mengatur state awal
             updateSlider();
         }
 
     } catch (error) {
         console.error('Terjadi kesalahan saat memuat produk gratis:', error);
-        section.style.display = 'none'; // Sembunyikan jika terjadi error
+        section.style.display = 'none';
     }
 }
 
@@ -127,7 +146,6 @@ async function loadFeaturedProducts() {
     }
 
     try {
-        // Ambil ID produk unggulan dari file setting homepage
         const featuredResponse = await fetch('/_data/homepage.json');
         const settings = await featuredResponse.json();
         const featuredIds = settings.produk_unggulan || [];
@@ -137,14 +155,12 @@ async function loadFeaturedProducts() {
             return;
         }
 
-        // Ambil data detail untuk setiap ID produk unggulan
         const productPromises = featuredIds.map(id =>
             fetch(`/content/produk/${id}.json`).then(res => res.ok ? res.json() : null)
         );
         let featuredProducts = await Promise.all(productPromises);
         featuredProducts = featuredProducts.filter(p => p !== null);
 
-        // Buat kartu HTML
         const cardsHTML = featuredProducts.map(product => {
             const imagePath = `/content/produk/${product.gambar_thumbnail}`;
             const detailLink = `/content/template-detail.html?product=${product.id}`;
@@ -165,7 +181,6 @@ async function loadFeaturedProducts() {
 
         container.innerHTML = cardsHTML;
 
-        // Tambahkan efek hover
         const featuredCards = document.querySelectorAll('.featured-card');
         featuredCards.forEach(card => {
             card.addEventListener('mouseenter', () => card.classList.add('is-hovered'));
