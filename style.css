@@ -956,18 +956,33 @@ body {
 }
 
 /* Tampilan Mobile (menargetkan kartu di dalam slider secara spesifik) */
+/* Tampilan Mobile untuk EFEK TUMPUKAN KARTU */
 @media (max-width: 768px) {
     .slider-viewport {
-        /* Beri ruang agar kartu tidak menempel di tepi layar */
-        padding: 0 2.5rem; 
+        /* PENTING: Ubah overflow menjadi visible agar kartu di samping terlihat */
+        overflow: visible;
+        /* Beri sedikit ruang vertikal agar bayangan kartu tidak terpotong */
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
 
     .slider-track .featured-card {
-        /* Paksa kartu untuk mengisi 100% viewport yang sudah diberi padding */
-        flex: 0 0 100%; 
+        /* Atur lebar kartu agar ada ruang untuk kartu di sampingnya */
+        flex: 0 0 80%;
+        
+        /* Gaya default untuk semua kartu (kecil dan transparan) */
+        transform: scale(0.85);
+        opacity: 0.7;
+        transition: transform 0.4s ease, opacity 0.4s ease;
     }
 
-    /* Posisikan tombol navigasi di dalam area padding */
-    .slider-nav.left-0 { left: 0.25rem; }
-    .slider-nav.right-0 { right: 0.25rem; }
+    /* Gaya untuk KARTU AKTIF (di tengah) */
+    .slider-track .featured-card.active-slide {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    /* Posisikan tombol navigasi sedikit lebih ke dalam */
+    .slider-nav.left-0 { left: -0.5rem; }
+    .slider-nav.right-0 { right: -0.5rem; }
 }
