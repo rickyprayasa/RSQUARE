@@ -95,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let cards = [];
         let isAnimating = false;
         
-        // --- FUNGSI TINGGI KONTAINER KINI RESPONSIF ---
         const setContainerHeight = () => {
             const frontCard = cards.find(card => card.dataset.index === '0');
             if (frontCard) {
@@ -107,13 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const totalHeight = frontCard.scrollHeight + (yOffsetStep * visibleBehindCount);
                     stackContainer.style.height = `${totalHeight}px`;
                 } else {
-                    // Di desktop, tinggi kontainer cukup seukuran 1 kartu
                     stackContainer.style.height = `${frontCard.scrollHeight}px`;
                 }
             }
         };
 
-        // --- FUNGSI POSISI KARTU KINI RESPONSIF ---
         const updateCardPositions = () => {
             const isMobile = window.innerWidth < 768;
             
@@ -122,9 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let newTransform = '';
                 let newZIndex = cards.length - index;
 
-                // LOGIKA POSISI BERBEDA UNTUK MOBILE DAN DESKTOP
                 if (isMobile) {
-                    // === LOGIKA VERTIKAL (MOBILE) ===
                     const yOffsetStep = 50;
                     const scaleStep = 0.05;
                     const maxVisibleCards = 3;
@@ -139,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         newTransform = `translateX(0px) translateY(${yOffset}px) scale(${scale}) rotate(0deg)`;
                     }
                 } else {
-                    // === LOGIKA HORIZONTAL (DESKTOP) ===
                     if (index === 0) {
                         newTransform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
                     } else {
@@ -204,7 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 cards.forEach(card => {
                     let currentIndex = parseInt(card.dataset.index);
-                    card.dataset.index = (currentIndex + 1) % cards.length;
+                    // --- PERUBAHAN DI SINI: Arah putaran kartu dibalik ---
+                    card.dataset.index = (currentIndex - 1 + cards.length) % cards.length;
                 });
 
                 if (topCard) {
@@ -220,7 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         stackContainer.addEventListener('click', cycleCards);
         
-        // Tambahkan event listener untuk resize agar efek berubah saat ukuran window diubah
         window.addEventListener('resize', updateCardPositions);
 
         const observer = new MutationObserver((mutationsList) => {
