@@ -114,20 +114,23 @@ if ('IntersectionObserver' in window) {
                 let newOpacity = 1;
                 let newZIndex = cards.length - index;
 
-                // Logika baru untuk menampilkan kartu di belakang
+                // ===================================================================
+                // PERUBAHAN UTAMA DI SINI: Menambahkan rotasi pada kartu belakang
+                // ===================================================================
                 if (index === 0) { // Kartu paling depan
-                    newTransform = 'translateY(0) scale(1)';
-                } else if (index === 1) { // Kartu pertama di belakang
-                    newTransform = 'translateY(20px) scale(0.95)';
+                    newTransform = 'translateY(0) scale(1) rotate(0deg)';
+                } else if (index < 3) { // Kartu di belakang yang akan terlihat (maksimal 2)
+                    const yOffset = index * 10;
+                    const scale = 1 - (index * 0.05);
+                    const angle = index * 4; // Kartu ke-2 berputar 4 derajat, kartu ke-3 berputar 8 derajat
+                    newTransform = `translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
                     newOpacity = 1;
-                } else if (index === 2) { // Kartu kedua di belakang
-                    newTransform = 'translateY(40px) scale(0.9)';
-                    newOpacity = 1;
-                } else { // Kartu tersembunyi
-                    newTransform = 'translateY(60px) scale(0.85)';
+                } else { // Kartu yang tersembunyi
+                    newTransform = 'translateY(30px) scale(0.85) rotate(8deg)';
                     newOpacity = 0;
                 }
                 
+                // Animasi saat kartu keluar
                 if (card.classList.contains('exiting')) {
                     newTransform = 'translateX(150%) rotate(15deg) scale(0.8)';
                     newOpacity = 0;
