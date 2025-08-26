@@ -101,109 +101,103 @@ if ('IntersectionObserver' in window) {
         });
     }
 
-// ===== KODE BARU & PERBAIKAN UNTUK Tumpukan Kartu (Stacked Card) =====
-const stackContainer = document.getElementById('featured-grid-container'); // 1. Cari ID yang benar
+    const stackContainer = document.getElementById('featured-grid-container');
 
-if (stackContainer) {
-    let cards = [];
-    let isAnimating = false;
+    if (stackContainer) {
+        let cards = [];
+        let isAnimating = false;
 
-    // Fungsi untuk mengatur ulang posisi semua kartu berdasarkan data-index mereka
-    const updateCardPositions = () => {
-        cards.forEach((card) => {
-            const index = parseInt(card.dataset.index);
-            let newTransform = '';
-            let newOpacity = 1;
-            let newZIndex = cards.length - index;
+        const updateCardPositions = () => {
+            cards.forEach((card) => {
+                const index = parseInt(card.dataset.index);
+                let newTransform = '';
+                let newOpacity = 1;
+                let newZIndex = cards.length - index;
 
-            // Atur posisi dan skala kartu berdasarkan urutannya
-            if (index === 0) { // Kartu paling depan
-                newTransform = 'translateY(0) scale(1)';
-            } else if (index < 3) { // Kartu di belakang yang masih terlihat
-                newTransform = `translateY(${index * 20}px) scale(${1 - index * 0.05})`;
-            } else { // Kartu yang tersembunyi jauh di belakang
-                newTransform = `translateY(${2 * 20}px) scale(${1 - 2 * 0.05})`;
-                newOpacity = 0;
-            }
-            
-            // Tambahkan animasi "keluar" jika kartu memiliki kelas 'exiting'
-            if (card.classList.contains('exiting')) {
-                newTransform = 'translateX(150%) rotate(15deg) scale(0.8)';
-                newOpacity = 0;
-            }
-
-            card.style.transform = newTransform;
-            card.style.opacity = newOpacity;
-            card.style.zIndex = newZIndex;
-        });
-    };
-
-    // Fungsi untuk menginisialisasi tumpukan saat kartu sudah dimuat
-    const initializeStack = () => {
-        // 2. Tambahkan class yang diperlukan ke container secara dinamis
-        stackContainer.classList.add('card-stack');
-        stackContainer.classList.remove('template-grid'); // Hapus class grid lama jika ada
-
-        cards = Array.from(stackContainer.children);
-        cards.forEach((card, index) => {
-            card.dataset.index = index;
-            card.classList.remove('featured-card'); // Hapus class lama dari kartu
-            card.classList.add('card-stack-item'); // Tambah class baru untuk kartu
-            
-            // Logika untuk memindahkan konten dari wrapper agar selalu terlihat
-            const descriptionWrapper = card.querySelector('.featured-card-description-wrapper');
-            if (descriptionWrapper) {
-                const contentDiv = card.querySelector('.featured-card-content');
-                // Pindahkan semua elemen dari dalam wrapper ke contentDiv
-                while (descriptionWrapper.firstChild) {
-                    contentDiv.appendChild(descriptionWrapper.firstChild);
+                // Logika baru untuk menampilkan kartu di belakang
+                if (index === 0) { // Kartu paling depan
+                    newTransform = 'translateY(0) scale(1)';
+                } else if (index === 1) { // Kartu pertama di belakang
+                    newTransform = 'translateY(20px) scale(0.95)';
+                    newOpacity = 1;
+                } else if (index === 2) { // Kartu kedua di belakang
+                    newTransform = 'translateY(40px) scale(0.9)';
+                    newOpacity = 1;
+                } else { // Kartu tersembunyi
+                    newTransform = 'translateY(60px) scale(0.85)';
+                    newOpacity = 0;
                 }
-                descriptionWrapper.remove(); // Hapus wrapper yang sudah kosong
-            }
-        });
-        updateCardPositions(); // Terapkan posisi awal
-    };
+                
+                if (card.classList.contains('exiting')) {
+                    newTransform = 'translateX(150%) rotate(15deg) scale(0.8)';
+                    newOpacity = 0;
+                }
 
-    // 3. Fungsi cycleCards yang sudah diperbaiki
-    const cycleCards = () => {
-        if (isAnimating || cards.length === 0) return;
-        isAnimating = true;
+                card.style.transform = newTransform;
+                card.style.opacity = newOpacity;
+                card.style.zIndex = newZIndex;
+            });
+        };
 
-        const topCard = cards.find(card => card.dataset.index === '0');
-        if (topCard) {
-            topCard.classList.add('exiting');
-        }
+        const initializeStack = () => {
+            stackContainer.classList.add('card-stack');
+            stackContainer.classList.remove('template-grid');
 
-        cards.forEach(card => {
-            let currentIndex = parseInt(card.dataset.index);
-            card.dataset.index = (currentIndex - 1 + cards.length) % cards.length;
-        });
-
-        updateCardPositions();
-
-        setTimeout(() => {
-            if (topCard) {
-                topCard.classList.remove('exiting');
-            }
-            // Tidak perlu memindahkan elemen DOM, cukup update posisinya
+            cards = Array.from(stackContainer.children);
+            cards.forEach((card, index) => {
+                card.dataset.index = index;
+                card.classList.remove('featured-card');
+                card.classList.add('card-stack-item');
+                
+                const descriptionWrapper = card.querySelector('.featured-card-description-wrapper');
+                if (descriptionWrapper) {
+                    const contentDiv = card.querySelector('.featured-card-content');
+                    while (descriptionWrapper.firstChild) {
+                        contentDiv.appendChild(descriptionWrapper.firstChild);
+                    }
+                    descriptionWrapper.remove();
+                }
+            });
             updateCardPositions();
-            isAnimating = false;
-        }, 500); // Harus sama dengan durasi transisi di CSS
-    };
+        };
 
-    stackContainer.addEventListener('click', cycleCards);
-    
-    // MutationObserver tetap digunakan untuk mendeteksi kapan kartu selesai dimuat
-    const observer = new MutationObserver((mutationsList) => {
-        for(const mutation of mutationsList) {
-            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                initializeStack();
-                observer.disconnect();
-                break;
+        const cycleCards = () => {
+            if (isAnimating || cards.length === 0) return;
+            isAnimating = true;
+
+            const topCard = cards.find(card => card.dataset.index === '0');
+            if (topCard) {
+                topCard.classList.add('exiting');
             }
-        }
-    });
 
-    observer.observe(stackContainer, { childList: true });
-}
+            cards.forEach(card => {
+                let currentIndex = parseInt(card.dataset.index);
+                card.dataset.index = (currentIndex - 1 + cards.length) % cards.length;
+            });
+
+            updateCardPositions();
+
+            setTimeout(() => {
+                if (topCard) {
+                    topCard.classList.remove('exiting');
+                }
+                updateCardPositions();
+                isAnimating = false;
+            }, 500);
+        };
+
+        stackContainer.addEventListener('click', cycleCards);
+        
+        const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    initializeStack();
+                    observer.disconnect();
+                    break;
+                }
+            }
+        });
+
+        observer.observe(stackContainer, { childList: true });
+    }
 });
