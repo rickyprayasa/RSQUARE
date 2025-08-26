@@ -892,3 +892,87 @@ body {
     0% { background-position: 0% 50%; }
     100% { background-position: 400% 50%; }
 }
+
+/* === GAYA BARU: Tumpukan Kartu Interaktif === */
+
+/* Wrapper untuk menjaga posisi stack tetap di tengah */
+.card-stack-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 550px; /* Beri ruang yang cukup untuk stack dan animasinya */
+}
+
+/* Kontainer utama untuk tumpukan kartu */
+.card-stack {
+    position: relative;
+    width: 350px;  /* Lebar kartu utama */
+    height: 450px; /* Tinggi kartu utama */
+    cursor: pointer;
+    perspective: 1000px; /* Diperlukan untuk efek 3D saat transisi */
+}
+
+/* Gaya dasar untuk setiap kartu dalam tumpukan */
+.card-stack-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 1rem; /* 16px */
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* Durasi transisi 0.5s */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    user-select: none; /* Mencegah seleksi teks saat diklik berulang kali */
+    -webkit-user-select: none;
+}
+
+/* Menjaga gaya gambar di dalam kartu */
+.card-stack-item .featured-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+    flex-shrink: 0;
+}
+
+/* Menjaga gaya konten teks di dalam kartu */
+.card-stack-item .featured-card-content {
+    padding: 1.5rem; /* 24px */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Memastikan konten mengisi ruang yang tersedia */
+}
+
+.card-stack-item .featured-card-content h3 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 0.5rem; /* 8px */
+}
+
+.card-stack-item .featured-card-content .label {
+    font-size: 0.8rem; /* ~13px */
+    color: #2563EB;
+    font-weight: 600;
+    margin-bottom: 0.5rem; /* 8px */
+    display: block;
+}
+
+.card-stack-item .featured-card-content .featured-card-description {
+    font-size: 0.95rem; /* ~15px */
+    color: #4B5563;
+    margin-bottom: 1rem; /* 16px */
+    flex-grow: 1; /* Mendorong tombol ke bawah */
+}
+
+/* Tombol akan otomatis menggunakan style yang sudah ada */
+.card-stack-item .btn-primary-small {
+    align-self: flex-start; /* Tombol rata kiri */
+}
