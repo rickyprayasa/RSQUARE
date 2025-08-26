@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const allCardsHTML = productsInOrder.map(product => {
             const priceDisplay = product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`;
-            const detailLink = `content/template-detail.html?product=${product.id}`;
+            const detailLink = `/${product.id}`;
             const correctImagePath = `content/produk/${product.gambar_thumbnail}`;
             
             return `

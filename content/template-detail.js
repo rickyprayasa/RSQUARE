@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Dapatkan ID produk dari URL
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('product');
+        // 1. Dapatkan ID produk dari URL path
+    // Ambil path dari URL, contoh: "/goal-planner" atau "/preview/goal-planner"
+    const path = window.location.pathname; 
+    // Ambil bagian terakhir dari path sebagai ID produk
+    const productId = path.substring(path.lastIndexOf('/') + 1);
 
     const container = document.getElementById('product-detail-container');
 
@@ -80,8 +82,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="flex flex-col items-center gap-2">
                             <div class="w-full group perspective-container">
                                 <div id="image-container" class="card rounded-xl p-4 w-full md:max-w-3xl h-auto relative transition-transform duration-500 ease-in-out group-hover:rotate-y-3 group-hover:-rotate-x-2 group-hover:scale-105">
-                                    <a href="produk/${product.detail.gambar_utama}" class="cursor-zoom-in">
-                                        <img id="product-image" src="produk/${product.detail.gambar_utama}" alt="Tampilan Utama ${product.judul}" class="rounded-lg w-full shadow-lg">
+                                    <a href="/content/produk/${product.detail.gambar_utama}" class="cursor-zoom-in">
+                                        <img id="product-image" src="/content/produk/${product.detail.gambar_utama}" alt="Tampilan Utama ${product.judul}" class="rounded-lg w-full shadow-lg">
                                     </a>
                                 </div>
                             </div>
@@ -95,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <div class="space-y-4">
                                     ${allActionButtonsHTML}
                                     <hr class="border-gray-300">
-                                    <a href="template-preview.html?product=${product.id}" class="btn-secondary-animated-border flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
+                                    <a href="/preview/${product.id}" class="btn-secondary-animated-border flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold">
                                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                         Lihat Preview Detail
                                     </a>

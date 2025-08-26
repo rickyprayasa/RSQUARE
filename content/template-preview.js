@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('preview-container');
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('product');
+   // 1. Dapatkan ID produk dari URL path
+    // Ambil path dari URL, contoh: "/goal-planner" atau "/preview/goal-planner"
+    const path = window.location.pathname; 
+    // Ambil bagian terakhir dari path sebagai ID produk
+    const productId = path.substring(path.lastIndexOf('/') + 1);
 
     if (!productId) {
         container.innerHTML = `<div class="container mx-auto text-center py-40"><h1 class="text-3xl font-bold">Halaman Tidak Ditemukan</h1></div>`;
@@ -49,8 +52,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return `
                 <div class="flex flex-col items-center gap-6">
                     <div class="card rounded-xl p-4 w-full md:max-w-3xl">
-                        <a href="produk/${item.gambar}" class="zoomable-image cursor-zoom-in">
-                            <img src="produk/${item.gambar}" alt="${item.judul}" class="rounded-lg w-full shadow-lg">
+                        <a href="/content/produk/${item.gambar}" class="zoomable-image cursor-zoom-in">
+                            <img src="/content/produk/${item.gambar}" alt="${item.judul}" class="rounded-lg w-full shadow-lg">
                         </a>
                     </div>
                     <div class="text-center md:text-left max-w-2xl">
@@ -113,7 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ${allActionButtonsHTML}
                     </div>
                     <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
-                        <a href="template-detail.html?product=${product.id}" class="text-gray-500 hover:text-orange-600 font-semibold transition">← Kembali ke Ringkasan</a>
+                        <a href="/${product.id}" class="text-gray-500 hover:text-orange-600 font-semibold transition">← Kembali ke Ringkasan</a>
                         <a href="../templates.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">Lihat Semua Template →</a>
                     </div>
                 </section>`;
