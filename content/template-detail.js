@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="flex flex-col items-center gap-2">
                             <div class="w-full group perspective-container">
                                 <div id="image-container" class="card rounded-xl p-4 w-full md:max-w-3xl h-auto relative transition-transform duration-500 ease-in-out group-hover:rotate-y-3 group-hover:-rotate-x-2 group-hover:scale-105">
-                                    <a href="produk/${product.detail.gambar_utama}" class="cursor-zoom-in">
-                                        <img id="product-image" src="produk/${product.detail.gambar_utama}" alt="Tampilan Utama ${product.judul}" class="rounded-lg w-full shadow-lg">
+                                    <a href="/content/produk/${product.detail.gambar_utama}" class="cursor-zoom-in">
+                                        <img id="product-image" src="/content/produk/${product.detail.gambar_utama}" alt="Tampilan Utama ${product.judul}" class="rounded-lg w-full shadow-lg">
                                     </a>
                                 </div>
                             </div>
