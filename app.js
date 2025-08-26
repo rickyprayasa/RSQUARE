@@ -85,12 +85,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ===== KODE FINAL UNTUK Tumpukan Kartu (Stacked Card) =====
+   // ===== KODE FINAL UNTUK Tumpukan Kartu dengan Tinggi Otomatis =====
     const stackContainer = document.getElementById('featured-grid-container');
 
     if (stackContainer) {
         let cards = [];
         let isAnimating = false;
+
+        const setContainerHeight = () => {
+            const frontCard = cards.find(card => card.dataset.index === '0');
+            if (frontCard) {
+                stackContainer.style.height = `${frontCard.scrollHeight}px`;
+            }
+        };
 
         const updateCardPositions = () => {
             cards.forEach((card) => {
@@ -116,12 +123,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.zIndex = newZIndex;
                 card.style.opacity = (index < 3) ? '1' : '0';
             });
+            setContainerHeight();
         };
 
         const initializeStack = () => {
+            // =================================================================
+            // INI BARIS YANG HILANG DAN SEKARANG DITAMBAHKAN KEMBALI
             stackContainer.classList.add('card-stack');
+            // =================================================================
+            
             stackContainer.classList.remove('template-grid');
-
+            
             cards = Array.from(stackContainer.children);
             cards.forEach((card, index) => {
                 card.dataset.index = index;
@@ -163,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     isAnimating = false;
                 }, 500);
-
             }, 50);
         };
 
