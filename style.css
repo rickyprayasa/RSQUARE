@@ -971,3 +971,17 @@ body {
 .card-stack-item .btn-primary-small {
     align-self: center;
 }
+
+/* Efek Hover untuk Kartu di Tumpukan */
+.card-stack-item:not([data-index="0"]):hover {
+    transform: translateY(-5px) scale(1.02); /* Sedikit terangkat dan membesar */
+    box-shadow: 0 15px 30px -5px rgba(249, 115, 22, 0.3); /* Bayangan lebih kuat */
+    z-index: 100; /* Pastikan kartu yang di-hover berada di atas */
+}
+
+/* Transisi untuk efek hover agar mulus */
+.card-stack-item {
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-out, z-index 0s ease 0.3s;
+    /* Durasi z-index 0s dan delay 0.3s agar tidak berkedip saat hover */
+}
+
