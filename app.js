@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-   // ===== KODE FINAL UNTUK Tumpukan Kartu dengan Tinggi Otomatis =====
+    // ===== KODE FINAL UNTUK Tumpukan Kartu dengan Tinggi Otomatis =====
     const stackContainer = document.getElementById('featured-grid-container');
 
     if (stackContainer) {
@@ -127,11 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const initializeStack = () => {
-            // =================================================================
-            // INI BARIS YANG HILANG DAN SEKARANG DITAMBAHKAN KEMBALI
             stackContainer.classList.add('card-stack');
-            // =================================================================
-            
             stackContainer.classList.remove('template-grid');
             
             cards = Array.from(stackContainer.children);
@@ -147,6 +143,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         contentDiv.appendChild(descriptionWrapper.firstChild);
                     }
                     descriptionWrapper.remove();
+                }
+
+                // ===================================================================
+                // PERUBAHAN DI SINI: Mencegah kartu bergeser saat tombol diklik
+                // ===================================================================
+                const templateButton = card.querySelector('a'); // Cari link/tombol di dalam kartu
+                if (templateButton) {
+                    templateButton.addEventListener('click', (event) => {
+                        // Hentikan event 'click' agar tidak "naik" ke container kartu
+                        event.stopPropagation();
+                    });
                 }
             });
             updateCardPositions();
