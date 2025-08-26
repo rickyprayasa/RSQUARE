@@ -1,37 +1,10 @@
-# File: netlify.toml
-
-# Konfigurasi untuk proses build
 [build]
-  command = "node scripts/generate-product-index.js"
-  publish = "."
-  functions = "netlify/functions"
+  # Perintah ini akan dieksekusi oleh Netlify setiap kali build
+  # "node scripts/generate-product-index.js" akan menjalankan skrip yang baru kita buat
+   command = "node scripts/generate-product-index.js"
 
-# ===================================================================
-# Aturan untuk URL DETAIL PRODUK (/perencanaan-acara)
-# ===================================================================
-[[redirects]]
-  from = "/:slug"
-  to = "/content/template-detail.html?product=:slug"
-  status = 200
-
-[[redirects]]
-  from = "/content/template-detail.html"
-  to = "/:product"
-  status = 301
-  query = {product = ":product"}
-  force = true
-
-# ===================================================================
-# Aturan untuk URL PREVIEW PRODUK (/preview/perencanaan-acara)
-# ===================================================================
-[[redirects]]
-  from = "/preview/:slug"
-  to = "/content/template-preview.html?product=:slug"
-  status = 200
-
-[[redirects]]
-  from = "/content/template-preview.html"
-  to = "/preview/:product"
-  status = 301
-  query = {product = ":product"}
-  force = true
+  # Direktori yang akan dipublikasikan setelah build selesai.
+  # Untuk situs statis sederhana, biasanya adalah direktori root (.).
+  # Jika Anda memiliki folder output lain seperti "dist" atau "public", ganti "." dengan nama folder tersebut.
+  publish = "."
+  functions = "netlify/functions"
