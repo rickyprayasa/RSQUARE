@@ -91,23 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // =================================================================
     const setupCardStack = (containerId) => {
         const stackContainer = document.getElementById(containerId);
-        if (!stackContainer) return; // Hentikan jika kontainer tidak ditemukan
-
+        if (!stackContainer) return;
 
         let cards = [];
         let isAnimating = false;
 
+        // --- PERUBAHAN 1: Penyesuaian Tinggi Kontainer ---
+        // Fungsi ini diubah agar tinggi kontainer menyesuaikan tumpukan vertikal
         const setContainerHeight = () => {
             const frontCard = cards.find(card => card.dataset.index === '0');
             if (frontCard) {
-                stackContainer.style.height = `${frontCard.scrollHeight}px`;
+                const isMobile = window.innerWidth < 768;
+                const yOffsetValue = isMobile ? 15 : 20;
+                // Tinggi kontainer = tinggi 1 kartu + (jarak per kartu * 2 kartu di belakang)
+                const totalHeight = frontCard.scrollHeight + (yOffsetValue * 2);
+                stackContainer.style.height = `${totalHeight}px`;
             }
         };
 
-        // ✅ INI BAGIAN YANG DIPERBARUI
+        // --- PERUBAHAN 2: Logika Posisi Kartu menjadi Vertikal ---
+        // Fungsi ini diubah total untuk menciptakan tumpukan vertikal
         const updateCardPositions = () => {
-            // Mendeteksi ukuran layar untuk penyesuaian mobile
-            const isMobile = window.innerWidth < 768; 
+            const isMobile = window.innerWidth < 768;
 
             cards.forEach((card) => {
                 const index = parseInt(card.dataset.index);
@@ -115,23 +120,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 let newZIndex = cards.length - index;
 
                 if (index === 0) {
-                    newTransform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
+                    // Kartu paling depan posisinya normal
+                    newTransform = 'translateX(0) translateY(0) scale(1) rotate(0deg)';
                 } else {
-                    // Menggunakan nilai yang lebih kecil untuk mobile agar tumpukan lebih rapat
-                    const xOffset = index * (isMobile ? 15 : 40); 
-                    const yOffset = index * (isMobile ? -10 : -15);
-                    const scale = 1 - (index * 0.05);
-                    const angle = index * (isMobile ? 3 : 5);
-                    newTransform = `translateX(${xOffset}px) translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
+                    // Kartu di belakangnya digeser ke BAWAH (translateY positif)
+                    const yOffset = index * (isMobile ? 15 : 20); // Jarak vertikal antar kartu
+                    const scale = 1 - (index * 0.05); // Semakin ke belakang semakin kecil
+                    
+                    // xOffset (geser ke samping) dan angle (rotasi) dibuat 0
+                    newTransform = `translateX(0px) translateY(${yOffset}px) scale(${scale}) rotate(0deg)`;
                 }
                 
                 if (card.classList.contains('exiting')) {
+                    // Animasi keluar tetap sama
                     newTransform = 'translateX(-150%) rotate(-20deg) scale(0.8)';
                 }
 
                 card.style.transform = newTransform;
                 card.style.zIndex = newZIndex;
-                card.style.opacity = (index < 3) ? '1' : '0';
+                card.style.opacity = (index < 3) ? '1' : '0'; // Hanya 3 kartu teratas yang terlihat
             });
             setContainerHeight();
         };
@@ -193,12 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         stackContainer.addEventListener('click', cycleCards);
         
-        // Gunakan MutationObserver untuk menunggu konten dimuat oleh featured-templates.js
         const observer = new MutationObserver((mutationsList) => {
             for (const mutation of mutationsList) {
                 if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
                     initializeStack();
-                    observer.disconnect(); // Hentikan pengamatan setelah inisialisasi
+                    observer.disconnect();
                     break;
                 }
             }
