@@ -8,9 +8,9 @@
 async function loadFreeProducts() {
     const container = document.getElementById('free-grid-container');
     // Ambil juga elemen section untuk menampilkannya jika ada produk
-    const section = document.querySelector('#free-grid-container').closest('.template-section');
+    //const section = document.querySelector('#free-grid-container').closest('.template-section');
 
-    if (!container || !section) return;
+    if (!container) return;
 
     try {
         // 1. Ambil daftar semua file produk dari _index.json
@@ -41,7 +41,7 @@ async function loadFreeProducts() {
         }
 
         // Jika ada produk gratis, tampilkan section-nya
-        section.style.display = 'block';
+        //section.style.display = 'block';
 
         // 4. Buat HTML untuk setiap kartu gratis
         const cardsHTML = freeProducts.map(product => {
