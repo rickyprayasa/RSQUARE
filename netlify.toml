@@ -1,10 +1,30 @@
-[build]
-  # Perintah ini akan dieksekusi oleh Netlify setiap kali build
-  # "node scripts/generate-product-index.js" akan menjalankan skrip yang baru kita buat
-   command = "node scripts/generate-product-index.js"
 
-  # Direktori yang akan dipublikasikan setelah build selesai.
-  # Untuk situs statis sederhana, biasanya adalah direktori root (.).
-  # Jika Anda memiliki folder output lain seperti "dist" atau "public", ganti "." dengan nama folder tersebut.
+# File: netlify.toml
+[build]
+  command = "node scripts/generate-product-index.js"
   publish = "."
   functions = "netlify/functions"
+
+[[redirects]]
+  from = "/:slug"
+  to = "/content/template-detail.html?product=:slug"
+  status = 200
+
+[[redirects]]
+  from = "/content/template-detail.html"
+  to = "/:product"
+  status = 301
+  query = {product = ":product"}
+  force = true
+
+[[redirects]]
+  from = "/preview/:slug"
+  to = "/content/template-preview.html?product=:slug"
+  status = 200
+
+[[redirects]]
+  from = "/content/template-preview.html"
+  to = "/preview/:product"
+  status = 301
+  query = {product = ":product"}
+  force = true
