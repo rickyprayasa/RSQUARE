@@ -911,11 +911,11 @@ body {
 }
 
 .card-stack-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    /* Menumpuk semua kartu di satu tempat yang sama */
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+
+    /* Properti lain tetap sama */
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2);
