@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ${allActionButtonsHTML}
                     </div>
                     <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
-                        <a href="template-detail.html?product=${product.id}" class="text-gray-500 hover:text-orange-600 font-semibold transition">← Kembali ke Ringkasan</a>
+                        <a href="${product.id}" class="text-gray-500 hover:text-orange-600 font-semibold transition">← Kembali ke Ringkasan</a>
                         <a href="../templates.html" class="text-gray-500 hover:text-orange-600 font-semibold transition">Lihat Semua Template →</a>
                     </div>
                 </section>`;
