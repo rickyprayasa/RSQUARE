@@ -85,10 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ===== KODE FINAL UNTUK Tumpukan Kartu dengan Tinggi Otomatis =====
-    const stackContainer = document.getElementById('featured-grid-container');
 
-    if (stackContainer) {
+    // =================================================================
+    // === FUNGSI BARU UNTUK MEMBUAT EFEK TUMPUKAN KARTU (BISA DIPAKAI ULANG) ===
+    // =================================================================
+    const setupCardStack = (containerId) => {
+        const stackContainer = document.getElementById(containerId);
+        if (!stackContainer) return; // Hentikan jika kontainer tidak ditemukan
+
+
         let cards = [];
         let isAnimating = false;
 
@@ -187,16 +192,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         stackContainer.addEventListener('click', cycleCards);
         
+        // Gunakan MutationObserver untuk menunggu konten dimuat oleh featured-templates.js
         const observer = new MutationObserver((mutationsList) => {
             for (const mutation of mutationsList) {
                 if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
                     initializeStack();
-                    observer.disconnect();
+                    observer.disconnect(); // Hentikan pengamatan setelah inisialisasi
                     break;
                 }
             }
         });
 
         observer.observe(stackContainer, { childList: true });
-    }
+    };
+
+    // --- PANGGIL FUNGSI UNTUK SETIAP BAGIAN ---
+    setupCardStack('featured-grid-container'); // Untuk produk unggulan
+    setupCardStack('free-grid-container');      // Untuk produk gratis
 });
