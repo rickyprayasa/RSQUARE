@@ -96,21 +96,17 @@ document.addEventListener('DOMContentLoaded', () => {
         let cards = [];
         let isAnimating = false;
 
-        // --- PERUBAHAN 1: Penyesuaian Tinggi Kontainer ---
-        // Fungsi ini diubah agar tinggi kontainer menyesuaikan tumpukan vertikal
         const setContainerHeight = () => {
             const frontCard = cards.find(card => card.dataset.index === '0');
             if (frontCard) {
                 const isMobile = window.innerWidth < 768;
-                const yOffsetValue = isMobile ? 15 : 20;
-                // Tinggi kontainer = tinggi 1 kartu + (jarak per kartu * 2 kartu di belakang)
+                // --- PERUBAHAN DI SINI: Nilai jarak disamakan dengan di bawah ---
+                const yOffsetValue = isMobile ? 80 : 90; // <-- NILAI DIPERBESAR
                 const totalHeight = frontCard.scrollHeight + (yOffsetValue * 2);
                 stackContainer.style.height = `${totalHeight}px`;
             }
         };
 
-        // --- PERUBAHAN 2: Logika Posisi Kartu menjadi Vertikal ---
-        // Fungsi ini diubah total untuk menciptakan tumpukan vertikal
         const updateCardPositions = () => {
             const isMobile = window.innerWidth < 768;
 
@@ -120,25 +116,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 let newZIndex = cards.length - index;
 
                 if (index === 0) {
-                    // Kartu paling depan posisinya normal
                     newTransform = 'translateX(0) translateY(0) scale(1) rotate(0deg)';
                 } else {
-                    // Kartu di belakangnya digeser ke BAWAH (translateY positif)
-                    const yOffset = index * (isMobile ? 15 : 20); // Jarak vertikal antar kartu
-                    const scale = 1 - (index * 0.05); // Semakin ke belakang semakin kecil
-                    
-                    // xOffset (geser ke samping) dan angle (rotasi) dibuat 0
+                    // --- PERUBAHAN DI SINI: Jarak vertikal diperbesar ---
+                    const yOffset = index * (isMobile ? 80 : 90); // <-- NILAI DIPERBESAR
+                    const scale = 1 - (index * 0.05);
                     newTransform = `translateX(0px) translateY(${yOffset}px) scale(${scale}) rotate(0deg)`;
                 }
                 
                 if (card.classList.contains('exiting')) {
-                    // Animasi keluar tetap sama
                     newTransform = 'translateX(-150%) rotate(-20deg) scale(0.8)';
                 }
 
                 card.style.transform = newTransform;
                 card.style.zIndex = newZIndex;
-                card.style.opacity = (index < 3) ? '1' : '0'; // Hanya 3 kartu teratas yang terlihat
+                card.style.opacity = (index < 3) ? '1' : '0';
             });
             setContainerHeight();
         };
