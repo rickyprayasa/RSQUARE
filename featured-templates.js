@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <span class="label">★ Template Unggulan</span>
                         <h3>🎯 ${product.judul}</h3>
                         <div class="featured-card-description-wrapper">
-                            <p class="featured-card-description">${product.deskripsi_singkat}</p>
                             <a href="${detailLink}" class="btn-primary-small">Lihat Template</a>
                         </div>
                     </div>
