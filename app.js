@@ -111,34 +111,30 @@ if ('IntersectionObserver' in window) {
             cards.forEach((card) => {
                 const index = parseInt(card.dataset.index);
                 let newTransform = '';
-                let newOpacity = 1;
                 let newZIndex = cards.length - index;
 
                 // ===================================================================
-                // PERUBAHAN UTAMA DI SINI: Menambahkan rotasi pada kartu belakang
+                // LOGIKA TRANSFORMASI BARU: Menjamin kartu belakang terlihat
                 // ===================================================================
                 if (index === 0) { // Kartu paling depan
-                    newTransform = 'translateY(0) scale(1) rotate(0deg)';
-                } else if (index < 3) { // Kartu di belakang yang akan terlihat (maksimal 2)
-                    const yOffset = index * 10;
+                    newTransform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
+                } else { // Semua kartu di belakang
+                    const xOffset = index * 20; // Geser ke kanan
+                    const yOffset = index * -10; // Geser sedikit ke atas
                     const scale = 1 - (index * 0.05);
-                    const angle = index * 4; // Kartu ke-2 berputar 4 derajat, kartu ke-3 berputar 8 derajat
-                    newTransform = `translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
-                    newOpacity = 1;
-                } else { // Kartu yang tersembunyi
-                    newTransform = 'translateY(30px) scale(0.85) rotate(8deg)';
-                    newOpacity = 0;
+                    const angle = index * 3; // Putar sedikit
+                    newTransform = `translateX(${xOffset}px) translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
                 }
                 
-                // Animasi saat kartu keluar
+                // Animasi saat kartu keluar (dibuang ke kiri)
                 if (card.classList.contains('exiting')) {
-                    newTransform = 'translateX(150%) rotate(15deg) scale(0.8)';
-                    newOpacity = 0;
+                    newTransform = 'translateX(-150%) rotate(-20deg) scale(0.8)';
                 }
 
                 card.style.transform = newTransform;
-                card.style.opacity = newOpacity;
                 card.style.zIndex = newZIndex;
+                // Atur opacity berdasarkan posisi (kartu ke-4 dst menghilang)
+                card.style.opacity = (index < 3) ? '1' : '0';
             });
         };
 
@@ -173,20 +169,24 @@ if ('IntersectionObserver' in window) {
                 topCard.classList.add('exiting');
             }
 
-            cards.forEach(card => {
-                let currentIndex = parseInt(card.dataset.index);
-                card.dataset.index = (currentIndex - 1 + cards.length) % cards.length;
-            });
-
-            updateCardPositions();
-
+            // Setelah animasi keluar dimulai, kita siapkan kartu untuk masuk
             setTimeout(() => {
+                cards.forEach(card => {
+                    let currentIndex = parseInt(card.dataset.index);
+                    card.dataset.index = (currentIndex + 1) % cards.length;
+                });
+
                 if (topCard) {
                     topCard.classList.remove('exiting');
                 }
                 updateCardPositions();
-                isAnimating = false;
-            }, 500);
+                
+                // Tunggu transisi selesai sebelum mengizinkan klik lagi
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 500);
+
+            }, 50); // Jeda singkat sebelum memulai transisi masuk
         };
 
         stackContainer.addEventListener('click', cycleCards);
