@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 3. Buat HTML untuk ditampilkan (tidak ada perubahan di bagian ini)
         const cardsHTML = featuredProducts.map(product => {
             const imagePath = `/content/produk/${product.gambar_thumbnail}`;
-            const detailLink = `/content/template-detail.html?product=${product.id}`;
+            const detailLink = `/${product.id}`;
             return `
                 <div class="featured-card">
                     <img src="${imagePath}" alt="${product.judul}" class="featured-card-image">
