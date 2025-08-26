@@ -209,4 +209,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         observer.observe(stackContainer, { childList: true });
     }
+}
 });
