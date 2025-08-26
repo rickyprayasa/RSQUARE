@@ -85,20 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ===== FUNGSI UNTUK FITUR ZOOM GAMBAR (LIGHTBOX) =====
-    // (Pastikan Anda memuat library basicLightbox jika menggunakan kode ini)
-    const zoomableImages = document.querySelectorAll('.zoomable-image');
-    if (zoomableImages.length > 0 && typeof basicLightbox !== 'undefined') {
-        zoomableImages.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const imageUrl = this.href;
-                basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
-            });
-        });
-    }
-
-    // ===== KODE FINAL UNTUK Tumpukan Kartu (Lebih Terbuka) =====
+    // ===== KODE FINAL UNTUK Tumpukan Kartu (Stacked Card) =====
     const stackContainer = document.getElementById('featured-grid-container');
 
     if (stackContainer) {
@@ -154,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const cycleCards = () => {
-            if (isAnimating || cards.length === 0) return;
+            if (isAnimating || cards.length < 2) return;
             isAnimating = true;
 
             const topCard = cards.find(card => card.dataset.index === '0');
@@ -194,5 +181,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         observer.observe(stackContainer, { childList: true });
     }
-    
-}); // Ini adalah penutup dari event listener utama
+});
