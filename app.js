@@ -1,40 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-// ===== KODE UNTUK MENU MOBILE (dengan Animasi Halus) =====
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-        // Cek jika menu sedang terbuka (punya max-height)
-        if (mobileMenu.style.maxHeight) {
-            mobileMenu.style.maxHeight = null; // Jika ya, tutup menu
-        } else {
-            // Jika tidak, buka menu setinggi kontennya
-            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
-        }
-    });
-}
-
-   // ===== 2. KODE UNTUK ANIMASI ON-SCROLL (Fade In & Staggered) =====
-// ===== KODE UNTUK ANIMASI ON-SCROLL (VERSI FINAL YANG BERSIH) =====
-const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-
-if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
+    // ===== KODE UNTUK MENU MOBILE (dengan Animasi Halus) =====
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+            if (mobileMenu.style.maxHeight) {
+                mobileMenu.style.maxHeight = null;
+            } else {
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
             }
         });
-    }, { threshold: 0.1 });
+    }
 
-    elementsToAnimate.forEach(element => {
-        observer.observe(element);
-    });
-}
+    // ===== KODE UNTUK ANIMASI ON-SCROLL =====
+    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        elementsToAnimate.forEach(element => {
+            observer.observe(element);
+        });
+    }
     
-    // ===== 3. FUNGSI UNTUK TOMBOL SCROLL TO TOP (STABIL) =====
+    // ===== FUNGSI UNTUK TOMBOL SCROLL TO TOP =====
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     if (scrollTopBtn) {
         window.addEventListener('scroll', () => {
@@ -49,7 +45,7 @@ if ('IntersectionObserver' in window) {
         });
     }
     
-    // ===== 4. FUNGSI UNTUK FAQ ACCORDION =====
+    // ===== FUNGSI UNTUK FAQ ACCORDION =====
     const accordion = document.getElementById('faq-accordion');
     if (accordion) {
         const questions = accordion.querySelectorAll('.faq-question');
@@ -77,7 +73,7 @@ if ('IntersectionObserver' in window) {
         });
     }
 
-    // ===== 5. FUNGSI UNTUK EFEK SOROTAN KURSOR (ILLUMINATED GLASS) =====
+    // ===== FUNGSI UNTUK EFEK SOROTAN KURSOR =====
     const interactiveElements = document.querySelectorAll('.btn-primary, .btn-secondary, .card-container');
     interactiveElements.forEach(element => {
         element.addEventListener('mousemove', e => {
@@ -89,7 +85,8 @@ if ('IntersectionObserver' in window) {
         });
     });
 
-    // ===== 6. FUNGSI UNTUK FITUR ZOOM GAMBAR (LIGHTBOX) =====
+    // ===== FUNGSI UNTUK FITUR ZOOM GAMBAR (LIGHTBOX) =====
+    // (Pastikan Anda memuat library basicLightbox jika menggunakan kode ini)
     const zoomableImages = document.querySelectorAll('.zoomable-image');
     if (zoomableImages.length > 0 && typeof basicLightbox !== 'undefined') {
         zoomableImages.forEach(link => {
@@ -101,11 +98,7 @@ if ('IntersectionObserver' in window) {
         });
     }
 
-// ===== KODE FINAL V3 UNTUK Tumpukan Kartu (Lebih Terbuka) =====
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // ... (kode JS Anda yang lain bisa diletakkan di sini) ...
-
+    // ===== KODE FINAL UNTUK Tumpukan Kartu (Lebih Terbuka) =====
     const stackContainer = document.getElementById('featured-grid-container');
 
     if (stackContainer) {
@@ -118,27 +111,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 let newTransform = '';
                 let newZIndex = cards.length - index;
 
-                // ===================================================================
-                // PERUBAHAN UTAMA: Nilai diubah agar kartu lebih terbuka
-                // ===================================================================
-                if (index === 0) { // Kartu paling depan
+                if (index === 0) {
                     newTransform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
-                } else { // Semua kartu di belakang
-                    const xOffset = index * 50;  // Pergeseran horizontal diperbesar
-                    const yOffset = index * -15; // Pergeseran vertikal disesuaikan
+                } else {
+                    const xOffset = index * 50;
+                    const yOffset = index * -15;
                     const scale = 1 - (index * 0.05);
-                    const angle = index * 5;   // Rotasi diperbesar
+                    const angle = index * 5;
                     newTransform = `translateX(${xOffset}px) translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
                 }
                 
-                // Animasi saat kartu keluar (dibuang ke kiri)
                 if (card.classList.contains('exiting')) {
                     newTransform = 'translateX(-150%) rotate(-20deg) scale(0.8)';
                 }
 
                 card.style.transform = newTransform;
                 card.style.zIndex = newZIndex;
-                // Atur opacity berdasarkan posisi (kartu ke-4 dst menghilang)
                 card.style.opacity = (index < 3) ? '1' : '0';
             });
         };
@@ -174,11 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 topCard.classList.add('exiting');
             }
 
-            // Setelah animasi keluar dimulai, kita siapkan kartu untuk masuk
             setTimeout(() => {
                 cards.forEach(card => {
                     let currentIndex = parseInt(card.dataset.index);
-                    // Logika diubah: kartu dari belakang maju ke depan
                     card.dataset.index = (currentIndex - 1 + cards.length) % cards.length;
                 });
 
@@ -187,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 updateCardPositions();
                 
-                // Tunggu transisi selesai sebelum mengizinkan klik lagi
                 setTimeout(() => {
                     isAnimating = false;
                 }, 500);
@@ -209,5 +194,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         observer.observe(stackContainer, { childList: true });
     }
-}
-});
+    
+}); // Ini adalah penutup dari event listener utama
