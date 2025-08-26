@@ -95,42 +95,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let cards = [];
         let isAnimating = false;
-
+        
         const setContainerHeight = () => {
             const frontCard = cards.find(card => card.dataset.index === '0');
             if (frontCard) {
                 const isMobile = window.innerWidth < 768;
-                // --- PERUBAHAN DI SINI: Nilai jarak disamakan dengan di bawah ---
-                const yOffsetValue = isMobile ? 80 : 90; // <-- NILAI DIPERBESAR
-                const totalHeight = frontCard.scrollHeight + (yOffsetValue * 2);
+                // Jarak antar kartu (header)
+                const yOffsetStep = isMobile ? 50 : 60; 
+                // Jumlah kartu yang terlihat di belakang kartu utama
+                const visibleBehindCount = 2; 
+                // Tinggi total = tinggi 1 kartu + (jarak * jumlah kartu di belakang)
+                const totalHeight = frontCard.scrollHeight + (yOffsetStep * visibleBehindCount);
                 stackContainer.style.height = `${totalHeight}px`;
             }
         };
 
+        // --- LOGIKA UTAMA DIPERBAIKI TOTAL ---
         const updateCardPositions = () => {
             const isMobile = window.innerWidth < 768;
+            const yOffsetStep = isMobile ? 50 : 60; // Jarak vertikal per kartu
+            const scaleStep = 0.05; // Pengurangan skala per kartu
+
+            // Jumlah kartu maksimal yang ditumpuk (misal: 3)
+            const maxVisibleCards = 3; 
 
             cards.forEach((card) => {
                 const index = parseInt(card.dataset.index);
+                
                 let newTransform = '';
+                // Z-index dibalik: kartu depan (index 0) paling atas
                 let newZIndex = cards.length - index;
 
-                if (index === 0) {
-                    newTransform = 'translateX(0) translateY(0) scale(1) rotate(0deg)';
+                if (index < maxVisibleCards) {
+                    // Kartu paling belakang (index 2) punya yOffset = 0
+                    // Kartu tengah (index 1) punya yOffset = 50px
+                    // Kartu depan (index 0) punya yOffset = 100px
+                    const yOffset = (maxVisibleCards - 1 - index) * yOffsetStep;
+
+                    // Kartu paling belakang (index 2) punya skala terkecil
+                    // Kartu depan (index 0) punya skala 1
+                    const scale = 1 - (index * scaleStep);
+
+                    newTransform = `translateX(0px) translateY(${yOffset}px) scale(${scale}) rotate(0deg)`;
                 } else {
-                    // --- PERUBAHAN DI SINI: Jarak vertikal diperbesar ---
-                    const yOffset = index * (isMobile ? 80 : 90); // <-- NILAI DIPERBESAR
-                    const scale = 1 - (index * 0.05);
+                    // Kartu lain (jika ada lebih dari 3) disembunyikan di posisi paling belakang
+                    const yOffset = (maxVisibleCards - 1) * yOffsetStep;
+                    const scale = 1 - ((maxVisibleCards - 1) * scaleStep);
                     newTransform = `translateX(0px) translateY(${yOffset}px) scale(${scale}) rotate(0deg)`;
                 }
-                
+
                 if (card.classList.contains('exiting')) {
-                    newTransform = 'translateX(-150%) rotate(-20deg) scale(0.8)';
+                    newTransform = 'translateX(150%) rotate(20deg) scale(0.8)'; // Animasi keluar diubah ke kanan
                 }
 
                 card.style.transform = newTransform;
                 card.style.zIndex = newZIndex;
-                card.style.opacity = (index < 3) ? '1' : '0';
+                // Atur opacity berdasarkan posisi, bukan hanya 3 kartu teratas
+                card.style.opacity = index < maxVisibleCards ? '1' : '0';
             });
             setContainerHeight();
         };
@@ -161,6 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             });
+            // Balik urutan array `cards` agar kartu pertama di HTML menjadi kartu depan (index 0)
+            cards.reverse();
+            cards.forEach((card, index) => card.dataset.index = index);
+
             updateCardPositions();
         };
 
