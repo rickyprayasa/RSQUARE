@@ -85,12 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
     // =================================================================
     // === FUNGSI BARU UNTUK MEMBUAT EFEK TUMPUKAN KARTU (BISA DIPAKAI ULANG) ===
     // =================================================================
     const setupCardStack = (containerId) => {
         const stackContainer = document.getElementById(containerId);
         if (!stackContainer) return; // Hentikan jika kontainer tidak ditemukan
+
 
         let cards = [];
         let isAnimating = false;
@@ -146,6 +148,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         contentDiv.appendChild(descriptionWrapper.firstChild);
                     }
                     descriptionWrapper.remove();
+                }
+
+                // ===================================================================
+                // PERUBAHAN DI SINI: Mencegah kartu bergeser saat tombol diklik
+                // ===================================================================
+                const templateButton = card.querySelector('a'); // Cari link/tombol di dalam kartu
+                if (templateButton) {
+                    templateButton.addEventListener('click', (event) => {
+                        // Hentikan event 'click' agar tidak "naik" ke container kartu
+                        event.stopPropagation();
+                    });
                 }
             });
             updateCardPositions();
