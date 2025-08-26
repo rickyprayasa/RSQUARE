@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =================================================================
-    // === FUNGSI TUMPUKAN KARTU (VERSI RESPONSIF) ===
+    // === FUNGSI TUMPUKAN KARTU (VERSI INTERAKTIF & RESPONSIF) ===
     // =================================================================
     const setupCardStack = (containerId) => {
         const stackContainer = document.getElementById(containerId);
@@ -156,6 +156,29 @@ document.addEventListener('DOMContentLoaded', () => {
             setContainerHeight();
         };
 
+        // --- FUNGSI BARU: Untuk memindahkan kartu yang dipilih ke depan ---
+        const bringCardToFront = (clickedCard) => {
+            if (isAnimating || clickedCard.dataset.index === '0') return;
+            isAnimating = true;
+
+            const clickedIndex = parseInt(clickedCard.dataset.index);
+
+            // Pindahkan kartu yang diklik ke awal array
+            const [movedCard] = cards.splice(clickedIndex, 1);
+            cards.unshift(movedCard);
+
+            // Atur ulang semua index data
+            cards.forEach((card, newIndex) => {
+                card.dataset.index = newIndex;
+            });
+
+            updateCardPositions();
+            
+            setTimeout(() => {
+                isAnimating = false;
+            }, 500); // Durasi harus cocok dengan transisi CSS
+        };
+        
         const initializeStack = () => {
             stackContainer.classList.add('card-stack');
             stackContainer.classList.remove('template-grid');
@@ -166,18 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.classList.remove('featured-card');
                 card.classList.add('card-stack-item');
                 
-                const descriptionWrapper = card.querySelector('.featured-card-description-wrapper');
-                if (descriptionWrapper) {
-                    const contentDiv = card.querySelector('.featured-card-content');
-                    while (descriptionWrapper.firstChild) {
-                        contentDiv.appendChild(descriptionWrapper.firstChild);
-                    }
-                    descriptionWrapper.remove();
-                }
+                // --- PERUBAHAN DI SINI: Event click ditambahkan ke setiap kartu ---
+                card.addEventListener('click', () => {
+                    bringCardToFront(card);
+                });
 
                 const templateButton = card.querySelector('a'); 
                 if (templateButton) {
                     templateButton.addEventListener('click', (event) => {
+                        // Mencegah event "naik" ke kartu saat tombol di dalam kartu diklik
                         event.stopPropagation();
                     });
                 }
@@ -186,35 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCardPositions();
         };
 
-        const cycleCards = () => {
-            if (isAnimating || cards.length < 2) return;
-            isAnimating = true;
+        // Hapus event listener lama dari kontainer
+        // stackContainer.removeEventListener('click', cycleCards);
 
-            const topCard = cards.find(card => card.dataset.index === '0');
-            if (topCard) {
-                topCard.classList.add('exiting');
-            }
-
-            setTimeout(() => {
-                cards.forEach(card => {
-                    let currentIndex = parseInt(card.dataset.index);
-                    // --- PERUBAHAN DI SINI: Arah putaran kartu dibalik ---
-                    card.dataset.index = (currentIndex - 1 + cards.length) % cards.length;
-                });
-
-                if (topCard) {
-                    topCard.classList.remove('exiting');
-                }
-                updateCardPositions();
-                
-                setTimeout(() => {
-                    isAnimating = false;
-                }, 500);
-            }, 50);
-        };
-
-        stackContainer.addEventListener('click', cycleCards);
-        
         window.addEventListener('resize', updateCardPositions);
 
         const observer = new MutationObserver((mutationsList) => {
