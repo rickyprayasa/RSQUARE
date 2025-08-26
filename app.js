@@ -101,6 +101,11 @@ if ('IntersectionObserver' in window) {
         });
     }
 
+// ===== KODE FINAL V3 UNTUK Tumpukan Kartu (Lebih Terbuka) =====
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // ... (kode JS Anda yang lain bisa diletakkan di sini) ...
+
     const stackContainer = document.getElementById('featured-grid-container');
 
     if (stackContainer) {
@@ -114,15 +119,15 @@ if ('IntersectionObserver' in window) {
                 let newZIndex = cards.length - index;
 
                 // ===================================================================
-                // LOGIKA TRANSFORMASI BARU: Menjamin kartu belakang terlihat
+                // PERUBAHAN UTAMA: Nilai diubah agar kartu lebih terbuka
                 // ===================================================================
                 if (index === 0) { // Kartu paling depan
                     newTransform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
                 } else { // Semua kartu di belakang
-                    const xOffset = index * 20; // Geser ke kanan
-                    const yOffset = index * -10; // Geser sedikit ke atas
+                    const xOffset = index * 50;  // Pergeseran horizontal diperbesar
+                    const yOffset = index * -15; // Pergeseran vertikal disesuaikan
                     const scale = 1 - (index * 0.05);
-                    const angle = index * 3; // Putar sedikit
+                    const angle = index * 5;   // Rotasi diperbesar
                     newTransform = `translateX(${xOffset}px) translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
                 }
                 
@@ -173,7 +178,8 @@ if ('IntersectionObserver' in window) {
             setTimeout(() => {
                 cards.forEach(card => {
                     let currentIndex = parseInt(card.dataset.index);
-                    card.dataset.index = (currentIndex + 1) % cards.length;
+                    // Logika diubah: kartu dari belakang maju ke depan
+                    card.dataset.index = (currentIndex - 1 + cards.length) % cards.length;
                 });
 
                 if (topCard) {
@@ -186,7 +192,7 @@ if ('IntersectionObserver' in window) {
                     isAnimating = false;
                 }, 500);
 
-            }, 50); // Jeda singkat sebelum memulai transisi masuk
+            }, 50);
         };
 
         stackContainer.addEventListener('click', cycleCards);
