@@ -1,40 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-// ===== KODE UNTUK MENU MOBILE (dengan Animasi Halus) =====
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-        // Cek jika menu sedang terbuka (punya max-height)
-        if (mobileMenu.style.maxHeight) {
-            mobileMenu.style.maxHeight = null; // Jika ya, tutup menu
-        } else {
-            // Jika tidak, buka menu setinggi kontennya
-            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
-        }
-    });
-}
-
-   // ===== 2. KODE UNTUK ANIMASI ON-SCROLL (Fade In & Staggered) =====
-// ===== KODE UNTUK ANIMASI ON-SCROLL (VERSI FINAL YANG BERSIH) =====
-const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-
-if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
+    // ===== KODE UNTUK MENU MOBILE (dengan Animasi Halus) =====
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+            if (mobileMenu.style.maxHeight) {
+                mobileMenu.style.maxHeight = null;
+            } else {
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
             }
         });
-    }, { threshold: 0.1 });
+    }
 
-    elementsToAnimate.forEach(element => {
-        observer.observe(element);
-    });
-}
+    // ===== KODE UNTUK ANIMASI ON-SCROLL =====
+    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        elementsToAnimate.forEach(element => {
+            observer.observe(element);
+        });
+    }
     
-    // ===== 3. FUNGSI UNTUK TOMBOL SCROLL TO TOP (STABIL) =====
+    // ===== FUNGSI UNTUK TOMBOL SCROLL TO TOP =====
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     if (scrollTopBtn) {
         window.addEventListener('scroll', () => {
@@ -49,7 +45,7 @@ if ('IntersectionObserver' in window) {
         });
     }
     
-    // ===== 4. FUNGSI UNTUK FAQ ACCORDION =====
+    // ===== FUNGSI UNTUK FAQ ACCORDION =====
     const accordion = document.getElementById('faq-accordion');
     if (accordion) {
         const questions = accordion.querySelectorAll('.faq-question');
@@ -77,7 +73,7 @@ if ('IntersectionObserver' in window) {
         });
     }
 
-    // ===== 5. FUNGSI UNTUK EFEK SOROTAN KURSOR (ILLUMINATED GLASS) =====
+    // ===== FUNGSI UNTUK EFEK SOROTAN KURSOR =====
     const interactiveElements = document.querySelectorAll('.btn-primary, .btn-secondary, .card-container');
     interactiveElements.forEach(element => {
         element.addEventListener('mousemove', e => {
@@ -89,17 +85,100 @@ if ('IntersectionObserver' in window) {
         });
     });
 
-    // ===== 6. FUNGSI UNTUK FITUR ZOOM GAMBAR (LIGHTBOX) =====
-    const zoomableImages = document.querySelectorAll('.zoomable-image');
-    if (zoomableImages.length > 0 && typeof basicLightbox !== 'undefined') {
-        zoomableImages.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const imageUrl = this.href;
-                basicLightbox.create(`<img src="${imageUrl}" alt="">`).show();
+    // ===== KODE FINAL UNTUK Tumpukan Kartu (Stacked Card) =====
+    const stackContainer = document.getElementById('featured-grid-container');
+
+    if (stackContainer) {
+        let cards = [];
+        let isAnimating = false;
+
+        const updateCardPositions = () => {
+            cards.forEach((card) => {
+                const index = parseInt(card.dataset.index);
+                let newTransform = '';
+                let newZIndex = cards.length - index;
+
+                if (index === 0) {
+                    newTransform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
+                } else {
+                    const xOffset = index * 50;
+                    const yOffset = index * -15;
+                    const scale = 1 - (index * 0.05);
+                    const angle = index * 5;
+                    newTransform = `translateX(${xOffset}px) translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
+                }
+                
+                if (card.classList.contains('exiting')) {
+                    newTransform = 'translateX(-150%) rotate(-20deg) scale(0.8)';
+                }
+
+                card.style.transform = newTransform;
+                card.style.zIndex = newZIndex;
+                card.style.opacity = (index < 3) ? '1' : '0';
             });
+        };
+
+        const initializeStack = () => {
+            stackContainer.classList.add('card-stack');
+            stackContainer.classList.remove('template-grid');
+
+            cards = Array.from(stackContainer.children);
+            cards.forEach((card, index) => {
+                card.dataset.index = index;
+                card.classList.remove('featured-card');
+                card.classList.add('card-stack-item');
+                
+                const descriptionWrapper = card.querySelector('.featured-card-description-wrapper');
+                if (descriptionWrapper) {
+                    const contentDiv = card.querySelector('.featured-card-content');
+                    while (descriptionWrapper.firstChild) {
+                        contentDiv.appendChild(descriptionWrapper.firstChild);
+                    }
+                    descriptionWrapper.remove();
+                }
+            });
+            updateCardPositions();
+        };
+
+        const cycleCards = () => {
+            if (isAnimating || cards.length < 2) return;
+            isAnimating = true;
+
+            const topCard = cards.find(card => card.dataset.index === '0');
+            if (topCard) {
+                topCard.classList.add('exiting');
+            }
+
+            setTimeout(() => {
+                cards.forEach(card => {
+                    let currentIndex = parseInt(card.dataset.index);
+                    card.dataset.index = (currentIndex - 1 + cards.length) % cards.length;
+                });
+
+                if (topCard) {
+                    topCard.classList.remove('exiting');
+                }
+                updateCardPositions();
+                
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 500);
+
+            }, 50);
+        };
+
+        stackContainer.addEventListener('click', cycleCards);
+        
+        const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    initializeStack();
+                    observer.disconnect();
+                    break;
+                }
+            }
         });
+
+        observer.observe(stackContainer, { childList: true });
     }
-
 });
-
