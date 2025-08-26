@@ -901,7 +901,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 550px; /* Beri ruang yang cukup untuk stack dan animasinya */
+    min-height: 450px; /* Beri ruang yang cukup untuk stack dan animasinya */
 }
 
 /* Kontainer utama untuk tumpukan kartu */
