@@ -51,7 +51,7 @@ async function loadFreeProducts() {
                 <div class="featured-card">
                     <img src="${imagePath}" alt="${product.judul}" class="featured-card-image">
                     <div class="featured-card-content">
-                        <span class="label">★ Template Unggulan</span>
+                        <span class="label">GRATIS</span>
                         <h3>🎯 ${product.judul}</h3>
                         <div class="featured-card-description-wrapper">
                             <a href="${detailLink}" class="btn-primary-small">Lihat Template</a>
