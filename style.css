@@ -905,17 +905,19 @@ body {
 }
 
 .card-stack {
-    position: relative;
+    position: relative; /* Kembali menggunakan position relative */
     width: 300px;
     cursor: pointer;
+    min-height: 400px; 
+    transition: height 0.5s ease-in-out; /* Animasi saat tinggi berubah */
 }
 
 .card-stack-item {
-    /* Menumpuk semua kartu di satu tempat yang sama */
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
+    position: absolute; /* Kartu kembali di-stack dengan position absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
 
-    /* Properti lain tetap sama */
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2);
