@@ -900,14 +900,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 400px;
+    min-height: 450px;
     padding: 2rem 0; /* Menambah sedikit ruang vertikal */
 }
 
 .card-stack {
     position: relative;
     width: 300px;
-    height: 400px;
     cursor: pointer;
 }
 
