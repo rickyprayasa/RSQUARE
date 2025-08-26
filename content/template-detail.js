@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Dapatkan ID produk dari URL
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('product');
+        // 1. Dapatkan ID produk dari URL path
+    // Ambil path dari URL, contoh: "/goal-planner" atau "/preview/goal-planner"
+    const path = window.location.pathname; 
+    // Ambil bagian terakhir dari path sebagai ID produk
+    const productId = path.substring(path.lastIndexOf('/') + 1);
 
     const container = document.getElementById('product-detail-container');
 
