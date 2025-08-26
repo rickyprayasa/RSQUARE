@@ -104,7 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        // ✅ INI BAGIAN YANG DIPERBARUI
         const updateCardPositions = () => {
+            // Mendeteksi ukuran layar untuk penyesuaian mobile
+            const isMobile = window.innerWidth < 768; 
+
             cards.forEach((card) => {
                 const index = parseInt(card.dataset.index);
                 let newTransform = '';
@@ -113,10 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (index === 0) {
                     newTransform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
                 } else {
-                    const xOffset = index * 50;
-                    const yOffset = index * -15;
+                    // Menggunakan nilai yang lebih kecil untuk mobile agar tumpukan lebih rapat
+                    const xOffset = index * (isMobile ? 15 : 40); 
+                    const yOffset = index * (isMobile ? -10 : -15);
                     const scale = 1 - (index * 0.05);
-                    const angle = index * 5;
+                    const angle = index * (isMobile ? 3 : 5);
                     newTransform = `translateX(${xOffset}px) translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
                 }
                 
@@ -150,13 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     descriptionWrapper.remove();
                 }
 
-                // ===================================================================
-                // PERUBAHAN DI SINI: Mencegah kartu bergeser saat tombol diklik
-                // ===================================================================
-                const templateButton = card.querySelector('a'); // Cari link/tombol di dalam kartu
+                const templateButton = card.querySelector('a'); 
                 if (templateButton) {
                     templateButton.addEventListener('click', (event) => {
-                        // Hentikan event 'click' agar tidak "naik" ke container kartu
                         event.stopPropagation();
                     });
                 }
