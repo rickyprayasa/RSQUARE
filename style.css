@@ -893,7 +893,7 @@ body {
     100% { background-position: 400% 50%; }
 }
 
-/* === GAYA Tumpukan Kartu Interaktif (VERSI FINAL) === */
+/* === GAYA Tumpukan Kartu Interaktif (VERSI FINAL YANG SUDAH DIPERBAIKI) === */
 
 .card-stack-container {
     display: flex;
@@ -901,23 +901,24 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 450px;
-    padding: 2rem 0; /* Menambah sedikit ruang vertikal */
+    padding: 2rem 0;
 }
 
 .card-stack {
-    position: relative; /* Kembali menggunakan position relative */
-    width: 300px;
+    position: relative;
+    /* PERUBAHAN UTAMA: Dibuat responsif */
+    width: 90vw;      /* Gunakan 90% dari lebar layar */
+    max-width: 350px; /* Batasi lebar maksimal agar tidak terlalu besar di tablet */
     cursor: pointer;
     min-height: 400px; 
-    transition: height 0.5s ease-in-out; /* Animasi saat tinggi berubah */
+    transition: height 0.5s ease-in-out;
 }
 
 .card-stack-item {
-    position: absolute; /* Kartu kembali di-stack dengan position absolute */
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-
+    width: 100%; /* Biarkan 100% agar mengikuti lebar .card-stack */
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2);

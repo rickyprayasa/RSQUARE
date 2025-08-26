@@ -85,48 +85,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     // =================================================================
-    // === FUNGSI BARU UNTUK MEMBUAT EFEK TUMPUKAN KARTU (BISA DIPAKAI ULANG) ===
+    // === FUNGSI TUMPUKAN KARTU (VERSI RESPONSIF) ===
     // =================================================================
     const setupCardStack = (containerId) => {
         const stackContainer = document.getElementById(containerId);
-        if (!stackContainer) return; // Hentikan jika kontainer tidak ditemukan
-
+        if (!stackContainer) return;
 
         let cards = [];
         let isAnimating = false;
-
+        
         const setContainerHeight = () => {
             const frontCard = cards.find(card => card.dataset.index === '0');
             if (frontCard) {
-                stackContainer.style.height = `${frontCard.scrollHeight}px`;
+                const isMobile = window.innerWidth < 768;
+
+                if (isMobile) {
+                    const yOffsetStep = 50; 
+                    const visibleBehindCount = 2; 
+                    const totalHeight = frontCard.scrollHeight + (yOffsetStep * visibleBehindCount);
+                    stackContainer.style.height = `${totalHeight}px`;
+                } else {
+                    stackContainer.style.height = `${frontCard.scrollHeight}px`;
+                }
             }
         };
 
         const updateCardPositions = () => {
+            const isMobile = window.innerWidth < 768;
+            
             cards.forEach((card) => {
                 const index = parseInt(card.dataset.index);
                 let newTransform = '';
                 let newZIndex = cards.length - index;
 
-                if (index === 0) {
-                    newTransform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
+                if (isMobile) {
+                    const yOffsetStep = 50;
+                    const scaleStep = 0.05;
+                    const maxVisibleCards = 3;
+
+                    if (index < maxVisibleCards) {
+                        const yOffset = (maxVisibleCards - 1 - index) * yOffsetStep;
+                        const scale = 1 - (index * scaleStep);
+                        newTransform = `translateX(0px) translateY(${yOffset}px) scale(${scale}) rotate(0deg)`;
+                    } else {
+                        const yOffset = (maxVisibleCards - 1) * yOffsetStep;
+                        const scale = 1 - ((maxVisibleCards - 1) * scaleStep);
+                        newTransform = `translateX(0px) translateY(${yOffset}px) scale(${scale}) rotate(0deg)`;
+                    }
                 } else {
-                    const xOffset = index * 50;
-                    const yOffset = index * -15;
-                    const scale = 1 - (index * 0.05);
-                    const angle = index * 5;
-                    newTransform = `translateX(${xOffset}px) translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
+                    if (index === 0) {
+                        newTransform = 'translateX(0) translateY(0) rotate(0deg) scale(1)';
+                    } else {
+                        const xOffset = index * 50;
+                        const yOffset = index * -15;
+                        const scale = 1 - (index * 0.05);
+                        const angle = index * 5;
+                        newTransform = `translateX(${xOffset}px) translateY(${yOffset}px) scale(${scale}) rotate(${angle}deg)`;
+                    }
                 }
-                
+
                 if (card.classList.contains('exiting')) {
-                    newTransform = 'translateX(-150%) rotate(-20deg) scale(0.8)';
+                    newTransform = 'translateX(150%) rotate(20deg) scale(0.8)';
                 }
 
                 card.style.transform = newTransform;
                 card.style.zIndex = newZIndex;
-                card.style.opacity = (index < 3) ? '1' : '0';
+                card.style.opacity = index < 3 ? '1' : '0';
             });
             setContainerHeight();
         };
@@ -150,17 +175,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     descriptionWrapper.remove();
                 }
 
-                // ===================================================================
-                // PERUBAHAN DI SINI: Mencegah kartu bergeser saat tombol diklik
-                // ===================================================================
-                const templateButton = card.querySelector('a'); // Cari link/tombol di dalam kartu
+                const templateButton = card.querySelector('a'); 
                 if (templateButton) {
                     templateButton.addEventListener('click', (event) => {
-                        // Hentikan event 'click' agar tidak "naik" ke container kartu
                         event.stopPropagation();
                     });
                 }
             });
+
             updateCardPositions();
         };
 
@@ -176,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 cards.forEach(card => {
                     let currentIndex = parseInt(card.dataset.index);
+                    // --- PERUBAHAN DI SINI: Arah putaran kartu dibalik ---
                     card.dataset.index = (currentIndex - 1 + cards.length) % cards.length;
                 });
 
@@ -192,12 +215,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         stackContainer.addEventListener('click', cycleCards);
         
-        // Gunakan MutationObserver untuk menunggu konten dimuat oleh featured-templates.js
+        window.addEventListener('resize', updateCardPositions);
+
         const observer = new MutationObserver((mutationsList) => {
             for (const mutation of mutationsList) {
                 if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
                     initializeStack();
-                    observer.disconnect(); // Hentikan pengamatan setelah inisialisasi
+                    observer.disconnect();
                     break;
                 }
             }
