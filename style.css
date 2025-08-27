@@ -909,7 +909,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem auto;
+    margin: 1rem auto;
     width: 90vw;
     max-width: 350px; /* Batas lebar maksimal di layar besar */
     cursor: pointer;
