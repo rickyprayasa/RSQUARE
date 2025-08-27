@@ -990,16 +990,18 @@ body {
     align-self: center;
 }
 
+/* EFEK HOVER: Hanya untuk kartu di belakang (bukan index 0) */
 .card-stack-item:not([data-index="0"]):hover {
-    /* Angkat sedikit ke atas dan perbesar */
+    /* Angkat sedikit ke atas TANPA membesar */
     transform: translateX(var(--x-offset)) 
                translateY(calc(var(--y-offset) - 10px)) 
-               scale(calc(var(--scale) * 1.05)) 
+               scale(var(--scale)) /* <-- PERUBAHAN DI SINI */
                rotate(var(--angle));
     
     box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.4);
     z-index: 100;
 }
+
 
 /* EFEK KELUAR: Dikelola oleh CSS */
 .card-stack-item.exiting {
