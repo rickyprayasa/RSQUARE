@@ -914,6 +914,22 @@ body {
     transition: height 0.5s ease-in-out;
 }
 
+Anda benar, itu adalah bug. Mohon maaf, aturan CSS yang saya berikan di langkah terakhir untuk "mengunci" efek hover ternyata malah menimbulkan masalah baru dan merusak tatanan kartu saat kursor diarahkan.
+
+Mari kita perbaiki ini dengan cara yang paling sederhana dan bersih: menghapus total semua aturan :hover yang berhubungan dengan tumpukan kartu dan hanya menyisakan aturan dasarnya saja. Ini akan memastikan kartu 100% statis hingga diklik.
+
+Kode Final (Tanpa Efek Hover & Tanpa Bug)
+
+Silakan ganti semua kode CSS Anda yang berhubungan dengan .card-stack-item dengan kode yang lebih ringkas di bawah ini.
+
+File JavaScript Anda tidak perlu diubah lagi, sudah benar.
+CSS
+
+/* ====================================================== */
+/* === KODE CSS FINAL (TANPA EFEK HOVER SAMA SEKALI) === */
+/* ====================================================== */
+
+/* Aturan dasar untuk setiap kartu */
 .card-stack-item {
     /* CSS Variables yang akan diatur oleh JavaScript */
     --x-offset: 0px;
@@ -921,9 +937,7 @@ body {
     --scale: 1;
     --angle: 0deg;
 
-    /* Mengunci properti agar tidak diubah oleh aturan CSS lain */
-    width: 100% !important;
-    height: auto !important;
+    /* Mengunci properti transform agar tidak diubah oleh aturan lain */
     transform: translateX(var(--x-offset)) 
                translateY(var(--y-offset)) 
                scale(var(--scale)) 
@@ -936,6 +950,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100% !important;
+    height: auto !important;
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2);
@@ -989,23 +1005,8 @@ body {
     align-self: center;
 }
 
-/* Aturan ini secara paksa MENCEGAH EFEK HOVER APAPUN */
-.card-stack-item:hover {
-    /* Paksa transform untuk tetap sama seperti kondisi normal */
-    transform: translateX(var(--x-offset)) 
-               translateY(var(--y-offset)) 
-               scale(var(--scale)) 
-               rotate(var(--angle)) !important;
-    
-    /* Paksa bayangan untuk tetap sama */
-    box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2) !important;
-    
-    /* Paksa z-index untuk tetap dari JS (opsional, tapi bagus untuk mencegah lompatan) */
-    z-index: inherit !important;
-}
-
-/* Aturan untuk kartu yang keluar/animasi */
 .card-stack-item.exiting {
     transform: translateX(150%) rotate(20deg) scale(0.8) !important;
     opacity: 0 !important;
 }
+
