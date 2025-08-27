@@ -915,19 +915,37 @@ body {
 }
 
 .card-stack-item {
+    /* Gunakan CSS Variables yang akan diatur oleh JavaScript */
+    --x-offset: 0px;
+    --y-offset: 0px;
+    --scale: 1;
+    --angle: 0deg;
+
+    /* Terapkan transform menggunakan variables di atas */
+    transform: translateX(var(--x-offset)) 
+               translateY(var(--y-offset)) 
+               scale(var(--scale)) 
+               rotate(var(--angle));
+
+    /* Transisi untuk semua pergerakan, termasuk hover */
+    transition: transform 0.5s ease-in-out, 
+                opacity 0.5s ease-in-out,
+                box-shadow 0.3s ease-out;
+    
+    /* Properti lain yang sudah ada */
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Biarkan 100% agar mengikuti lebar .card-stack */
+    width: 100%;
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.5s ease-in-out;
     user-select: none;
     -webkit-user-select: none;
+    cursor: pointer;
 }
 
 .card-stack-item .featured-card-image {
@@ -972,15 +990,19 @@ body {
     align-self: center;
 }
 
-/* Efek Hover untuk Kartu di Tumpukan */
 .card-stack-item:not([data-index="0"]):hover {
-    transform: translateY(-5px) scale(1.02); /* Sedikit terangkat dan membesar */
-    box-shadow: 0 15px 30px -5px rgba(249, 115, 22, 0.3); /* Bayangan lebih kuat */
-    z-index: 100; /* Pastikan kartu yang di-hover berada di atas */
+    /* Angkat sedikit ke atas dan perbesar */
+    transform: translateX(var(--x-offset)) 
+               translateY(calc(var(--y-offset) - 10px)) 
+               scale(calc(var(--scale) * 1.05)) 
+               rotate(var(--angle));
+    
+    box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.4);
+    z-index: 100;
 }
 
-/* Transisi untuk efek hover agar mulus */
-.card-stack-item {
-    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-out, z-index 0s ease 0.3s;
-    /* Durasi z-index 0s dan delay 0.3s agar tidak berkedip saat hover */
+/* EFEK KELUAR: Dikelola oleh CSS */
+.card-stack-item.exiting {
+    transform: translateX(150%) rotate(20deg) scale(0.8) !important;
+    opacity: 0 !important;
 }
