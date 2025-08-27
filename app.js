@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =================================================================
     // === FUNGSI TUMPUKAN KARTU (VERSI INTERAKTIF & RESPONSIF) ===
     // =================================================================
-   const setupCardStack = (containerId) => {
+    const setupCardStack = (containerId) => {
         const stackContainer = document.getElementById(containerId);
         if (!stackContainer) return;
 
@@ -110,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // --- FUNGSI UPDATE POSISI KINI MENGGUNAKAN CSS VARIABLES ---
         const updateCardPositions = () => {
             const isMobile = window.innerWidth < 768;
             
@@ -118,12 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const index = parseInt(card.dataset.index);
                 card.style.zIndex = cards.length - index;
                 card.style.opacity = index < 3 ? '1' : '0';
-
-                // Hapus kelas .exiting jika ada, biarkan CSS menangani transisi kembali
                 card.classList.remove('exiting');
 
                 if (isMobile) {
-                    // === LOGIKA VERTIKAL (MOBILE) ===
                     const yOffsetStep = 50;
                     const scaleStep = 0.05;
                     const maxVisibleCards = 3;
@@ -141,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.setProperty('--scale', scale);
                     card.style.setProperty('--angle', '0deg');
                 } else {
-                    // === LOGIKA HORIZONTAL (DESKTOP) ===
                     let xOffset = 0, yOffset = 0, scale = 1, angle = 0;
                     if (index > 0) {
                         xOffset = index * 50;
@@ -159,14 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const cycleCardToBack = () => {
-            const frontCard = cards.shift(); // Ambil kartu depan
-            frontCard.classList.add('exiting'); // Tambahkan kelas untuk animasi keluar
+            const frontCard = cards.shift();
+            frontCard.classList.add('exiting');
 
             setTimeout(() => {
-                cards.push(frontCard); // Pindahkan ke paling belakang
+                cards.push(frontCard);
                 cards.forEach((card, newIndex) => card.dataset.index = newIndex);
                 updateCardPositions();
-            }, 50); // Delay kecil agar animasi bisa dimulai
+            }, 50);
         };
 
         const bringCardToFront = (clickedCard) => {
@@ -186,16 +181,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.dataset.index = index;
                 card.classList.add('card-stack-item');
                 
-                // --- EVENT CLICK DENGAN LOGIKA GANDA ---
                 card.addEventListener('click', () => {
                     if (isAnimating) return;
                     isAnimating = true;
 
                     if (card.dataset.index === '0') {
-                        // Jika klik kartu depan, putar ke belakang
                         cycleCardToBack();
                     } else {
-                        // Jika klik kartu belakang, bawa ke depan
                         bringCardToFront(card);
                     }
 
