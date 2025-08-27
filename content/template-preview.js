@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (product && product.detail && product.detail.galeri) {
             // --- BAGIAN SEO (DENGAN CANONICAL KUSTOM) ---
             if (typeof updateSeoTags === 'function') {
-                const canonicalUrl = `https://rsquareidea.my.id/content/template-detail.html?product=${productId}`;
+                const canonicalUrl = `https://rsquareidea.my.id/${productId}`;
                 updateSeoTags({
                     title: `Preview: ${product.seo?.meta_title || product.judul}`,
                     description: product.seo?.meta_description || product.deskripsi_singkat,
-                    ogImage: product.seo?.og_image || `https://rsquareidea.my.id/content/produk/${product.detail?.gambar_utama}`,
+                    ogImage: product.seo?.og_image || `https://rsquareidea.my.id/preview/${product.detail?.gambar_utama}`,
                     ogType: 'article',
                     canonicalUrl: canonicalUrl
                 });
