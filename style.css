@@ -958,11 +958,13 @@ body {
 }
 
 .card-stack-item .featured-card-content {
-    padding: 1.25rem;
-    text-align: left;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    justify-content: center; /* Vertikal ke tengah */
+    align-items: center;     /* Horizontal ke tengah */
+    text-align: center;      /* Pusatkan teks di dalamnya */
+    flex-grow: 1;            /* Pastikan area konten mengisi sisa ruang */
+    padding: 1rem;
 }
 
 .card-stack-item .featured-card-content h3 {
@@ -985,6 +987,10 @@ body {
     color: #4B5563;
     margin-bottom: 1rem;
     flex-grow: 1;
+}
+
+.card-stack-item .featured-card-content .btn-primary-small {
+    margin-top: 1rem; /* Beri jarak antara deskripsi dan tombol */
 }
 
 .card-stack-item .btn-primary-small {
