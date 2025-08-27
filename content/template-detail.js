@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 updateSeoTags({
                     title: product.seo?.meta_title || product.judul,
                     description: product.seo?.meta_description || product.deskripsi_singkat,
-                    ogImage: product.seo?.og_image || `https://rsquareidea.my.id/content/produk/${product.detail?.gambar_utama}`,
+                    ogImage: product.seo?.og_image || `https://rsquareidea.my.id/preview/${product.detail?.gambar_utama}`,
                     ogType: 'article'
                 });
             }
