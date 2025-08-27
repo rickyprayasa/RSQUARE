@@ -915,37 +915,36 @@ body {
 }
 
 .card-stack-item {
-    /* Gunakan CSS Variables yang akan diatur oleh JavaScript */
+    /* CSS Variables yang akan diatur oleh JavaScript */
     --x-offset: 0px;
     --y-offset: 0px;
     --scale: 1;
     --angle: 0deg;
 
-    /* Terapkan transform menggunakan variables di atas */
+    /* Mengunci properti agar tidak diubah oleh aturan CSS lain */
+    width: 100% !important;
+    height: auto !important;
     transform: translateX(var(--x-offset)) 
                translateY(var(--y-offset)) 
                scale(var(--scale)) 
-               rotate(var(--angle)); !important;
+               rotate(var(--angle)) !important;
 
-    /* Transisi untuk semua pergerakan, termasuk hover */
-    transition: transform 0.5s ease-in-out, 
-                opacity 0.5s ease-in-out,
-                box-shadow 0.3s ease-out;
+    /* Transisi untuk semua pergerakan */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease-out;
     
     /* Properti lain yang sudah ada */
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2);
+    cursor: pointer;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     user-select: none;
     -webkit-user-select: none;
-    cursor: pointer;
 }
 
 .card-stack-item .featured-card-image {
@@ -988,4 +987,25 @@ body {
 
 .card-stack-item .btn-primary-small {
     align-self: center;
+}
+
+/* Aturan ini secara paksa MENCEGAH EFEK HOVER APAPUN */
+.card-stack-item:hover {
+    /* Paksa transform untuk tetap sama seperti kondisi normal */
+    transform: translateX(var(--x-offset)) 
+               translateY(var(--y-offset)) 
+               scale(var(--scale)) 
+               rotate(var(--angle)) !important;
+    
+    /* Paksa bayangan untuk tetap sama */
+    box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2) !important;
+    
+    /* Paksa z-index untuk tetap dari JS (opsional, tapi bagus untuk mencegah lompatan) */
+    z-index: inherit !important;
+}
+
+/* Aturan untuk kartu yang keluar/animasi */
+.card-stack-item.exiting {
+    transform: translateX(150%) rotate(20deg) scale(0.8) !important;
+    opacity: 0 !important;
 }
