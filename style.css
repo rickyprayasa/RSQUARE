@@ -905,27 +905,45 @@ body {
 }
 
 .card-stack {
-    position: relative;
-    /* PERUBAHAN UTAMA: Dibuat responsif */
-    width: 90vw;      /* Gunakan 90% dari lebar layar */
-    max-width: 350px; /* Batasi lebar maksimal agar tidak terlalu besar di tablet */
+    position: relative; /* <-- Ini adalah properti kunci yang hilang */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    width: 90vw;
+    max-width: 350px; /* Batas lebar maksimal di layar besar */
     cursor: pointer;
-    min-height: 400px; 
-    transition: height 0.5s ease-in-out;
 }
 
+/* Aturan dasar untuk setiap kartu */
 .card-stack-item {
-    position: absolute;
+    /* CSS Variables yang akan diatur oleh JavaScript */
+    --x-offset: 0px;
+    --y-offset: 0px;
+    --scale: 1;
+    --angle: 0deg;
+
+    /* Mengunci properti transform agar tidak diubah oleh aturan lain */
+    transform: translateX(var(--x-offset)) 
+               translateY(var(--y-offset)) 
+               scale(var(--scale)) 
+               rotate(var(--angle)) !important;
+
+    /* Transisi untuk semua pergerakan */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease-out;
+    
+    /* Properti lain yang sudah ada */
+    position: absolute; /* <-- Ini butuh position: relative di induknya */
     top: 0;
     left: 0;
-    width: 100%; /* Biarkan 100% agar mengikuti lebar .card-stack */
+    width: 100% !important;
+    height: auto !important;
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.5s ease-in-out;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -939,11 +957,13 @@ body {
 }
 
 .card-stack-item .featured-card-content {
-    padding: 1.25rem;
-    text-align: left;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    justify-content: center; /* Vertikal ke tengah */
+    align-items: center;     /* Horizontal ke tengah */
+    text-align: center;      /* Pusatkan teks di dalamnya */
+    flex-grow: 1;            /* Pastikan area konten mengisi sisa ruang */
+    padding: 1rem;
 }
 
 .card-stack-item .featured-card-content h3 {
@@ -968,20 +988,35 @@ body {
     flex-grow: 1;
 }
 
+.card-stack-item .featured-card-content .btn-primary-small {
+    margin-top: 1rem; /* Beri jarak antara deskripsi dan tombol */
+}
+
 .card-stack-item .btn-primary-small {
     align-self: center;
 }
 
-/* Efek Hover untuk Kartu di Tumpukan */
-.card-stack-item:not([data-index="0"]):hover {
-    transform: translateY(-5px) scale(1.02); /* Sedikit terangkat dan membesar */
-    box-shadow: 0 15px 30px -5px rgba(249, 115, 22, 0.3); /* Bayangan lebih kuat */
-    z-index: 100; /* Pastikan kartu yang di-hover berada di atas */
+.card-stack-item.exiting {
+    transform: translateX(150%) rotate(20deg) scale(0.8) !important;
+    opacity: 0 !important;
 }
 
-/* Transisi untuk efek hover agar mulus */
-.card-stack-item {
-    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-out, z-index 0s ease 0.3s;
-    /* Durasi z-index 0s dan delay 0.3s agar tidak berkedip saat hover */
+/* 1. Paksa tinggi kartu agar tidak berubah-ubah di dalam tumpukan */
+.card-stack .card-stack-item {
+    height: auto !important;
 }
 
+/* 2. Paksa wrapper deskripsi & tombol agar selalu terlihat */
+.card-stack .featured-card-description-wrapper {
+    max-height: 500px !important; /* Beri nilai tinggi yang cukup besar */
+    opacity: 1 !important;
+    overflow: visible !important;
+}
+
+/* 3. Atur ulang tata letak konten agar tombol selalu di bawah dan terlihat */
+.card-stack .featured-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Dorong judul ke atas, tombol ke bawah */
+    flex-grow: 1; /* Pastikan area konten mengisi sisa ruang */
+}
