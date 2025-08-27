@@ -905,29 +905,16 @@ body {
 }
 
 .card-stack {
-    position: relative;
-    /* PERUBAHAN UTAMA: Dibuat responsif */
-    width: 90vw;      /* Gunakan 90% dari lebar layar */
-    max-width: 350px; /* Batasi lebar maksimal agar tidak terlalu besar di tablet */
+    position: relative; /* <-- Ini adalah properti kunci yang hilang */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    width: 90vw;
+    max-width: 350px; /* Batas lebar maksimal di layar besar */
     cursor: pointer;
-    min-height: 400px; 
     transition: height 0.5s ease-in-out;
 }
-
-Anda benar, itu adalah bug. Mohon maaf, aturan CSS yang saya berikan di langkah terakhir untuk "mengunci" efek hover ternyata malah menimbulkan masalah baru dan merusak tatanan kartu saat kursor diarahkan.
-
-Mari kita perbaiki ini dengan cara yang paling sederhana dan bersih: menghapus total semua aturan :hover yang berhubungan dengan tumpukan kartu dan hanya menyisakan aturan dasarnya saja. Ini akan memastikan kartu 100% statis hingga diklik.
-
-Kode Final (Tanpa Efek Hover & Tanpa Bug)
-
-Silakan ganti semua kode CSS Anda yang berhubungan dengan .card-stack-item dengan kode yang lebih ringkas di bawah ini.
-
-File JavaScript Anda tidak perlu diubah lagi, sudah benar.
-CSS
-
-/* ====================================================== */
-/* === KODE CSS FINAL (TANPA EFEK HOVER SAMA SEKALI) === */
-/* ====================================================== */
 
 /* Aturan dasar untuk setiap kartu */
 .card-stack-item {
@@ -947,7 +934,7 @@ CSS
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease-out;
     
     /* Properti lain yang sudah ada */
-    position: absolute;
+    position: absolute; /* <-- Ini butuh position: relative di induknya */
     top: 0;
     left: 0;
     width: 100% !important;
@@ -955,7 +942,6 @@ CSS
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2);
-    cursor: pointer;
     overflow: hidden;
     display: flex;
     flex-direction: column;
