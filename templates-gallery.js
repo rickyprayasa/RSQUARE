@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const correctImagePath = `content/produk/${product.gambar_thumbnail}`;
             
             return `
-                <div class="card rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card rounded-xl overflow-hidden flex flex-col items-center justify-center text-center p-6">
                     <div class="relative z-10 flex flex-col flex-grow">
                         <a href="${detailLink}" class="block">
                             <div class="aspect-w-16 aspect-h-9 bg-gray-100">

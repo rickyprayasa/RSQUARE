@@ -48,7 +48,7 @@ async function loadFreeProducts() {
             const imagePath = `/content/produk/${product.gambar_thumbnail}`;
             const detailLink = `/${product.id}`; // Sesuaikan path jika perlu
             return `
-                <div class="featured-card">
+                <div class="featured-card border-2 border-orange-500">
                     <img src="${imagePath}" alt="${product.judul}" class="featured-card-image">
                     <div class="featured-card-content">
                         <span class="label">GRATIS</span>
@@ -95,7 +95,7 @@ async function loadFeaturedProducts() {
             const imagePath = `/content/produk/${product.gambar_thumbnail}`;
             const detailLink = `/${product.id}`; // Sesuaikan path jika perlu
             return `
-                <div class="featured-card">
+                <div class="featured-card border-2 border-orange-500">
                     <img src="${imagePath}" alt="${product.judul}" class="featured-card-image">
                     <div class="featured-card-content">
                         <span class="label">★ Template Unggulan</span>

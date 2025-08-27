@@ -940,6 +940,7 @@ body {
     height: auto !important;
     background-color: white;
     border-radius: 1rem;
+    border: 2px solid #F97316
     box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2), 0 8px 10px -6px rgba(249, 115, 22, 0.2);
     overflow: hidden;
     display: flex;
