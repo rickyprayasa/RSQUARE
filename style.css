@@ -925,7 +925,7 @@ body {
     transform: translateX(var(--x-offset)) 
                translateY(var(--y-offset)) 
                scale(var(--scale)) 
-               rotate(var(--angle));
+               rotate(var(--angle)); !important;
 
     /* Transisi untuk semua pergerakan, termasuk hover */
     transition: transform 0.5s ease-in-out, 
