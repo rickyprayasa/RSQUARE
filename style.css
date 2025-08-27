@@ -989,21 +989,3 @@ body {
 .card-stack-item .btn-primary-small {
     align-self: center;
 }
-
-/* Aturan hover FINAL */
-.card-stack-item:not([data-index="0"]):hover {
-    /* Hanya ubah posisi Y, yang lain tetap dari variabel */
-    transform: translateX(var(--x-offset)) 
-               translateY(calc(var(--y-offset) - 10px)) 
-               scale(var(--scale)) 
-               rotate(var(--angle)) !important; /* Paksa aturan ini */
-    
-    box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.4);
-    z-index: 100;
-}
-
-/* Aturan untuk kartu yang keluar/animasi */
-.card-stack-item.exiting {
-    transform: translateX(150%) rotate(20deg) scale(0.8) !important;
-    opacity: 0 !important;
-}
