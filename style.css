@@ -1001,3 +1001,22 @@ body {
     opacity: 0 !important;
 }
 
+/* 1. Paksa tinggi kartu agar tidak berubah-ubah di dalam tumpukan */
+.card-stack .card-stack-item {
+    height: auto !important;
+}
+
+/* 2. Paksa wrapper deskripsi & tombol agar selalu terlihat */
+.card-stack .featured-card-description-wrapper {
+    max-height: 500px !important; /* Beri nilai tinggi yang cukup besar */
+    opacity: 1 !important;
+    overflow: visible !important;
+}
+
+/* 3. Atur ulang tata letak konten agar tombol selalu di bawah dan terlihat */
+.card-stack .featured-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Dorong judul ke atas, tombol ke bawah */
+    flex-grow: 1; /* Pastikan area konten mengisi sisa ruang */
+}
