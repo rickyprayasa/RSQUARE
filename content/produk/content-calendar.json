@@ -43,5 +43,9 @@
     "file_panduan_pdf": "photos/produk/content-calendar/Template Content Calendar.pdf",
     "payment_gateway": "https://rsquareidea.my.id/"
   },
-  "order": 0
+  "order": 0,
+  "seo": {
+    "meta_title": "    Template Content Calendar Otomatis (Google Sheets) | RSQUARE",
+    "meta_description": "Capek bikin konten dadakan? Atur jadwal postingan Instagram, TikTok & Blog Anda dengan Template Content Calendar Google Sheets. Rencanakan & lacak semua ide jadi mudah!"
+  }
 }
