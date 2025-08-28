@@ -1,10 +1,9 @@
 {
-  "id": "personal-budgeting",
-  "judul": "Personal Budgeting",
-  "harga": 35000,
-  "deskripsi_singkat": "Pusat komando keuangan pribadi Anda untuk melacak pemasukan, pengeluaran, anggaran, hutang, dan tujuan tabungan secara otomatis. ",
-  "gambar_thumbnail": "/photos/produk/personal-budgeting/personal-budgeting-thumbnail.png",
+  "deskripsi_singkat": "Pusat komando keuangan pribadi Anda untuk melacak pemasukan, pengeluaran, anggaran, hutang, dan tujuan tabungan secara otomatis.~",
   "gambar_preview": "/photos/produk/personal-budgeting/Dashboard.png",
+  "gambar_thumbnail": "/photos/produk/personal-budgeting/personal-budgeting-thumbnail.png",
+  "order": 0,
+  "judul": "Personal Budgeting",
   "detail": {
     "gambar_utama": "/photos/produk/personal-budgeting/Dashboard.png",
     "deskripsi_lengkap": "Ini adalah pusat komando keuangan pribadi Anda, tempat semua data transaksi diolah. Setiap angka dan grafik dirancang untuk memberikan wawasan cerdas yang mudah dipahami.",
@@ -54,5 +53,10 @@
       }
     ]
   },
-  "order": 0
+  "harga": 35000,
+  "id": "personal-budgeting",
+  "seo": {
+    "meta_description": "Dapatkan Template Personal Budgeting dari RSQUARE. Kelola keuangan pribadi Anda dengan dasbor interaktif yang dirancang secara profesional untuk melacak pemasukan & pengeluaran",
+    "meta_title": "brankas pribadi"
+  }
 }
