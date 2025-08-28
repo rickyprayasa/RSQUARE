@@ -1,12 +1,12 @@
 {
-  "deskripsi_singkat": "Pusat komando keuangan pribadi Anda untuk melacak pemasukan, pengeluaran, anggaran, hutang, dan tujuan tabungan secara otomatis.~",
+  "deskripsi_singkat": "Template ini dirancang secara cermat untuk mengubah data transaksi yang rumit menjadi sebuah dashboard yang visual, intuitif, dan mudah dipahami.",
   "gambar_preview": "/photos/produk/personal-budgeting/Dashboard.png",
   "gambar_thumbnail": "/photos/produk/personal-budgeting/personal-budgeting-thumbnail.png",
   "order": 0,
   "judul": "Personal Budgeting",
   "detail": {
     "gambar_utama": "/photos/produk/personal-budgeting/Dashboard.png",
-    "deskripsi_lengkap": "Ini adalah pusat komando keuangan pribadi Anda, tempat semua data transaksi diolah. Setiap angka dan grafik dirancang untuk memberikan wawasan cerdas yang mudah dipahami.",
+    "deskripsi_lengkap": "Template ini dirancang secara cermat untuk mengubah data transaksi yang rumit menjadi sebuah dashboard yang visual, intuitif, dan mudah dipahami. Lacak setiap pemasukan dan pengeluaran, monitor progres pelunasan utang, dan lihat tabungan impian Kamu bertumbuh—semuanya dalam satu sistem yang terintegrasi dan otomatis. Berhentilah merasa cemas dan mulailah membuat keputusan finansial yang cerdas hari ini.",
     "link_preview_detail": "content/template-preview.html?product=personal-budgeting",
     "link_youtube": "https://www.youtube.com/embed/FS5Fs4UoLAk?si=ZyKQaQfPzAjTO4kv",
     "payment_gateway": "https://rsquareidea.myr.id/pl/Personal-Budgeting-33997",
@@ -57,6 +57,6 @@
   "id": "personal-budgeting",
   "seo": {
     "meta_description": "Dapatkan Template Personal Budgeting dari RSQUARE. Kelola keuangan pribadi Anda dengan dasbor interaktif yang dirancang secara profesional untuk melacak pemasukan & pengeluaran",
-    "meta_title": "brankas pribadi"
+    "meta_title": "Template Personal Budgeting"
   }
 }
