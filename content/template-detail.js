@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('product-detail-container');
 
     if (!productId) {
-        container.innerHTML = '<div class="container mx-auto text-center"><h1 class="text-3xl font-bold">Produk tidak ditemukan.</h1><p>Pastikan link Anda benar.</p></div>';
+        container.innerHTML = '<div class="container mx-auto text-center"><h1 class="text-3xl font-bold">Produk tidak ditemukan.</h1><p>Pastikan link Kamu benar.</p></div>';
         return;
     }
 

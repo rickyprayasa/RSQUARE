@@ -9,9 +9,9 @@ publish_mode: editorial_workflow
 
 collections:
   - name: "pengaturan" # Nama internal untuk koleksi
-    label: "Pengaturan Beranda" # Nama yang muncul di menu CMS
+    label: "Pengaturan BerKamu" # Nama yang muncul di menu CMS
     files:
-      - name: "beranda" # Nama internal untuk file
+      - name: "berKamu" # Nama internal untuk file
         label: "Pilih Produk Unggulan" # Nama yang muncul di menu CMS
         file: "_data/homepage.json" # Lokasi penyimpanan file
         # --- TAMBAHKAN DUA BARIS INI ---
@@ -79,7 +79,7 @@ collections:
           - {label: "Meta Description", name: "meta_description", widget: "text", required: false, hint: "Deskripsi singkat (maks 160 karakter) untuk hasil pencarian Google."}
           - {label: "Gambar Open Graph", name: "og_image", widget: "image", required: false, hint: "Gambar untuk preview saat dibagikan ke media sosial (rekomendasi: 1200x630px). Jika kosong, akan memakai Gambar Utama."}
       
-      # --- LANJUTAN KONFIGURASI ANDA ---
+      # --- LANJUTAN KONFIGURASI Kamu ---
       - name: "detail"
         label: "Detail Lengkap Produk"
         widget: "object"

@@ -78,7 +78,7 @@ const ProdukPreview = createClass({
         // D. Bagian Tombol Pembelian (CTA)
         h('section', { className: 'container mx-auto mt-12 text-center' },
           h('h2', { className: 'text-3xl font-bold text-gray-800' }, 'Siap Meningkatkan Produktivitas?'),
-          h('p', { className: 'text-lg text-gray-600 mt-2 mb-8' }, 'Pilih platform favorit Anda untuk mendapatkan template ini sekarang.'),
+          h('p', { className: 'text-lg text-gray-600 mt-2 mb-8' }, 'Pilih platform favorit Kamu untuk mendapatkan template ini sekarang.'),
           h('div', { className: 'max-w-md mx-auto space-y-4' },
             // Looping untuk Tombol Pembelian
             linkPembelian.map(link => 

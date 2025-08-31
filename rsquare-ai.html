@@ -18,10 +18,10 @@
             font-family: 'Poppins', sans-serif;
             color: #1F2937;
             overflow-x: hidden;
-            background-color: #F9FAFB; /* Warna latar dari CSS Anda */
+            background-color: #F9FAFB; /* Warna latar dari CSS Kamu */
         }
 
-        /* Tombol Utama (Oranye Solid) dari CSS Anda */
+        /* Tombol Utama (Oranye Solid) dari CSS Kamu */
         .btn-primary {
             position: relative;
             overflow: hidden;
@@ -29,8 +29,8 @@
             color: #FFFFFF;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-            padding: 0.75rem 1.5rem; /* Padding standar untuk tombol */
-            border-radius: 0.5rem; /* Sudut membulat standar */
+            padding: 0.75rem 1.5rem; /* Padding stKamur untuk tombol */
+            border-radius: 0.5rem; /* Sudut membulat stKamur */
             font-weight: 600;
         }
         .btn-primary:hover {
@@ -120,7 +120,7 @@
                         <span class="text-white text-sm font-bold">AI</span>
                     </div>
                     <div class="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-xs md:max-w-md">
-                        <p class="text-gray-800">Halo! Saya adalah asisten AI yang didukung oleh Gemini Pro dan didesain dengan gaya baru Anda. Silakan ajukan pertanyaan!</p>
+                        <p class="text-gray-800">Halo! Saya adalah asisten AI yang didukung oleh Gemini Pro dan didesain dengan gaya baru Kamu. Silakan ajukan pertanyaan!</p>
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                     <div class="flex-1">
                         <textarea 
                             id="messageInput" 
-                            placeholder="Ketik pesan Anda di sini..."
+                            placeholder="Ketik pesan Kamu di sini..."
                             class="message-input w-full px-4 py-3 border border-gray-300 rounded-xl resize-none transition-colors"
                             rows="1"
                         ></textarea>
@@ -159,7 +159,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // ===== BAGIAN 1: KODE JAVASCRIPT DARI ANDA =====
+            // ===== BAGIAN 1: KODE JAVASCRIPT DARI Kamu =====
 
             // KODE UNTUK ANIMASI ON-SCROLL
             const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
@@ -190,7 +190,7 @@
                 });
             }
 
-            // (Fungsi lain dari JS Anda seperti menu mobile, FAQ, dll. bisa ditambahkan di sini jika dibutuhkan di halaman ini)
+            // (Fungsi lain dari JS Kamu seperti menu mobile, FAQ, dll. bisa ditambahkan di sini jika dibutuhkan di halaman ini)
             
             // ===== BAGIAN 2: KODE JAVASCRIPT UNTUK CHATBOT =====
             
@@ -199,7 +199,7 @@
             const sendButton = document.getElementById('sendButton');
 
             // ======================================================================
-            // PENTING: Ganti dengan API Key Anda yang didapatkan dari Google AI Studio
+            // PENTING: Ganti dengan API Key Kamu yang didapatkan dari Google AI Studio
             // ======================================================================
             const GEMINI_API_KEY = "AIzaSyAi9fTEcktTQNIZSbG5-pYD-aEXhufFUAA"; 
             const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
@@ -227,7 +227,7 @@
                     if (!response.ok) {
                         const errorData = await response.json();
                         console.error("API Error:", errorData);
-                        return `Maaf, terjadi kesalahan saat menghubungi AI. (${response.status} ${response.statusText}). Pastikan API Key Anda valid.`;
+                        return `Maaf, terjadi kesalahan saat menghubungi AI. (${response.status} ${response.statusText}). Pastikan API Key Kamu valid.`;
                     }
 
                     const data = await response.json();
@@ -235,7 +235,7 @@
                     if (candidate && candidate.content && candidate.content.parts && candidate.content.parts[0]) {
                         return candidate.content.parts[0].text;
                     }
-                    return "Maaf, saya tidak dapat memproses permintaan Anda. Respons dari AI tidak memiliki format yang diharapkan.";
+                    return "Maaf, saya tidak dapat memproses permintaan Kamu. Respons dari AI tidak memiliki format yang diharapkan.";
                 } catch (error) {
                     console.error("Fetch Error:", error);
                     return "Maaf, terjadi masalah koneksi. Silakan coba lagi nanti.";
@@ -248,7 +248,7 @@
                 if (!message) return;
                 
                 if (GEMINI_API_KEY === "AIzaSyBZ56MGETfqJaLyLzphTG3TRXz1qBsimCg") {
-                    addMessage("Konfigurasi Error: Harap masukkan API Key Gemini Anda di dalam kode JavaScript.", 'ai');
+                    addMessage("Konfigurasi Error: Harap masukkan API Key Gemini Kamu di dalam kode JavaScript.", 'ai');
                     return;
                 }
 

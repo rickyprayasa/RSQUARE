@@ -2,15 +2,15 @@
   "harga": 0,
   "id": "content-calendar",
   "judul": "Template Content Calendar",
-  "deskripsi_singkat": "Template ini dirancang untuk membantu Anda konsisten, meningkatkan engagement, dan membangun audiens setia.",
+  "deskripsi_singkat": "Template ini dirancang untuk membantu Kamu konsisten, meningkatkan engagement, dan membangun audiens setia.",
   "gambar_thumbnail": "photos/produk/content-calendar/template-content-calendar.png",
   "detail": {
     "gambar_utama": "photos/produk/content-calendar/sheet-calendar.png",
-    "deskripsi_lengkap": "Template Kalender Konten ini adalah solusi lengkap untuk Anda yang ingin mengelola strategi konten dengan lebih terstruktur, efisien, dan tanpa pusing yang membantu Anda konsisten, meningkatkan engagement, dan membangun audiens setia. Dengan fitur-fitur yang canggih, mengelola konten bukan lagi beban, melainkan proses yang menyenangkan dan produktif.",
+    "deskripsi_lengkap": "Template Kalender Konten ini adalah solusi lengkap untuk Kamu yang ingin mengelola strategi konten dengan lebih terstruktur, efisien, dan tanpa pusing yang membantu Kamu konsisten, meningkatkan engagement, dan membangun audiens setia. Dengan fitur-fitur yang canggih, mengelola konten bukan lagi beban, melainkan proses yang menyenangkan dan produktif.",
     "galeri": [
       {
         "gambar": "photos/produk/content-calendar/sheet-calendar.png",
-        "deskripsi": "\n\nPada sheet utama, <b>🗓️ CALENDAR</b>, Anda akan menemukan kalender konten yang sangat intuitif. Di sini, Anda bisa merencanakan setiap detail konten, mulai dari ide, topik, platform publikasi (misalnya Instagram, TikTok, YouTube), hingga status pengerjaannya. Semua terorganisir dalam satu tempat, memastikan Anda tidak lagi bingung atau melewatkan jadwal postingan.<p>Keunggulan utama template ini terletak pada kecanggihan Apps Script yang disematkan di dalamnya, memberikan dua fitur revolusioner:</p> <p><b>Otomatisasi Ajaib!</b> ✨: Sinkronisasi jadwal postingan langsung ke Google Calendar hanya dengan 1 klik!  </p> <p><b>Input Waktu Sat-set</b> ⏱️: Ketik angka (misal 930), otomatis jadi format waktu yang benar. Hemat waktu banget!</p> <p><b>Perencanaan Rapi</b> 🗓️: Semua ide, status, dan platform konten terorganisir di satu tempat.</p>",
+        "deskripsi": "\n\nPada sheet utama, <b>🗓️ CALENDAR</b>, Kamu akan menemukan kalender konten yang sangat intuitif. Di sini, Kamu bisa merencanakan setiap detail konten, mulai dari ide, topik, platform publikasi (misalnya Instagram, TikTok, YouTube), hingga status pengerjaannya. Semua terorganisir dalam satu tempat, memastikan Kamu tidak lagi bingung atau melewatkan jadwal postingan.<p>Keunggulan utama template ini terletak pada kecanggihan Apps Script yang disematkan di dalamnya, memberikan dua fitur revolusioner:</p> <p><b>Otomatisasi Ajaib!</b> ✨: Sinkronisasi jadwal postingan langsung ke Google Calendar hanya dengan 1 klik!  </p> <p><b>Input Waktu Sat-set</b> ⏱️: Ketik angka (misal 930), otomatis jadi format waktu yang benar. Hemat waktu banget!</p> <p><b>Perencanaan Rapi</b> 🗓️: Semua ide, status, dan platform konten terorganisir di satu tempat.</p>",
         "judul": "🗓️ CALENDAR"
       },
       {
@@ -25,7 +25,7 @@
       },
       {
         "gambar": "photos/produk/content-calendar/template-content-calendar-2-.png",
-        "deskripsi": "Jadwal konten yang Anda susun di spreadsheet akan langsung tersinkronisasi ke Google Calendar pribadi Anda. Anda dapat memvisualisasikan jadwal postingan dengan jelas dan mendapatkan notifikasi, membuat manajemen waktu menjadi sangat mudah.",
+        "deskripsi": "Jadwal konten yang Kamu susun di spreadsheet akan langsung tersinkronisasi ke Google Calendar pribadi Kamu. Kamu dapat memvisualisasikan jadwal postingan dengan jelas dan mendapatkan notifikasi, membuat manajemen waktu menjadi sangat mudah.",
         "judul": "📅 Google Calendar"
       }
     ],
@@ -46,6 +46,6 @@
   "order": 0,
   "seo": {
     "meta_title": "    Template Content Calendar Otomatis (Google Sheets) | RSQUARE",
-    "meta_description": "Capek bikin konten dadakan? Atur jadwal postingan Instagram, TikTok & Blog Anda dengan Template Content Calendar Google Sheets. Rencanakan & lacak semua ide jadi mudah!"
+    "meta_description": "Capek bikin konten dadakan? Atur jadwal postingan Instagram, TikTok & Blog Kamu dengan Template Content Calendar Google Sheets. Rencanakan & lacak semua ide jadi mudah!"
   }
 }

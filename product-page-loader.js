@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // --- PERBAIKAN 1: Menggunakan path absolut untuk fetch ---
-        // Tanda '/' di depan memastikan path dimulai dari root domain.
+        // TKamu '/' di depan memastikan path dimulai dari root domain.
         const response = await fetch(`/content/produk/${productId}.json`);
         
         if (!response.ok) {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <p class="text-3xl font-bold text-gray-900 mb-6">${product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`}</p>
                             <p class="text-gray-600 mb-8 leading-relaxed">${product.detail.deskripsi_lengkap}</p>
                             <div>
-                                <p class="text-sm font-semibold text-gray-600 mb-3">Pilih platform pembelian favorit Anda:</p>
+                                <p class="text-sm font-semibold text-gray-600 mb-3">Pilih platform pembelian favorit Kamu:</p>
                                 <div class="space-y-4">
                                     ${purchaseButtonsHTML}
                                     <hr class="border-gray-700">

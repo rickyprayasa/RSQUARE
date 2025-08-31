@@ -75,7 +75,7 @@ async function loadFreeProducts() {
     }
 }
 
-// Fungsi untuk memuat dan menampilkan PRODUK UNGGULAN (kode asli Anda)
+// Fungsi untuk memuat dan menampilkan PRODUK UNGGULAN (kode asli Kamu)
 async function loadFeaturedProducts() {
     const container = document.getElementById('featured-grid-container');
     if (!container) return;

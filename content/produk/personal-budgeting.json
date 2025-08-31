@@ -24,12 +24,12 @@
       {
         "gambar": "/photos/produk/personal-budgeting/Dashboard.png",
         "judul": "📈 Laporan (Dashboard Utama)",
-        "deskripsi": "Pusat komando keuangan pribadi Anda. Cukup pilih bulan dan tahun, maka seluruh laporan akan ter-update secara otomatis.<br><strong class='font-bold text-gray-800'>✨ Dashboard Interaktif:</strong> Semua laporan ter-update berdasarkan pilihan Anda.<br><strong class='font-bold text-gray-800'>💡 Analisis Cerdas:</strong> Dapatkan feedback instan mengenai level kesehatan finansial Anda.<br><strong class='font-bold text-gray-800'>🚦 Progress Bar Anggaran:</strong> Lihat kategori mana yang boros dengan indikator warna."
+        "deskripsi": "Pusat komando keuangan pribadi Kamu. Cukup pilih bulan dan tahun, maka seluruh laporan akan ter-update secara otomatis.<br><strong class='font-bold text-gray-800'>✨ Dashboard Interaktif:</strong> Semua laporan ter-update berdasarkan pilihan Kamu.<br><strong class='font-bold text-gray-800'>💡 Analisis Cerdas:</strong> Dapatkan feedback instan mengenai level kesehatan finansial Kamu.<br><strong class='font-bold text-gray-800'>🚦 Progress Bar Anggaran:</strong> Lihat kategori mana yang boros dengan indikator warna."
       },
       {
         "gambar": "/photos/produk/personal-budgeting/Budgeting.png",
         "judul": "💰 Budgeting",
-        "deskripsi": "Pusat komando keuangan pribadi Anda, tempat semua data transaksi diolah. Atur anggaran yang berbeda untuk setiap bulan dalam setahun.<br><strong class='font-bold text-gray-800'>🗓️ Rencana 12 Bulan:</strong> Atur anggaran yang berbeda untuk setiap bulan.<br><strong class='font-bold text-gray-800'>🔀 Budget Fleksibel:</strong> Sangat cocok untuk kebutuhan yang berubah-ubah.<br><strong class='font-bold text-gray-800'>🔗 Terhubung ke Dashboard:</strong> Anggaran Anda menjadi tolok ukur otomatis di laporan."
+        "deskripsi": "Pusat komando keuangan pribadi Kamu, tempat semua data transaksi diolah. Atur anggaran yang berbeda untuk setiap bulan dalam setahun.<br><strong class='font-bold text-gray-800'>🗓️ Rencana 12 Bulan:</strong> Atur anggaran yang berbeda untuk setiap bulan.<br><strong class='font-bold text-gray-800'>🔀 Budget Fleksibel:</strong> Sangat cocok untuk kebutuhan yang berubah-ubah.<br><strong class='font-bold text-gray-800'>🔗 Terhubung ke Dashboard:</strong> Anggaran Kamu menjadi tolok ukur otomatis di laporan."
       },
       {
         "gambar": "/photos/produk/personal-budgeting/Transaksi.png",
@@ -39,24 +39,24 @@
       {
         "gambar": "/photos/produk/personal-budgeting/Progress-Hutang.png",
         "judul": "📊 Progress Hutang",
-        "deskripsi": "Pusat kendali Anda untuk menaklukkan semua kewajiban finansial. Lacak setiap pembayaran cicilan untuk KPR, kendaraan, hingga PayLater.<br><strong class='font-bold text-gray-800'>🔗 Satu Tempat untuk Semua:</strong> Pantau semua jenis hutang secara terpusat.<br><strong class='font-bold text-gray-800'>📈 Progress Bar Pelunasan:</strong> Lihat progres visual yang memuaskan setiap kali membayar.<br><strong class='font-bold text-gray-800'>🎯 Target Jelas:</strong> Tahu persis sisa saldo utang Anda secara real-time."
+        "deskripsi": "Pusat kendali Kamu untuk menaklukkan semua kewajiban finansial. Lacak setiap pembayaran cicilan untuk KPR, kendaraan, hingga PayLater.<br><strong class='font-bold text-gray-800'>🔗 Satu Tempat untuk Semua:</strong> Pantau semua jenis hutang secara terpusat.<br><strong class='font-bold text-gray-800'>📈 Progress Bar Pelunasan:</strong> Lihat progres visual yang memuaskan setiap kali membayar.<br><strong class='font-bold text-gray-800'>🎯 Target Jelas:</strong> Tahu persis sisa saldo utang Kamu secara real-time."
       },
       {
         "gambar": "/photos/produk/personal-budgeting/Tujuan-Tabungan.png",
         "judul": "🎯 Tujuan Tabungan",
-        "deskripsi": "Ubah semua impian finansial Anda menjadi sebuah rencana yang terukur dan nyata. Mulai dari dana darurat hingga DP rumah, semuanya terpantau.<br><strong class='font-bold text-gray-800'>🏆 Tulis Impianmu:</strong> Catat semua tujuan beserta target dana.<br><strong class='font-bold text-gray-800'>📊 Progress Bar Visual:</strong> Saksikan 'celengan' digitalmu terisi mendekati 100%.<br><strong class='font-bold text-gray-800'>💰 Alokasi Dana Cerdas:</strong> Pastikan setiap rupiah tabungan punya misi yang jelas."
+        "deskripsi": "Ubah semua impian finansial Kamu menjadi sebuah rencana yang terukur dan nyata. Mulai dari dana darurat hingga DP rumah, semuanya terpantau.<br><strong class='font-bold text-gray-800'>🏆 Tulis Impianmu:</strong> Catat semua tujuan beserta target dana.<br><strong class='font-bold text-gray-800'>📊 Progress Bar Visual:</strong> Saksikan 'celengan' digitalmu terisi mendekati 100%.<br><strong class='font-bold text-gray-800'>💰 Alokasi Dana Cerdas:</strong> Pastikan setiap rupiah tabungan punya misi yang jelas."
       },
       {
         "gambar": "/photos/produk/personal-budgeting/Pusat-Kontrol.png",
         "judul": "⚙️ Pusat Kontrol",
-        "deskripsi": "'Ruang mesin' dari template Anda yang cukup diatur sekali saja di awal. Daftarkan kategori, akun bank, dan hutang untuk mengotomatiskan seluruh template.<br><strong class='font-bold text-gray-800'>🔧 Pengaturan Mudah:</strong> Cukup atur sekali, lalu pakai selamanya.<br><strong class='font-bold text-gray-800'>🏦 Daftarkan Semuanya:</strong> Masukkan daftar kategori, akun bank, dan profil hutang Anda.<br><strong class='font-bold text-gray-800'>🤖 Otomatisasi Penuh:</strong> Semua yang Anda atur menjadi pilihan dropdown di seluruh template."
+        "deskripsi": "'Ruang mesin' dari template Kamu yang cukup diatur sekali saja di awal. Daftarkan kategori, akun bank, dan hutang untuk mengotomatiskan seluruh template.<br><strong class='font-bold text-gray-800'>🔧 Pengaturan Mudah:</strong> Cukup atur sekali, lalu pakai selamanya.<br><strong class='font-bold text-gray-800'>🏦 Daftarkan Semuanya:</strong> Masukkan daftar kategori, akun bank, dan profil hutang Kamu.<br><strong class='font-bold text-gray-800'>🤖 Otomatisasi Penuh:</strong> Semua yang Kamu atur menjadi pilihan dropdown di seluruh template."
       }
     ]
   },
   "harga": 35000,
   "id": "personal-budgeting",
   "seo": {
-    "meta_description": "Dapatkan Template Personal Budgeting dari RSQUARE. Kelola keuangan pribadi Anda dengan dasbor interaktif yang dirancang secara profesional untuk melacak pemasukan & pengeluaran",
+    "meta_description": "Dapatkan Template Personal Budgeting dari RSQUARE. Kelola keuangan pribadi Kamu dengan dasbor interaktif yang dirancang secara profesional untuk melacak pemasukan & pengeluaran",
     "meta_title": "Template Personal Budgeting - RSQUARE"
   }
 }

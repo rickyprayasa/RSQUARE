@@ -10,7 +10,7 @@
   },
   "detail": {
     "gambar_utama": "photos/produk/my-to-do-list/to-do-list.png",
-    "deskripsi_lengkap": "Bosan dengan to-do list yang biasa saja? Ubah Google Sheets Anda menjadi sistem manajemen tugas yang cerdas, estetik, dan sepenuhnya otomatis!\n\nTemplate ini sangat cocok untuk **pelajar**, **freelancer**, **manajer proyek**, dan siapa saja yang ingin mengubah daftar tugas mereka dari sekadar catatan menjadi sebuah sistem yang proaktif.",
+    "deskripsi_lengkap": "Bosan dengan to-do list yang biasa saja? Ubah Google Sheets Kamu menjadi sistem manajemen tugas yang cerdas, estetik, dan sepenuhnya otomatis!\n\nTemplate ini sangat cocok untuk **pelajar**, **freelancer**, **manajer proyek**, dan siapa saja yang ingin mengubah daftar tugas mereka dari sekadar catatan menjadi sebuah sistem yang proaktif.",
     "file_panduan_pdf": "photos/produk/my-to-do-list/template-my-to-do-list-.pdf",
     "link_pembelian": [
       {
@@ -26,21 +26,21 @@
       {
         "gambar": "photos/produk/my-to-do-list/to-do-list.png",
         "judul": "To-Do List ✨",
-        "deskripsi": "Ini adalah pusat kendali utama Anda. Di sinilah semua tugas direncanakan, dijadwalkan, dan dieksekusi. Tampilannya dirancang agar bersih dan intuitif, memungkinkan Kamu melihat semua informasi penting dalam satu pandangan.\n\n**Fitur Utama:**\n\n* ✅ **Jadwal Otomatis ke Google Calendar:** Cukup centang tugas, jadwal langsung terbuat di kalender Anda. Hapus centang untuk membatalkan.\n* 🎨 **Pop-up Profesional:** Dapatkan notifikasi custom dengan logo brand Anda dan tautan langsung ke Google Calendar.\n* 📊 **Dashboard Dinamis:** Pantau progres secara *real-time* dengan statistik, *progress bar* visual, dan motivasi otomatis.\n\nKartu **dashboard**, ***progress bar***, dan **kata-kata motivasi** di bagian atas template akan diperbarui secara *real-time* setiap kali Anda menyelesaikan sebuah tugas."
+        "deskripsi": "Ini adalah pusat kendali utama Kamu. Di sinilah semua tugas direncanakan, dijadwalkan, dan dieksekusi. Tampilannya dirancang agar bersih dan intuitif, memungkinkan Kamu melihat semua informasi penting dalam satu pKamungan.\n\n**Fitur Utama:**\n\n* ✅ **Jadwal Otomatis ke Google Calendar:** Cukup centang tugas, jadwal langsung terbuat di kalender Kamu. Hapus centang untuk membatalkan.\n* 🎨 **Pop-up Profesional:** Dapatkan notifikasi custom dengan logo brand Kamu dan tautan langsung ke Google Calendar.\n* 📊 **Dashboard Dinamis:** Pantau progres secara *real-time* dengan statistik, *progress bar* visual, dan motivasi otomatis.\n\nKartu **dashboard**, ***progress bar***, dan **kata-kata motivasi** di bagian atas template akan diperbarui secara *real-time* setiap kali Kamu menyelesaikan sebuah tugas."
       },
       {
         "gambar": "photos/produk/my-to-do-list/fitur-1.png",
         "judul": "Penjadwalan Otomatis ke Google Calendar 🗓️",
-        "deskripsi": "Fitur ini secara ajaib mengirimkan detail tugas Anda ke Google Calendar hanya dengan satu klik. Anda tidak perlu lagi membuka aplikasi kalender dan mengetik ulang jadwal secara manual.\\\n\\\nCukup isi detail tugas, lalu **centang checkbox** di sebelahnya. Script akan langsung membuatkan acara di kalender Anda."
+        "deskripsi": "Fitur ini secara ajaib mengirimkan detail tugas Kamu ke Google Calendar hanya dengan satu klik. Kamu tidak perlu lagi membuka aplikasi kalender dan mengetik ulang jadwal secara manual.\\\n\\\nCukup isi detail tugas, lalu **centang checkbox** di sebelahnya. Script akan langsung membuatkan acara di kalender Kamu."
       },
       {
         "gambar": "photos/produk/my-to-do-list/fitur-2.png",
         "judul": "Pembatalan Otomatis dari Google Calendar 🗓️",
-        "deskripsi": "Jika ada perubahan rencana, Anda bisa membatalkan jadwal di kalender sama mudahnya seperti saat membuatnya.\\\n\\\nCukup **hapus centang (uncheck)** dari tugas yang bersangkutan. Script akan otomatis mencari dan menghapus acara tersebut dari Google Calendar Anda."
+        "deskripsi": "Jika ada perubahan rencana, Kamu bisa membatalkan jadwal di kalender sama mudahnya seperti saat membuatnya.\\\n\\\nCukup **hapus centang (uncheck)** dari tugas yang bersangkutan. Script akan otomatis mencari dan menghapus acara tersebut dari Google Calendar Kamu."
       },
       {
         "gambar": "photos/produk/my-to-do-list/fitur-3.png",
-        "deskripsi": "Menghemat waktu Anda saat memasukkan jam. Tidak perlu mengetik titik dua (:) atau format yang rumit.\n\nCukup ketik angka di kolom **Waktu** (contoh: `730` akan menjadi 07:30, `15` akan menjadi 15:00). Script akan langsung mengubahnya ke format jam yang benar.",
+        "deskripsi": "Menghemat waktu Kamu saat memasukkan jam. Tidak perlu mengetik titik dua (:) atau format yang rumit.\n\nCukup ketik angka di kolom **Waktu** (contoh: `730` akan menjadi 07:30, `15` akan menjadi 15:00). Script akan langsung mengubahnya ke format jam yang benar.",
         "judul": "Format Waktu Cerdas 🕰️"
       },
       {

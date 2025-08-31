@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // --- PERBAIKAN PATH DISAMAKAN DENGAN templates-gallery.js ---
             
             // 1. Ambil path asli dari JSON (kita pakai gambar_utama untuk homepage)
-            // Pastikan field ini tidak kosong di JSON Anda
+            // Pastikan field ini tidak kosong di JSON Kamu
             const originalPath = product.detail.gambar_utama || '';
 
             // 2. Bangun ulang path yang benar dengan menambahkan awalan.
