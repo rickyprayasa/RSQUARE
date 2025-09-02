@@ -9,9 +9,9 @@ publish_mode: editorial_workflow
 
 collections:
   - name: "pengaturan" # Nama internal untuk koleksi
-    label: "Pengaturan BerKamu" # Nama yang muncul di menu CMS
+    label: "Pengaturan Beranda" # Nama yang muncul di menu CMS
     files:
-      - name: "berKamu" # Nama internal untuk file
+      - name: "Beranda" # Nama internal untuk file
         label: "Pilih Produk Unggulan" # Nama yang muncul di menu CMS
         file: "_data/homepage.json" # Lokasi penyimpanan file
         # --- TAMBAHKAN DUA BARIS INI ---
