@@ -1068,3 +1068,31 @@ body {
 .animation-delay-4000 {
     animation-delay: 4s;
 }
+
+/* ========================================================================
+   GAYA TOMBOL CTA HERO BARU DENGAN ICON (btn-hero-cta)
+   ======================================================================== */
+.btn-hero-cta {
+    /* Gaya dasar sudah di HTML (Tailwind), tambahkan jika ada kustomisasi */
+    background: none; /* Override background Tailwind */
+    border: none;
+    text-decoration: none;
+    /* transition: all 0.3s ease; (sudah di HTML) */
+}
+
+.btn-hero-cta span:first-child { /* Background gradient utama */
+    transition: all 0.3s ease-out;
+}
+
+.btn-hero-cta:hover span:first-child {
+    transform: scale(1.1); /* Efek membesar pada background gradient */
+}
+
+.btn-hero-cta span:nth-child(2) { /* Icon wrapper */
+    /* Posisi awal ikon sedikit di luar kiri */
+    transform: translateX(0); 
+}
+
+.btn-hero-cta:hover span:nth-child(2) { /* Ikon bergerak ke dalam saat hover */
+    transform: translateX(2rem); /* Sesuaikan jarak ini jika perlu */
+}
