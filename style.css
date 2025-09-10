@@ -1021,3 +1021,78 @@ body {
     justify-content: space-between; /* Dorong judul ke atas, tombol ke bawah */
     flex-grow: 1; /* Pastikan area konten mengisi sisa ruang */
 }
+
+/* ========================================================================
+   ANIMASI UNTUK HERO SECTION (FLOAT & BLOB)
+   ======================================================================== */
+
+/* Animasi untuk gambar melayang (float) */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Animasi untuk background blob bergerak */
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+/* Kelas utilitas untuk memberi jeda animasi */
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* ========================================================================
+   GAYA TOMBOL CTA HERO BARU DENGAN ICON (btn-hero-cta)
+   ======================================================================== */
+.btn-hero-cta {
+    /* Gaya dasar sudah di HTML (Tailwind), tambahkan jika ada kustomisasi */
+    background: none; /* Override background Tailwind */
+    border: none;
+    text-decoration: none;
+    /* transition: all 0.3s ease; (sudah di HTML) */
+}
+
+.btn-hero-cta span:first-child { /* Background gradient utama */
+    transition: all 0.3s ease-out;
+}
+
+.btn-hero-cta:hover span:first-child {
+    transform: scale(1.1); /* Efek membesar pada background gradient */
+}
+
+.btn-hero-cta span:nth-child(2) { /* Icon wrapper */
+    /* Posisi awal ikon sedikit di luar kiri */
+    transform: translateX(0); 
+}
+
+.btn-hero-cta:hover span:nth-child(2) { /* Ikon bergerak ke dalam saat hover */
+    transform: translateX(2rem); /* Sesuaikan jarak ini jika perlu */
+}
