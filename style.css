@@ -1096,3 +1096,28 @@ body {
 .btn-hero-cta:hover span:nth-child(2) { /* Ikon bergerak ke dalam saat hover */
     transform: translateX(2rem); /* Sesuaikan jarak ini jika perlu */
 }
+
+/* ========================================================================
+   ANIMASI UNTUK SVG WAVE DI HERO SECTION
+   ======================================================================== */
+
+/* Menargetkan path di dalam SVG dengan ID #animated-wave */
+#animated-wave path {
+    animation: wave-anim 15s ease-in-out infinite;
+}
+
+/* Mendefinisikan langkah-langkah animasi untuk gelombang */
+@keyframes wave-anim {
+    0% {
+        /* Bentuk gelombang awal */
+        d: path("M0,100 C240,80 480,120 720,100 C960,80 1200,120 1440,100 L1440,200 L0,200 Z");
+    }
+    50% {
+        /* Bentuk gelom ang di tengah animasi */
+        d: path("M0,100 C240,120 480,80 720,100 C960,120 1200,80 1440,100 L1440,200 L0,200 Z");
+    }
+    100% {
+        /* Kembali ke bentuk gelombang awal untuk loop yang mulus */
+        d: path("M0,100 C240,80 480,120 720,100 C960,80 1200,120 1440,100 L1440,200 L0,200 Z");
+    }
+}
