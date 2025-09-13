@@ -5,24 +5,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     galleryContainer.innerHTML = '<p class="text-center col-span-full">Memuat koleksi template...</p>';
 
     try {
-        // --- LANGKAH 1 & 2: Ambil _index.json dan siapkan data urutan ---
         const indexResponse = await fetch('content/_index.json');
-
-        // --- PERUBAHAN LOGIKA ---
-        // Langsung fetch dan parse, jika gagal di tahap mana pun, hasilnya adalah {}
         const orderData = await fetch('_data/template_order.json')
-            .then(response => {
-                if (!response.ok) { // Gagal jika file tidak ditemukan (404)
-                    return {};
-                }
-                return response.json(); // Coba baca sebagai JSON
-            })
-            .catch(error => {
-                // Gagal jika file kosong, tidak valid, atau ada error jaringan
-                console.warn('Gagal memuat/parse template_order.json. Menggunakan urutan default.', error);
-                return {};
-            });
-        // --- SELESAI PERUBAHAN ---
+            .then(response => response.ok ? response.json() : {})
+            .catch(() => ({}));
 
         if (!indexResponse.ok) throw new Error(`Gagal memuat _index.json: ${indexResponse.statusText}`);
         
@@ -32,13 +18,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        // --- LANGKAH 3: Tentukan urutan final ---
-        // Logika ini sekarang tidak perlu blok 'else' yang rumit
         let sortedProductFiles;
         if (orderData && orderData.urutan_produk && orderData.urutan_produk.length > 0) {
             const allFilesSet = new Set(allProductFiles);
             const orderedFiles = [];
-
             orderData.urutan_produk.forEach(item => {
                 const fileNameToFind = item.produk + '.json';
                 if (allFilesSet.has(fileNameToFind)) {
@@ -46,37 +29,27 @@ document.addEventListener('DOMContentLoaded', async () => {
                     allFilesSet.delete(fileNameToFind);
                 }
             });
-
-            const unsortedFiles = Array.from(allFilesSet);
-            sortedProductFiles = [...orderedFiles, ...unsortedFiles];
+            sortedProductFiles = [...orderedFiles, ...Array.from(allFilesSet)];
         } else {
-            // Fallback ini akan otomatis berjalan jika orderData adalah {}
             sortedProductFiles = allProductFiles;
         }
         
-        // --- Sisa kode tidak berubah ---
-        const productPromises = sortedProductFiles.map(productFile => {
-            return fetch(`content/produk/${productFile}`)
+        const productPromises = sortedProductFiles.map(file => 
+            fetch(`content/produk/${file}`)
                 .then(res => res.ok ? res.json() : null)
-                .then(productData => {
-                    if (productData) {
-                        productData.id = productFile.replace(/\.json$/, '');
-                        return productData;
-                    }
-                    return null;
-                });
-        });
+                .then(data => data ? { ...data, id: file.replace('.json', '') } : null)
+        );
         
-        let productsInOrder = await Promise.all(productPromises);
-        productsInOrder = productsInOrder.filter(p => p !== null);
+        let productsInOrder = (await Promise.all(productPromises)).filter(p => p);
 
         const allCardsHTML = productsInOrder.map(product => {
             const priceDisplay = product.harga === 0 ? 'Gratis' : `Rp ${product.harga.toLocaleString('id-ID')}`;
             const detailLink = `/${product.id}`;
             const correctImagePath = `content/produk/${product.gambar_thumbnail}`;
             
+            // PERUBAHAN DI SINI: Hapus 'slide-in-blurred-top', ganti dengan 'card-item'
             return `
-                <div class="card rounded-xl overflow-hidden flex flex-col items-center justify-center text-center p-6 slide-in-blurred-top">
+                <div class="card card-item rounded-xl overflow-hidden flex flex-col items-center justify-center text-center p-6">
                     <div class="relative z-10 flex flex-col flex-grow">
                         <a href="${detailLink}" class="block">
                             <div class="aspect-w-16 aspect-h-9 bg-gray-100">
@@ -97,15 +70,34 @@ document.addEventListener('DOMContentLoaded', async () => {
         galleryContainer.innerHTML = allCardsHTML;
         
         const comingSoonCard = `
-            <div class="card rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center p-6">
+            <div class="card card-item rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center p-6">
                 <div class="flex-grow flex flex-col items-center justify-center">
                     <svg class="w-16 h-16 text-orange-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.573L16.5 21.75l-.398-1.177a3.375 3.375 0 00-2.455-2.455l-1.177-.398 1.177-.398a3.375 3.375 0 002.455-2.455l.398-1.177.398 1.177a3.375 3.375 0 002.455 2.455l1.177.398-1.177.398a3.375 3.375 0 00-2.455 2.455z" /></svg>
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Template Baru Segera Hadir!</h3>
                     <p class="text-gray-600 mb-6 flex-grow">Kami terus berinovasi untuk Kamu.</p>
                 </div>
                 <a href="jasa-kustom.html" class="btn-primary btn-shiny mt-auto text-center px-6 py-2 rounded-lg font-semibold text-white">Request Template?</a>
-            </div>`; // Kode kartu "coming soon" Kamu
+            </div>`;
         galleryContainer.insertAdjacentHTML('beforeend', comingSoonCard);
+
+        // --- KODE BARU UNTUK ANIMASI BERURUTAN ---
+        const cardsToAnimate = galleryContainer.querySelectorAll('.card-item');
+
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                cardsToAnimate.forEach((card, index) => {
+                    // Beri jeda waktu untuk setiap kartu
+                    setTimeout(() => {
+                        card.style.opacity = '1'; // Munculkan dulu
+                        card.classList.add('slide-in-blurred-top'); // Lalu jalankan animasi
+                    }, index * 150); // Jeda 150ms antar kartu
+                });
+                observer.unobserve(galleryContainer); // Hentikan pengamatan setelah animasi berjalan
+            }
+        }, { threshold: 0.1 });
+
+        observer.observe(galleryContainer);
+        // --- SELESAI KODE BARU ---
 
     } catch (error) {
         console.error('Gagal memuat galeri produk:', error);
