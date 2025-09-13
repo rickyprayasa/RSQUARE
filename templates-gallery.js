@@ -2,7 +2,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const galleryContainer = document.getElementById('product-gallery-container');
     if (!galleryContainer) return;
 
-    galleryContainer.innerHTML = '<p class="text-center col-span-full">Memuat koleksi template...</p>';
+    galleryContainer.innerHTML = `
+    <div class="col-span-full flex flex-col items-center justify-center p-8">
+        <svg id="svg-loader" class="w-16 h-16 text-orange-500" fill="currentColor" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+            <rect class="loader-bar" x="4" y="14" width="8" height="24" rx="4"></rect>
+            <rect class="loader-bar" x="22" y="14" width="8" height="24" rx="4"></rect>
+            <rect class="loader-bar" x="40" y="14" width="8" height="24" rx="4"></rect>
+        </svg>
+        <p class="mt-4 text-gray-500">Memuat Template...</p>
+    </div>
+`;
+
 
     try {
         const indexResponse = await fetch('content/_index.json');
