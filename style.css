@@ -1164,3 +1164,34 @@ body {
     opacity: 0; /* Mulai dengan transparan */
     transition: opacity 0.5s ease; /* Transisi halus saat muncul */
 }
+
+/* ========================================================================
+   ANIMASI SVG LOADER (EQUALIZER)
+   ======================================================================== */
+
+#svg-loader .loader-bar {
+  /* Titik pusat animasi berada di tengah secara horizontal dan di bawah secara vertikal */
+  transform-origin: center bottom;
+  
+  /* Panggil animasi 'equalize' */
+  animation: equalize 1.2s ease-in-out infinite;
+}
+
+/* Beri jeda animasi untuk baris kedua dan ketiga agar tidak bergerak bersamaan */
+#svg-loader .loader-bar:nth-child(2) {
+  animation-delay: -1.0s; /* Jeda animasi */
+}
+
+#svg-loader .loader-bar:nth-child(3) {
+  animation-delay: -0.8s; /* Jeda animasi */
+}
+
+/* Definisi animasi 'equalize' (naik-turun) */
+@keyframes equalize {
+  0%, 100% {
+    transform: scaleY(0.2); /* Tinggi awal (20%) */
+  }
+  50% {
+    transform: scaleY(1.0); /* Tinggi penuh (100%) */
+  }
+}
