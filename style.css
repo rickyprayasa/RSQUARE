@@ -45,31 +45,6 @@ body {
     box-shadow: 0 0 35px -5px rgba(249, 115, 22, 0.4);
 }
 
-/* ========================================================================
-   SISTEM ANIMASI ON-SCROLL UNIVERSAL
-   ======================================================================== */
-
-/* Kondisi awal untuk semua elemen yang akan dianimasikan */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-/* Kondisi akhir setelah elemen terlihat */
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Memberi jeda animasi (staggered effect) KHUSUS untuk item 
-   di dalam div yang memiliki kelas .stagger-container. 
-   Ini kita pakai untuk timeline zig-zag.
-*/
-.stagger-container .animate-on-scroll:nth-child(2) { transition-delay: 0.15s; }
-.stagger-container .animate-on-scroll:nth-child(3) { transition-delay: 0.3s; }
-.stagger-container .animate-on-scroll:nth-child(4) { transition-delay: 0.45s; }
-
 /* 
 /* ========================================================================
    GAYA TOMBOL (Versi Final Lengkap)
