@@ -28,3 +28,15 @@
   status = 301
   query = {product = ":product"}
   force = true
+
+  [[redirects]]
+  from = "/instructions/:slug"
+  to = "/content/petunjuk.html?product=:slug"
+  status = 200
+
+[[redirects]]
+  from = "/content/petunjuk.html"
+  to = "/instructions/:product"
+  status = 301
+  query = {product = ":product"}
+  force = true
