@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // Tombol untuk produk GRATIS
                 if (product.detail?.file_panduan_pdf) {
                     mainActionButtonHTML = `
-                        <a href="petunjuk.html?product=${product.id}" class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
+                        <a href="/instructions/${product.id}" class="btn-primary btn-shiny flex items-center justify-center w-full px-8 py-3 rounded-lg font-semibold text-lg">
                             <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             Download Gratis
                         </a>`;
