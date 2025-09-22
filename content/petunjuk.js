@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('download-button-container');
     if (!container) return;
 
-        // Ambil ID produk dari URL path
+    // Ambil ID produk dari URL path
     let productId;
     const pathParts = window.location.pathname.split('/').filter(Boolean);
     if (pathParts.length > 0) {
@@ -15,15 +15,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        // Ambil data produk untuk menemukan path PDF
-        const response = await fetch(`/content/produk/${productId}.json`);
+        const jsonPath = `/content/produk/${productId}.json`;
+        console.log("Ambil JSON:", jsonPath);
+
+        const response = await fetch(jsonPath);
+        console.log("Response status:", response.status);
+
         if (!response.ok) throw new Error("Data produk tidak ditemukan.");
         const product = await response.json();
+        console.log("Product JSON:", product);
 
-        // Cek apakah produknya memiliki file PDF
         if (product.detail?.file_panduan_pdf) {
             const pdfPath = `/content/produk/${product.detail.file_panduan_pdf}`;
-            // Buat tombol download
+            console.log("PDF path:", pdfPath);
+
             container.innerHTML = `
                 <a href="${pdfPath}" download class="btn-primary btn-shiny inline-flex items-center justify-center px-8 py-3 rounded-lg font-semibold text-lg">
                     <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -33,7 +38,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             container.innerHTML = '<p class="text-gray-500">File panduan untuk produk ini belum tersedia.</p>';
         }
-        console.log(pdfPath);
 
     } catch (error) {
         console.error("Gagal memuat data panduan:", error);
