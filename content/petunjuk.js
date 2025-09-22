@@ -2,9 +2,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('download-button-container');
     if (!container) return;
 
-    // Ambil ID produk dari URL
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('product');
+        // Ambil ID produk dari URL path
+    let productId;
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    if (pathParts.length > 0) {
+        productId = pathParts[pathParts.length - 1];
+    }
 
     if (!productId) {
         container.innerHTML = '<p class="text-red-500">Error: ID produk tidak ditemukan.</p>';
