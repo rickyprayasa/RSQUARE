@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Cek apakah produknya memiliki file PDF
         if (product.detail?.file_panduan_pdf) {
-            const pdfPath = `produk/${product.detail.file_panduan_pdf}`;
+            const pdfPath = `/content/produk/${product.detail.file_panduan_pdf}`;
             // Buat tombol download
             container.innerHTML = `
                 <a href="${pdfPath}" download class="btn-primary btn-shiny inline-flex items-center justify-center px-8 py-3 rounded-lg font-semibold text-lg">
