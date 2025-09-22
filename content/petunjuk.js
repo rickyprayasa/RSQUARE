@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             container.innerHTML = '<p class="text-gray-500">File panduan untuk produk ini belum tersedia.</p>';
         }
+        console.log(pdfPath);
 
     } catch (error) {
         console.error("Gagal memuat data panduan:", error);
