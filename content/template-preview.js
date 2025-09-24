@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     // URL kanonis harus konsisten dengan yang di atas
                     "@id": `https://rsquareidea.my.id/${productId}`
                 },
-                "image": `https://rsquareidea.my.id${product.detail.gambar_utama}`,
+                "image": `https://rsquareidea.my.id${product.detail.gambar_utama.startsWith('/') ? product.detail.gambar_utama : '/' + product.detail.gambar_utama}`,
                 "offers": {
                     "@type": "Offer",
                     "url": `https://rsquareidea.my.id/${productId}`,
