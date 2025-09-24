@@ -1,55 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-    <loc>https://rsquareidea.my.id/</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/templates</loc>
-</url>
 
-<url>
-    <loc>https://rsquareidea.my.id/personal-budgeting</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/preview/personal-budgeting</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/perencanaan-acara</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/preview/perencanaan-acara</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/goal-planner</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/preview/goal-planner</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/tracking-lamaran</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/preview/tracking-lamaran</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/content-calendar</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/preview/content-calendar</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/invoice-maker</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/preview/invoice-maker</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/my-to-do-list</loc>
-</url>
-<url>
-    <loc>https://rsquareidea.my.id/preview/my-to-do-list</loc>
-</url>
+    <url>
+        <loc>https://rsquareidea.my.id/</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://rsquareidea.my.id/templates</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
 
+    <url>
+        <loc>https://rsquareidea.my.id/personal-budgeting</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rsquareidea.my.id/preview/personal-budgeting</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://rsquareidea.my.id/perencanaan-acara</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rsquareidea.my.id/preview/perencanaan-acara</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://rsquareidea.my.id/goal-planner</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rsquareidea.my.id/preview/goal-planner</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://rsquareidea.my.id/tracking-lamaran</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rsquareidea.my.id/preview/tracking-lamaran</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://rsquareidea.my.id/content-calendar</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rsquareidea.my.id/preview/content-calendar</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://rsquareidea.my.id/invoice-maker</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rsquareidea.my.id/preview/invoice-maker</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://rsquareidea.my.id/my-to-do-list</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rsquareidea.my.id/preview/my-to-do-list</loc>
+        <lastmod>2025-09-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
 
 </urlset>
-
