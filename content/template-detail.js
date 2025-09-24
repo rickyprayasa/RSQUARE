@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     "@type": "WebPage",
                     "@id": `https://rsquareidea.my.id/${productId}` // URL kanonis
                 },
-                "image": `https://rsquareidea.my.id${product.detail.gambar_utama}`,
+                "image": `https://rsquareidea.my.id${product.detail.gambar_utama.startsWith('/') ? product.detail.gambar_utama : '/' + product.detail.gambar_utama}`,
                 "offers": {
                     "@type": "Offer",
                     "url": `https://rsquareidea.my.id/${productId}`, // URL halaman produk
