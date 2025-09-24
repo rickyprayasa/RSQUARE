@@ -4,7 +4,7 @@
   "harga": 25000,
   "deskripsi_singkat": "Kelola semua aspek keuangan acara Kamu, mulai dari anggaran, vendor, hingga jadwal pembayaran dalam satu dasbor terpusat.",
   "gambar_thumbnail": "/photos/produk/anggaran-acara/anggaran-acara-thumbnail.png",
-  "gambar_preview": "photos/produk/anggaran-acara/dashboard.jpeg",
+  "gambar_preview": "/photos/produk/anggaran-acara/dashboard.jpeg",
   "detail": {
     "gambar_utama": "photos/produk/anggaran-acara/dashboard.jpeg",
     "deskripsi_lengkap": "Pusat kendali acara Kamu, tempat di mana Kamu bisa memantau semua metrik penting dalam sekejap untuk membuat keputusan yang lebih baik.",
