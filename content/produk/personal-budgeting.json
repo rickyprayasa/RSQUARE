@@ -1,67 +1,62 @@
 {
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "Template Personal Budgeting",
-  "description": "Dapatkan Template Personal Budgeting dari RSQUARE. Kelola keuangan pribadi Kamu dengan dasbor interaktif yang dirancang secara profesional untuk melacak pemasukan & pengeluaran",
-  "sku": "personal-budgeting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://rsquareidea.my.id/produk/personal-budgeting"
+  "deskripsi_singkat": "Template ini dirancang secara cermat untuk mengubah data transaksi yang rumit menjadi sebuah dashboard yang visual, intuitif, dan mudah dipahami.",
+  "gambar_preview": "/photos/produk/personal-budgeting/Dashboard.png",
+  "gambar_thumbnail": "/photos/produk/personal-budgeting/personal-budgeting-thumbnail.png",
+  "order": 0,
+  "judul": "Personal Budgeting",
+  "detail": {
+    "gambar_utama": "/photos/produk/personal-budgeting/Dashboard.png",
+    "deskripsi_lengkap": "Template ini dirancang secara cermat untuk mengubah data transaksi yang rumit menjadi sebuah dashboard yang visual, intuitif, dan mudah dipahami. Lacak setiap pemasukan dan pengeluaran, monitor progres pelunasan utang, dan lihat tabungan impian Kamu bertumbuh—semuanya dalam satu sistem yang terintegrasi dan otomatis. Berhentilah merasa cemas dan mulailah membuat keputusan finansial yang cerdas hari ini.",
+    "link_preview_detail": "content/template-preview.html?product=personal-budgeting",
+    "link_youtube": "https://www.youtube.com/embed/FS5Fs4UoLAk?si=ZyKQaQfPzAjTO4kv",
+    "payment_gateway": "https://rsquareidea.myr.id/pl/Personal-Budgeting-33997",
+    "link_pembelian": [
+      {
+        "platform": "Lynk.ID",
+        "url": "https://lynk.id/rsquareidea/8jq7zeq8m1kl"
+      },
+      {
+        "platform": "KaryaKarsa",
+        "url": "https://karyakarsa.com/rsquare/template-personal-budget"
+      }
+    ],
+    "galeri": [
+      {
+        "gambar": "/photos/produk/personal-budgeting/Dashboard.png",
+        "judul": "📈 Laporan (Dashboard Utama)",
+        "deskripsi": "Pusat komando keuangan pribadi Kamu. Cukup pilih bulan dan tahun, maka seluruh laporan akan ter-update secara otomatis.<br><strong class='font-bold text-gray-800'>✨ Dashboard Interaktif:</strong> Semua laporan ter-update berdasarkan pilihan Kamu.<br><strong class='font-bold text-gray-800'>💡 Analisis Cerdas:</strong> Dapatkan feedback instan mengenai level kesehatan finansial Kamu.<br><strong class='font-bold text-gray-800'>🚦 Progress Bar Anggaran:</strong> Lihat kategori mana yang boros dengan indikator warna."
+      },
+      {
+        "gambar": "/photos/produk/personal-budgeting/Budgeting.png",
+        "judul": "💰 Budgeting",
+        "deskripsi": "Pusat komando keuangan pribadi Kamu, tempat semua data transaksi diolah. Atur anggaran yang berbeda untuk setiap bulan dalam setahun.<br><strong class='font-bold text-gray-800'>🗓️ Rencana 12 Bulan:</strong> Atur anggaran yang berbeda untuk setiap bulan.<br><strong class='font-bold text-gray-800'>🔀 Budget Fleksibel:</strong> Sangat cocok untuk kebutuhan yang berubah-ubah.<br><strong class='font-bold text-gray-800'>🔗 Terhubung ke Dashboard:</strong> Anggaran Kamu menjadi tolok ukur otomatis di laporan."
+      },
+      {
+        "gambar": "/photos/produk/personal-budgeting/Transaksi.png",
+        "judul": "📝 Catatan Transaksi",
+        "deskripsi": "Jantung dari seluruh sistem. Luangkan 30 detik untuk mencatat setiap pemasukan, pengeluaran, dan transfer di sini.<br><strong class='font-bold text-gray-800'>⚡ Pencatatan Cepat:</strong> Dilengkapi dropdown untuk mempercepat pengisian.<br><strong class='font-bold text-gray-800'>↔️ Lacak Transfer:</strong> Catat perpindahan uang antar bank dengan mudah.<br><strong class='font-bold text-gray-800'>✍️ Input Mudah:</strong> Desain yang simpel dan fokus pada fungsi utama."
+      },
+      {
+        "gambar": "/photos/produk/personal-budgeting/Progress-Hutang.png",
+        "judul": "📊 Progress Hutang",
+        "deskripsi": "Pusat kendali Kamu untuk menaklukkan semua kewajiban finansial. Lacak setiap pembayaran cicilan untuk KPR, kendaraan, hingga PayLater.<br><strong class='font-bold text-gray-800'>🔗 Satu Tempat untuk Semua:</strong> Pantau semua jenis hutang secara terpusat.<br><strong class='font-bold text-gray-800'>📈 Progress Bar Pelunasan:</strong> Lihat progres visual yang memuaskan setiap kali membayar.<br><strong class='font-bold text-gray-800'>🎯 Target Jelas:</strong> Tahu persis sisa saldo utang Kamu secara real-time."
+      },
+      {
+        "gambar": "/photos/produk/personal-budgeting/Tujuan-Tabungan.png",
+        "judul": "🎯 Tujuan Tabungan",
+        "deskripsi": "Ubah semua impian finansial Kamu menjadi sebuah rencana yang terukur dan nyata. Mulai dari dana darurat hingga DP rumah, semuanya terpantau.<br><strong class='font-bold text-gray-800'>🏆 Tulis Impianmu:</strong> Catat semua tujuan beserta target dana.<br><strong class='font-bold text-gray-800'>📊 Progress Bar Visual:</strong> Saksikan 'celengan' digitalmu terisi mendekati 100%.<br><strong class='font-bold text-gray-800'>💰 Alokasi Dana Cerdas:</strong> Pastikan setiap rupiah tabungan punya misi yang jelas."
+      },
+      {
+        "gambar": "/photos/produk/personal-budgeting/Pusat-Kontrol.png",
+        "judul": "⚙️ Pusat Kontrol",
+        "deskripsi": "'Ruang mesin' dari template Kamu yang cukup diatur sekali saja di awal. Daftarkan kategori, akun bank, dan hutang untuk mengotomatiskan seluruh template.<br><strong class='font-bold text-gray-800'>🔧 Pengaturan Mudah:</strong> Cukup atur sekali, lalu pakai selamanya.<br><strong class='font-bold text-gray-800'>🏦 Daftarkan Semuanya:</strong> Masukkan daftar kategori, akun bank, dan profil hutang Kamu.<br><strong class='font-bold text-gray-800'>🤖 Otomatisasi Penuh:</strong> Semua yang Kamu atur menjadi pilihan dropdown di seluruh template."
+      }
+    ]
   },
-  "image": "https://rsquareidea.my.id/photos/produk/personal-budgeting/Dashboard.png",
-  "offers": {
-    "@type": "Offer",
-    "url": "https://rsquareidea.my.id/produk/personal-budgeting",
-    "priceCurrency": "IDR",
-    "price": "35000",
-    "priceValidUntil": "2026-12-31",
-    "availability": "https://schema.org/InStock",
-    "seller": {
-      "@type": "Organization",
-      "name": "RSQUARE"
-    }
-  },
-  "brand": {
-    "@type": "Brand",
-    "name": "RSQUARE"
-  },
-  "video": {
-    "@type": "VideoObject",
-    "name": "Preview Template Personal Budgeting",
-    "description": "Template ini dirancang secara cermat untuk mengubah data transaksi yang rumit menjadi sebuah dashboard yang visual, intuitif, dan mudah dipahami.",
-    "thumbnailUrl": "https://rsquareidea.my.id/photos/produk/personal-budgeting/personal-budgeting-thumbnail.png",
-    "embedUrl": "https://www.youtube.com/embed/FS5Fs4UoLAk"
-  },
-  "additionalProperty": [
-    {
-      "@type": "PropertyValue",
-      "name": "📈 Laporan (Dashboard Utama)",
-      "value": "Pusat komando keuangan pribadi Kamu. Cukup pilih bulan dan tahun, maka seluruh laporan akan ter-update secara otomatis. ✨ Dashboard Interaktif: Semua laporan ter-update berdasarkan pilihan Kamu. 💡 Analisis Cerdas: Dapatkan feedback instan mengenai level kesehatan finansial Kamu. 🚦 Progress Bar Anggaran: Lihat kategori mana yang boros dengan indikator warna."
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "💰 Budgeting",
-      "value": "Pusat komando keuangan pribadi Kamu, tempat semua data transaksi diolah. Atur anggaran yang berbeda untuk setiap bulan dalam setahun. 🗓️ Rencana 12 Bulan: Atur anggaran yang berbeda untuk setiap bulan. 🔀 Budget Fleksibel: Sangat cocok untuk kebutuhan yang berubah-ubah. 🔗 Terhubung ke Dashboard: Anggaran Kamu menjadi tolok ukur otomatis di laporan."
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "📝 Catatan Transaksi",
-      "value": "Jantung dari seluruh sistem. Luangkan 30 detik untuk mencatat setiap pemasukan, pengeluaran, dan transfer di sini. ⚡ Pencatatan Cepat: Dilengkapi dropdown untuk mempercepat pengisian. ↔️ Lacak Transfer: Catat perpindahan uang antar bank dengan mudah. ✍️ Input Mudah: Desain yang simpel dan fokus pada fungsi utama."
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "📊 Progress Hutang",
-      "value": "Pusat kendali Kamu untuk menaklukkan semua kewajiban finansial. Lacak setiap pembayaran cicilan untuk KPR, kendaraan, hingga PayLater. 🔗 Satu Tempat untuk Semua: Pantau semua jenis hutang secara terpusat. 📈 Progress Bar Pelunasan: Lihat progres visual yang memuaskan setiap kali membayar. 🎯 Target Jelas: Tahu persis sisa saldo utang Kamu secara real-time."
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "🎯 Tujuan Tabungan",
-      "value": "Ubah semua impian finansial Kamu menjadi sebuah rencana yang terukur dan nyata. Mulai dari dana darurat hingga DP rumah, semuanya terpantau. 🏆 Tulis Impianmu: Catat semua tujuan beserta target dana. 📊 Progress Bar Visual: Saksikan 'celengan' digitalmu terisi mendekati 100%. 💰 Alokasi Dana Cerdas: Pastikan setiap rupiah tabungan punya misi yang jelas."
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "⚙️ Pusat Kontrol",
-      "value": "'Ruang mesin' dari template Kamu yang cukup diatur sekali saja di awal. Daftarkan kategori, akun bank, dan hutang untuk mengotomatiskan seluruh template. 🔧 Pengaturan Mudah: Cukup atur sekali, lalu pakai selamanya. 🏦 Daftarkan Semuanya: Masukkan daftar kategori, akun bank, dan profil hutang Kamu. 🤖 Otomatisasi Penuh: Semua yang Kamu atur menjadi pilihan dropdown di seluruh template."
-    }
-  ]
+  "harga": 35000,
+  "id": "personal-budgeting",
+  "seo": {
+    "meta_description": "Dapatkan Template Personal Budgeting dari RSQUARE. Kelola keuangan pribadi Kamu dengan dasbor interaktif yang dirancang secara profesional untuk melacak pemasukan & pengeluaran",
+    "meta_title": "Template Personal Budgeting - RSQUARE"
+  }
 }
