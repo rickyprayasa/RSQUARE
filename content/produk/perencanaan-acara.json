@@ -23,22 +23,22 @@
     ],
     "galeri": [
       {
-        "gambar": "photos/produk/anggaran-acara/dashboard.jpeg",
+        "gambar": "/photos/produk/anggaran-acara/dashboard.jpeg",
         "judul": "🎉 Dashboard Acara",
         "deskripsi": "Pusat kendali acara Kamu untuk memantau semua metrik penting dalam sekejap.<br><strong class='font-bold text-gray-800'>📊 Ringkasan Anggaran:</strong> Lihat gambaran besar keuangan acara Kamu.<br><strong class='font-bold text-gray-800'>💰 Sisa Anggaran:</strong> Ketahui sisa dana Kamu secara real-time.<br><strong class='font-bold text-gray-800'>⏳ Hitung Mundur:</strong> Fitur hitung mundur interaktif menuju hari-H.<br><strong class='font-bold text-gray-800'>👍 Progres Cerdas:</strong> Dapatkan analisis singkat apakah progres anggaran Kamu di jalur yang benar."
       },
       {
-        "gambar": "photos/produk/anggaran-acara/anggaran.jpeg",
+        "gambar": "/photos/produk/anggaran-acara/anggaran.jpeg",
         "judul": "💰 Anggaran Detail",
         "deskripsi": "Rinci semua pengeluaran dengan cermat di dalam sheet ini.<br><strong class='font-bold text-gray-800'>📝 Daftar Rinci:</strong> Catat semua jenis pengeluaran, mulai dari sewa gedung hingga souvenir.<br><strong class='font-bold text-gray-800'>⚖️ Estimasi vs Aktual:</strong> Bandingkan biaya perkiraan dengan biaya sesungguhnya.<br><strong class='font-bold text-gray-800'>🚦 Status Pembayaran:</strong> Lacak status setiap tagihan dengan mudah (lunas, DP, belum bayar).<br><strong class='font-bold text-gray-800'>🗓️ Jatuh Tempo:</strong> Pengingat tanggal jatuh tempo untuk setiap pembayaran."
       },
       {
-        "gambar": "photos/produk/anggaran-acara/daftar.jpeg",
+        "gambar": "/photos/produk/anggaran-acara/daftar.jpeg",
         "judul": "🤝 Vendor & Kontak",
         "deskripsi": "Kelola semua kontak penting Kamu di satu tempat yang rapi dan terorganisir.<br><strong class='font-bold text-gray-800'>📇 Direktori Vendor:</strong> Simpan informasi lengkap setiap vendor.<br><strong class='font-bold text-gray-800'>📞 Kontak Darurat:</strong> Dapatkan akses cepat ke nomor telepon dan email.<br><strong class='font-bold text-gray-800'>💳 Info Pembayaran:</strong> Catat detail rekening bank untuk mempermudah transaksi.<br><strong class='font-bold text-gray-800'>✍️ Catatan Penting:</strong> Tambahkan catatan khusus untuk setiap vendor."
       },
       {
-        "gambar": "photos/produk/anggaran-acara/kategori.jpeg",
+        "gambar": "/photos/produk/anggaran-acara/kategori.jpeg",
         "judul": "⚙️ Pengaturan & Kategori",
         "deskripsi": "Di sinilah semua keajaiban perencanaan Kamu dimulai dan fondasi acara Kamu diletakkan.<br><strong class='font-bold text-gray-800'>🏷️ Kategori Anggaran:</strong> Sesuaikan kategori pengeluaran utama (Venue, Katering, dll).<br><strong class='font-bold text-gray-800'>🗓️ Info Acara:</strong> Tetapkan detail penting seperti nama dan tanggal acara.<br><strong class='font-bold text-gray-800'>🎯 Target Anggaran:</strong> Masukkan target anggaran awal Kamu sebagai patokan."
       }
