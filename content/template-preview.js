@@ -31,6 +31,58 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
             }
 
+            // ▼▼▼ --- LOGIKA JSON-LD DINAMIS DITAMBAHKAN DI SINI --- ▼▼▼
+            // 1. Buat Objek JSON-LD dari data 'product'
+            const ldJson = {
+                "@context": "https://schema.org/",
+                "@type": "Product",
+                "name": product.judul,
+                "description": product.seo?.meta_description || product.deskripsi_singkat,
+                "sku": product.id,
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    // URL kanonis harus konsisten dengan yang di atas
+                    "@id": `https://rsquareidea.my.id/${productId}`
+                },
+                "image": `https://rsquareidea.my.id${product.detail.gambar_utama}`,
+                "offers": {
+                    "@type": "Offer",
+                    "url": `https://rsquareidea.my.id/${productId}`,
+                    "priceCurrency": "IDR",
+                    "price": product.harga.toString(),
+                    "availability": "https://schema.org/InStock",
+                    "seller": {
+                        "@type": "Organization",
+                        "name": "RSQUARE"
+                    }
+                },
+                "brand": {
+                    "@type": "Brand",
+                    "name": "RSQUARE"
+                }
+            };
+            
+            // Tambahkan video jika ada
+            if (product.detail.link_youtube) {
+                ldJson.video = {
+                    "@type": "VideoObject",
+                    "name": `Tutorial ${product.judul}`,
+                    "description": product.deskripsi_singkat,
+                    "thumbnailUrl": `https://rsquareidea.my.id${product.gambar_thumbnail}`,
+                    "embedUrl": product.detail.link_youtube
+                };
+            }
+
+            // 2. Buat elemen <script> baru
+            const scriptLdJson = document.createElement('script');
+            scriptLdJson.type = 'application/ld+json';
+            scriptLdJson.textContent = JSON.stringify(ldJson, null, 2);
+
+            // 3. Tambahkan elemen script tersebut ke dalam <head>
+            document.head.appendChild(scriptLdJson);
+            // ▲▲▲ --- AKHIR LOGIKA JSON-LD --- ▲▲▲
+
+
             // --- PEMBUATAN HTML ---
             const deskripsiLengkapHTML = marked.parse(product.detail.deskripsi_lengkap);
 
