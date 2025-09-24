@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     "@type": "VideoObject",
                     "name": `Tutorial ${product.judul}`,
                     "description": product.deskripsi_singkat,
+                    "uploadDate": product.detail.video_upload_date,
                     "thumbnailUrl": `https://rsquareidea.my.id${product.gambar_thumbnail}`,
                     "embedUrl": product.detail.link_youtube
                 };
