@@ -54,7 +54,7 @@ async function loadFreeProducts() {
                         <span class="label">GRATIS</span>
                         <h3>🎯 ${product.judul}</h3>
                         <div class="featured-card-description-wrapper">
-                            <a href="${detailLink}" class="btn-primary-small">Lihat Template</a>
+                            <a href="${detailLink}" class="btn-primary-small">Lihat Template onclick="fbq('track', 'InitiateCheckout');"</a>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@ async function loadFeaturedProducts() {
                         <span class="label">★ Template Unggulan</span>
                         <h3>🎯 ${product.judul}</h3>
                         <div class="featured-card-description-wrapper">
-                            <a href="${detailLink}" class="btn-primary-small">Lihat Template</a>
+                            <a href="${detailLink}" class="btn-primary-small">Lihat Template onclick="fbq('track', 'InitiateCheckout');"</a>
                         </div>
                     </div>
                 </div>
