@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /netlify/
+Disallow: /_data/
+
+Sitemap: https://rsquareidea.my.id/sitemap.xml
