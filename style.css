@@ -2,6 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* ==========================================================================
+   LOGO STYLING - Ensure proper aspect ratio
+   ========================================================================== */
+.logo-header {
+    height: 2.5rem; /* h-10 = 40px */
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-footer {
+    height: 3rem; /* h-12 = 48px */
+    width: auto;
+    object-fit: contain;
+}
+
+/* ==========================================================================
    BODY & ANIMASI UTAMA
    ========================================================================== */
 html {
