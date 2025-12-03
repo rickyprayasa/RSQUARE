@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', () => {
-            if (mobileMenu.style.maxHeight) {
-                mobileMenu.style.maxHeight = null;
+            if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px') {
+                mobileMenu.style.maxHeight = '0px';
             } else {
-                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+                // Batasi max-height ke 300px untuk mencegah overlap
+                const scrollHeight = Math.min(mobileMenu.scrollHeight, 300);
+                mobileMenu.style.maxHeight = scrollHeight + "px";
             }
         });
     }

@@ -5,15 +5,17 @@
    LOGO STYLING - Ensure proper aspect ratio
    ========================================================================== */
 .logo-header {
-    height: 2.5rem; /* h-10 = 40px */
+    height: 3.5rem; /* 56px - Increased from 40px for better visibility */
     width: auto;
     object-fit: contain;
+    max-width: 100%;
 }
 
 .logo-footer {
-    height: 3rem; /* h-12 = 48px */
+    height: 4.5rem; /* 72px - Increased from 48px for better visibility */
     width: auto;
     object-fit: contain;
+    max-width: 100%;
 }
 
 /* ==========================================================================
@@ -433,6 +435,10 @@ body {
     /* Animasi transisi yang halus */
     overflow: hidden;
     /* Sembunyikan konten saat menu tertutup */
+    background-color: #FFFFFF;
+    /* Latar belakang putih untuk menu */
+    border-top: 1px solid #E5E7EB;
+    /* Garis pembatas atas */
 }
 
 /* ========================================================================
